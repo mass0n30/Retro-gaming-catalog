@@ -5,11 +5,14 @@ export default async function queryForTop100GameData(gameyear) {
   try {
     const gameData = await retrieveYearData(gameyear);
 
-    console.log(gameData);
+    if (gameData) {
+      return gameData;
+    }
     //displayGameData(gameData);
   } catch(error) {
     console.log(error);
   }
+
 
 }
 
@@ -20,7 +23,7 @@ export async function retrieveYearData(gameyear) {
 
   const platformIds = "49,79,83,105,27,15,80,167,106";
 
-  const url = `https://api.rawg.io/api/games?key=8ec2b2ef012044dc8ae97ef6c28c4e62&dates=${gameyear}-01-01,${gameyear}-12-31&platforms=${platformIds}&ordering=-rating&page_size=20&page=4`;
+  const url = `https://api.rawg.io/api/games?key=8ec2b2ef012044dc8ae97ef6c28c4e62&dates=${gameyear}-01-01,${gameyear}-12-31&platforms=${platformIds}&ordering=-rating&page_size=20&page=1`;
 
   try {
       const data = await fetch(url, { mode: 'cors' });
@@ -28,7 +31,6 @@ export async function retrieveYearData(gameyear) {
       throw new Error(`Response status: ${data.status}`);
       }
       const gameData = await data.json();
-      console.log(gameData);
       return gameData;
   } catch (error) {
       console.log(error);
