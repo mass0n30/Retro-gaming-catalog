@@ -10,4 +10,4 @@ function GameCardBody(games) {
 }
 
 
-export default {GameCardBody};
+export default GameCardBody;
