@@ -30,7 +30,7 @@ export async function retrieveYearData(gameyear) {
       if (!data.ok) {
       throw new Error(`Response status: ${data.status}`);
       }
-      const gameData = await data.json();
+      const gameData = data.json();
       return gameData;
   } catch (error) {
       console.log(error);
