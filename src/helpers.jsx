@@ -9,8 +9,7 @@ function getPaginationCount(gameCount) {
     return parseInt(pageCount + 1);
   }
   return pageCount;
-
-
 }
 
-export default getPaginationCount;
+
+export default getPaginationCount ;
