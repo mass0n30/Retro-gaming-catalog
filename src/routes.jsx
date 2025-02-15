@@ -1,6 +1,6 @@
 import App from "./App"; 
 import Home from "./pages/Home"; 
-import ErrorPage from "./components/ErrorPage";
+import ErrorPage from "./pages/ErrorPage";
 
 const platformIds = "49,79,83,105,27,15,80,167,106";
 

@@ -1,5 +1,9 @@
 # React + Vite
 
+The two ways to fetch data is going be the heart of this project, useEffect and Loaders. 
+- Loaders should be used for route changes, so for any year clicked or console clicked, the games will be Loaded. 
+- useEffect should be used for Pagination changes within the given year or console, since the games will already be loaded. 
+
 Vite and Vitest setup now run:
 npm install
 npm run dev

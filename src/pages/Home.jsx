@@ -7,6 +7,8 @@ import GameCardBody from "./HomeBody";
 
 import getPaginationCount from "../helpers";
 
+import DisplayYears from "../components/Components";
+
 import '../styles/App.css'
 import { useState } from "react";
 
@@ -29,6 +31,7 @@ function Home() {
       <div>
       <h1>Hello from home page!</h1>
       <p>So, how are you?</p>
+      <DisplayYears/>
       <div>
         <GameCardBody games={gameData}/>
       </div>
