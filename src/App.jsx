@@ -1,13 +1,17 @@
-import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { Outlet } from "react-router-dom";
 
 function App() {
+
+  //setState data for route change kept here
+
+
   return (
     <div>
       <Navbar />
       <main>
-        <Outlet /> {/* 👈 Child pages will be rendered here */}
+        <Outlet/>
       </main>
       <Footer />
     </div>

@@ -1,6 +1,7 @@
 
 {/* import { useState, useEffect } from 'react' */}
 {/*maybe import local styles */}
+{/* GameDetails,GamesByConsole,GamesByYear components inserted in body dynamically */}
 
 
 function GameCardBody(games) {
