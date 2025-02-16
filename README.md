@@ -4,6 +4,17 @@ The two ways to fetch data is going be the heart of this project, useEffect and 
 - Loaders should be used for route changes, so for any year clicked or console clicked, the games will be Loaded. 
 - useEffect should be used for Pagination changes within the given year or console, since the games will already be loaded. 
 
+routes
+	<App /> (holds Navbar to pass query data?)
+    -Parent component for all states (selected games) 
+    -*will have loaders upon route changes (console click, year click, details click)*
+		- nested <Outlet> to dynamically render:
+				*all three having their own useEffect, to get already loaded data
+				<GamesByYear /> *default render* (years btn's shouldnt affect layout) 
+				<GamesByConsole/> 
+				<GameDetails/>
+
+
 Vite and Vitest setup now run:
 npm install
 npm run dev

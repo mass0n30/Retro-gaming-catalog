@@ -1,18 +1,16 @@
-{/* import { useState, useEffect } from 'react' */}
-import { useParams, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+
+import { useState } from "react";
 
 import Pagination from '@mui/material/Pagination';
 
-import GameCardBody from "./HomeBody";
+import GameCardBody from "../components/GamesBody";
 
 import getPaginationCount from "../helpers";
 
 import DisplayYears from "../components/Components";
 
-import '../styles/App.css'
-import { useState } from "react";
-
-function Home() {
+function GamesByYear() {
 
   const gameData = useLoaderData();
 
@@ -20,17 +18,13 @@ function Home() {
 
   const [currentPage, setPage] = useState(1);
 
-
   const updatePageNumber = ( page) => {
     setPage(page);
     console.log(currentPage);
   }
 
- {
-    return (
-      <div>
-      <h1>Hello from home page!</h1>
-      <p>So, how are you?</p>
+  return (
+    <>
       <DisplayYears/>
       <div>
         <GameCardBody games={gameData}/>
@@ -39,9 +33,8 @@ function Home() {
       <div id='paginationContainer'>
         <Pagination count={pageCount} shape="rounded" onChange={(event, page) => updatePageNumber(page)}/>
       </div>
-    </div>
-    )
-  }
+    </>
+  )
 }
 
-export default Home;
+export default GamesByYear;
