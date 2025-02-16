@@ -1,5 +1,4 @@
 
-
 //double check this upon game loadins
 function getPaginationCount(gameCount) {
 
@@ -9,6 +8,12 @@ function getPaginationCount(gameCount) {
     return parseInt(pageCount + 1);
   }
   return pageCount;
+}
+
+function yearsLoader() {
+
+  const searchParams = new URLSearchParams()
+
 }
 
 

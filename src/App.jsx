@@ -1,8 +1,11 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Outlet } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
+
+  const [games, setGames] = useState();
 
   //setState data for route change kept here
 
@@ -11,7 +14,7 @@ function App() {
     <div>
       <Navbar />
       <main>
-        <Outlet/>
+        <Outlet context={[games,setGames]}/>
       </main>
       <Footer />
     </div>
