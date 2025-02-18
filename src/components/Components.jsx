@@ -1,5 +1,5 @@
 
-function DisplayYears() {
+function DisplayYears({updateYear}) {
 
   let years = [];
 
@@ -11,7 +11,7 @@ function DisplayYears() {
   return (
     <div id='yearsBtnContainer'>
     {years.map((year) => {
-      return <button className='yearsBtns' key={year}>{year}</button>;
+      return <button onClick={() => updateYear(year)} className='yearsBtns' key={year}>{year}</button>;
     })};
     </div>
   )

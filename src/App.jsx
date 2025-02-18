@@ -5,9 +5,7 @@ import { useState, useEffect } from "react";
 
 function App() {
 
-  const [games, setGames] = useState([]);
-
-  //setState data for route change kept here
+  const [games, setGames] = useState();
 
   const handleSetGames = (newGames) => {
 
