@@ -8,7 +8,7 @@ import GameCardBody from "../components/GamesBody";
 
 import getPaginationCount from "../helpers";
 
-import DisplayYears from "../components/Components";
+import  {DisplayYears, DisplayConsoles} from "../components/Components";
 import queryForGamesByYear from "../api";
 
 
@@ -26,7 +26,7 @@ function GamesByYear() {
     console.log(currentPage);
   }
 
-  function updateYear(year) {
+  const updateYear = (year) => {
     setYear(year);
     setPage(1);
     console.log(year);
