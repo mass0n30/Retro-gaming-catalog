@@ -10,6 +10,8 @@ function GameCardBody(games) {
 
   //map all GameCards into body
 
+  //else return GameCardDetails element
+
 }
 
 function GameCard() {

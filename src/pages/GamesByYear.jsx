@@ -26,7 +26,7 @@ function GamesByYear() {
     console.log(currentPage);
   }
 
-  const updateYear = (year) => {
+  function updateYear(year) {
     setYear(year);
     setPage(1);
     console.log(year);
@@ -46,17 +46,17 @@ function GamesByYear() {
       console.log("Cleanup");
       ignore = true;
     };
-  }, [currentYear, currentPage]);
+  }, [currentYear]);
 
 
-  if (games === null) {
+  if (!(games)) {
     return ( <>Loading.....</>)
   }
     
     
   return (
     <>
-      <DisplayYears/>
+      <DisplayYears updateYear={updateYear}/>
       <div>
         <GameCardBody games={games}/>
       </div>
