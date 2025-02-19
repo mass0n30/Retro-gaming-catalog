@@ -20,7 +20,7 @@ const DisplayYears = ({updateYear}) => {
 
 const DisplayConsoles = () => {
 
-  const consoles = ["NES", "SNES", "N64", "GameCube", "PS1", "PS2", "Xbox", "Sega Genesis", "Sega Saturn", "DreamCast"];
+  const consoles = ["NES", "SNES", "N64", "GameCube", "PS1", "PS2", "Xbox", "Sega Genesis", "Sega Saturn", "DreamCast", "GameBoy", "GameBoy Color", "GameBoy Advance", "Nintendo DS", "PSP"];
 
   // const svgs = []; (map images from array in accordance)
 
