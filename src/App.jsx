@@ -17,7 +17,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <DisplayConsoles/>
+      <DisplayConsoles handleSetGames={handleSetGames}/>
       <main>
         <Outlet context={{games,handleSetGames}}/>
       </main>
