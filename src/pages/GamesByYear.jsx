@@ -1,6 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import Pagination from '@mui/material/Pagination';
 
@@ -8,7 +8,7 @@ import GameCardBody from "../components/GamesBody";
 
 import getPaginationCount from "../helpers";
 
-import  {DisplayYears, DisplayConsoles} from "../components/Components";
+import  {DisplayYears} from "../components/Components";
 import queryForGamesByYear from "../api";
 
 
@@ -17,7 +17,7 @@ function GamesByYear() {
   const {games, handleSetGames} = useOutletContext();
 
   const [currentPage, setPage] = useState(1);
-  const [currentYear, setYear] = useState(1985);
+  const [currentYear, setYear] = useState(2006);
   const [pageCount, setPageCount] = useState(1);
 
 

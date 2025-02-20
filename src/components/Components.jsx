@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 
 const DisplayYears = ({updateYear}) => {
 
@@ -18,7 +20,7 @@ const DisplayYears = ({updateYear}) => {
 }
 
 
-const DisplayConsoles = () => {
+const DisplayConsoles = (handleSetGames) => {
 
   const consoles = ["NES", "SNES", "N64", "GameCube", "PS1", "PS2", "Xbox", "Sega Genesis", "Sega Saturn", "DreamCast", "GameBoy", "GameBoy Color", "GameBoy Advance", "Nintendo DS", "PSP"];
 
@@ -28,7 +30,7 @@ const DisplayConsoles = () => {
 
     <div id="consoleBtnContainer">
       {consoles.map((console, index) => {
-        return <div key={(console)}>{consoles[index]}</div>
+        return <div key={(console)}><Link to="console" key={(console)}>{consoles[index]}</Link></div>
       })}
     </div>
   );

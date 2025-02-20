@@ -4,7 +4,6 @@ import GamesByConsole from "./pages/GamesByConsole";
 import GameDetails from "./pages/GameDetails";
 import ErrorPage from "./pages/ErrorPage";
 
-const platformIds = "49,79,83,105,27,15,80,167,106";
 
 const routes = [
 
