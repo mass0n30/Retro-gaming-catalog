@@ -14,30 +14,20 @@ import queryForGamesByYear from "../api";
 
 function GamesByYear() {
 
-  const {games, handleSetGames} = useOutletContext();
+  //clicking home or logo will bring us back to this index path to search by years
+
+  const {games, handleSetGames, setDataHandler} = useOutletContext();
 
   const [currentPage, setPage] = useState(1);
-  const [currentYear, setYear] = useState(2006);
+  const [currentYear, setYear] = useState(1985);
   const [pageCount, setPageCount] = useState(1);
-
-
-  const updatePageNumber = (page) => {
-    setPage(page);
-    console.log(currentPage);
-  }
-
-  const updateYear = (year) => {
-    setYear(year);
-    setPage(1);
-    console.log(year);
-  }
 
   useEffect(() => {
     let ignore = false;
-    queryForGamesByYear(currentYear).then(data => {
+    queryForGamesByYear(currentYear,currentPage).then(data => {
       if(!(ignore)) {
         console.log(data);
-        handleSetGames(data);     
+        handleSetGames(data);   
         const pageCount = getPaginationCount(data.count);
         setPageCount(pageCount); 
       }
@@ -46,7 +36,7 @@ function GamesByYear() {
       console.log("Cleanup");
       ignore = true;
     };
-  }, [currentYear]);
+  }, [currentYear,currentPage]);
 
 
   if (!(games)) {
@@ -56,13 +46,13 @@ function GamesByYear() {
     
   return (
     <>
-      <DisplayYears updateYear={updateYear}/>
+      <DisplayYears updateYear={(setDataHandler,setYear)}/>
       <div>
         <GameCardBody games={games}/>
       </div>
       <hr />
       <div id='paginationContainer'>
-        <Pagination count={pageCount} shape="rounded" onChange={(event, page) => updatePageNumber(page)}/>
+        <Pagination count={pageCount} shape="rounded" onChange={(event, page) => setDataHandler(page,setPage)}/>
       </div>
     </>
   )

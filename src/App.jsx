@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {DisplayConsoles, DisplayYears } from "./components/Components";
 function App() {
@@ -12,6 +12,11 @@ function App() {
     setGames(newGames);
   }
 
+  const setDataHandler = (stateValue,setState) => {
+
+    setState(stateValue)
+  };
+
 
 
   return (
@@ -19,7 +24,7 @@ function App() {
       <Navbar />
       <DisplayConsoles handleSetGames={handleSetGames}/>
       <main>
-        <Outlet context={{games,handleSetGames}}/>
+        <Outlet context={{games,handleSetGames,setDataHandler}}/>
       </main>
       <Footer />
     </div>
