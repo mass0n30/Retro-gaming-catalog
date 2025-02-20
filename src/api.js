@@ -19,19 +19,30 @@ const platformIds = {
 };
 
 //dealing with Promise object
-export default async function queryForGamesByYear(gameyear) {
+export default async function queryForGamesByYear(gameyear,page) {
   try {
-    const gameData = await retrieveYearData(gameyear);
+    const gameData = await retrieveYearData(gameyear,page);
     return gameData;
     //displayGameData(gameData);
   } catch(error) {
     console.log(error);
   }
-}
+};
+
+export async function queryForGamesByConsole(console) {
+  try {
+    const gameData = await retrieveConsoleData(console);
+    return gameData;
+    //displayGameData(gameData);
+  } catch(error) {
+    console.log(error);
+  }
+};
+
 // return Promise object
-export async function retrieveYearData(gameyear) {
+export async function retrieveYearData(gameyear,page) {
   const platformIds = "49,79,83,105,27,15,80,167,106,4,41,24,159,38"; 
-  const url = `https://api.rawg.io/api/games?key=8ec2b2ef012044dc8ae97ef6c28c4e62&dates=${gameyear}-01-01,${gameyear}-12-31&platforms=${platformIds}&ordering=-rating&page_size=25&page=1`;
+  const url = `https://api.rawg.io/api/games?key=8ec2b2ef012044dc8ae97ef6c28c4e62&dates=${gameyear}-01-01,${gameyear}-12-31&platforms=${platformIds}&ordering=-rating&page_size=25&page=${page}`;
   
   try {
       const data = await fetch(url, { mode: 'cors' });
@@ -62,5 +73,4 @@ export async function retrieveConsoleData(console) {
   } catch (error) {
     console.log(error);
   }
-
-}
+};
