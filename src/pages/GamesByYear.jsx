@@ -16,11 +16,9 @@ function GamesByYear() {
 
   //clicking home or logo will bring us back to this index path to search by years
 
-  const {games, handleSetGames, setDataHandler} = useOutletContext();
+  const {games,handleSetGames,setDataHandler,setPageCount,setPage,currentPage,pageCount} = useOutletContext();
 
-  const [currentPage, setPage] = useState(1);
   const [currentYear, setYear] = useState(1985);
-  const [pageCount, setPageCount] = useState(1);
 
   useEffect(() => {
     let ignore = false;
@@ -50,7 +48,6 @@ function GamesByYear() {
       <div>
         <GameCardBody games={games}/>
       </div>
-      <hr />
       <div id='paginationContainer'>
         <Pagination count={pageCount} shape="rounded" onChange={(event, page) => setDataHandler(page,setPage)}/>
       </div>
