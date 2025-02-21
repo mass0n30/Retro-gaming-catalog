@@ -12,11 +12,29 @@ function GameCardBody(games) {
 
   //else return GameCardDetails element
 
+  if (games) {
+    return (
+      <>
+        <div id="gameCardBodyContainer">
+        {games.results.map((game) => {
+            return <GameCard game={game} key={game} />
+          })}
+        </div>
+      </>
+    )
+  }
 }
 
-function GameCard() {
+function GameCard(game) {
 
-  //for individual previewed game cards
+  return (
+    <>
+      <div className="gameCardContainer">
+        <div className="gameName">{game.name}</div>
+        <div className="coverArt">{game.background_image}</div>
+      </div>
+    </>
+  )
 
 }
 
