@@ -42,7 +42,7 @@ export async function queryForGamesByConsole(consoleName,page) {
 // return Promise object
 export async function retrieveYearData(gameyear,page) {
   const platformIds = "49,79,83,105,27,15,80,167,106,4,41,24,159,38"; 
-  const url = `https://api.rawg.io/api/games?key=8ec2b2ef012044dc8ae97ef6c28c4e62&dates=${gameyear}-01-01,${gameyear}-12-31&platforms=${platformIds}&ordering=-rating&page_size=25&page=${page}`;
+  const url = `https://api.rawg.io/api/games?key=8ec2b2ef012044dc8ae97ef6c28c4e62&dates=${gameyear}-01-01,${gameyear}-12-31&platforms=${platformIds}&ordering=-rating&page_size=5&page=${page}`;
   
   try {
       const data = await fetch(url, { mode: 'cors' });
@@ -61,7 +61,7 @@ export async function retrieveConsoleData(consoleName, page) {
 
   const platformId = platformIds[consoleName];
 
-  const url = `https://api.rawg.io/api/games?key=8ec2b2ef012044dc8ae97ef6c28c4e62&platforms=${platformId}&ordering=-rating&page_size=25&page=${page}`;
+  const url = `https://api.rawg.io/api/games?key=8ec2b2ef012044dc8ae97ef6c28c4e62&platforms=${platformId}&ordering=-rating&page_size=5&page=${page}`;
   try {
     const data = await fetch(url, { mode: 'cors' });
       if (!data.ok) {

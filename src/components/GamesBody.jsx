@@ -16,8 +16,8 @@ function GameCardBody(games) {
     return (
       <>
         <div id="gameCardBodyContainer">
-        {games.results.map((game) => {
-            return <GameCard game={game} key={game} />
+        {games.games.results.map((game) => {
+            return <GameCard game={game} key={game.id}/> 
           })}
         </div>
       </>
@@ -30,8 +30,10 @@ function GameCard(game) {
   return (
     <>
       <div className="gameCardContainer">
-        <div className="gameName">{game.name}</div>
-        <div className="coverArt">{game.background_image}</div>
+        <div className="gameName">{game.game.name}</div>
+        <div className="coverArt">
+          <img className="coverArtImg" src={game.game.background_image} />
+        </div>
       </div>
     </>
   )

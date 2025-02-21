@@ -75,3 +75,32 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+#gameCardBodyContainer {
+  display: flex;
+
+  height: 1000px;
+  width: 2000px;
+}
+
+.gameCardContainer {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: repeat(5, 20%);
+}
+
+.gameName {
+  grid-column: 1/5;
+  grid-row: 1/2;
+}
+
+.coverArt {
+  grid-column: 1/5;
+  grid-row: 2/5;
+}
+
+.coverArtImg {
+  height: 100%;
+  width: 100%;
+}

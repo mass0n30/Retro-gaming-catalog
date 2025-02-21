@@ -30,31 +30,12 @@ const DisplayYears = ({setDataHandler,setYear}) => {
 
 
 // eslint-disable-next-line react/prop-types
-const DisplayConsoles = ({handleSetGames, setDataHandler,pageInfo}) => {
+const DisplayConsoles = ({ setDataHandler,setConsole}) => {
 
   const consoles = ["NES", "SNES", "N64", "GameCube", "PS1", "PS2", "Xbox", "Sega Genesis", "Sega Saturn", "DreamCast", "GameBoy", "GameBoy Color", "GameBoy Advance", "Nintendo DS", "PSP"];
 
-  // eslint-disable-next-line react/prop-types
-  const { setPage, setPageCount, currentPage, pageCount } = pageInfo;
-
   // const svgs = []; (map images from array in accordance)
-  const [currentConsole, setConsole] = useState();
 
-  useEffect(() => {
-    let ignore = false;
-    queryForGamesByConsole(currentConsole,currentPage).then(data => {
-      if(!(ignore)) {
-        console.log(data);
-        handleSetGames(data);     
-        const pageCount = getPaginationCount(data.count);
-        setPageCount(pageCount); 
-      }
-    });
-    return () => {
-      console.log("Cleanup");
-      ignore = true;
-    };
-  }, [currentConsole,currentPage]);
 
   return (
     <>

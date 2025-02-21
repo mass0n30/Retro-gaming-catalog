@@ -45,9 +45,7 @@ function GamesByYear() {
   return (
     <>
       <DisplayYears setDataHandler={setDataHandler} setYear={setYear}/>
-      <div>
-        <GameCardBody games={games}/>
-      </div>
+      <GameCardBody games={games}/>
       <div id='paginationContainer'>
         <Pagination count={pageCount} shape="rounded" onChange={(event, page) => setDataHandler(page,setPage)}/>
       </div>
