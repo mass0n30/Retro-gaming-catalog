@@ -46,7 +46,7 @@ function GamesByYear() {
     
   return (
     <>
-      <DisplayYears updateYear={(setDataHandler,setYear)}/>
+      <DisplayYears setDataHandler={setDataHandler} setYear={setYear}/>
       <div>
         <GameCardBody games={games}/>
       </div>
