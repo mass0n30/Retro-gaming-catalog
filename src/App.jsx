@@ -7,6 +7,9 @@ function App() {
 
   const [games, setGames] = useState();
 
+  const [currentPage, setPage] = useState(1);
+  const [pageCount, setPageCount] = useState(1);
+
   const handleSetGames = (newGames) => {
 
     setGames(newGames);
@@ -22,9 +25,9 @@ function App() {
   return (
     <div>
       <Navbar />
-      <DisplayConsoles handleSetGames={handleSetGames} setDataHandler={setDataHandler}/>
+      <DisplayConsoles handleSetGames={handleSetGames} setDataHandler={setDataHandler} pageInfo={{setPage,setPageCount,currentPage,pageCount}}/>
       <main>
-        <Outlet context={{games,handleSetGames,setDataHandler}}/>
+        <Outlet context={{games,handleSetGames,setDataHandler,setPageCount,setPage,currentPage,pageCount}}/>
       </main>
       <Footer />
     </div>
