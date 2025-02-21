@@ -2,8 +2,9 @@ import Pagination from '@mui/material/Pagination';
 import { useOutletContext } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-function GamesByConsole({pageCount,setDataHandler,setPage}) {
+function GamesByConsole() {
 
+  const {setDataHandler,setPage,pageCount} = useOutletContext();
 
   return (
     <>

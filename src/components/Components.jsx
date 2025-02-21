@@ -63,7 +63,6 @@ const DisplayConsoles = ({handleSetGames, setDataHandler,pageInfo}) => {
           return <button onClick={() => setDataHandler(console,setConsole)} key={(console)}><Link to="console" key={(console)}>{consoles[index]}</Link></button>
         })}
       </div>
-      <GamesByConsole pageCount={pageCount} setDataHandler={setDataHandler} setPage={setPage}/>
     </>
 
   );
