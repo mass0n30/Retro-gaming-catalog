@@ -57,11 +57,11 @@ export async function retrieveYearData(gameyear,page) {
   }
 }
 
-export async function retrieveConsoleData(console) {
+export async function retrieveConsoleData(consoleName) {
 
-  const platformId = platformIds[console];
+  const platformId = platformIds[consoleName];
 
-  const url = `https://api.rawg.io/api/games?key=8ec2b2ef012044dc8ae97ef6c28c4e62&dates=$1985-01-01,$2006-12-31&platforms=${platformId}&ordering=-rating&page_size=25&page=1`;
+  const url = `https://api.rawg.io/api/games?key=8ec2b2ef012044dc8ae97ef6c28c4e62&dates=$1985-01-01,$1998-12-31&platforms=${platformId}&ordering=-rating&page_size=25&page=1`;
   try {
     const data = await fetch(url, { mode: 'cors' });
       if (!data.ok) {
