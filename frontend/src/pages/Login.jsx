@@ -14,6 +14,27 @@ function Login() {
   //JWT removed from local storage upon mount (redirect to login page)
   localStorage.removeItem('usertoken');
 
+  useEffect(() => {
+    setError(null);
+  }, [error]);
+
+  const handleTwitchAuth = async () => {
+    await fetch('http://localhost:5000/auth/twitch', {
+        mode: 'cors',
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      setError(error.message);
+    });
+  };
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     await fetch('http://localhost:5000/', {
@@ -46,8 +67,11 @@ function Login() {
       localStorage.setItem('usertoken', data.token);
 
       if (!data.error) {
-        navigate("/home");
-      }
+
+        // get twitch access token and authorize user
+       await handleTwitchAuth();
+       navigate('/home');
+      };
     })
   };
 
