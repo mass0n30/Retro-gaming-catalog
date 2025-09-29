@@ -1,61 +1,57 @@
-# React + Vite
+# PERN-Starter-Template
+Starter template, using PERN stack, keeping backend and frontend in seperate directories. 
 
-The two ways to fetch data is going be the heart of this project, useEffect and Loaders. 
-- Loaders should be used for route changes, so for any year clicked or console clicked, the games will be Loaded. 
-- useEffect should be used for Pagination changes within the given year or console, since the games will already be loaded. 
+BACKEND directory:
+
+Commands:
+Commands in BACKEND directory!
+npm install (installs all dependencies found in package.json)
+
+npm install supertest --save-dev (for testing) (scripts in package.json)
 
 
-App()
-	currently loaded games here
-	
+PRISMA:
+npm install prisma --save-dev
+npm install @prisma/client
+npx prisma init  (makes prisma folder)
+npm install @quixo3/prisma-session-store  https://github.com/kleydon/prisma-session-store#readme   (set up Session Model in Prisma) 
 
-GamesByYear (loads in by index, 1985 games upon mount)
-	current year here
 
-	dependency of year change, reloads new games to set 
+npx prisma generate (after making schema)
+npx prisma migrate dev (after making changes to schema)
+ ----------------------------------------------------------------------
+FRONTEND directory:
 
-GamesByConsole (nes loads upon mount)
-	current console here
+Design: Keep CSS inline or modular
 
-		dependency of console change, reloads new games to set 
+npm install - sets up all node modules (installs all dependencies)
 
-GameDetails (seperate api call?)
-	*for search bar query, believe a different fetch needs to be used
-	current details here
+npm run dev - starts vite server
 
-Vite and Vitest setup now run:
-npm install
-npm run dev
-npm react-router-dom
+If using React to setup up default frontend directory run: 
+npm create vite@latest . -- --template react
 
-Two packages that come with react-router-dom:
-1. Loaders fetch data before rendering. (link)
-	1. A big advantage of loaders is that they decouple data fetching from the component rendering, thus avoiding the waterfall problem.
-2. Actions handle form submissions without needing extra state. (Prevents the need for useState in simple <form> handling.)
 
-For testing run:
-npm install jsdom --save-dev (enable HTML for vitest testing)
-npm install @testing-library/react @testing-library/jest-dom --save-dev (installs React testing library)
-npm install @testing-library/user-event --save-dev  (installs userEvent API to simulate user interaction)
+This template uses Prisma ORM supporting PostgreSQL. 
+Prisma Setup Guide: https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-node-postgresql 
+or use quick commands: 
+ ---> npx prisma init  (then after adding DATABASE_URL to .env)  ---> npx prisma migrate dev --name init  ---> npx prisma generate
 
-More details on the installed libraries: https://www.theodinproject.com/lessons/node-path-react-new-introduction-to-react-testing#setting-up-a-react-testing-environment
+Don't forget to setup .env where variables such as DATABASE_URL(where data is being served) will go
+.gitignore has .env and /generated/schema to ignore from public 
 
-npm test App.test.jsx  (to run a test)
+Using PostMan Web Agent (for full API functionality): https://learning.postman.com/docs/getting-started/installation/installation-and-updates/#install-postman-on-linux   (after installing with snap command, just run 'postman' as a command to launch)
 
-npx prettier --write .   (command to auto fix format and spacing issues)
-npx eslint . --fix       (command to auto fix inaccurate syntax)  
-npx eslint .             (command to just check errors)
+npm install -g nodemon --live view? 
 
-Make sure to have React Extension in Browser: https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en for debugging
+Linter & Prettier Commands
+npm install --save-dev eslint
+npx eslint --init   (Optional for configuration)  
 
-Installed Vitest using: https://www.robinwieruch.de/vitest-react-testing-library/  (Assuming Vite is setup as well)
+Linting commands
+- Run: npx eslint .
+- Fix: npx eslint . --fix
 
-Vite → A super-fast build tool for modern web apps (replaces Webpack).
-Vitest → A testing framework designed for Vite projects (alternative to Jest).
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Prettier commands
+- npm install --save-dev prettier
+- touch .prettierrc  (Optional config file for tab space, ect. )
