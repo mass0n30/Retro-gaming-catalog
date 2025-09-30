@@ -1,4 +1,10 @@
-# PERN-Starter-Template
+
+Retro Gaming Store
+Project using Twitch API: https://dev.twitch.tv/docs/api/
+Using client credential grant flow, meant for server to server API access using app access tokens (no refresh needed for current project feautures)
+
+
+Project using starter my template: 
 Starter template, using PERN stack, keeping backend and frontend in seperate directories. 
 
 BACKEND directory:

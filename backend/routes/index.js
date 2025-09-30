@@ -23,11 +23,13 @@ indexRouter.get('/auth/twitch', async (req, res, next) => {
       method: 'POST'
     });
 
+
     const data = await response.json();
 
     console.log(data, 'twitch');
 
-    res.json(data);
+    return res.status(200).json({ message: 'Twitch authorization successful' });
+
   } catch (error) {
     next(error);
   }
