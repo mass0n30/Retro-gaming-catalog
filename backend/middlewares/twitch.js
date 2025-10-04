@@ -42,14 +42,41 @@ async function requestOptions() {
 async function getGamesByYear(req, res, next) { 
   try {   
     const options = await requestOptions();
-    const year = 2000; 
+    const year = 1998; 
+
+    // setting pagination variables
+    const page =  1 //  parseInt(req.query.page) || 1;
+
+    // items per page
+    const pageSize = 10;
+    const offset = (page - 1) * pageSize;
+
     const games = await apicalypse(options)
-    .fields('age_ratings,aggregated_rating,aggregated_rating_count,alternative_names,artworks,bundles,category,checksum,collection,collections,cover,created_at,dlcs,expanded_games,expansions,external_games,first_release_date,follows,forks,franchise,franchises,game_engines,game_localizations,game_modes,game_status,game_type,genres,hypes,involved_companies,keywords,language_supports,multiplayer_modes,name,parent_game,platforms,player_perspectives,ports,rating,rating_count,release_dates,remakes,remasters,screenshots,similar_games,slug,standalone_expansions,status,storyline,summary,tags,themes,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos,websites')
-    .limit(50)    
-    .query(`first_release_date >= ${new Date(year, 0).getTime() / 1000} & first_release_date < ${new Date(year + 1, 0).getTime() / 1000};`)
+    .fields(`
+      name,
+      slug,
+      summary,
+      storyline,
+      first_release_date,
+      genres,
+      platforms,
+      cover,
+      screenshots,
+      rating,
+      aggregated_rating,
+      total_rating,
+      total_rating_count,
+      involved_companies,
+      player_perspectives,
+      url
+    `) 
+    .where(`first_release_date >= ${new Date(year, 0).getTime() / 1000} & first_release_date < ${new Date(year + 1, 0).getTime() / 1000} & total_rating > 70 & total_rating_count > 20;`)
+    .sort('total_rating desc')
+    .limit(pageSize)
+    .offset(offset)
 
     .request('/games'); 
-    res.json(games);
+    console.log(games.data);
   } catch (error) {
      next(error);
   }
@@ -57,15 +84,43 @@ async function getGamesByYear(req, res, next) {
 
 async function getGamesByPlatform(req, res, next) { 
   try {   
+    const start = Math.floor(new Date(1996,0,1).getTime()/1000);
+    const end   = Math.floor(new Date(2002,11,31).getTime()/1000);
+    
+    // setting pagination variables
+    const page =  1// parseInt(req.query.page) || 1;
+
+    // items per page
+    const pageSize = 20;
+    const offset = (page - 1) * pageSize;
     const options = await requestOptions();
     const platformId = 4; 
     const games = await apicalypse(options)
-    .fields('age_ratings,aggregated_rating,aggregated_rating_count,alternative_names,artworks,bundles,category,checksum,collection,collections,cover,created_at,dlcs,expanded_games,expansions,external_games,first_release_date,follows,forks,franchise,franchises,game_engines,game_localizations,game_modes,game_status,game_type,genres,hypes,involved_companies,keywords,language_supports,multiplayer_modes,name,parent_game,platforms,player_perspectives,ports,rating,rating_count,release_dates,remakes,remasters,screenshots,similar_games,slug,standalone_expansions,status,storyline,summary,tags,themes,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos,websites')
-    .limit(50)    
-    .query(`platforms = (${platformId});`)
+    .fields(`
+      name,
+      slug,
+      summary,
+      storyline,
+      first_release_date,
+      genres,
+      platforms,
+      cover,
+      screenshots,
+      rating,
+      aggregated_rating,
+      total_rating,
+      total_rating_count,
+      involved_companies,
+      player_perspectives,
+      url
+    `)    
+    .where(`platforms = ${platformId} & total_rating_count > 10;`)
+    .limit(pageSize)
+    .offset(offset)
+    .sort('total_rating desc')
 
     .request('/games'); 
-    res.json(games);
+    console.log(games.data);
     } catch (error) {
     next(error);
   }
