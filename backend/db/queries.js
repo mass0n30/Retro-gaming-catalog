@@ -46,9 +46,8 @@ async function checkUserByEmail(value) {
   }
 };
 
-
 module.exports = {
   checkEmail,
   checkUser,
-  checkUserByEmail
+  checkUserByEmail,
 }

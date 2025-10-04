@@ -1,7 +1,11 @@
 # PERN-Starter-Template
 Starter template, using PERN stack, keeping backend and frontend in seperate directories. 
 
+
 BACKEND directory:
+
+To-Do:
+ - 
 
 Commands:
 Commands in BACKEND directory!

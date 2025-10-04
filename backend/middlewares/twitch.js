@@ -51,7 +51,7 @@ async function getGamesByYear(req, res, next) {
     const pageSize = 10;
     const offset = (page - 1) * pageSize;
 
-    const games = await apicalypse(options)
+    const results = await apicalypse(options)
     .fields(`
       name,
       slug,
@@ -76,7 +76,10 @@ async function getGamesByYear(req, res, next) {
     .offset(offset)
 
     .request('/games'); 
-    console.log(games.data);
+
+    const games = await getCoverImages(results.data, options);
+    console.log(games);
+
   } catch (error) {
      next(error);
   }
@@ -125,5 +128,23 @@ async function getGamesByPlatform(req, res, next) {
     next(error);
   }
 };   
+
+async function getCoverImages(games, options) {
+
+  const updatedGames = await Promise.all(games.map(async (game) => {
+    if (game.cover) {
+      const coverResponse = await apicalypse(options)
+      .fields('url')
+      .where(`game = ${game.id};`)
+      .request('/covers');
+      if (coverResponse.length > 0) {
+        game.cover = coverResponse[0].url.replace('t_thumb', 't_cover_big');
+      }
+    }
+    return game;
+  }));
+
+  return updatedGames;
+};
 
 module.exports = { getGamesByYear, getGamesByPlatform };
