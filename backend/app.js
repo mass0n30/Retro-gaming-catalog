@@ -12,13 +12,11 @@ const cors = require('cors');
 const {indexRouter} = require('./routes/index');
 const {signupRouter} = require('./routes/signup');
 const {homeRouter} = require('./routes/home');
+const {yearRouter} = require('./routes/year');  
+const {platformRouter} = require('./routes/platform'); 
 
 const app = express();
 
-//REMOVE UPON USING REACT
-app.set('view engine', 'ejs'); 
-app.use(express.static(__dirname + "/public"));
-app.use(express.static(__dirname + "/styles"));
 
 app.use(cors());
 app.use(express.json());
@@ -50,6 +48,9 @@ app.use('/', indexRouter);
 app.use('/sign-up', signupRouter);
 
 app.use('/home', homeRouter);
+
+app.use('/year', yearRouter);
+app.use('/platform', platformRouter);
 
 app.post("/log-out", (req, res, next) => {
   req.logout((err) => {

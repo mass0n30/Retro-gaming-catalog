@@ -136,7 +136,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/massoncorlette/repos/PERN-Starter-Template/backend/generated/prisma",
+      "value": "/home/massoncorlette/Desktop/Repos/RetroGamingStore/backend/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -150,7 +150,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/massoncorlette/repos/PERN-Starter-Template/backend/prisma/schema.prisma",
+    "sourceFilePath": "/home/massoncorlette/Desktop/Repos/RetroGamingStore/backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
