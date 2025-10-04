@@ -30,3 +30,12 @@ model User {
   alias    String
   password String
 }
+
+model Platform {
+  id           Int     @id
+  name         String
+  abbreviation String?
+  generation   Int?
+  slug         String
+  platformLogo Int? // for icon logo possibly
+}
