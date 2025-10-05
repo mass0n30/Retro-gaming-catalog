@@ -1,11 +1,21 @@
-# PERN-Starter-Template
-Starter template, using PERN stack, keeping backend and frontend in seperate directories. 
+Project Details
 
 
 BACKEND directory:
 
-To-Do:
- - 
+Cache Image responses (screenshots): https://api-docs.igdb.com/#images
+
+I plan to cache a catalog of games storing lots of the more popular,
+upon user search if game not in db hit IGDB API for request. Cover images and screenshots 
+
+
+
+
+
+
+# PERN-Starter-Template
+Starter template, using PERN stack, keeping backend and frontend in seperate directories. 
+
 
 Commands:
 Commands in BACKEND directory!

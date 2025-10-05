@@ -109,6 +109,21 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.GameScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  summary: 'summary',
+  storyline: 'storyline',
+  firstReleaseDate: 'firstReleaseDate',
+  coverUrl: 'coverUrl',
+  rating: 'rating',
+  aggregatedRating: 'aggregatedRating',
+  totalRating: 'totalRating',
+  totalRatingCount: 'totalRatingCount',
+  url: 'url'
+};
+
 exports.Prisma.PlatformScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -116,6 +131,11 @@ exports.Prisma.PlatformScalarFieldEnum = {
   generation: 'generation',
   slug: 'slug',
   platformLogo: 'platformLogo'
+};
+
+exports.Prisma.GenreScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
 };
 
 exports.Prisma.SortOrder = {
@@ -137,7 +157,9 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   Session: 'Session',
   User: 'User',
-  Platform: 'Platform'
+  Game: 'Game',
+  Platform: 'Platform',
+  Genre: 'Genre'
 };
 /**
  * Create the Client
@@ -186,13 +208,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Session {\n  id        String   @id\n  sid       String   @unique\n  data      String\n  expiresAt DateTime\n}\n\nmodel User {\n  id       Int     @id @default(autoincrement())\n  email    String  @unique\n  is_admin Boolean @default(false)\n  fname    String\n  lname    String\n  alias    String\n  password String\n}\n\nmodel Platform {\n  id           Int     @id\n  name         String\n  abbreviation String?\n  generation   Int?\n  slug         String\n  platformLogo Int? // for icon logo possibly\n}\n",
-  "inlineSchemaHash": "7c2b0a0cb959b8a303023b4e8468c0ea3037ff5422179784ee1472eca6b53251",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Session {\n  id        String   @id\n  sid       String   @unique\n  data      String\n  expiresAt DateTime\n}\n\nmodel User {\n  id       Int     @id @default(autoincrement())\n  email    String  @unique\n  is_admin Boolean @default(false)\n  fname    String\n  lname    String\n  alias    String\n  password String\n}\n\nmodel Game {\n  id               Int       @id @unique // IGDB ID\n  name             String\n  slug             String    @unique\n  summary          String?   @db.Text\n  storyline        String?   @db.Text\n  firstReleaseDate DateTime?\n  coverUrl         String?\n  rating           Float?\n  aggregatedRating Float?\n  totalRating      Float?\n  totalRatingCount Int?\n  url              String?\n\n  // Relations\n  genres    Genre[]    @relation(\"GameGenres\") // no constraints\n  platforms Platform[] @relation(\"GamePlatforms\") // no constraints\n}\n\nmodel Platform {\n  id           Int     @id\n  name         String\n  abbreviation String?\n  generation   Int?\n  slug         String\n  platformLogo Int? // for icon logo possibly\n\n  Game Game[] @relation(\"GamePlatforms\")\n}\n\nmodel Genre {\n  id    Int    @id @unique // IGDB ID\n  name  String\n  games Game[] @relation(\"GameGenres\")\n}\n",
+  "inlineSchemaHash": "52355ba508e63ed349a0e62e1aa055957d566c4b97704c94e84a01ad7bf01a35",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Session\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sid\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"data\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"is_admin\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"fname\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lname\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"alias\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"Platform\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"abbreviation\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"generation\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"slug\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"platformLogo\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Session\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sid\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"data\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"is_admin\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"fname\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lname\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"alias\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"Game\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"slug\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"summary\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"storyline\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"firstReleaseDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"coverUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"rating\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"aggregatedRating\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"totalRating\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"totalRatingCount\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"genres\",\"kind\":\"object\",\"type\":\"Genre\",\"relationName\":\"GameGenres\"},{\"name\":\"platforms\",\"kind\":\"object\",\"type\":\"Platform\",\"relationName\":\"GamePlatforms\"}],\"dbName\":null},\"Platform\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"abbreviation\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"generation\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"slug\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"platformLogo\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"Game\",\"kind\":\"object\",\"type\":\"Game\",\"relationName\":\"GamePlatforms\"}],\"dbName\":null},\"Genre\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"games\",\"kind\":\"object\",\"type\":\"Game\",\"relationName\":\"GameGenres\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

@@ -2,6 +2,8 @@ let authenticationToken = null;
 
 const apicalypse = require('apicalypse').default;
 
+const {saveGames} = require('../controllers/dataController/createController');  
+
 async function getTwitchToken() {
   if (authenticationToken) {
     return authenticationToken;
@@ -42,7 +44,7 @@ async function requestOptions() {
 async function getGamesByYear(req, res, next) { 
   try {   
     const options = await requestOptions();
-    const year = 1998; 
+    const year = 1985; 
 
     // setting pagination variables
     const page =  1 //  parseInt(req.query.page) || 1;
@@ -77,8 +79,8 @@ async function getGamesByYear(req, res, next) {
 
     .request('/games'); 
 
-    const games = await getCoverImages(results.data, options);
-    console.log(games);
+    const games = results.data;
+    await saveGames(games);  
 
   } catch (error) {
      next(error);
@@ -123,7 +125,6 @@ async function getGamesByPlatform(req, res, next) {
     .sort('total_rating desc')
 
     .request('/games'); 
-    console.log(games.data);
     } catch (error) {
     next(error);
   }
@@ -131,20 +132,29 @@ async function getGamesByPlatform(req, res, next) {
 
 async function getCoverImages(games, options) {
 
+  const gameCovers = [];
+
   const updatedGames = await Promise.all(games.map(async (game) => {
     if (game.cover) {
-      const coverResponse = await apicalypse(options)
-      .fields('url')
+      const response = await apicalypse(options)
+      .fields('url, game, image_id')  // image_id is used to coonstruct image URL 'fast responses'
       .where(`game = ${game.id};`)
       .request('/covers');
-      if (coverResponse.length > 0) {
-        game.cover = coverResponse[0].url.replace('t_thumb', 't_cover_big');
+
+      const coverResponse = response.data;
+
+      console.log(coverResponse, game);
+
+      if (response.length > 0) {
+        gameCovers.push(coverResponse);
+      } else {
+        gameCovers.push(null);
       }
     }
     return game;
   }));
 
-  return updatedGames;
+  return  { updatedGames, gameCovers };
 };
 
 module.exports = { getGamesByYear, getGamesByPlatform };

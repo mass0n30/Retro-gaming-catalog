@@ -46,8 +46,25 @@ async function checkUserByEmail(value) {
   }
 };
 
+async function checkGame(id) {
+  
+  const game = await prisma.game.findUnique({
+    where: {
+      id: id,
+    },
+  });
+
+  if (game) {
+    return game;
+  } else {
+    // fetchGame from IGDB API
+    // throw new Error("No found game.");
+  }
+};
+
 module.exports = {
   checkEmail,
   checkUser,
   checkUserByEmail,
+  checkGame
 }

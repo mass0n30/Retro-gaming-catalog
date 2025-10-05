@@ -137,6 +137,21 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.GameScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  summary: 'summary',
+  storyline: 'storyline',
+  firstReleaseDate: 'firstReleaseDate',
+  coverUrl: 'coverUrl',
+  rating: 'rating',
+  aggregatedRating: 'aggregatedRating',
+  totalRating: 'totalRating',
+  totalRatingCount: 'totalRatingCount',
+  url: 'url'
+};
+
 exports.Prisma.PlatformScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -144,6 +159,11 @@ exports.Prisma.PlatformScalarFieldEnum = {
   generation: 'generation',
   slug: 'slug',
   platformLogo: 'platformLogo'
+};
+
+exports.Prisma.GenreScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
 };
 
 exports.Prisma.SortOrder = {
@@ -165,7 +185,9 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   Session: 'Session',
   User: 'User',
-  Platform: 'Platform'
+  Game: 'Game',
+  Platform: 'Platform',
+  Genre: 'Genre'
 };
 
 /**

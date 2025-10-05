@@ -31,6 +31,25 @@ model User {
   password String
 }
 
+model Game {
+  id               Int       @id @unique // IGDB ID
+  name             String
+  slug             String    @unique
+  summary          String?   @db.Text
+  storyline        String?   @db.Text
+  firstReleaseDate DateTime?
+  coverUrl         String?
+  rating           Float?
+  aggregatedRating Float?
+  totalRating      Float?
+  totalRatingCount Int?
+  url              String?
+
+  // Relations
+  genres    Genre[]    @relation("GameGenres") // no constraints
+  platforms Platform[] @relation("GamePlatforms") // no constraints
+}
+
 model Platform {
   id           Int     @id
   name         String
@@ -38,4 +57,12 @@ model Platform {
   generation   Int?
   slug         String
   platformLogo Int? // for icon logo possibly
+
+  Game Game[] @relation("GamePlatforms")
+}
+
+model Genre {
+  id    Int    @id @unique // IGDB ID
+  name  String
+  games Game[] @relation("GameGenres")
 }
