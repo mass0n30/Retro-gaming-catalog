@@ -142,8 +142,7 @@ const { prisma } = require("../db/prismaClient.js");
 
 async function saveGames(games) {
   for (const game of games) {
-    const gameData = await mapGameData(game);
-    await saveGame(gameData);
+    await mapGameData(game);
   }
 };
 
@@ -180,9 +179,8 @@ async function mapGameData(game) {
 
   console.log(gameCover, "game cover");
 
-  await handleCreateCover(gameCover, game);
 
-  return {
+  const gameData = {
     id: game.id,
     name: game.name,
     slug: game.slug,
@@ -191,14 +189,14 @@ async function mapGameData(game) {
       ? new Date(game.first_release_date * 1000) 
       : null,
     coverUrl: `https://images.igdb.com/igdb/image/upload/t_cover_big/${gameCover.image_id}.jpg` || null,
-    screenshots: game.screenshots || null,
-    genres: game.genres,
-    platforms: game.platforms,
     rating: game.rating || null,
     aggregatedRating: game.aggregated_rating || null,
     totalRatingCount: game.total_rating_count || null,
     url: game.url || null,
   };
+
+  await saveGame(gameData);
+  await handleCreateCover(gameCover, game);
 };
 
 

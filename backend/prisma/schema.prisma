@@ -49,7 +49,7 @@ model User {
   genres              Genre[]      @relation("GameGenres")
   platforms           Platform[]   @relation("GamePlatforms")
   covers              Cover[]      
-  screenshots         Screenshot[] 
+  screenshots         Screenshot[]
 }
 
 model Platform {
