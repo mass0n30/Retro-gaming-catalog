@@ -10,7 +10,14 @@ upon user search if game not in db hit IGDB API for request. Cover images and sc
 
 
 
-
+pseudo:
+ - save by year/platform route post requests 
+ - json data recieved
+ - await save games
+ - iterate through games function to map to new obj
+ - map function awaits getCover for url
+ - getCover: if game has cover ID, request cover data to return
+ - in createController create cover for foreign cover table
 
 
 # PERN-Starter-Template

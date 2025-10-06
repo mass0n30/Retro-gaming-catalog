@@ -31,12 +31,12 @@ model User {
   password String 
 }
 
-  model Game {
-  id                  Int                 @id @unique // IGDB ID
+ model Game {
+  id                  Int          @id
   name                String
-  slug                String              @unique
-  summary             String?             @db.Text
-  storyline           String?             @db.Text
+  slug                String       @unique
+  summary             String?      @db.Text
+  storyline           String?      @db.Text
   firstReleaseDate    DateTime?
   coverUrl            String?
   rating              Float?
@@ -46,29 +46,45 @@ model User {
   url                 String?
 
   // Relations
-  genres              Genre[]             @relation("GameGenres") // no constraints
-  platforms           Platform[]          @relation("GamePlatforms") // no constraints
-  screenshots        Screenshot[]       @relation("GameScreenshots") // no constraints
-  covers           Cover[]             @relation("GameCovers") // no constraints
-
+  genres              Genre[]      @relation("GameGenres")
+  platforms           Platform[]   @relation("GamePlatforms")
+  covers              Cover[]      
+  screenshots         Screenshot[] 
 }
 
-
 model Platform {
-  id            Int     @id
-  name          String
-  abbreviation  String?
-  generation    Int?
-  slug          String
-  platformLogo  Int?    // for icon logo possibly
-  
-  Game Game[] @relation("GamePlatforms")
+  id           Int     @id
+  name         String
+  abbreviation String?
+  generation   Int?
+  slug         String
+  platformLogo Int?
+
+  games Game[] @relation("GamePlatforms")
 }
 
 model Genre {
-  id        Int     @id @unique // IGDB ID
-  name      String
-  games     Game[]  @relation("GameGenres")
+  id    Int    @id
+  name  String
+  games Game[] @relation("GameGenres")
+}
+
+model Cover {
+  id      Int    @id
+  imageId String?
+  url     String?
+
+  gameId  Int
+  game    Game   @relation(fields: [gameId], references: [id])
+}
+
+model Screenshot {
+  id      Int    @id
+  imageId String?
+  url     String?
+
+  gameId  Int
+  game    Game   @relation(fields: [gameId], references: [id])
 }
 
 

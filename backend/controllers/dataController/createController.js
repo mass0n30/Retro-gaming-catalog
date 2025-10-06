@@ -31,45 +31,24 @@ async function handleCreateUser(req, res, next) {
   }
 };
 
-async function saveGames(games) {
-  for (const game of games) {
-    const gameData = mapGameData(game);
-    await saveGame(gameData);
-  }
-};
-
-async function saveGame(gameData) {
-  await prisma.game.upsert({
-    where: { id: gameData.id },
-    create: gameData,
-    update: gameData,
-  });
-};
-
-
-function mapGameData(game) {
-  return {
-    id: game.id,
-    name: game.name,
-    slug: game.slug,
-    summary: game.summary || null,
-    firstReleaseDate: game.first_release_date
-      ? new Date(game.first_release_date * 1000) 
-      : null,
-    coverUrl: game.cover
-      ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover}.jpg`
-      : null,
-    screenshots: game.screenshots,
-    genres: game.genres,
-    platforms: game.platforms,
-    rating: game.rating || null,
-    aggregatedRating: game.aggregated_rating || null,
-    totalRatingCount: game.total_rating_count || null,
-    url: game.url || null,
+  async function handleCreateCover(gameCover, game) {
+    if (gameCover) {
+      await prisma.cover.upsert({
+        where: { id: gameCover.id },
+        create: {
+          id: gameCover.id,
+          url: gameCover.url,
+          gameId: game.id,
+          imageId: gameCover.image_id,
+        },
+        update: {
+          url: gameCover.url,
+          imageId: gameCover.image_id,
+        },
+      });
+    }
   };
-};
 
 
 
-
-module.exports = { handleCreateUser, saveGames };
+module.exports = { handleCreateUser, handleCreateCover, };

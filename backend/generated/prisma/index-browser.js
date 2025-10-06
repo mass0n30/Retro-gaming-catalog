@@ -166,6 +166,20 @@ exports.Prisma.GenreScalarFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.CoverScalarFieldEnum = {
+  id: 'id',
+  imageId: 'imageId',
+  url: 'url',
+  gameId: 'gameId'
+};
+
+exports.Prisma.ScreenshotScalarFieldEnum = {
+  id: 'id',
+  imageId: 'imageId',
+  url: 'url',
+  gameId: 'gameId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -187,7 +201,9 @@ exports.Prisma.ModelName = {
   User: 'User',
   Game: 'Game',
   Platform: 'Platform',
-  Genre: 'Genre'
+  Genre: 'Genre',
+  Cover: 'Cover',
+  Screenshot: 'Screenshot'
 };
 
 /**

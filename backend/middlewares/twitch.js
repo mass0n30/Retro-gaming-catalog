@@ -2,7 +2,6 @@ let authenticationToken = null;
 
 const apicalypse = require('apicalypse').default;
 
-const {saveGames} = require('../controllers/dataController/createController');  
 
 async function getTwitchToken() {
   if (authenticationToken) {
@@ -21,7 +20,6 @@ async function getTwitchToken() {
 
   const data = await response.json();
   authenticationToken = data.access_token;
-  console.log(data);
   return data.access_token;
   }
 };
@@ -40,6 +38,7 @@ async function requestOptions() {
     },
   };
 };
+
 
 async function getGamesByYear(req, res, next) { 
   try {   
@@ -89,9 +88,7 @@ async function getGamesByYear(req, res, next) {
 
 async function getGamesByPlatform(req, res, next) { 
   try {   
-    const start = Math.floor(new Date(1996,0,1).getTime()/1000);
-    const end   = Math.floor(new Date(2002,11,31).getTime()/1000);
-    
+  
     // setting pagination variables
     const page =  1// parseInt(req.query.page) || 1;
 
@@ -130,31 +127,80 @@ async function getGamesByPlatform(req, res, next) {
   }
 };   
 
-async function getCoverImages(games, options) {
+async function saveGame(gameData) {
 
-  const gameCovers = [];
+  console.log(gameData, "game data to save");
+  await prisma.game.upsert({
+    where: { id: gameData.id },
+    create: gameData,
+    update: gameData,
+  });
+};
 
-  const updatedGames = await Promise.all(games.map(async (game) => {
+const { prisma } = require("../db/prismaClient.js");
+
+
+async function saveGames(games) {
+  for (const game of games) {
+    const gameData = await mapGameData(game);
+    await saveGame(gameData);
+  }
+};
+
+
+async function getCover(game, options) {
+
+  console.log(game , "game in get cover");
+
     if (game.cover) {
       const response = await apicalypse(options)
       .fields('url, game, image_id')  // image_id is used to coonstruct image URL 'fast responses'
       .where(`game = ${game.id};`)
       .request('/covers');
 
-      const coverResponse = response.data;
+      const coverResponse = response.data[0];
+      console.log(coverResponse, "cover response");
 
-      console.log(coverResponse, game);
-
-      if (response.length > 0) {
-        gameCovers.push(coverResponse);
+      if (coverResponse) {
+        return coverResponse;
       } else {
-        gameCovers.push(null);
+        return null;
       }
     }
-    return game;
-  }));
+    return null;
+  };
 
-  return  { updatedGames, gameCovers };
+const { handleCreateCover } = require('../controllers/dataController/createController');
+
+async function mapGameData(game) {
+
+  const options = await requestOptions();
+
+  const gameCover = await getCover(game, options);
+
+  console.log(gameCover, "game cover");
+
+  await handleCreateCover(gameCover, game);
+
+  return {
+    id: game.id,
+    name: game.name,
+    slug: game.slug,
+    summary: game.summary || null,
+    firstReleaseDate: game.first_release_date
+      ? new Date(game.first_release_date * 1000) 
+      : null,
+    coverUrl: `https://images.igdb.com/igdb/image/upload/t_cover_big/${gameCover.image_id}.jpg` || null,
+    screenshots: game.screenshots || null,
+    genres: game.genres,
+    platforms: game.platforms,
+    rating: game.rating || null,
+    aggregatedRating: game.aggregated_rating || null,
+    totalRatingCount: game.total_rating_count || null,
+    url: game.url || null,
+  };
 };
+
+
 
 module.exports = { getGamesByYear, getGamesByPlatform };

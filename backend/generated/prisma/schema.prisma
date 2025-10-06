@@ -32,7 +32,7 @@ model User {
 }
 
 model Game {
-  id               Int       @id @unique // IGDB ID
+  id               Int       @id
   name             String
   slug             String    @unique
   summary          String?   @db.Text
@@ -46,8 +46,10 @@ model Game {
   url              String?
 
   // Relations
-  genres    Genre[]    @relation("GameGenres") // no constraints
-  platforms Platform[] @relation("GamePlatforms") // no constraints
+  genres      Genre[]      @relation("GameGenres")
+  platforms   Platform[]   @relation("GamePlatforms")
+  covers      Cover[]
+  screenshots Screenshot[]
 }
 
 model Platform {
@@ -56,13 +58,31 @@ model Platform {
   abbreviation String?
   generation   Int?
   slug         String
-  platformLogo Int? // for icon logo possibly
+  platformLogo Int?
 
-  Game Game[] @relation("GamePlatforms")
+  games Game[] @relation("GamePlatforms")
 }
 
 model Genre {
-  id    Int    @id @unique // IGDB ID
+  id    Int    @id
   name  String
   games Game[] @relation("GameGenres")
+}
+
+model Cover {
+  id      Int     @id
+  imageId String?
+  url     String?
+
+  gameId Int
+  game   Game @relation(fields: [gameId], references: [id])
+}
+
+model Screenshot {
+  id      Int     @id
+  imageId String?
+  url     String?
+
+  gameId Int
+  game   Game @relation(fields: [gameId], references: [id])
 }
