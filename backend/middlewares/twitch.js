@@ -158,7 +158,6 @@ async function getCover(game, options) {
       .request('/covers');
 
       const coverResponse = response.data[0];
-      console.log(coverResponse, "cover response");
 
       if (coverResponse) {
         return coverResponse;
@@ -169,13 +168,55 @@ async function getCover(game, options) {
     return null;
   };
 
-const { handleCreateCover } = require('../controllers/dataController/createController');
+async function getScreenshots(game, options) {
+
+  if (game.screenshots) {
+    const response = await apicalypse(options)
+    .fields('url, game, image_id, height, width')
+    .where(`game = ${game.id}`)
+    .request('/screenshots')
+
+    const screenshotsResponse = response.data;
+
+    if (screenshotsResponse) {
+      return screenshotsResponse;
+    } else {
+      return null;
+    }
+  }
+  return null;
+};
+
+async function getGenre(game, options) {
+
+  if (game.genre) {
+    const response = await apicalypse(options)
+    .fields('name, slug')
+    .where(`game = ${game.id}`)
+    .request('/genres')
+
+    const genresResponse = response.data;
+
+    if (genresResponse) {
+      return genresResponse;
+    } else {
+      return null;
+    }
+  }
+  return null;
+};
+
+
+const { handleCreateCover, handleCreateScreenshots, handleCreateGenre } = require('../controllers/dataController/createController');
 
 async function mapGameData(game) {
 
   const options = await requestOptions();
 
   const gameCover = await getCover(game, options);
+  const gameScreenshots = await getScreenshots(game, options);
+  const gameGenre = await getGenre(game, options);
+  
 
   console.log(gameCover, "game cover");
 
@@ -196,7 +237,9 @@ async function mapGameData(game) {
   };
 
   await saveGame(gameData);
-  await handleCreateCover(gameCover, game);
+  await handleCreateCover(gameCover);
+  await handleCreateScreenshots(gameScreenshots);
+  await handleCreateGenre(gameGenre);
 };
 
 

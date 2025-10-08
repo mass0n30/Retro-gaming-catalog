@@ -32,7 +32,7 @@ model User {
 }
 
 model Game {
-  id               Int       @id
+  id               Int       @id @default(autoincrement())
   name             String
   slug             String    @unique
   summary          String?   @db.Text
@@ -53,7 +53,7 @@ model Game {
 }
 
 model Platform {
-  id           Int     @id
+  id           Int     @id @default(autoincrement())
   name         String
   abbreviation String?
   generation   Int?
@@ -64,13 +64,14 @@ model Platform {
 }
 
 model Genre {
-  id    Int    @id
-  name  String
-  games Game[] @relation("GameGenres")
+  id    Int     @id @default(autoincrement())
+  name  String?
+  slug  String?
+  games Game[]  @relation("GameGenres")
 }
 
 model Cover {
-  id      Int     @id
+  id      Int     @id @default(autoincrement())
   imageId String?
   url     String?
 
@@ -79,9 +80,11 @@ model Cover {
 }
 
 model Screenshot {
-  id      Int     @id
+  id      Int     @id @default(autoincrement())
   imageId String?
   url     String?
+  height  Int?
+  width   Int?
 
   gameId Int
   game   Game @relation(fields: [gameId], references: [id])

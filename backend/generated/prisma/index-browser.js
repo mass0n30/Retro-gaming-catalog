@@ -163,7 +163,8 @@ exports.Prisma.PlatformScalarFieldEnum = {
 
 exports.Prisma.GenreScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  slug: 'slug'
 };
 
 exports.Prisma.CoverScalarFieldEnum = {
@@ -177,6 +178,8 @@ exports.Prisma.ScreenshotScalarFieldEnum = {
   id: 'id',
   imageId: 'imageId',
   url: 'url',
+  height: 'height',
+  width: 'width',
   gameId: 'gameId'
 };
 

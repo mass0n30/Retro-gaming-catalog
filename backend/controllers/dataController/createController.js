@@ -4,7 +4,6 @@ const { validationResult } = require("express-validator");
 
 const bcrypt = require("bcryptjs");
 
-
 async function handleCreateUser(req, res, next) {
 
   const errors = validationResult(req);
@@ -31,24 +30,60 @@ async function handleCreateUser(req, res, next) {
   }
 };
 
-  async function handleCreateCover(gameCover, game) {
+  async function handleCreateCover(gameCover) {
     if (gameCover) {
       await prisma.cover.upsert({
         where: { id: gameCover.id },
         create: {
-          id: gameCover.id,
           url: gameCover.url,
-          gameId: game.id,
+          gameId: gameCover.game,
           imageId: gameCover.image_id,
         },
         update: {
           url: gameCover.url,
+          gameId: gameCover.game,
           imageId: gameCover.image_id,
         },
       });
     }
   };
 
+  async function handleCreateScreenshots(gameScreenshots) {
+    if (gameScreenshots) {
+      await Promise.all(
+        gameScreenshots.map((screenshot) => {
+          prisma.screenshot.upsert({
+            where: { id: screenshot.id },
+            create: { 
+              imageId: screenshot.image_id, 
+              url: screenshot.url,
+              height: screenshot.height,
+              width: screenshot.width,
+              gameId: screenshot.game
+            },
+            update: { 
+              imageId: screenshot.image_id, 
+              url: screenshot.url,
+              gameId: screenshot.game
+            },
+          });
+        }));
+    }
+  };
+
+  async function handleCreateGenre(gameGenres) {
+    if (gameGenres) {
+      gameGenres.map((genre) => {
+        prisma.genre.upsert({
+          where: { id: genre.id },
+          update: { name: genre.name, slug: genre.slug },
+          create: { id: genre.id, name: genre.name, slug: genre.slug },
+        });
+      });
+    }
+  };
 
 
-module.exports = { handleCreateUser, handleCreateCover, };
+
+
+module.exports = { handleCreateUser, handleCreateCover, handleCreateScreenshots, handleCreateGenre };
