@@ -33,6 +33,7 @@ model User {
 
  model Game {
   id                  Int          @id @default(autoincrement())
+  igdbId              Int   @unique
   name                String
   slug                String       @unique
   summary             String?      @db.Text
@@ -53,7 +54,7 @@ model User {
 }
 
 model Platform {
-  id           Int     @id @default(autoincrement())
+  id           Int     @id 
   name         String
   abbreviation String?
   generation   Int?
@@ -65,6 +66,7 @@ model Platform {
 
 model Genre {
   id    Int     @id @default(autoincrement())
+  igdbId              Int    @unique
   name  String?
   slug  String?
   games Game[] @relation("GameGenres")
@@ -72,8 +74,11 @@ model Genre {
 
 model Cover {
   id      Int    @id @default(autoincrement())
+  igdbId              Int    @unique
   imageId String?
   url     String?
+  height  Int?
+  width   Int?
 
   gameId  Int
   game    Game   @relation(fields: [gameId], references: [id])
@@ -81,6 +86,7 @@ model Cover {
 
 model Screenshot {
   id      Int    @id @default(autoincrement())
+  igdbId              Int    @unique
   imageId String?
   url     String?
   height  Int?

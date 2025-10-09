@@ -3576,6 +3576,7 @@ export namespace Prisma {
 
   export type GameAvgAggregateOutputType = {
     id: number | null
+    igdbId: number | null
     rating: number | null
     aggregatedRating: number | null
     totalRating: number | null
@@ -3584,6 +3585,7 @@ export namespace Prisma {
 
   export type GameSumAggregateOutputType = {
     id: number | null
+    igdbId: number | null
     rating: number | null
     aggregatedRating: number | null
     totalRating: number | null
@@ -3592,6 +3594,7 @@ export namespace Prisma {
 
   export type GameMinAggregateOutputType = {
     id: number | null
+    igdbId: number | null
     name: string | null
     slug: string | null
     summary: string | null
@@ -3607,6 +3610,7 @@ export namespace Prisma {
 
   export type GameMaxAggregateOutputType = {
     id: number | null
+    igdbId: number | null
     name: string | null
     slug: string | null
     summary: string | null
@@ -3622,6 +3626,7 @@ export namespace Prisma {
 
   export type GameCountAggregateOutputType = {
     id: number
+    igdbId: number
     name: number
     slug: number
     summary: number
@@ -3639,6 +3644,7 @@ export namespace Prisma {
 
   export type GameAvgAggregateInputType = {
     id?: true
+    igdbId?: true
     rating?: true
     aggregatedRating?: true
     totalRating?: true
@@ -3647,6 +3653,7 @@ export namespace Prisma {
 
   export type GameSumAggregateInputType = {
     id?: true
+    igdbId?: true
     rating?: true
     aggregatedRating?: true
     totalRating?: true
@@ -3655,6 +3662,7 @@ export namespace Prisma {
 
   export type GameMinAggregateInputType = {
     id?: true
+    igdbId?: true
     name?: true
     slug?: true
     summary?: true
@@ -3670,6 +3678,7 @@ export namespace Prisma {
 
   export type GameMaxAggregateInputType = {
     id?: true
+    igdbId?: true
     name?: true
     slug?: true
     summary?: true
@@ -3685,6 +3694,7 @@ export namespace Prisma {
 
   export type GameCountAggregateInputType = {
     id?: true
+    igdbId?: true
     name?: true
     slug?: true
     summary?: true
@@ -3787,6 +3797,7 @@ export namespace Prisma {
 
   export type GameGroupByOutputType = {
     id: number
+    igdbId: number
     name: string
     slug: string
     summary: string | null
@@ -3821,6 +3832,7 @@ export namespace Prisma {
 
   export type GameSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    igdbId?: boolean
     name?: boolean
     slug?: boolean
     summary?: boolean
@@ -3841,6 +3853,7 @@ export namespace Prisma {
 
   export type GameSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    igdbId?: boolean
     name?: boolean
     slug?: boolean
     summary?: boolean
@@ -3856,6 +3869,7 @@ export namespace Prisma {
 
   export type GameSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    igdbId?: boolean
     name?: boolean
     slug?: boolean
     summary?: boolean
@@ -3871,6 +3885,7 @@ export namespace Prisma {
 
   export type GameSelectScalar = {
     id?: boolean
+    igdbId?: boolean
     name?: boolean
     slug?: boolean
     summary?: boolean
@@ -3884,7 +3899,7 @@ export namespace Prisma {
     url?: boolean
   }
 
-  export type GameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "summary" | "storyline" | "firstReleaseDate" | "coverUrl" | "rating" | "aggregatedRating" | "totalRating" | "totalRatingCount" | "url", ExtArgs["result"]["game"]>
+  export type GameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "igdbId" | "name" | "slug" | "summary" | "storyline" | "firstReleaseDate" | "coverUrl" | "rating" | "aggregatedRating" | "totalRating" | "totalRatingCount" | "url", ExtArgs["result"]["game"]>
   export type GameInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     genres?: boolean | Game$genresArgs<ExtArgs>
     platforms?: boolean | Game$platformsArgs<ExtArgs>
@@ -3905,6 +3920,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      igdbId: number
       name: string
       slug: string
       summary: string | null
@@ -4344,6 +4360,7 @@ export namespace Prisma {
    */
   interface GameFieldRefs {
     readonly id: FieldRef<"Game", 'Int'>
+    readonly igdbId: FieldRef<"Game", 'Int'>
     readonly name: FieldRef<"Game", 'String'>
     readonly slug: FieldRef<"Game", 'String'>
     readonly summary: FieldRef<"Game", 'String'>
@@ -5996,26 +6013,31 @@ export namespace Prisma {
 
   export type GenreAvgAggregateOutputType = {
     id: number | null
+    igdbId: number | null
   }
 
   export type GenreSumAggregateOutputType = {
     id: number | null
+    igdbId: number | null
   }
 
   export type GenreMinAggregateOutputType = {
     id: number | null
+    igdbId: number | null
     name: string | null
     slug: string | null
   }
 
   export type GenreMaxAggregateOutputType = {
     id: number | null
+    igdbId: number | null
     name: string | null
     slug: string | null
   }
 
   export type GenreCountAggregateOutputType = {
     id: number
+    igdbId: number
     name: number
     slug: number
     _all: number
@@ -6024,26 +6046,31 @@ export namespace Prisma {
 
   export type GenreAvgAggregateInputType = {
     id?: true
+    igdbId?: true
   }
 
   export type GenreSumAggregateInputType = {
     id?: true
+    igdbId?: true
   }
 
   export type GenreMinAggregateInputType = {
     id?: true
+    igdbId?: true
     name?: true
     slug?: true
   }
 
   export type GenreMaxAggregateInputType = {
     id?: true
+    igdbId?: true
     name?: true
     slug?: true
   }
 
   export type GenreCountAggregateInputType = {
     id?: true
+    igdbId?: true
     name?: true
     slug?: true
     _all?: true
@@ -6137,6 +6164,7 @@ export namespace Prisma {
 
   export type GenreGroupByOutputType = {
     id: number
+    igdbId: number
     name: string | null
     slug: string | null
     _count: GenreCountAggregateOutputType | null
@@ -6162,6 +6190,7 @@ export namespace Prisma {
 
   export type GenreSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    igdbId?: boolean
     name?: boolean
     slug?: boolean
     games?: boolean | Genre$gamesArgs<ExtArgs>
@@ -6170,23 +6199,26 @@ export namespace Prisma {
 
   export type GenreSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    igdbId?: boolean
     name?: boolean
     slug?: boolean
   }, ExtArgs["result"]["genre"]>
 
   export type GenreSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    igdbId?: boolean
     name?: boolean
     slug?: boolean
   }, ExtArgs["result"]["genre"]>
 
   export type GenreSelectScalar = {
     id?: boolean
+    igdbId?: boolean
     name?: boolean
     slug?: boolean
   }
 
-  export type GenreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug", ExtArgs["result"]["genre"]>
+  export type GenreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "igdbId" | "name" | "slug", ExtArgs["result"]["genre"]>
   export type GenreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     games?: boolean | Genre$gamesArgs<ExtArgs>
     _count?: boolean | GenreCountOutputTypeDefaultArgs<ExtArgs>
@@ -6201,6 +6233,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      igdbId: number
       name: string | null
       slug: string | null
     }, ExtArgs["result"]["genre"]>
@@ -6628,6 +6661,7 @@ export namespace Prisma {
    */
   interface GenreFieldRefs {
     readonly id: FieldRef<"Genre", 'Int'>
+    readonly igdbId: FieldRef<"Genre", 'Int'>
     readonly name: FieldRef<"Genre", 'String'>
     readonly slug: FieldRef<"Genre", 'String'>
   }
@@ -6848,7 +6882,7 @@ export namespace Prisma {
     /**
      * The data needed to create a Genre.
      */
-    data?: XOR<GenreCreateInput, GenreUncheckedCreateInput>
+    data: XOR<GenreCreateInput, GenreUncheckedCreateInput>
   }
 
   /**
@@ -7074,32 +7108,47 @@ export namespace Prisma {
 
   export type CoverAvgAggregateOutputType = {
     id: number | null
+    igdbId: number | null
+    height: number | null
+    width: number | null
     gameId: number | null
   }
 
   export type CoverSumAggregateOutputType = {
     id: number | null
+    igdbId: number | null
+    height: number | null
+    width: number | null
     gameId: number | null
   }
 
   export type CoverMinAggregateOutputType = {
     id: number | null
+    igdbId: number | null
     imageId: string | null
     url: string | null
+    height: number | null
+    width: number | null
     gameId: number | null
   }
 
   export type CoverMaxAggregateOutputType = {
     id: number | null
+    igdbId: number | null
     imageId: string | null
     url: string | null
+    height: number | null
+    width: number | null
     gameId: number | null
   }
 
   export type CoverCountAggregateOutputType = {
     id: number
+    igdbId: number
     imageId: number
     url: number
+    height: number
+    width: number
     gameId: number
     _all: number
   }
@@ -7107,32 +7156,47 @@ export namespace Prisma {
 
   export type CoverAvgAggregateInputType = {
     id?: true
+    igdbId?: true
+    height?: true
+    width?: true
     gameId?: true
   }
 
   export type CoverSumAggregateInputType = {
     id?: true
+    igdbId?: true
+    height?: true
+    width?: true
     gameId?: true
   }
 
   export type CoverMinAggregateInputType = {
     id?: true
+    igdbId?: true
     imageId?: true
     url?: true
+    height?: true
+    width?: true
     gameId?: true
   }
 
   export type CoverMaxAggregateInputType = {
     id?: true
+    igdbId?: true
     imageId?: true
     url?: true
+    height?: true
+    width?: true
     gameId?: true
   }
 
   export type CoverCountAggregateInputType = {
     id?: true
+    igdbId?: true
     imageId?: true
     url?: true
+    height?: true
+    width?: true
     gameId?: true
     _all?: true
   }
@@ -7225,8 +7289,11 @@ export namespace Prisma {
 
   export type CoverGroupByOutputType = {
     id: number
+    igdbId: number
     imageId: string | null
     url: string | null
+    height: number | null
+    width: number | null
     gameId: number
     _count: CoverCountAggregateOutputType | null
     _avg: CoverAvgAggregateOutputType | null
@@ -7251,36 +7318,48 @@ export namespace Prisma {
 
   export type CoverSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    igdbId?: boolean
     imageId?: boolean
     url?: boolean
+    height?: boolean
+    width?: boolean
     gameId?: boolean
     game?: boolean | GameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cover"]>
 
   export type CoverSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    igdbId?: boolean
     imageId?: boolean
     url?: boolean
+    height?: boolean
+    width?: boolean
     gameId?: boolean
     game?: boolean | GameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cover"]>
 
   export type CoverSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    igdbId?: boolean
     imageId?: boolean
     url?: boolean
+    height?: boolean
+    width?: boolean
     gameId?: boolean
     game?: boolean | GameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cover"]>
 
   export type CoverSelectScalar = {
     id?: boolean
+    igdbId?: boolean
     imageId?: boolean
     url?: boolean
+    height?: boolean
+    width?: boolean
     gameId?: boolean
   }
 
-  export type CoverOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "imageId" | "url" | "gameId", ExtArgs["result"]["cover"]>
+  export type CoverOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "igdbId" | "imageId" | "url" | "height" | "width" | "gameId", ExtArgs["result"]["cover"]>
   export type CoverInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     game?: boolean | GameDefaultArgs<ExtArgs>
   }
@@ -7298,8 +7377,11 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      igdbId: number
       imageId: string | null
       url: string | null
+      height: number | null
+      width: number | null
       gameId: number
     }, ExtArgs["result"]["cover"]>
     composites: {}
@@ -7726,8 +7808,11 @@ export namespace Prisma {
    */
   interface CoverFieldRefs {
     readonly id: FieldRef<"Cover", 'Int'>
+    readonly igdbId: FieldRef<"Cover", 'Int'>
     readonly imageId: FieldRef<"Cover", 'String'>
     readonly url: FieldRef<"Cover", 'String'>
+    readonly height: FieldRef<"Cover", 'Int'>
+    readonly width: FieldRef<"Cover", 'Int'>
     readonly gameId: FieldRef<"Cover", 'Int'>
   }
     
@@ -8157,6 +8242,7 @@ export namespace Prisma {
 
   export type ScreenshotAvgAggregateOutputType = {
     id: number | null
+    igdbId: number | null
     height: number | null
     width: number | null
     gameId: number | null
@@ -8164,6 +8250,7 @@ export namespace Prisma {
 
   export type ScreenshotSumAggregateOutputType = {
     id: number | null
+    igdbId: number | null
     height: number | null
     width: number | null
     gameId: number | null
@@ -8171,6 +8258,7 @@ export namespace Prisma {
 
   export type ScreenshotMinAggregateOutputType = {
     id: number | null
+    igdbId: number | null
     imageId: string | null
     url: string | null
     height: number | null
@@ -8180,6 +8268,7 @@ export namespace Prisma {
 
   export type ScreenshotMaxAggregateOutputType = {
     id: number | null
+    igdbId: number | null
     imageId: string | null
     url: string | null
     height: number | null
@@ -8189,6 +8278,7 @@ export namespace Prisma {
 
   export type ScreenshotCountAggregateOutputType = {
     id: number
+    igdbId: number
     imageId: number
     url: number
     height: number
@@ -8200,6 +8290,7 @@ export namespace Prisma {
 
   export type ScreenshotAvgAggregateInputType = {
     id?: true
+    igdbId?: true
     height?: true
     width?: true
     gameId?: true
@@ -8207,6 +8298,7 @@ export namespace Prisma {
 
   export type ScreenshotSumAggregateInputType = {
     id?: true
+    igdbId?: true
     height?: true
     width?: true
     gameId?: true
@@ -8214,6 +8306,7 @@ export namespace Prisma {
 
   export type ScreenshotMinAggregateInputType = {
     id?: true
+    igdbId?: true
     imageId?: true
     url?: true
     height?: true
@@ -8223,6 +8316,7 @@ export namespace Prisma {
 
   export type ScreenshotMaxAggregateInputType = {
     id?: true
+    igdbId?: true
     imageId?: true
     url?: true
     height?: true
@@ -8232,6 +8326,7 @@ export namespace Prisma {
 
   export type ScreenshotCountAggregateInputType = {
     id?: true
+    igdbId?: true
     imageId?: true
     url?: true
     height?: true
@@ -8328,6 +8423,7 @@ export namespace Prisma {
 
   export type ScreenshotGroupByOutputType = {
     id: number
+    igdbId: number
     imageId: string | null
     url: string | null
     height: number | null
@@ -8356,6 +8452,7 @@ export namespace Prisma {
 
   export type ScreenshotSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    igdbId?: boolean
     imageId?: boolean
     url?: boolean
     height?: boolean
@@ -8366,6 +8463,7 @@ export namespace Prisma {
 
   export type ScreenshotSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    igdbId?: boolean
     imageId?: boolean
     url?: boolean
     height?: boolean
@@ -8376,6 +8474,7 @@ export namespace Prisma {
 
   export type ScreenshotSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    igdbId?: boolean
     imageId?: boolean
     url?: boolean
     height?: boolean
@@ -8386,6 +8485,7 @@ export namespace Prisma {
 
   export type ScreenshotSelectScalar = {
     id?: boolean
+    igdbId?: boolean
     imageId?: boolean
     url?: boolean
     height?: boolean
@@ -8393,7 +8493,7 @@ export namespace Prisma {
     gameId?: boolean
   }
 
-  export type ScreenshotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "imageId" | "url" | "height" | "width" | "gameId", ExtArgs["result"]["screenshot"]>
+  export type ScreenshotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "igdbId" | "imageId" | "url" | "height" | "width" | "gameId", ExtArgs["result"]["screenshot"]>
   export type ScreenshotInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     game?: boolean | GameDefaultArgs<ExtArgs>
   }
@@ -8411,6 +8511,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      igdbId: number
       imageId: string | null
       url: string | null
       height: number | null
@@ -8841,6 +8942,7 @@ export namespace Prisma {
    */
   interface ScreenshotFieldRefs {
     readonly id: FieldRef<"Screenshot", 'Int'>
+    readonly igdbId: FieldRef<"Screenshot", 'Int'>
     readonly imageId: FieldRef<"Screenshot", 'String'>
     readonly url: FieldRef<"Screenshot", 'String'>
     readonly height: FieldRef<"Screenshot", 'Int'>
@@ -9299,6 +9401,7 @@ export namespace Prisma {
 
   export const GameScalarFieldEnum: {
     id: 'id',
+    igdbId: 'igdbId',
     name: 'name',
     slug: 'slug',
     summary: 'summary',
@@ -9329,6 +9432,7 @@ export namespace Prisma {
 
   export const GenreScalarFieldEnum: {
     id: 'id',
+    igdbId: 'igdbId',
     name: 'name',
     slug: 'slug'
   };
@@ -9338,8 +9442,11 @@ export namespace Prisma {
 
   export const CoverScalarFieldEnum: {
     id: 'id',
+    igdbId: 'igdbId',
     imageId: 'imageId',
     url: 'url',
+    height: 'height',
+    width: 'width',
     gameId: 'gameId'
   };
 
@@ -9348,6 +9455,7 @@ export namespace Prisma {
 
   export const ScreenshotScalarFieldEnum: {
     id: 'id',
+    igdbId: 'igdbId',
     imageId: 'imageId',
     url: 'url',
     height: 'height',
@@ -9569,6 +9677,7 @@ export namespace Prisma {
     OR?: GameWhereInput[]
     NOT?: GameWhereInput | GameWhereInput[]
     id?: IntFilter<"Game"> | number
+    igdbId?: IntFilter<"Game"> | number
     name?: StringFilter<"Game"> | string
     slug?: StringFilter<"Game"> | string
     summary?: StringNullableFilter<"Game"> | string | null
@@ -9588,6 +9697,7 @@ export namespace Prisma {
 
   export type GameOrderByWithRelationInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     name?: SortOrder
     slug?: SortOrder
     summary?: SortOrderInput | SortOrder
@@ -9607,6 +9717,7 @@ export namespace Prisma {
 
   export type GameWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    igdbId?: number
     slug?: string
     AND?: GameWhereInput | GameWhereInput[]
     OR?: GameWhereInput[]
@@ -9625,10 +9736,11 @@ export namespace Prisma {
     platforms?: PlatformListRelationFilter
     covers?: CoverListRelationFilter
     screenshots?: ScreenshotListRelationFilter
-  }, "id" | "slug">
+  }, "id" | "igdbId" | "slug">
 
   export type GameOrderByWithAggregationInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     name?: SortOrder
     slug?: SortOrder
     summary?: SortOrderInput | SortOrder
@@ -9652,6 +9764,7 @@ export namespace Prisma {
     OR?: GameScalarWhereWithAggregatesInput[]
     NOT?: GameScalarWhereWithAggregatesInput | GameScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Game"> | number
+    igdbId?: IntWithAggregatesFilter<"Game"> | number
     name?: StringWithAggregatesFilter<"Game"> | string
     slug?: StringWithAggregatesFilter<"Game"> | string
     summary?: StringNullableWithAggregatesFilter<"Game"> | string | null
@@ -9732,6 +9845,7 @@ export namespace Prisma {
     OR?: GenreWhereInput[]
     NOT?: GenreWhereInput | GenreWhereInput[]
     id?: IntFilter<"Genre"> | number
+    igdbId?: IntFilter<"Genre"> | number
     name?: StringNullableFilter<"Genre"> | string | null
     slug?: StringNullableFilter<"Genre"> | string | null
     games?: GameListRelationFilter
@@ -9739,6 +9853,7 @@ export namespace Prisma {
 
   export type GenreOrderByWithRelationInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     name?: SortOrderInput | SortOrder
     slug?: SortOrderInput | SortOrder
     games?: GameOrderByRelationAggregateInput
@@ -9746,16 +9861,18 @@ export namespace Prisma {
 
   export type GenreWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    igdbId?: number
     AND?: GenreWhereInput | GenreWhereInput[]
     OR?: GenreWhereInput[]
     NOT?: GenreWhereInput | GenreWhereInput[]
     name?: StringNullableFilter<"Genre"> | string | null
     slug?: StringNullableFilter<"Genre"> | string | null
     games?: GameListRelationFilter
-  }, "id">
+  }, "id" | "igdbId">
 
   export type GenreOrderByWithAggregationInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     name?: SortOrderInput | SortOrder
     slug?: SortOrderInput | SortOrder
     _count?: GenreCountOrderByAggregateInput
@@ -9770,6 +9887,7 @@ export namespace Prisma {
     OR?: GenreScalarWhereWithAggregatesInput[]
     NOT?: GenreScalarWhereWithAggregatesInput | GenreScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Genre"> | number
+    igdbId?: IntWithAggregatesFilter<"Genre"> | number
     name?: StringNullableWithAggregatesFilter<"Genre"> | string | null
     slug?: StringNullableWithAggregatesFilter<"Genre"> | string | null
   }
@@ -9779,35 +9897,47 @@ export namespace Prisma {
     OR?: CoverWhereInput[]
     NOT?: CoverWhereInput | CoverWhereInput[]
     id?: IntFilter<"Cover"> | number
+    igdbId?: IntFilter<"Cover"> | number
     imageId?: StringNullableFilter<"Cover"> | string | null
     url?: StringNullableFilter<"Cover"> | string | null
+    height?: IntNullableFilter<"Cover"> | number | null
+    width?: IntNullableFilter<"Cover"> | number | null
     gameId?: IntFilter<"Cover"> | number
     game?: XOR<GameScalarRelationFilter, GameWhereInput>
   }
 
   export type CoverOrderByWithRelationInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     imageId?: SortOrderInput | SortOrder
     url?: SortOrderInput | SortOrder
+    height?: SortOrderInput | SortOrder
+    width?: SortOrderInput | SortOrder
     gameId?: SortOrder
     game?: GameOrderByWithRelationInput
   }
 
   export type CoverWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    igdbId?: number
     AND?: CoverWhereInput | CoverWhereInput[]
     OR?: CoverWhereInput[]
     NOT?: CoverWhereInput | CoverWhereInput[]
     imageId?: StringNullableFilter<"Cover"> | string | null
     url?: StringNullableFilter<"Cover"> | string | null
+    height?: IntNullableFilter<"Cover"> | number | null
+    width?: IntNullableFilter<"Cover"> | number | null
     gameId?: IntFilter<"Cover"> | number
     game?: XOR<GameScalarRelationFilter, GameWhereInput>
-  }, "id">
+  }, "id" | "igdbId">
 
   export type CoverOrderByWithAggregationInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     imageId?: SortOrderInput | SortOrder
     url?: SortOrderInput | SortOrder
+    height?: SortOrderInput | SortOrder
+    width?: SortOrderInput | SortOrder
     gameId?: SortOrder
     _count?: CoverCountOrderByAggregateInput
     _avg?: CoverAvgOrderByAggregateInput
@@ -9821,8 +9951,11 @@ export namespace Prisma {
     OR?: CoverScalarWhereWithAggregatesInput[]
     NOT?: CoverScalarWhereWithAggregatesInput | CoverScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Cover"> | number
+    igdbId?: IntWithAggregatesFilter<"Cover"> | number
     imageId?: StringNullableWithAggregatesFilter<"Cover"> | string | null
     url?: StringNullableWithAggregatesFilter<"Cover"> | string | null
+    height?: IntNullableWithAggregatesFilter<"Cover"> | number | null
+    width?: IntNullableWithAggregatesFilter<"Cover"> | number | null
     gameId?: IntWithAggregatesFilter<"Cover"> | number
   }
 
@@ -9831,6 +9964,7 @@ export namespace Prisma {
     OR?: ScreenshotWhereInput[]
     NOT?: ScreenshotWhereInput | ScreenshotWhereInput[]
     id?: IntFilter<"Screenshot"> | number
+    igdbId?: IntFilter<"Screenshot"> | number
     imageId?: StringNullableFilter<"Screenshot"> | string | null
     url?: StringNullableFilter<"Screenshot"> | string | null
     height?: IntNullableFilter<"Screenshot"> | number | null
@@ -9841,6 +9975,7 @@ export namespace Prisma {
 
   export type ScreenshotOrderByWithRelationInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     imageId?: SortOrderInput | SortOrder
     url?: SortOrderInput | SortOrder
     height?: SortOrderInput | SortOrder
@@ -9851,6 +9986,7 @@ export namespace Prisma {
 
   export type ScreenshotWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    igdbId?: number
     AND?: ScreenshotWhereInput | ScreenshotWhereInput[]
     OR?: ScreenshotWhereInput[]
     NOT?: ScreenshotWhereInput | ScreenshotWhereInput[]
@@ -9860,10 +9996,11 @@ export namespace Prisma {
     width?: IntNullableFilter<"Screenshot"> | number | null
     gameId?: IntFilter<"Screenshot"> | number
     game?: XOR<GameScalarRelationFilter, GameWhereInput>
-  }, "id">
+  }, "id" | "igdbId">
 
   export type ScreenshotOrderByWithAggregationInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     imageId?: SortOrderInput | SortOrder
     url?: SortOrderInput | SortOrder
     height?: SortOrderInput | SortOrder
@@ -9881,6 +10018,7 @@ export namespace Prisma {
     OR?: ScreenshotScalarWhereWithAggregatesInput[]
     NOT?: ScreenshotScalarWhereWithAggregatesInput | ScreenshotScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Screenshot"> | number
+    igdbId?: IntWithAggregatesFilter<"Screenshot"> | number
     imageId?: StringNullableWithAggregatesFilter<"Screenshot"> | string | null
     url?: StringNullableWithAggregatesFilter<"Screenshot"> | string | null
     height?: IntNullableWithAggregatesFilter<"Screenshot"> | number | null
@@ -10005,6 +10143,7 @@ export namespace Prisma {
   }
 
   export type GameCreateInput = {
+    igdbId: number
     name: string
     slug: string
     summary?: string | null
@@ -10024,6 +10163,7 @@ export namespace Prisma {
 
   export type GameUncheckedCreateInput = {
     id?: number
+    igdbId: number
     name: string
     slug: string
     summary?: string | null
@@ -10042,6 +10182,7 @@ export namespace Prisma {
   }
 
   export type GameUpdateInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10061,6 +10202,7 @@ export namespace Prisma {
 
   export type GameUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10080,6 +10222,7 @@ export namespace Prisma {
 
   export type GameCreateManyInput = {
     id?: number
+    igdbId: number
     name: string
     slug: string
     summary?: string | null
@@ -10094,6 +10237,7 @@ export namespace Prisma {
   }
 
   export type GameUpdateManyMutationInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10109,6 +10253,7 @@ export namespace Prisma {
 
   export type GameUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10123,6 +10268,7 @@ export namespace Prisma {
   }
 
   export type PlatformCreateInput = {
+    id: number
     name: string
     abbreviation?: string | null
     generation?: number | null
@@ -10132,7 +10278,7 @@ export namespace Prisma {
   }
 
   export type PlatformUncheckedCreateInput = {
-    id?: number
+    id: number
     name: string
     abbreviation?: string | null
     generation?: number | null
@@ -10142,6 +10288,7 @@ export namespace Prisma {
   }
 
   export type PlatformUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     abbreviation?: NullableStringFieldUpdateOperationsInput | string | null
     generation?: NullableIntFieldUpdateOperationsInput | number | null
@@ -10161,7 +10308,7 @@ export namespace Prisma {
   }
 
   export type PlatformCreateManyInput = {
-    id?: number
+    id: number
     name: string
     abbreviation?: string | null
     generation?: number | null
@@ -10170,6 +10317,7 @@ export namespace Prisma {
   }
 
   export type PlatformUpdateManyMutationInput = {
+    id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     abbreviation?: NullableStringFieldUpdateOperationsInput | string | null
     generation?: NullableIntFieldUpdateOperationsInput | number | null
@@ -10187,6 +10335,7 @@ export namespace Prisma {
   }
 
   export type GenreCreateInput = {
+    igdbId: number
     name?: string | null
     slug?: string | null
     games?: GameCreateNestedManyWithoutGenresInput
@@ -10194,12 +10343,14 @@ export namespace Prisma {
 
   export type GenreUncheckedCreateInput = {
     id?: number
+    igdbId: number
     name?: string | null
     slug?: string | null
     games?: GameUncheckedCreateNestedManyWithoutGenresInput
   }
 
   export type GenreUpdateInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     games?: GameUpdateManyWithoutGenresNestedInput
@@ -10207,6 +10358,7 @@ export namespace Prisma {
 
   export type GenreUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     games?: GameUncheckedUpdateManyWithoutGenresNestedInput
@@ -10214,67 +10366,92 @@ export namespace Prisma {
 
   export type GenreCreateManyInput = {
     id?: number
+    igdbId: number
     name?: string | null
     slug?: string | null
   }
 
   export type GenreUpdateManyMutationInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type GenreUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CoverCreateInput = {
+    igdbId: number
     imageId?: string | null
     url?: string | null
+    height?: number | null
+    width?: number | null
     game: GameCreateNestedOneWithoutCoversInput
   }
 
   export type CoverUncheckedCreateInput = {
     id?: number
+    igdbId: number
     imageId?: string | null
     url?: string | null
+    height?: number | null
+    width?: number | null
     gameId: number
   }
 
   export type CoverUpdateInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    width?: NullableIntFieldUpdateOperationsInput | number | null
     game?: GameUpdateOneRequiredWithoutCoversNestedInput
   }
 
   export type CoverUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    width?: NullableIntFieldUpdateOperationsInput | number | null
     gameId?: IntFieldUpdateOperationsInput | number
   }
 
   export type CoverCreateManyInput = {
     id?: number
+    igdbId: number
     imageId?: string | null
     url?: string | null
+    height?: number | null
+    width?: number | null
     gameId: number
   }
 
   export type CoverUpdateManyMutationInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    width?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type CoverUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    width?: NullableIntFieldUpdateOperationsInput | number | null
     gameId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ScreenshotCreateInput = {
+    igdbId: number
     imageId?: string | null
     url?: string | null
     height?: number | null
@@ -10284,6 +10461,7 @@ export namespace Prisma {
 
   export type ScreenshotUncheckedCreateInput = {
     id?: number
+    igdbId: number
     imageId?: string | null
     url?: string | null
     height?: number | null
@@ -10292,6 +10470,7 @@ export namespace Prisma {
   }
 
   export type ScreenshotUpdateInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     height?: NullableIntFieldUpdateOperationsInput | number | null
@@ -10301,6 +10480,7 @@ export namespace Prisma {
 
   export type ScreenshotUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     height?: NullableIntFieldUpdateOperationsInput | number | null
@@ -10310,6 +10490,7 @@ export namespace Prisma {
 
   export type ScreenshotCreateManyInput = {
     id?: number
+    igdbId: number
     imageId?: string | null
     url?: string | null
     height?: number | null
@@ -10318,6 +10499,7 @@ export namespace Prisma {
   }
 
   export type ScreenshotUpdateManyMutationInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     height?: NullableIntFieldUpdateOperationsInput | number | null
@@ -10326,6 +10508,7 @@ export namespace Prisma {
 
   export type ScreenshotUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     height?: NullableIntFieldUpdateOperationsInput | number | null
@@ -10585,6 +10768,7 @@ export namespace Prisma {
 
   export type GameCountOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     name?: SortOrder
     slug?: SortOrder
     summary?: SortOrder
@@ -10600,6 +10784,7 @@ export namespace Prisma {
 
   export type GameAvgOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     rating?: SortOrder
     aggregatedRating?: SortOrder
     totalRating?: SortOrder
@@ -10608,6 +10793,7 @@ export namespace Prisma {
 
   export type GameMaxOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     name?: SortOrder
     slug?: SortOrder
     summary?: SortOrder
@@ -10623,6 +10809,7 @@ export namespace Prisma {
 
   export type GameMinOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     name?: SortOrder
     slug?: SortOrder
     summary?: SortOrder
@@ -10638,6 +10825,7 @@ export namespace Prisma {
 
   export type GameSumOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     rating?: SortOrder
     aggregatedRating?: SortOrder
     totalRating?: SortOrder
@@ -10759,28 +10947,33 @@ export namespace Prisma {
 
   export type GenreCountOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     name?: SortOrder
     slug?: SortOrder
   }
 
   export type GenreAvgOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
   }
 
   export type GenreMaxOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     name?: SortOrder
     slug?: SortOrder
   }
 
   export type GenreMinOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     name?: SortOrder
     slug?: SortOrder
   }
 
   export type GenreSumOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
   }
 
   export type GameScalarRelationFilter = {
@@ -10790,37 +10983,53 @@ export namespace Prisma {
 
   export type CoverCountOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     imageId?: SortOrder
     url?: SortOrder
+    height?: SortOrder
+    width?: SortOrder
     gameId?: SortOrder
   }
 
   export type CoverAvgOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
+    height?: SortOrder
+    width?: SortOrder
     gameId?: SortOrder
   }
 
   export type CoverMaxOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     imageId?: SortOrder
     url?: SortOrder
+    height?: SortOrder
+    width?: SortOrder
     gameId?: SortOrder
   }
 
   export type CoverMinOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     imageId?: SortOrder
     url?: SortOrder
+    height?: SortOrder
+    width?: SortOrder
     gameId?: SortOrder
   }
 
   export type CoverSumOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
+    height?: SortOrder
+    width?: SortOrder
     gameId?: SortOrder
   }
 
   export type ScreenshotCountOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     imageId?: SortOrder
     url?: SortOrder
     height?: SortOrder
@@ -10830,6 +11039,7 @@ export namespace Prisma {
 
   export type ScreenshotAvgOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     height?: SortOrder
     width?: SortOrder
     gameId?: SortOrder
@@ -10837,6 +11047,7 @@ export namespace Prisma {
 
   export type ScreenshotMaxOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     imageId?: SortOrder
     url?: SortOrder
     height?: SortOrder
@@ -10846,6 +11057,7 @@ export namespace Prisma {
 
   export type ScreenshotMinOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     imageId?: SortOrder
     url?: SortOrder
     height?: SortOrder
@@ -10855,6 +11067,7 @@ export namespace Prisma {
 
   export type ScreenshotSumOrderByAggregateInput = {
     id?: SortOrder
+    igdbId?: SortOrder
     height?: SortOrder
     width?: SortOrder
     gameId?: SortOrder
@@ -11386,12 +11599,14 @@ export namespace Prisma {
   }
 
   export type GenreCreateWithoutGamesInput = {
+    igdbId: number
     name?: string | null
     slug?: string | null
   }
 
   export type GenreUncheckedCreateWithoutGamesInput = {
     id?: number
+    igdbId: number
     name?: string | null
     slug?: string | null
   }
@@ -11402,6 +11617,7 @@ export namespace Prisma {
   }
 
   export type PlatformCreateWithoutGamesInput = {
+    id: number
     name: string
     abbreviation?: string | null
     generation?: number | null
@@ -11410,7 +11626,7 @@ export namespace Prisma {
   }
 
   export type PlatformUncheckedCreateWithoutGamesInput = {
-    id?: number
+    id: number
     name: string
     abbreviation?: string | null
     generation?: number | null
@@ -11424,14 +11640,20 @@ export namespace Prisma {
   }
 
   export type CoverCreateWithoutGameInput = {
+    igdbId: number
     imageId?: string | null
     url?: string | null
+    height?: number | null
+    width?: number | null
   }
 
   export type CoverUncheckedCreateWithoutGameInput = {
     id?: number
+    igdbId: number
     imageId?: string | null
     url?: string | null
+    height?: number | null
+    width?: number | null
   }
 
   export type CoverCreateOrConnectWithoutGameInput = {
@@ -11445,6 +11667,7 @@ export namespace Prisma {
   }
 
   export type ScreenshotCreateWithoutGameInput = {
+    igdbId: number
     imageId?: string | null
     url?: string | null
     height?: number | null
@@ -11453,6 +11676,7 @@ export namespace Prisma {
 
   export type ScreenshotUncheckedCreateWithoutGameInput = {
     id?: number
+    igdbId: number
     imageId?: string | null
     url?: string | null
     height?: number | null
@@ -11490,6 +11714,7 @@ export namespace Prisma {
     OR?: GenreScalarWhereInput[]
     NOT?: GenreScalarWhereInput | GenreScalarWhereInput[]
     id?: IntFilter<"Genre"> | number
+    igdbId?: IntFilter<"Genre"> | number
     name?: StringNullableFilter<"Genre"> | string | null
     slug?: StringNullableFilter<"Genre"> | string | null
   }
@@ -11543,8 +11768,11 @@ export namespace Prisma {
     OR?: CoverScalarWhereInput[]
     NOT?: CoverScalarWhereInput | CoverScalarWhereInput[]
     id?: IntFilter<"Cover"> | number
+    igdbId?: IntFilter<"Cover"> | number
     imageId?: StringNullableFilter<"Cover"> | string | null
     url?: StringNullableFilter<"Cover"> | string | null
+    height?: IntNullableFilter<"Cover"> | number | null
+    width?: IntNullableFilter<"Cover"> | number | null
     gameId?: IntFilter<"Cover"> | number
   }
 
@@ -11569,6 +11797,7 @@ export namespace Prisma {
     OR?: ScreenshotScalarWhereInput[]
     NOT?: ScreenshotScalarWhereInput | ScreenshotScalarWhereInput[]
     id?: IntFilter<"Screenshot"> | number
+    igdbId?: IntFilter<"Screenshot"> | number
     imageId?: StringNullableFilter<"Screenshot"> | string | null
     url?: StringNullableFilter<"Screenshot"> | string | null
     height?: IntNullableFilter<"Screenshot"> | number | null
@@ -11577,6 +11806,7 @@ export namespace Prisma {
   }
 
   export type GameCreateWithoutPlatformsInput = {
+    igdbId: number
     name: string
     slug: string
     summary?: string | null
@@ -11595,6 +11825,7 @@ export namespace Prisma {
 
   export type GameUncheckedCreateWithoutPlatformsInput = {
     id?: number
+    igdbId: number
     name: string
     slug: string
     summary?: string | null
@@ -11637,6 +11868,7 @@ export namespace Prisma {
     OR?: GameScalarWhereInput[]
     NOT?: GameScalarWhereInput | GameScalarWhereInput[]
     id?: IntFilter<"Game"> | number
+    igdbId?: IntFilter<"Game"> | number
     name?: StringFilter<"Game"> | string
     slug?: StringFilter<"Game"> | string
     summary?: StringNullableFilter<"Game"> | string | null
@@ -11651,6 +11883,7 @@ export namespace Prisma {
   }
 
   export type GameCreateWithoutGenresInput = {
+    igdbId: number
     name: string
     slug: string
     summary?: string | null
@@ -11669,6 +11902,7 @@ export namespace Prisma {
 
   export type GameUncheckedCreateWithoutGenresInput = {
     id?: number
+    igdbId: number
     name: string
     slug: string
     summary?: string | null
@@ -11707,6 +11941,7 @@ export namespace Prisma {
   }
 
   export type GameCreateWithoutCoversInput = {
+    igdbId: number
     name: string
     slug: string
     summary?: string | null
@@ -11725,6 +11960,7 @@ export namespace Prisma {
 
   export type GameUncheckedCreateWithoutCoversInput = {
     id?: number
+    igdbId: number
     name: string
     slug: string
     summary?: string | null
@@ -11758,6 +11994,7 @@ export namespace Prisma {
   }
 
   export type GameUpdateWithoutCoversInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
@@ -11776,6 +12013,7 @@ export namespace Prisma {
 
   export type GameUncheckedUpdateWithoutCoversInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
@@ -11793,6 +12031,7 @@ export namespace Prisma {
   }
 
   export type GameCreateWithoutScreenshotsInput = {
+    igdbId: number
     name: string
     slug: string
     summary?: string | null
@@ -11811,6 +12050,7 @@ export namespace Prisma {
 
   export type GameUncheckedCreateWithoutScreenshotsInput = {
     id?: number
+    igdbId: number
     name: string
     slug: string
     summary?: string | null
@@ -11844,6 +12084,7 @@ export namespace Prisma {
   }
 
   export type GameUpdateWithoutScreenshotsInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
@@ -11862,6 +12103,7 @@ export namespace Prisma {
 
   export type GameUncheckedUpdateWithoutScreenshotsInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
@@ -11880,12 +12122,16 @@ export namespace Prisma {
 
   export type CoverCreateManyGameInput = {
     id?: number
+    igdbId: number
     imageId?: string | null
     url?: string | null
+    height?: number | null
+    width?: number | null
   }
 
   export type ScreenshotCreateManyGameInput = {
     id?: number
+    igdbId: number
     imageId?: string | null
     url?: string | null
     height?: number | null
@@ -11893,23 +12139,27 @@ export namespace Prisma {
   }
 
   export type GenreUpdateWithoutGamesInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type GenreUncheckedUpdateWithoutGamesInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type GenreUncheckedUpdateManyWithoutGamesInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PlatformUpdateWithoutGamesInput = {
+    id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     abbreviation?: NullableStringFieldUpdateOperationsInput | string | null
     generation?: NullableIntFieldUpdateOperationsInput | number | null
@@ -11936,23 +12186,33 @@ export namespace Prisma {
   }
 
   export type CoverUpdateWithoutGameInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    width?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type CoverUncheckedUpdateWithoutGameInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    width?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type CoverUncheckedUpdateManyWithoutGameInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    width?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ScreenshotUpdateWithoutGameInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     height?: NullableIntFieldUpdateOperationsInput | number | null
@@ -11961,6 +12221,7 @@ export namespace Prisma {
 
   export type ScreenshotUncheckedUpdateWithoutGameInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     height?: NullableIntFieldUpdateOperationsInput | number | null
@@ -11969,6 +12230,7 @@ export namespace Prisma {
 
   export type ScreenshotUncheckedUpdateManyWithoutGameInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     height?: NullableIntFieldUpdateOperationsInput | number | null
@@ -11976,6 +12238,7 @@ export namespace Prisma {
   }
 
   export type GameUpdateWithoutPlatformsInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
@@ -11994,6 +12257,7 @@ export namespace Prisma {
 
   export type GameUncheckedUpdateWithoutPlatformsInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12012,6 +12276,7 @@ export namespace Prisma {
 
   export type GameUncheckedUpdateManyWithoutPlatformsInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12026,6 +12291,7 @@ export namespace Prisma {
   }
 
   export type GameUpdateWithoutGenresInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12044,6 +12310,7 @@ export namespace Prisma {
 
   export type GameUncheckedUpdateWithoutGenresInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12062,6 +12329,7 @@ export namespace Prisma {
 
   export type GameUncheckedUpdateManyWithoutGenresInput = {
     id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     summary?: NullableStringFieldUpdateOperationsInput | string | null

@@ -139,6 +139,7 @@ exports.Prisma.UserScalarFieldEnum = {
 
 exports.Prisma.GameScalarFieldEnum = {
   id: 'id',
+  igdbId: 'igdbId',
   name: 'name',
   slug: 'slug',
   summary: 'summary',
@@ -163,19 +164,24 @@ exports.Prisma.PlatformScalarFieldEnum = {
 
 exports.Prisma.GenreScalarFieldEnum = {
   id: 'id',
+  igdbId: 'igdbId',
   name: 'name',
   slug: 'slug'
 };
 
 exports.Prisma.CoverScalarFieldEnum = {
   id: 'id',
+  igdbId: 'igdbId',
   imageId: 'imageId',
   url: 'url',
+  height: 'height',
+  width: 'width',
   gameId: 'gameId'
 };
 
 exports.Prisma.ScreenshotScalarFieldEnum = {
   id: 'id',
+  igdbId: 'igdbId',
   imageId: 'imageId',
   url: 'url',
   height: 'height',

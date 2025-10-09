@@ -73,7 +73,7 @@ async function getGamesByYear(req, res, next) {
     `) 
     .where(`first_release_date >= ${new Date(year, 0).getTime() / 1000} & first_release_date < ${new Date(year + 1, 0).getTime() / 1000} & total_rating > 70 & total_rating_count > 20;`)
     .sort('total_rating desc')
-    .limit(pageSize)
+    .limit(1)
     .offset(offset)
 
     .request('/games'); 
@@ -127,33 +127,33 @@ async function getGamesByPlatform(req, res, next) {
   }
 };   
 
+// filter games if 
 async function saveGame(gameData) {
 
-  console.log(gameData, "game data to save");
-  await prisma.game.upsert({
-    where: { id: gameData.id },
+  const game = await prisma.game.upsert({
+    where: { igdbId: gameData.igdbId },
     create: gameData,
     update: gameData,
   });
+  return game;
 };
 
 const { prisma } = require("../db/prismaClient.js");
 
-
+// In future save Games with the orignal native Platform id for better catalog game data
 async function saveGames(games) {
   for (const game of games) {
     await mapGameData(game);
   }
 };
 
+// POST REQUESTS 
 
 async function getCover(game, options) {
 
-  console.log(game , "game in get cover");
-
     if (game.cover) {
       const response = await apicalypse(options)
-      .fields('url, game, image_id')  // image_id is used to coonstruct image URL 'fast responses'
+      .fields('url, game, image_id, width, height')  // image_id is used to coonstruct image URL 'fast responses'
       .where(`game = ${game.id};`)
       .request('/covers');
 
@@ -189,10 +189,10 @@ async function getScreenshots(game, options) {
 
 async function getGenre(game, options) {
 
-  if (game.genre) {
+  if (game.genres) {
     const response = await apicalypse(options)
     .fields('name, slug')
-    .where(`game = ${game.id}`)
+    .where(`id = ${game.genres[0]}`)
     .request('/genres')
 
     const genresResponse = response.data;
@@ -216,13 +216,10 @@ async function mapGameData(game) {
   const gameCover = await getCover(game, options);
   const gameScreenshots = await getScreenshots(game, options);
   const gameGenre = await getGenre(game, options);
-  
-
-  console.log(gameCover, "game cover");
 
 
   const gameData = {
-    id: game.id,
+    igdbId: game.id,
     name: game.name,
     slug: game.slug,
     summary: game.summary || null,
@@ -236,10 +233,10 @@ async function mapGameData(game) {
     url: game.url || null,
   };
 
-  await saveGame(gameData);
-  await handleCreateCover(gameCover);
-  await handleCreateScreenshots(gameScreenshots);
-  await handleCreateGenre(gameGenre);
+  const savedGame = await saveGame(gameData);
+  await handleCreateCover(gameCover, savedGame);
+  await handleCreateScreenshots(gameScreenshots, savedGame);
+  await handleCreateGenre(gameGenre, savedGame);
 };
 
 

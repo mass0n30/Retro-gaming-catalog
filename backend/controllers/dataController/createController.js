@@ -30,56 +30,75 @@ async function handleCreateUser(req, res, next) {
   }
 };
 
-  async function handleCreateCover(gameCover) {
+  async function handleCreateCover(gameCover, game) {
     if (gameCover) {
+      console.log(gameCover, "gamecover")
       await prisma.cover.upsert({
-        where: { id: gameCover.id },
+        where: { igdbId: gameCover.id },
         create: {
           url: gameCover.url,
-          gameId: gameCover.game,
+          gameId: game.id,
           imageId: gameCover.image_id,
+          igdbId: gameCover.id,
+          height: gameCover.height,
+          width: gameCover.width
         },
         update: {
           url: gameCover.url,
-          gameId: gameCover.game,
+          gameId: game.id,
           imageId: gameCover.image_id,
+          height: gameCover.height,
+          width: gameCover.width
         },
       });
     }
   };
 
-  async function handleCreateScreenshots(gameScreenshots) {
+  async function handleCreateScreenshots(gameScreenshots, game) {
     if (gameScreenshots) {
-      await Promise.all(
-        gameScreenshots.map((screenshot) => {
-          prisma.screenshot.upsert({
-            where: { id: screenshot.id },
-            create: { 
-              imageId: screenshot.image_id, 
-              url: screenshot.url,
-              height: screenshot.height,
-              width: screenshot.width,
-              gameId: screenshot.game
-            },
-            update: { 
-              imageId: screenshot.image_id, 
-              url: screenshot.url,
-              gameId: screenshot.game
-            },
-          });
-        }));
+    await Promise.all(
+      gameScreenshots.map(async (screenshot) => {
+        await prisma.screenshot.upsert({
+          where: { igdbId: screenshot.id },
+          create: { 
+            imageId: screenshot.image_id, 
+            url: screenshot.url,
+            height: screenshot.height,
+            width: screenshot.width,
+            gameId: game.id,
+            igdbId: screenshot.id,
+          },
+          update: { 
+            imageId: screenshot.image_id, 
+            url: screenshot.url,
+            gameId: game.id,
+            height: screenshot.height,
+            width: screenshot.width,
+          },
+        });
+      })
+    );
     }
   };
 
-  async function handleCreateGenre(gameGenres) {
+  async function handleCreateGenre(gameGenres, game) {
     if (gameGenres) {
-      gameGenres.map((genre) => {
-        prisma.genre.upsert({
-          where: { id: genre.id },
-          update: { name: genre.name, slug: genre.slug },
-          create: { id: genre.id, name: genre.name, slug: genre.slug },
-        });
-      });
+      await Promise.all(
+        gameGenres.map(async (genre) => {
+          await prisma.genre.upsert({
+            where: { igdbId: genre.id },
+            create: { 
+              igdbId: genre.id,
+              name: genre.name,
+              slug: genre.slug,
+            },
+            update: { 
+              name: genre.name, 
+              slug: genre.slug 
+            },
+          });
+        })
+      );
     }
   };
 
