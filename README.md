@@ -3,6 +3,8 @@ Project Details
 
 BACKEND directory:
 
+Image size docs: https://api-docs.igdb.com/#reference
+
 Cache Image responses (screenshots): https://api-docs.igdb.com/#images
 
 I plan to cache a catalog of games storing lots of the more popular,

@@ -81,28 +81,33 @@ async function handleCreateUser(req, res, next) {
     }
   };
 
-  async function handleCreateGenre(gameGenres, game) {
+  async function handleCreateGenreUpdatePlatform(gameGenres, game, platforms) {
     if (gameGenres) {
-      await Promise.all(
+      const genres = await Promise.all(
         gameGenres.map(async (genre) => {
-          await prisma.genre.upsert({
+          return prisma.genre.upsert({
             where: { igdbId: genre.id },
-            create: { 
-              igdbId: genre.id,
-              name: genre.name,
-              slug: genre.slug,
-            },
-            update: { 
-              name: genre.name, 
-              slug: genre.slug 
-            },
+            update: { name: genre.name, slug: genre.slug },
+            create: { igdbId: genre.id, name: genre.name, slug: genre.slug },
           });
         })
       );
+
+      await prisma.game.update({
+        where: { id: game.id },
+        data: {
+          genres: {
+            connect: genres.map((genre) => ({ id: genre.id })),
+          },
+          platforms: {
+            connect: platforms.map((platform) => ({id: platform}))
+          }
+        },
+      });
     }
   };
 
 
 
 
-module.exports = { handleCreateUser, handleCreateCover, handleCreateScreenshots, handleCreateGenre };
+module.exports = { handleCreateUser, handleCreateCover, handleCreateScreenshots, handleCreateGenreUpdatePlatform };

@@ -1,3 +1,4 @@
+
 let authenticationToken = null;
 
 const apicalypse = require('apicalypse').default;
@@ -73,7 +74,7 @@ async function getGamesByYear(req, res, next) {
     `) 
     .where(`first_release_date >= ${new Date(year, 0).getTime() / 1000} & first_release_date < ${new Date(year + 1, 0).getTime() / 1000} & total_rating > 70 & total_rating_count > 20;`)
     .sort('total_rating desc')
-    .limit(1)
+    .limit(pageSize)
     .offset(offset)
 
     .request('/games'); 
@@ -127,7 +128,9 @@ async function getGamesByPlatform(req, res, next) {
   }
 };   
 
-// filter games if 
+  const {allPlatFormsData} = require('../db/platformPopulate.js');
+
+
 async function saveGame(gameData) {
 
   const game = await prisma.game.upsert({
@@ -140,10 +143,31 @@ async function saveGame(gameData) {
 
 const { prisma } = require("../db/prismaClient.js");
 
-// In future save Games with the orignal native Platform id for better catalog game data
+// return if game is on any platforms, returning platform id's for map function
+// !!!! perhaps only return the original release console ??
+function filterGame(game) {
+  const platformIds = [];
+
+  for (i = 0; i < allPlatFormsData.length; i++) {
+    for (j = 0; j < game.platforms.length; j++) {
+      if (game.platforms[j] == allPlatFormsData[i].id) {
+        platformIds.push(game.platforms[j]);
+      }
+    }
+  };
+  if (platformIds.length > 0) {
+    return platformIds;
+  }
+  return null;
+};
+
+// filter games by platforms
 async function saveGames(games) {
   for (const game of games) {
-    await mapGameData(game);
+    const platformIds = filterGame(game);
+    if (platformIds) {
+      await mapGameData(game, platformIds);
+    }
   }
 };
 
@@ -207,17 +231,18 @@ async function getGenre(game, options) {
 };
 
 
-const { handleCreateCover, handleCreateScreenshots, handleCreateGenre } = require('../controllers/dataController/createController');
+const { handleCreateCover, handleCreateScreenshots, handleCreateGenreUpdatePlatform } = require('../controllers/dataController/createController');
 
-async function mapGameData(game) {
+async function mapGameData(game, platforms) {
 
   const options = await requestOptions();
 
+  // fetching for table relations to Game table in DB
   const gameCover = await getCover(game, options);
   const gameScreenshots = await getScreenshots(game, options);
   const gameGenre = await getGenre(game, options);
 
-
+ // mapping game obj
   const gameData = {
     igdbId: game.id,
     name: game.name,
@@ -233,10 +258,11 @@ async function mapGameData(game) {
     url: game.url || null,
   };
 
+  // updating DB 
   const savedGame = await saveGame(gameData);
   await handleCreateCover(gameCover, savedGame);
   await handleCreateScreenshots(gameScreenshots, savedGame);
-  await handleCreateGenre(gameGenre, savedGame);
+  await handleCreateGenreUpdatePlatform(gameGenre, savedGame, platforms);
 };
 
 
