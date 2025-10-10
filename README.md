@@ -10,6 +10,11 @@ Cache Image responses (screenshots): https://api-docs.igdb.com/#images
 I plan to cache a catalog of games storing lots of the more popular,
 upon user search if game not in db hit IGDB API for request. Cover images and screenshots 
 
+to do: 
+- double check prisma schema and igdb docs for fetches
+- set original release console within update platforms function
+- convert dates and pixels?
+
 
 
 pseudo:

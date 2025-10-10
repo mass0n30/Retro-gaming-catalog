@@ -3600,6 +3600,7 @@ export namespace Prisma {
     summary: string | null
     storyline: string | null
     firstReleaseDate: Date | null
+    originalPlatform: string | null
     coverUrl: string | null
     rating: number | null
     aggregatedRating: number | null
@@ -3616,6 +3617,7 @@ export namespace Prisma {
     summary: string | null
     storyline: string | null
     firstReleaseDate: Date | null
+    originalPlatform: string | null
     coverUrl: string | null
     rating: number | null
     aggregatedRating: number | null
@@ -3632,6 +3634,7 @@ export namespace Prisma {
     summary: number
     storyline: number
     firstReleaseDate: number
+    originalPlatform: number
     coverUrl: number
     rating: number
     aggregatedRating: number
@@ -3668,6 +3671,7 @@ export namespace Prisma {
     summary?: true
     storyline?: true
     firstReleaseDate?: true
+    originalPlatform?: true
     coverUrl?: true
     rating?: true
     aggregatedRating?: true
@@ -3684,6 +3688,7 @@ export namespace Prisma {
     summary?: true
     storyline?: true
     firstReleaseDate?: true
+    originalPlatform?: true
     coverUrl?: true
     rating?: true
     aggregatedRating?: true
@@ -3700,6 +3705,7 @@ export namespace Prisma {
     summary?: true
     storyline?: true
     firstReleaseDate?: true
+    originalPlatform?: true
     coverUrl?: true
     rating?: true
     aggregatedRating?: true
@@ -3803,6 +3809,7 @@ export namespace Prisma {
     summary: string | null
     storyline: string | null
     firstReleaseDate: Date | null
+    originalPlatform: string | null
     coverUrl: string | null
     rating: number | null
     aggregatedRating: number | null
@@ -3838,6 +3845,7 @@ export namespace Prisma {
     summary?: boolean
     storyline?: boolean
     firstReleaseDate?: boolean
+    originalPlatform?: boolean
     coverUrl?: boolean
     rating?: boolean
     aggregatedRating?: boolean
@@ -3859,6 +3867,7 @@ export namespace Prisma {
     summary?: boolean
     storyline?: boolean
     firstReleaseDate?: boolean
+    originalPlatform?: boolean
     coverUrl?: boolean
     rating?: boolean
     aggregatedRating?: boolean
@@ -3875,6 +3884,7 @@ export namespace Prisma {
     summary?: boolean
     storyline?: boolean
     firstReleaseDate?: boolean
+    originalPlatform?: boolean
     coverUrl?: boolean
     rating?: boolean
     aggregatedRating?: boolean
@@ -3891,6 +3901,7 @@ export namespace Prisma {
     summary?: boolean
     storyline?: boolean
     firstReleaseDate?: boolean
+    originalPlatform?: boolean
     coverUrl?: boolean
     rating?: boolean
     aggregatedRating?: boolean
@@ -3899,7 +3910,7 @@ export namespace Prisma {
     url?: boolean
   }
 
-  export type GameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "igdbId" | "name" | "slug" | "summary" | "storyline" | "firstReleaseDate" | "coverUrl" | "rating" | "aggregatedRating" | "totalRating" | "totalRatingCount" | "url", ExtArgs["result"]["game"]>
+  export type GameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "igdbId" | "name" | "slug" | "summary" | "storyline" | "firstReleaseDate" | "originalPlatform" | "coverUrl" | "rating" | "aggregatedRating" | "totalRating" | "totalRatingCount" | "url", ExtArgs["result"]["game"]>
   export type GameInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     genres?: boolean | Game$genresArgs<ExtArgs>
     platforms?: boolean | Game$platformsArgs<ExtArgs>
@@ -3926,6 +3937,7 @@ export namespace Prisma {
       summary: string | null
       storyline: string | null
       firstReleaseDate: Date | null
+      originalPlatform: string | null
       coverUrl: string | null
       rating: number | null
       aggregatedRating: number | null
@@ -4366,6 +4378,7 @@ export namespace Prisma {
     readonly summary: FieldRef<"Game", 'String'>
     readonly storyline: FieldRef<"Game", 'String'>
     readonly firstReleaseDate: FieldRef<"Game", 'DateTime'>
+    readonly originalPlatform: FieldRef<"Game", 'String'>
     readonly coverUrl: FieldRef<"Game", 'String'>
     readonly rating: FieldRef<"Game", 'Float'>
     readonly aggregatedRating: FieldRef<"Game", 'Float'>
@@ -4888,12 +4901,14 @@ export namespace Prisma {
 
   export type PlatformAvgAggregateOutputType = {
     id: number | null
+    releaseOrder: number | null
     generation: number | null
     platformLogo: number | null
   }
 
   export type PlatformSumAggregateOutputType = {
     id: number | null
+    releaseOrder: number | null
     generation: number | null
     platformLogo: number | null
   }
@@ -4901,6 +4916,7 @@ export namespace Prisma {
   export type PlatformMinAggregateOutputType = {
     id: number | null
     name: string | null
+    releaseOrder: number | null
     abbreviation: string | null
     generation: number | null
     slug: string | null
@@ -4910,6 +4926,7 @@ export namespace Prisma {
   export type PlatformMaxAggregateOutputType = {
     id: number | null
     name: string | null
+    releaseOrder: number | null
     abbreviation: string | null
     generation: number | null
     slug: string | null
@@ -4919,6 +4936,7 @@ export namespace Prisma {
   export type PlatformCountAggregateOutputType = {
     id: number
     name: number
+    releaseOrder: number
     abbreviation: number
     generation: number
     slug: number
@@ -4929,12 +4947,14 @@ export namespace Prisma {
 
   export type PlatformAvgAggregateInputType = {
     id?: true
+    releaseOrder?: true
     generation?: true
     platformLogo?: true
   }
 
   export type PlatformSumAggregateInputType = {
     id?: true
+    releaseOrder?: true
     generation?: true
     platformLogo?: true
   }
@@ -4942,6 +4962,7 @@ export namespace Prisma {
   export type PlatformMinAggregateInputType = {
     id?: true
     name?: true
+    releaseOrder?: true
     abbreviation?: true
     generation?: true
     slug?: true
@@ -4951,6 +4972,7 @@ export namespace Prisma {
   export type PlatformMaxAggregateInputType = {
     id?: true
     name?: true
+    releaseOrder?: true
     abbreviation?: true
     generation?: true
     slug?: true
@@ -4960,6 +4982,7 @@ export namespace Prisma {
   export type PlatformCountAggregateInputType = {
     id?: true
     name?: true
+    releaseOrder?: true
     abbreviation?: true
     generation?: true
     slug?: true
@@ -5056,6 +5079,7 @@ export namespace Prisma {
   export type PlatformGroupByOutputType = {
     id: number
     name: string
+    releaseOrder: number | null
     abbreviation: string | null
     generation: number | null
     slug: string
@@ -5084,6 +5108,7 @@ export namespace Prisma {
   export type PlatformSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    releaseOrder?: boolean
     abbreviation?: boolean
     generation?: boolean
     slug?: boolean
@@ -5095,6 +5120,7 @@ export namespace Prisma {
   export type PlatformSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    releaseOrder?: boolean
     abbreviation?: boolean
     generation?: boolean
     slug?: boolean
@@ -5104,6 +5130,7 @@ export namespace Prisma {
   export type PlatformSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    releaseOrder?: boolean
     abbreviation?: boolean
     generation?: boolean
     slug?: boolean
@@ -5113,13 +5140,14 @@ export namespace Prisma {
   export type PlatformSelectScalar = {
     id?: boolean
     name?: boolean
+    releaseOrder?: boolean
     abbreviation?: boolean
     generation?: boolean
     slug?: boolean
     platformLogo?: boolean
   }
 
-  export type PlatformOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "abbreviation" | "generation" | "slug" | "platformLogo", ExtArgs["result"]["platform"]>
+  export type PlatformOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "releaseOrder" | "abbreviation" | "generation" | "slug" | "platformLogo", ExtArgs["result"]["platform"]>
   export type PlatformInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     games?: boolean | Platform$gamesArgs<ExtArgs>
     _count?: boolean | PlatformCountOutputTypeDefaultArgs<ExtArgs>
@@ -5135,6 +5163,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
+      releaseOrder: number | null
       abbreviation: string | null
       generation: number | null
       slug: string
@@ -5565,6 +5594,7 @@ export namespace Prisma {
   interface PlatformFieldRefs {
     readonly id: FieldRef<"Platform", 'Int'>
     readonly name: FieldRef<"Platform", 'String'>
+    readonly releaseOrder: FieldRef<"Platform", 'Int'>
     readonly abbreviation: FieldRef<"Platform", 'String'>
     readonly generation: FieldRef<"Platform", 'Int'>
     readonly slug: FieldRef<"Platform", 'String'>
@@ -9407,6 +9437,7 @@ export namespace Prisma {
     summary: 'summary',
     storyline: 'storyline',
     firstReleaseDate: 'firstReleaseDate',
+    originalPlatform: 'originalPlatform',
     coverUrl: 'coverUrl',
     rating: 'rating',
     aggregatedRating: 'aggregatedRating',
@@ -9421,6 +9452,7 @@ export namespace Prisma {
   export const PlatformScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    releaseOrder: 'releaseOrder',
     abbreviation: 'abbreviation',
     generation: 'generation',
     slug: 'slug',
@@ -9683,6 +9715,7 @@ export namespace Prisma {
     summary?: StringNullableFilter<"Game"> | string | null
     storyline?: StringNullableFilter<"Game"> | string | null
     firstReleaseDate?: DateTimeNullableFilter<"Game"> | Date | string | null
+    originalPlatform?: StringNullableFilter<"Game"> | string | null
     coverUrl?: StringNullableFilter<"Game"> | string | null
     rating?: FloatNullableFilter<"Game"> | number | null
     aggregatedRating?: FloatNullableFilter<"Game"> | number | null
@@ -9703,6 +9736,7 @@ export namespace Prisma {
     summary?: SortOrderInput | SortOrder
     storyline?: SortOrderInput | SortOrder
     firstReleaseDate?: SortOrderInput | SortOrder
+    originalPlatform?: SortOrderInput | SortOrder
     coverUrl?: SortOrderInput | SortOrder
     rating?: SortOrderInput | SortOrder
     aggregatedRating?: SortOrderInput | SortOrder
@@ -9726,6 +9760,7 @@ export namespace Prisma {
     summary?: StringNullableFilter<"Game"> | string | null
     storyline?: StringNullableFilter<"Game"> | string | null
     firstReleaseDate?: DateTimeNullableFilter<"Game"> | Date | string | null
+    originalPlatform?: StringNullableFilter<"Game"> | string | null
     coverUrl?: StringNullableFilter<"Game"> | string | null
     rating?: FloatNullableFilter<"Game"> | number | null
     aggregatedRating?: FloatNullableFilter<"Game"> | number | null
@@ -9746,6 +9781,7 @@ export namespace Prisma {
     summary?: SortOrderInput | SortOrder
     storyline?: SortOrderInput | SortOrder
     firstReleaseDate?: SortOrderInput | SortOrder
+    originalPlatform?: SortOrderInput | SortOrder
     coverUrl?: SortOrderInput | SortOrder
     rating?: SortOrderInput | SortOrder
     aggregatedRating?: SortOrderInput | SortOrder
@@ -9770,6 +9806,7 @@ export namespace Prisma {
     summary?: StringNullableWithAggregatesFilter<"Game"> | string | null
     storyline?: StringNullableWithAggregatesFilter<"Game"> | string | null
     firstReleaseDate?: DateTimeNullableWithAggregatesFilter<"Game"> | Date | string | null
+    originalPlatform?: StringNullableWithAggregatesFilter<"Game"> | string | null
     coverUrl?: StringNullableWithAggregatesFilter<"Game"> | string | null
     rating?: FloatNullableWithAggregatesFilter<"Game"> | number | null
     aggregatedRating?: FloatNullableWithAggregatesFilter<"Game"> | number | null
@@ -9784,6 +9821,7 @@ export namespace Prisma {
     NOT?: PlatformWhereInput | PlatformWhereInput[]
     id?: IntFilter<"Platform"> | number
     name?: StringFilter<"Platform"> | string
+    releaseOrder?: IntNullableFilter<"Platform"> | number | null
     abbreviation?: StringNullableFilter<"Platform"> | string | null
     generation?: IntNullableFilter<"Platform"> | number | null
     slug?: StringFilter<"Platform"> | string
@@ -9794,6 +9832,7 @@ export namespace Prisma {
   export type PlatformOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    releaseOrder?: SortOrderInput | SortOrder
     abbreviation?: SortOrderInput | SortOrder
     generation?: SortOrderInput | SortOrder
     slug?: SortOrder
@@ -9803,6 +9842,7 @@ export namespace Prisma {
 
   export type PlatformWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    releaseOrder?: number
     AND?: PlatformWhereInput | PlatformWhereInput[]
     OR?: PlatformWhereInput[]
     NOT?: PlatformWhereInput | PlatformWhereInput[]
@@ -9812,11 +9852,12 @@ export namespace Prisma {
     slug?: StringFilter<"Platform"> | string
     platformLogo?: IntNullableFilter<"Platform"> | number | null
     games?: GameListRelationFilter
-  }, "id">
+  }, "id" | "releaseOrder">
 
   export type PlatformOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    releaseOrder?: SortOrderInput | SortOrder
     abbreviation?: SortOrderInput | SortOrder
     generation?: SortOrderInput | SortOrder
     slug?: SortOrder
@@ -9834,6 +9875,7 @@ export namespace Prisma {
     NOT?: PlatformScalarWhereWithAggregatesInput | PlatformScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Platform"> | number
     name?: StringWithAggregatesFilter<"Platform"> | string
+    releaseOrder?: IntNullableWithAggregatesFilter<"Platform"> | number | null
     abbreviation?: StringNullableWithAggregatesFilter<"Platform"> | string | null
     generation?: IntNullableWithAggregatesFilter<"Platform"> | number | null
     slug?: StringWithAggregatesFilter<"Platform"> | string
@@ -10149,6 +10191,7 @@ export namespace Prisma {
     summary?: string | null
     storyline?: string | null
     firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
     coverUrl?: string | null
     rating?: number | null
     aggregatedRating?: number | null
@@ -10169,6 +10212,7 @@ export namespace Prisma {
     summary?: string | null
     storyline?: string | null
     firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
     coverUrl?: string | null
     rating?: number | null
     aggregatedRating?: number | null
@@ -10188,6 +10232,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -10208,6 +10253,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -10228,6 +10274,7 @@ export namespace Prisma {
     summary?: string | null
     storyline?: string | null
     firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
     coverUrl?: string | null
     rating?: number | null
     aggregatedRating?: number | null
@@ -10243,6 +10290,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -10259,6 +10307,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -10270,6 +10319,7 @@ export namespace Prisma {
   export type PlatformCreateInput = {
     id: number
     name: string
+    releaseOrder?: number | null
     abbreviation?: string | null
     generation?: number | null
     slug: string
@@ -10280,6 +10330,7 @@ export namespace Prisma {
   export type PlatformUncheckedCreateInput = {
     id: number
     name: string
+    releaseOrder?: number | null
     abbreviation?: string | null
     generation?: number | null
     slug: string
@@ -10290,6 +10341,7 @@ export namespace Prisma {
   export type PlatformUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    releaseOrder?: NullableIntFieldUpdateOperationsInput | number | null
     abbreviation?: NullableStringFieldUpdateOperationsInput | string | null
     generation?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
@@ -10300,6 +10352,7 @@ export namespace Prisma {
   export type PlatformUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    releaseOrder?: NullableIntFieldUpdateOperationsInput | number | null
     abbreviation?: NullableStringFieldUpdateOperationsInput | string | null
     generation?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
@@ -10310,6 +10363,7 @@ export namespace Prisma {
   export type PlatformCreateManyInput = {
     id: number
     name: string
+    releaseOrder?: number | null
     abbreviation?: string | null
     generation?: number | null
     slug: string
@@ -10319,6 +10373,7 @@ export namespace Prisma {
   export type PlatformUpdateManyMutationInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    releaseOrder?: NullableIntFieldUpdateOperationsInput | number | null
     abbreviation?: NullableStringFieldUpdateOperationsInput | string | null
     generation?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
@@ -10328,6 +10383,7 @@ export namespace Prisma {
   export type PlatformUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    releaseOrder?: NullableIntFieldUpdateOperationsInput | number | null
     abbreviation?: NullableStringFieldUpdateOperationsInput | string | null
     generation?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
@@ -10774,6 +10830,7 @@ export namespace Prisma {
     summary?: SortOrder
     storyline?: SortOrder
     firstReleaseDate?: SortOrder
+    originalPlatform?: SortOrder
     coverUrl?: SortOrder
     rating?: SortOrder
     aggregatedRating?: SortOrder
@@ -10799,6 +10856,7 @@ export namespace Prisma {
     summary?: SortOrder
     storyline?: SortOrder
     firstReleaseDate?: SortOrder
+    originalPlatform?: SortOrder
     coverUrl?: SortOrder
     rating?: SortOrder
     aggregatedRating?: SortOrder
@@ -10815,6 +10873,7 @@ export namespace Prisma {
     summary?: SortOrder
     storyline?: SortOrder
     firstReleaseDate?: SortOrder
+    originalPlatform?: SortOrder
     coverUrl?: SortOrder
     rating?: SortOrder
     aggregatedRating?: SortOrder
@@ -10909,6 +10968,7 @@ export namespace Prisma {
   export type PlatformCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    releaseOrder?: SortOrder
     abbreviation?: SortOrder
     generation?: SortOrder
     slug?: SortOrder
@@ -10917,6 +10977,7 @@ export namespace Prisma {
 
   export type PlatformAvgOrderByAggregateInput = {
     id?: SortOrder
+    releaseOrder?: SortOrder
     generation?: SortOrder
     platformLogo?: SortOrder
   }
@@ -10924,6 +10985,7 @@ export namespace Prisma {
   export type PlatformMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    releaseOrder?: SortOrder
     abbreviation?: SortOrder
     generation?: SortOrder
     slug?: SortOrder
@@ -10933,6 +10995,7 @@ export namespace Prisma {
   export type PlatformMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    releaseOrder?: SortOrder
     abbreviation?: SortOrder
     generation?: SortOrder
     slug?: SortOrder
@@ -10941,6 +11004,7 @@ export namespace Prisma {
 
   export type PlatformSumOrderByAggregateInput = {
     id?: SortOrder
+    releaseOrder?: SortOrder
     generation?: SortOrder
     platformLogo?: SortOrder
   }
@@ -11619,6 +11683,7 @@ export namespace Prisma {
   export type PlatformCreateWithoutGamesInput = {
     id: number
     name: string
+    releaseOrder?: number | null
     abbreviation?: string | null
     generation?: number | null
     slug: string
@@ -11628,6 +11693,7 @@ export namespace Prisma {
   export type PlatformUncheckedCreateWithoutGamesInput = {
     id: number
     name: string
+    releaseOrder?: number | null
     abbreviation?: string | null
     generation?: number | null
     slug: string
@@ -11741,6 +11807,7 @@ export namespace Prisma {
     NOT?: PlatformScalarWhereInput | PlatformScalarWhereInput[]
     id?: IntFilter<"Platform"> | number
     name?: StringFilter<"Platform"> | string
+    releaseOrder?: IntNullableFilter<"Platform"> | number | null
     abbreviation?: StringNullableFilter<"Platform"> | string | null
     generation?: IntNullableFilter<"Platform"> | number | null
     slug?: StringFilter<"Platform"> | string
@@ -11812,6 +11879,7 @@ export namespace Prisma {
     summary?: string | null
     storyline?: string | null
     firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
     coverUrl?: string | null
     rating?: number | null
     aggregatedRating?: number | null
@@ -11831,6 +11899,7 @@ export namespace Prisma {
     summary?: string | null
     storyline?: string | null
     firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
     coverUrl?: string | null
     rating?: number | null
     aggregatedRating?: number | null
@@ -11874,6 +11943,7 @@ export namespace Prisma {
     summary?: StringNullableFilter<"Game"> | string | null
     storyline?: StringNullableFilter<"Game"> | string | null
     firstReleaseDate?: DateTimeNullableFilter<"Game"> | Date | string | null
+    originalPlatform?: StringNullableFilter<"Game"> | string | null
     coverUrl?: StringNullableFilter<"Game"> | string | null
     rating?: FloatNullableFilter<"Game"> | number | null
     aggregatedRating?: FloatNullableFilter<"Game"> | number | null
@@ -11889,6 +11959,7 @@ export namespace Prisma {
     summary?: string | null
     storyline?: string | null
     firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
     coverUrl?: string | null
     rating?: number | null
     aggregatedRating?: number | null
@@ -11908,6 +11979,7 @@ export namespace Prisma {
     summary?: string | null
     storyline?: string | null
     firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
     coverUrl?: string | null
     rating?: number | null
     aggregatedRating?: number | null
@@ -11947,6 +12019,7 @@ export namespace Prisma {
     summary?: string | null
     storyline?: string | null
     firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
     coverUrl?: string | null
     rating?: number | null
     aggregatedRating?: number | null
@@ -11966,6 +12039,7 @@ export namespace Prisma {
     summary?: string | null
     storyline?: string | null
     firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
     coverUrl?: string | null
     rating?: number | null
     aggregatedRating?: number | null
@@ -12000,6 +12074,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -12019,6 +12094,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -12037,6 +12113,7 @@ export namespace Prisma {
     summary?: string | null
     storyline?: string | null
     firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
     coverUrl?: string | null
     rating?: number | null
     aggregatedRating?: number | null
@@ -12056,6 +12133,7 @@ export namespace Prisma {
     summary?: string | null
     storyline?: string | null
     firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
     coverUrl?: string | null
     rating?: number | null
     aggregatedRating?: number | null
@@ -12090,6 +12168,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -12109,6 +12188,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -12161,6 +12241,7 @@ export namespace Prisma {
   export type PlatformUpdateWithoutGamesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    releaseOrder?: NullableIntFieldUpdateOperationsInput | number | null
     abbreviation?: NullableStringFieldUpdateOperationsInput | string | null
     generation?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
@@ -12170,6 +12251,7 @@ export namespace Prisma {
   export type PlatformUncheckedUpdateWithoutGamesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    releaseOrder?: NullableIntFieldUpdateOperationsInput | number | null
     abbreviation?: NullableStringFieldUpdateOperationsInput | string | null
     generation?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
@@ -12179,6 +12261,7 @@ export namespace Prisma {
   export type PlatformUncheckedUpdateManyWithoutGamesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    releaseOrder?: NullableIntFieldUpdateOperationsInput | number | null
     abbreviation?: NullableStringFieldUpdateOperationsInput | string | null
     generation?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
@@ -12244,6 +12327,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -12263,6 +12347,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -12282,6 +12367,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -12297,6 +12383,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -12316,6 +12403,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -12335,6 +12423,7 @@ export namespace Prisma {
     summary?: NullableStringFieldUpdateOperationsInput | string | null
     storyline?: NullableStringFieldUpdateOperationsInput | string | null
     firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
     coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableFloatFieldUpdateOperationsInput | number | null
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null

@@ -145,6 +145,7 @@ exports.Prisma.GameScalarFieldEnum = {
   summary: 'summary',
   storyline: 'storyline',
   firstReleaseDate: 'firstReleaseDate',
+  originalPlatform: 'originalPlatform',
   coverUrl: 'coverUrl',
   rating: 'rating',
   aggregatedRating: 'aggregatedRating',
@@ -156,6 +157,7 @@ exports.Prisma.GameScalarFieldEnum = {
 exports.Prisma.PlatformScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  releaseOrder: 'releaseOrder',
   abbreviation: 'abbreviation',
   generation: 'generation',
   slug: 'slug',

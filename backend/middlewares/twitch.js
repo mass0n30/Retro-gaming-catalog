@@ -44,13 +44,13 @@ async function requestOptions() {
 async function getGamesByYear(req, res, next) { 
   try {   
     const options = await requestOptions();
-    const year = 1985; 
+    const year = 2000; 
 
     // setting pagination variables
     const page =  1 //  parseInt(req.query.page) || 1;
 
     // items per page
-    const pageSize = 10;
+    const pageSize = 500;
     const offset = (page - 1) * pageSize;
 
     const results = await apicalypse(options)
@@ -75,7 +75,7 @@ async function getGamesByYear(req, res, next) {
     .where(`first_release_date >= ${new Date(year, 0).getTime() / 1000} & first_release_date < ${new Date(year + 1, 0).getTime() / 1000} & total_rating > 70 & total_rating_count > 20;`)
     .sort('total_rating desc')
     .limit(pageSize)
-    .offset(offset)
+   // .offset(offset)
 
     .request('/games'); 
 
@@ -147,16 +147,18 @@ const { prisma } = require("../db/prismaClient.js");
 // !!!! perhaps only return the original release console ??
 function filterGame(game) {
   const platformIds = [];
+  const releaseOrderIds = [];
 
   for (i = 0; i < allPlatFormsData.length; i++) {
     for (j = 0; j < game.platforms.length; j++) {
       if (game.platforms[j] == allPlatFormsData[i].id) {
         platformIds.push(game.platforms[j]);
+        releaseOrderIds.push(allPlatFormsData[i].releaseOrder);
       }
     }
   };
   if (platformIds.length > 0) {
-    return platformIds;
+    return {platformIds, releaseOrderIds};
   }
   return null;
 };
@@ -164,9 +166,9 @@ function filterGame(game) {
 // filter games by platforms
 async function saveGames(games) {
   for (const game of games) {
-    const platformIds = filterGame(game);
-    if (platformIds) {
-      await mapGameData(game, platformIds);
+    const platformData = filterGame(game);
+    if (platformData) {
+      await mapGameData(game, platformData);
     }
   }
 };
@@ -231,9 +233,10 @@ async function getGenre(game, options) {
 };
 
 
-const { handleCreateCover, handleCreateScreenshots, handleCreateGenreUpdatePlatform } = require('../controllers/dataController/createController');
+const { handleCreateCover, handleCreateScreenshots, handleCreateGenre} = require('../controllers/dataController/createController');
+const { handleUpdateGamePlatforms } = require('../controllers/dataController/updateController.js');
 
-async function mapGameData(game, platforms) {
+async function mapGameData(game, platformData) {
 
   const options = await requestOptions();
 
@@ -262,7 +265,8 @@ async function mapGameData(game, platforms) {
   const savedGame = await saveGame(gameData);
   await handleCreateCover(gameCover, savedGame);
   await handleCreateScreenshots(gameScreenshots, savedGame);
-  await handleCreateGenreUpdatePlatform(gameGenre, savedGame, platforms);
+  await handleCreateGenre(gameGenre, savedGame);
+  await handleUpdateGamePlatforms(savedGame, platformData);
 };
 
 

@@ -39,6 +39,7 @@ model Game {
   summary          String?   @db.Text
   storyline        String?   @db.Text
   firstReleaseDate DateTime?
+  originalPlatform String?
   coverUrl         String?
   rating           Float?
   aggregatedRating Float?
@@ -56,6 +57,7 @@ model Game {
 model Platform {
   id           Int     @id
   name         String
+  releaseOrder Int?    @unique
   abbreviation String?
   generation   Int?
   slug         String
