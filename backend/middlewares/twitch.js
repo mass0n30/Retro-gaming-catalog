@@ -21,12 +21,14 @@ async function getTwitchToken() {
 
   const data = await response.json();
   authenticationToken = data.access_token;
+  console.log(authenticationToken);
   return data.access_token;
   }
 };
 
 async function requestOptions() {
   const token = await getTwitchToken();
+  console.log(token);
   return {
     queryMethod: 'body', 
     method: 'post',
@@ -55,6 +57,7 @@ async function getGamesByYear(req, res, next) {
 
     const results = await apicalypse(options)
     .fields(`
+      age_ratings,
       name,
       slug,
       summary,
@@ -71,11 +74,11 @@ async function getGamesByYear(req, res, next) {
       involved_companies,
       player_perspectives,
       url
-    `) 
-    .where(`first_release_date >= ${new Date(year, 0).getTime() / 1000} & first_release_date < ${new Date(year + 1, 0).getTime() / 1000} & total_rating > 70 & total_rating_count > 20;`)
+    `)  // & total_rating > 70 & total_rating_count > 20;` (further filtering if needed)
+    .where(`first_release_date >= ${new Date(year, 0).getTime() / 1000} & first_release_date < ${new Date(year + 1, 0).getTime() / 1000}`)
     .sort('total_rating desc')
-    .limit(pageSize)
-   // .offset(offset)
+    .limit(5)
+    .offset(0)
 
     .request('/games'); 
 
@@ -100,6 +103,7 @@ async function getGamesByPlatform(req, res, next) {
     const platformId = 4; 
     const games = await apicalypse(options)
     .fields(`
+      age_ratings,
       name,
       slug,
       summary,
@@ -116,8 +120,8 @@ async function getGamesByPlatform(req, res, next) {
       involved_companies,
       player_perspectives,
       url
-    `)    
-    .where(`platforms = ${platformId} & total_rating_count > 10;`)
+    `) // & total_rating_count > 10; (further filtering)   
+    .where(`platforms = ${platformId} `)
     .limit(pageSize)
     .offset(offset)
     .sort('total_rating desc')
@@ -128,10 +132,12 @@ async function getGamesByPlatform(req, res, next) {
   }
 };   
 
-  const {allPlatFormsData} = require('../db/platformPopulate.js');
+const {allPlatFormsData} = require('../db/platformPopulate.js');
 
 
 async function saveGame(gameData) {
+
+  console.log(gameData.name);
 
   const game = await prisma.game.upsert({
     where: { igdbId: gameData.igdbId },
@@ -232,9 +238,39 @@ async function getGenre(game, options) {
   return null;
 };
 
+async function getAgeRatingCategory(game, options) {
+
+  if (game.age_ratings) {
+    const response = await apicalypse(options)
+    .fields('rating_category')
+    .where(`id = ${game.age_ratings[0]}`)
+    .request('/age_ratings')
+
+    const ratingResponse = await response.data[0];
+
+    if (ratingResponse) {
+    return await getAgeRating(game, ratingResponse.rating_category, options);
+    } 
+  }
+};
+
+async function getAgeRating(game, id, options) {
+  const response = await apicalypse(options)
+  .fields('checksum,created_at,organization,rating,updated_at')
+  .where(`id = ${id}`)
+  .request('/age_rating_categories')
+
+  const ratingResponse = await response.data;
+
+  if (ratingResponse) {
+  return ratingResponse[0].id;
+  } 
+}
+
+
 
 const { handleCreateCover, handleCreateScreenshots, handleCreateGenre} = require('../controllers/dataController/createController');
-const { handleUpdateGamePlatforms } = require('../controllers/dataController/updateController.js');
+const { handleUpdateGamePlatforms, handleUpdateGameAgeRating } = require('../controllers/dataController/updateController.js');
 
 async function mapGameData(game, platformData) {
 
@@ -242,8 +278,16 @@ async function mapGameData(game, platformData) {
 
   // fetching for table relations to Game table in DB
   const gameCover = await getCover(game, options);
+
+  if (gameCover && gameCover.image_id !== undefined) {
+     gameCoverUrl = `https://images.igdb.com/igdb/image/upload/t_cover_big/${gameCover.image_id}.jpg`;
+  } else {
+    gameCoverUrl = null; // or can put a placeholder image
+  }
+
   const gameScreenshots = await getScreenshots(game, options);
   const gameGenre = await getGenre(game, options);
+  const gameAgeRating = await getAgeRatingCategory(game, options);
 
  // mapping game obj
   const gameData = {
@@ -251,10 +295,11 @@ async function mapGameData(game, platformData) {
     name: game.name,
     slug: game.slug,
     summary: game.summary || null,
+    storyline: game.storyline || null,
     firstReleaseDate: game.first_release_date
       ? new Date(game.first_release_date * 1000) 
       : null,
-    coverUrl: `https://images.igdb.com/igdb/image/upload/t_cover_big/${gameCover.image_id}.jpg` || null,
+    coverUrl: gameCoverUrl,
     rating: game.rating || null,
     aggregatedRating: game.aggregated_rating || null,
     totalRatingCount: game.total_rating_count || null,
@@ -263,10 +308,13 @@ async function mapGameData(game, platformData) {
 
   // updating DB 
   const savedGame = await saveGame(gameData);
-  await handleCreateCover(gameCover, savedGame);
+  if (gameCover && gameCover.image_id) {
+    await handleCreateCover(gameCover, savedGame);
+  }
   await handleCreateScreenshots(gameScreenshots, savedGame);
   await handleCreateGenre(gameGenre, savedGame);
-  await handleUpdateGamePlatforms(savedGame, platformData);
+  const updatedGame = await handleUpdateGamePlatforms(savedGame, platformData);
+  await handleUpdateGameAgeRating(gameAgeRating, savedGame);
 };
 
 

@@ -7,7 +7,7 @@ async function handleUpdateGamePlatforms(game, platformData) {
   const originalPlatform = await getOriginalPlatform(platformData.releaseOrderIds);
 
   if (platformData.platformIds) {
-    await prisma.game.update({
+    const updatedGame = await prisma.game.update({
     where: { id: game.id },
     data: {
       platforms: {
@@ -16,13 +16,13 @@ async function handleUpdateGamePlatforms(game, platformData) {
       originalPlatform: originalPlatform.name
      },
     });
+    return updatedGame;
   }
-
 };
 
 async function getOriginalPlatform(releaseOrderIds) {
 
-    releaseOrderIds.sort(function(a, b) {
+  releaseOrderIds.sort(function(a, b) {
     return a - b;
   });
 
@@ -34,4 +34,23 @@ async function getOriginalPlatform(releaseOrderIds) {
     return originalPlatform;
 };
 
-module.exports = { handleUpdateGamePlatforms};
+const {allRatingsData} = require('../../db/platformPopulate.js');
+
+async function handleUpdateGameAgeRating(ageRatingId, game) {
+
+  for (i = 0; i < allRatingsData.length; i++) {
+    if (ageRatingId == allRatingsData[i].id) {
+      ageRatingId = allRatingsData[i].id
+    }
+  };
+
+  if (ageRatingId !== null) {
+    const updatedGame = await prisma.game.update({
+      where: { id: game.id },
+      data: {ageRatingId: ageRatingId},
+    });
+    return updatedGame;
+  }
+};
+
+module.exports = { handleUpdateGamePlatforms, handleUpdateGameAgeRating};

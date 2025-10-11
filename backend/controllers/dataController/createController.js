@@ -32,7 +32,6 @@ async function handleCreateUser(req, res, next) {
 
   async function handleCreateCover(gameCover, game) {
     if (gameCover) {
-      console.log(gameCover, "gamecover")
       await prisma.cover.upsert({
         where: { igdbId: gameCover.id },
         create: {
@@ -82,17 +81,27 @@ async function handleCreateUser(req, res, next) {
   };
 
   async function handleCreateGenre(gameGenres, game) {
-    if (gameGenres) {
-      const genres = await Promise.all(
-        gameGenres.map(async (genre) => {
-          return prisma.genre.upsert({
-            where: { igdbId: genre.id },
-            update: { name: genre.name, slug: genre.slug },
-            create: { igdbId: genre.id, name: genre.name, slug: genre.slug },
-          });
-        })
-      );
+
+    if (gameGenres.length == 0) {
+      return
     }
+    await Promise.all(
+      gameGenres.map( async (genre) => {
+       await prisma.genre.upsert({
+          where: { igdbId: genre.id },
+          update: { name: genre.name, slug: genre.slug },
+          create: { igdbId: genre.id, name: genre.name, slug: genre.slug },
+        })
+      })
+    );
+    await prisma.game.update({
+      where: { id: game.id },
+      data: {
+        genres: {
+          connect: gameGenres.map((genre) => ({ igdbId: genre.id })),
+        },
+      },
+    });
   };
 
 

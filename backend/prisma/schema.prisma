@@ -45,6 +45,7 @@ model User {
   aggregatedRating    Float?
   totalRating         Float?
   totalRatingCount    Int?
+  ageRatingId         Int?
   url                 String?
 
   // Relations
@@ -52,7 +53,18 @@ model User {
   platforms           Platform[]   @relation("GamePlatforms")
   covers              Cover[]      
   screenshots         Screenshot[]
+
+  ageRating           GameRating?  @relation("GameRatingRelation", fields: [ageRatingId], references: [id])
 }
+
+model GameRating {
+  id        Int      @id
+  rating    String
+  description String?
+
+  games     Game[]   @relation("GameRatingRelation")
+}
+
 
 model Platform {
   id            Int       @id 

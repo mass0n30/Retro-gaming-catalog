@@ -15,6 +15,7 @@
     "@quixo3/prisma-session-store": "^3.1.13",
     "all": "^0.0.0",
     "apicalypse": "^1.0.5",
+    "axios": "^1.12.2",
     "bcryptjs": "^3.0.2",
     "connect-pg-simple": "^10.0.0",
     "cors": "^2.8.5",

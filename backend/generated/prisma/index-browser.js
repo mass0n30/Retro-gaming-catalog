@@ -151,7 +151,14 @@ exports.Prisma.GameScalarFieldEnum = {
   aggregatedRating: 'aggregatedRating',
   totalRating: 'totalRating',
   totalRatingCount: 'totalRatingCount',
+  ageRatingId: 'ageRatingId',
   url: 'url'
+};
+
+exports.Prisma.GameRatingScalarFieldEnum = {
+  id: 'id',
+  rating: 'rating',
+  description: 'description'
 };
 
 exports.Prisma.PlatformScalarFieldEnum = {
@@ -211,6 +218,7 @@ exports.Prisma.ModelName = {
   Session: 'Session',
   User: 'User',
   Game: 'Game',
+  GameRating: 'GameRating',
   Platform: 'Platform',
   Genre: 'Genre',
   Cover: 'Cover',

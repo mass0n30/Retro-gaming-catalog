@@ -1,5 +1,8 @@
 Project Details
 
+Built using twitch IGDB API: https://www.igdb.com/api 
+
+Maybe add price chart data after developing (API price options like PriceCharting.com, costs $)
 
 BACKEND directory:
 
@@ -11,9 +14,6 @@ I plan to cache a catalog of games storing lots of the more popular,
 upon user search if game not in db hit IGDB API for request. Cover images and screenshots 
 
 to do: 
-- double check prisma schema and igdb docs for fetches
-- set original release console within update platforms function
-- convert dates and pixels?
 
 
 

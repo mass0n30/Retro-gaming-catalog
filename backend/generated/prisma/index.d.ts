@@ -29,6 +29,11 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Game = $Result.DefaultSelection<Prisma.$GamePayload>
 /**
+ * Model GameRating
+ * 
+ */
+export type GameRating = $Result.DefaultSelection<Prisma.$GameRatingPayload>
+/**
  * Model Platform
  * 
  */
@@ -196,6 +201,16 @@ export class PrismaClient<
     * ```
     */
   get game(): Prisma.GameDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.gameRating`: Exposes CRUD operations for the **GameRating** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GameRatings
+    * const gameRatings = await prisma.gameRating.findMany()
+    * ```
+    */
+  get gameRating(): Prisma.GameRatingDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.platform`: Exposes CRUD operations for the **Platform** model.
@@ -679,6 +694,7 @@ export namespace Prisma {
     Session: 'Session',
     User: 'User',
     Game: 'Game',
+    GameRating: 'GameRating',
     Platform: 'Platform',
     Genre: 'Genre',
     Cover: 'Cover',
@@ -701,7 +717,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "session" | "user" | "game" | "platform" | "genre" | "cover" | "screenshot"
+      modelProps: "session" | "user" | "game" | "gameRating" | "platform" | "genre" | "cover" | "screenshot"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -924,6 +940,80 @@ export namespace Prisma {
           count: {
             args: Prisma.GameCountArgs<ExtArgs>
             result: $Utils.Optional<GameCountAggregateOutputType> | number
+          }
+        }
+      }
+      GameRating: {
+        payload: Prisma.$GameRatingPayload<ExtArgs>
+        fields: Prisma.GameRatingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GameRatingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GameRatingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GameRatingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GameRatingPayload>
+          }
+          findFirst: {
+            args: Prisma.GameRatingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GameRatingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GameRatingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GameRatingPayload>
+          }
+          findMany: {
+            args: Prisma.GameRatingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GameRatingPayload>[]
+          }
+          create: {
+            args: Prisma.GameRatingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GameRatingPayload>
+          }
+          createMany: {
+            args: Prisma.GameRatingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GameRatingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GameRatingPayload>[]
+          }
+          delete: {
+            args: Prisma.GameRatingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GameRatingPayload>
+          }
+          update: {
+            args: Prisma.GameRatingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GameRatingPayload>
+          }
+          deleteMany: {
+            args: Prisma.GameRatingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GameRatingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.GameRatingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GameRatingPayload>[]
+          }
+          upsert: {
+            args: Prisma.GameRatingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GameRatingPayload>
+          }
+          aggregate: {
+            args: Prisma.GameRatingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGameRating>
+          }
+          groupBy: {
+            args: Prisma.GameRatingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GameRatingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GameRatingCountArgs<ExtArgs>
+            result: $Utils.Optional<GameRatingCountAggregateOutputType> | number
           }
         }
       }
@@ -1322,6 +1412,7 @@ export namespace Prisma {
     session?: SessionOmit
     user?: UserOmit
     game?: GameOmit
+    gameRating?: GameRatingOmit
     platform?: PlatformOmit
     genre?: GenreOmit
     cover?: CoverOmit
@@ -1456,6 +1547,37 @@ export namespace Prisma {
    */
   export type GameCountOutputTypeCountScreenshotsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ScreenshotWhereInput
+  }
+
+
+  /**
+   * Count Type GameRatingCountOutputType
+   */
+
+  export type GameRatingCountOutputType = {
+    games: number
+  }
+
+  export type GameRatingCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    games?: boolean | GameRatingCountOutputTypeCountGamesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GameRatingCountOutputType without action
+   */
+  export type GameRatingCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRatingCountOutputType
+     */
+    select?: GameRatingCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GameRatingCountOutputType without action
+   */
+  export type GameRatingCountOutputTypeCountGamesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GameWhereInput
   }
 
 
@@ -3581,6 +3703,7 @@ export namespace Prisma {
     aggregatedRating: number | null
     totalRating: number | null
     totalRatingCount: number | null
+    ageRatingId: number | null
   }
 
   export type GameSumAggregateOutputType = {
@@ -3590,6 +3713,7 @@ export namespace Prisma {
     aggregatedRating: number | null
     totalRating: number | null
     totalRatingCount: number | null
+    ageRatingId: number | null
   }
 
   export type GameMinAggregateOutputType = {
@@ -3606,6 +3730,7 @@ export namespace Prisma {
     aggregatedRating: number | null
     totalRating: number | null
     totalRatingCount: number | null
+    ageRatingId: number | null
     url: string | null
   }
 
@@ -3623,6 +3748,7 @@ export namespace Prisma {
     aggregatedRating: number | null
     totalRating: number | null
     totalRatingCount: number | null
+    ageRatingId: number | null
     url: string | null
   }
 
@@ -3640,6 +3766,7 @@ export namespace Prisma {
     aggregatedRating: number
     totalRating: number
     totalRatingCount: number
+    ageRatingId: number
     url: number
     _all: number
   }
@@ -3652,6 +3779,7 @@ export namespace Prisma {
     aggregatedRating?: true
     totalRating?: true
     totalRatingCount?: true
+    ageRatingId?: true
   }
 
   export type GameSumAggregateInputType = {
@@ -3661,6 +3789,7 @@ export namespace Prisma {
     aggregatedRating?: true
     totalRating?: true
     totalRatingCount?: true
+    ageRatingId?: true
   }
 
   export type GameMinAggregateInputType = {
@@ -3677,6 +3806,7 @@ export namespace Prisma {
     aggregatedRating?: true
     totalRating?: true
     totalRatingCount?: true
+    ageRatingId?: true
     url?: true
   }
 
@@ -3694,6 +3824,7 @@ export namespace Prisma {
     aggregatedRating?: true
     totalRating?: true
     totalRatingCount?: true
+    ageRatingId?: true
     url?: true
   }
 
@@ -3711,6 +3842,7 @@ export namespace Prisma {
     aggregatedRating?: true
     totalRating?: true
     totalRatingCount?: true
+    ageRatingId?: true
     url?: true
     _all?: true
   }
@@ -3815,6 +3947,7 @@ export namespace Prisma {
     aggregatedRating: number | null
     totalRating: number | null
     totalRatingCount: number | null
+    ageRatingId: number | null
     url: string | null
     _count: GameCountAggregateOutputType | null
     _avg: GameAvgAggregateOutputType | null
@@ -3851,11 +3984,13 @@ export namespace Prisma {
     aggregatedRating?: boolean
     totalRating?: boolean
     totalRatingCount?: boolean
+    ageRatingId?: boolean
     url?: boolean
     genres?: boolean | Game$genresArgs<ExtArgs>
     platforms?: boolean | Game$platformsArgs<ExtArgs>
     covers?: boolean | Game$coversArgs<ExtArgs>
     screenshots?: boolean | Game$screenshotsArgs<ExtArgs>
+    ageRating?: boolean | Game$ageRatingArgs<ExtArgs>
     _count?: boolean | GameCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["game"]>
 
@@ -3873,7 +4008,9 @@ export namespace Prisma {
     aggregatedRating?: boolean
     totalRating?: boolean
     totalRatingCount?: boolean
+    ageRatingId?: boolean
     url?: boolean
+    ageRating?: boolean | Game$ageRatingArgs<ExtArgs>
   }, ExtArgs["result"]["game"]>
 
   export type GameSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3890,7 +4027,9 @@ export namespace Prisma {
     aggregatedRating?: boolean
     totalRating?: boolean
     totalRatingCount?: boolean
+    ageRatingId?: boolean
     url?: boolean
+    ageRating?: boolean | Game$ageRatingArgs<ExtArgs>
   }, ExtArgs["result"]["game"]>
 
   export type GameSelectScalar = {
@@ -3907,19 +4046,25 @@ export namespace Prisma {
     aggregatedRating?: boolean
     totalRating?: boolean
     totalRatingCount?: boolean
+    ageRatingId?: boolean
     url?: boolean
   }
 
-  export type GameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "igdbId" | "name" | "slug" | "summary" | "storyline" | "firstReleaseDate" | "originalPlatform" | "coverUrl" | "rating" | "aggregatedRating" | "totalRating" | "totalRatingCount" | "url", ExtArgs["result"]["game"]>
+  export type GameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "igdbId" | "name" | "slug" | "summary" | "storyline" | "firstReleaseDate" | "originalPlatform" | "coverUrl" | "rating" | "aggregatedRating" | "totalRating" | "totalRatingCount" | "ageRatingId" | "url", ExtArgs["result"]["game"]>
   export type GameInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     genres?: boolean | Game$genresArgs<ExtArgs>
     platforms?: boolean | Game$platformsArgs<ExtArgs>
     covers?: boolean | Game$coversArgs<ExtArgs>
     screenshots?: boolean | Game$screenshotsArgs<ExtArgs>
+    ageRating?: boolean | Game$ageRatingArgs<ExtArgs>
     _count?: boolean | GameCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type GameIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type GameIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type GameIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ageRating?: boolean | Game$ageRatingArgs<ExtArgs>
+  }
+  export type GameIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ageRating?: boolean | Game$ageRatingArgs<ExtArgs>
+  }
 
   export type $GamePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Game"
@@ -3928,6 +4073,7 @@ export namespace Prisma {
       platforms: Prisma.$PlatformPayload<ExtArgs>[]
       covers: Prisma.$CoverPayload<ExtArgs>[]
       screenshots: Prisma.$ScreenshotPayload<ExtArgs>[]
+      ageRating: Prisma.$GameRatingPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3943,6 +4089,7 @@ export namespace Prisma {
       aggregatedRating: number | null
       totalRating: number | null
       totalRatingCount: number | null
+      ageRatingId: number | null
       url: string | null
     }, ExtArgs["result"]["game"]>
     composites: {}
@@ -4342,6 +4489,7 @@ export namespace Prisma {
     platforms<T extends Game$platformsArgs<ExtArgs> = {}>(args?: Subset<T, Game$platformsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlatformPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     covers<T extends Game$coversArgs<ExtArgs> = {}>(args?: Subset<T, Game$coversArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     screenshots<T extends Game$screenshotsArgs<ExtArgs> = {}>(args?: Subset<T, Game$screenshotsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScreenshotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    ageRating<T extends Game$ageRatingArgs<ExtArgs> = {}>(args?: Subset<T, Game$ageRatingArgs<ExtArgs>>): Prisma__GameRatingClient<$Result.GetResult<Prisma.$GameRatingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4384,6 +4532,7 @@ export namespace Prisma {
     readonly aggregatedRating: FieldRef<"Game", 'Float'>
     readonly totalRating: FieldRef<"Game", 'Float'>
     readonly totalRatingCount: FieldRef<"Game", 'Int'>
+    readonly ageRatingId: FieldRef<"Game", 'Int'>
     readonly url: FieldRef<"Game", 'String'>
   }
     
@@ -4634,6 +4783,10 @@ export namespace Prisma {
      */
     data: GameCreateManyInput | GameCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4704,6 +4857,10 @@ export namespace Prisma {
      * Limit how many Games to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4869,6 +5026,25 @@ export namespace Prisma {
   }
 
   /**
+   * Game.ageRating
+   */
+  export type Game$ageRatingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRating
+     */
+    select?: GameRatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GameRating
+     */
+    omit?: GameRatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameRatingInclude<ExtArgs> | null
+    where?: GameRatingWhereInput
+  }
+
+  /**
    * Game without action
    */
   export type GameDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4884,6 +5060,1084 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: GameInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model GameRating
+   */
+
+  export type AggregateGameRating = {
+    _count: GameRatingCountAggregateOutputType | null
+    _avg: GameRatingAvgAggregateOutputType | null
+    _sum: GameRatingSumAggregateOutputType | null
+    _min: GameRatingMinAggregateOutputType | null
+    _max: GameRatingMaxAggregateOutputType | null
+  }
+
+  export type GameRatingAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type GameRatingSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type GameRatingMinAggregateOutputType = {
+    id: number | null
+    rating: string | null
+    description: string | null
+  }
+
+  export type GameRatingMaxAggregateOutputType = {
+    id: number | null
+    rating: string | null
+    description: string | null
+  }
+
+  export type GameRatingCountAggregateOutputType = {
+    id: number
+    rating: number
+    description: number
+    _all: number
+  }
+
+
+  export type GameRatingAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type GameRatingSumAggregateInputType = {
+    id?: true
+  }
+
+  export type GameRatingMinAggregateInputType = {
+    id?: true
+    rating?: true
+    description?: true
+  }
+
+  export type GameRatingMaxAggregateInputType = {
+    id?: true
+    rating?: true
+    description?: true
+  }
+
+  export type GameRatingCountAggregateInputType = {
+    id?: true
+    rating?: true
+    description?: true
+    _all?: true
+  }
+
+  export type GameRatingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GameRating to aggregate.
+     */
+    where?: GameRatingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GameRatings to fetch.
+     */
+    orderBy?: GameRatingOrderByWithRelationInput | GameRatingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GameRatingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GameRatings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GameRatings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GameRatings
+    **/
+    _count?: true | GameRatingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GameRatingAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GameRatingSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GameRatingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GameRatingMaxAggregateInputType
+  }
+
+  export type GetGameRatingAggregateType<T extends GameRatingAggregateArgs> = {
+        [P in keyof T & keyof AggregateGameRating]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGameRating[P]>
+      : GetScalarType<T[P], AggregateGameRating[P]>
+  }
+
+
+
+
+  export type GameRatingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GameRatingWhereInput
+    orderBy?: GameRatingOrderByWithAggregationInput | GameRatingOrderByWithAggregationInput[]
+    by: GameRatingScalarFieldEnum[] | GameRatingScalarFieldEnum
+    having?: GameRatingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GameRatingCountAggregateInputType | true
+    _avg?: GameRatingAvgAggregateInputType
+    _sum?: GameRatingSumAggregateInputType
+    _min?: GameRatingMinAggregateInputType
+    _max?: GameRatingMaxAggregateInputType
+  }
+
+  export type GameRatingGroupByOutputType = {
+    id: number
+    rating: string
+    description: string | null
+    _count: GameRatingCountAggregateOutputType | null
+    _avg: GameRatingAvgAggregateOutputType | null
+    _sum: GameRatingSumAggregateOutputType | null
+    _min: GameRatingMinAggregateOutputType | null
+    _max: GameRatingMaxAggregateOutputType | null
+  }
+
+  type GetGameRatingGroupByPayload<T extends GameRatingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GameRatingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GameRatingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GameRatingGroupByOutputType[P]>
+            : GetScalarType<T[P], GameRatingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GameRatingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    rating?: boolean
+    description?: boolean
+    games?: boolean | GameRating$gamesArgs<ExtArgs>
+    _count?: boolean | GameRatingCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["gameRating"]>
+
+  export type GameRatingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    rating?: boolean
+    description?: boolean
+  }, ExtArgs["result"]["gameRating"]>
+
+  export type GameRatingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    rating?: boolean
+    description?: boolean
+  }, ExtArgs["result"]["gameRating"]>
+
+  export type GameRatingSelectScalar = {
+    id?: boolean
+    rating?: boolean
+    description?: boolean
+  }
+
+  export type GameRatingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "rating" | "description", ExtArgs["result"]["gameRating"]>
+  export type GameRatingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    games?: boolean | GameRating$gamesArgs<ExtArgs>
+    _count?: boolean | GameRatingCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type GameRatingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type GameRatingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $GameRatingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GameRating"
+    objects: {
+      games: Prisma.$GamePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      rating: string
+      description: string | null
+    }, ExtArgs["result"]["gameRating"]>
+    composites: {}
+  }
+
+  type GameRatingGetPayload<S extends boolean | null | undefined | GameRatingDefaultArgs> = $Result.GetResult<Prisma.$GameRatingPayload, S>
+
+  type GameRatingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GameRatingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GameRatingCountAggregateInputType | true
+    }
+
+  export interface GameRatingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GameRating'], meta: { name: 'GameRating' } }
+    /**
+     * Find zero or one GameRating that matches the filter.
+     * @param {GameRatingFindUniqueArgs} args - Arguments to find a GameRating
+     * @example
+     * // Get one GameRating
+     * const gameRating = await prisma.gameRating.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GameRatingFindUniqueArgs>(args: SelectSubset<T, GameRatingFindUniqueArgs<ExtArgs>>): Prisma__GameRatingClient<$Result.GetResult<Prisma.$GameRatingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GameRating that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GameRatingFindUniqueOrThrowArgs} args - Arguments to find a GameRating
+     * @example
+     * // Get one GameRating
+     * const gameRating = await prisma.gameRating.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GameRatingFindUniqueOrThrowArgs>(args: SelectSubset<T, GameRatingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GameRatingClient<$Result.GetResult<Prisma.$GameRatingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GameRating that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameRatingFindFirstArgs} args - Arguments to find a GameRating
+     * @example
+     * // Get one GameRating
+     * const gameRating = await prisma.gameRating.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GameRatingFindFirstArgs>(args?: SelectSubset<T, GameRatingFindFirstArgs<ExtArgs>>): Prisma__GameRatingClient<$Result.GetResult<Prisma.$GameRatingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GameRating that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameRatingFindFirstOrThrowArgs} args - Arguments to find a GameRating
+     * @example
+     * // Get one GameRating
+     * const gameRating = await prisma.gameRating.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GameRatingFindFirstOrThrowArgs>(args?: SelectSubset<T, GameRatingFindFirstOrThrowArgs<ExtArgs>>): Prisma__GameRatingClient<$Result.GetResult<Prisma.$GameRatingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GameRatings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameRatingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GameRatings
+     * const gameRatings = await prisma.gameRating.findMany()
+     * 
+     * // Get first 10 GameRatings
+     * const gameRatings = await prisma.gameRating.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const gameRatingWithIdOnly = await prisma.gameRating.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GameRatingFindManyArgs>(args?: SelectSubset<T, GameRatingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GameRatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GameRating.
+     * @param {GameRatingCreateArgs} args - Arguments to create a GameRating.
+     * @example
+     * // Create one GameRating
+     * const GameRating = await prisma.gameRating.create({
+     *   data: {
+     *     // ... data to create a GameRating
+     *   }
+     * })
+     * 
+     */
+    create<T extends GameRatingCreateArgs>(args: SelectSubset<T, GameRatingCreateArgs<ExtArgs>>): Prisma__GameRatingClient<$Result.GetResult<Prisma.$GameRatingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GameRatings.
+     * @param {GameRatingCreateManyArgs} args - Arguments to create many GameRatings.
+     * @example
+     * // Create many GameRatings
+     * const gameRating = await prisma.gameRating.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GameRatingCreateManyArgs>(args?: SelectSubset<T, GameRatingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many GameRatings and returns the data saved in the database.
+     * @param {GameRatingCreateManyAndReturnArgs} args - Arguments to create many GameRatings.
+     * @example
+     * // Create many GameRatings
+     * const gameRating = await prisma.gameRating.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GameRatings and only return the `id`
+     * const gameRatingWithIdOnly = await prisma.gameRating.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GameRatingCreateManyAndReturnArgs>(args?: SelectSubset<T, GameRatingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GameRatingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a GameRating.
+     * @param {GameRatingDeleteArgs} args - Arguments to delete one GameRating.
+     * @example
+     * // Delete one GameRating
+     * const GameRating = await prisma.gameRating.delete({
+     *   where: {
+     *     // ... filter to delete one GameRating
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GameRatingDeleteArgs>(args: SelectSubset<T, GameRatingDeleteArgs<ExtArgs>>): Prisma__GameRatingClient<$Result.GetResult<Prisma.$GameRatingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GameRating.
+     * @param {GameRatingUpdateArgs} args - Arguments to update one GameRating.
+     * @example
+     * // Update one GameRating
+     * const gameRating = await prisma.gameRating.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GameRatingUpdateArgs>(args: SelectSubset<T, GameRatingUpdateArgs<ExtArgs>>): Prisma__GameRatingClient<$Result.GetResult<Prisma.$GameRatingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GameRatings.
+     * @param {GameRatingDeleteManyArgs} args - Arguments to filter GameRatings to delete.
+     * @example
+     * // Delete a few GameRatings
+     * const { count } = await prisma.gameRating.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GameRatingDeleteManyArgs>(args?: SelectSubset<T, GameRatingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GameRatings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameRatingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GameRatings
+     * const gameRating = await prisma.gameRating.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GameRatingUpdateManyArgs>(args: SelectSubset<T, GameRatingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GameRatings and returns the data updated in the database.
+     * @param {GameRatingUpdateManyAndReturnArgs} args - Arguments to update many GameRatings.
+     * @example
+     * // Update many GameRatings
+     * const gameRating = await prisma.gameRating.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more GameRatings and only return the `id`
+     * const gameRatingWithIdOnly = await prisma.gameRating.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GameRatingUpdateManyAndReturnArgs>(args: SelectSubset<T, GameRatingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GameRatingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one GameRating.
+     * @param {GameRatingUpsertArgs} args - Arguments to update or create a GameRating.
+     * @example
+     * // Update or create a GameRating
+     * const gameRating = await prisma.gameRating.upsert({
+     *   create: {
+     *     // ... data to create a GameRating
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GameRating we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GameRatingUpsertArgs>(args: SelectSubset<T, GameRatingUpsertArgs<ExtArgs>>): Prisma__GameRatingClient<$Result.GetResult<Prisma.$GameRatingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GameRatings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameRatingCountArgs} args - Arguments to filter GameRatings to count.
+     * @example
+     * // Count the number of GameRatings
+     * const count = await prisma.gameRating.count({
+     *   where: {
+     *     // ... the filter for the GameRatings we want to count
+     *   }
+     * })
+    **/
+    count<T extends GameRatingCountArgs>(
+      args?: Subset<T, GameRatingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GameRatingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GameRating.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameRatingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GameRatingAggregateArgs>(args: Subset<T, GameRatingAggregateArgs>): Prisma.PrismaPromise<GetGameRatingAggregateType<T>>
+
+    /**
+     * Group by GameRating.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameRatingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GameRatingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GameRatingGroupByArgs['orderBy'] }
+        : { orderBy?: GameRatingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GameRatingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGameRatingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GameRating model
+   */
+  readonly fields: GameRatingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GameRating.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GameRatingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    games<T extends GameRating$gamesArgs<ExtArgs> = {}>(args?: Subset<T, GameRating$gamesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GamePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GameRating model
+   */
+  interface GameRatingFieldRefs {
+    readonly id: FieldRef<"GameRating", 'Int'>
+    readonly rating: FieldRef<"GameRating", 'String'>
+    readonly description: FieldRef<"GameRating", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GameRating findUnique
+   */
+  export type GameRatingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRating
+     */
+    select?: GameRatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GameRating
+     */
+    omit?: GameRatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameRatingInclude<ExtArgs> | null
+    /**
+     * Filter, which GameRating to fetch.
+     */
+    where: GameRatingWhereUniqueInput
+  }
+
+  /**
+   * GameRating findUniqueOrThrow
+   */
+  export type GameRatingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRating
+     */
+    select?: GameRatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GameRating
+     */
+    omit?: GameRatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameRatingInclude<ExtArgs> | null
+    /**
+     * Filter, which GameRating to fetch.
+     */
+    where: GameRatingWhereUniqueInput
+  }
+
+  /**
+   * GameRating findFirst
+   */
+  export type GameRatingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRating
+     */
+    select?: GameRatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GameRating
+     */
+    omit?: GameRatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameRatingInclude<ExtArgs> | null
+    /**
+     * Filter, which GameRating to fetch.
+     */
+    where?: GameRatingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GameRatings to fetch.
+     */
+    orderBy?: GameRatingOrderByWithRelationInput | GameRatingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GameRatings.
+     */
+    cursor?: GameRatingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GameRatings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GameRatings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GameRatings.
+     */
+    distinct?: GameRatingScalarFieldEnum | GameRatingScalarFieldEnum[]
+  }
+
+  /**
+   * GameRating findFirstOrThrow
+   */
+  export type GameRatingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRating
+     */
+    select?: GameRatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GameRating
+     */
+    omit?: GameRatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameRatingInclude<ExtArgs> | null
+    /**
+     * Filter, which GameRating to fetch.
+     */
+    where?: GameRatingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GameRatings to fetch.
+     */
+    orderBy?: GameRatingOrderByWithRelationInput | GameRatingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GameRatings.
+     */
+    cursor?: GameRatingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GameRatings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GameRatings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GameRatings.
+     */
+    distinct?: GameRatingScalarFieldEnum | GameRatingScalarFieldEnum[]
+  }
+
+  /**
+   * GameRating findMany
+   */
+  export type GameRatingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRating
+     */
+    select?: GameRatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GameRating
+     */
+    omit?: GameRatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameRatingInclude<ExtArgs> | null
+    /**
+     * Filter, which GameRatings to fetch.
+     */
+    where?: GameRatingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GameRatings to fetch.
+     */
+    orderBy?: GameRatingOrderByWithRelationInput | GameRatingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GameRatings.
+     */
+    cursor?: GameRatingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GameRatings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GameRatings.
+     */
+    skip?: number
+    distinct?: GameRatingScalarFieldEnum | GameRatingScalarFieldEnum[]
+  }
+
+  /**
+   * GameRating create
+   */
+  export type GameRatingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRating
+     */
+    select?: GameRatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GameRating
+     */
+    omit?: GameRatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameRatingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a GameRating.
+     */
+    data: XOR<GameRatingCreateInput, GameRatingUncheckedCreateInput>
+  }
+
+  /**
+   * GameRating createMany
+   */
+  export type GameRatingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GameRatings.
+     */
+    data: GameRatingCreateManyInput | GameRatingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GameRating createManyAndReturn
+   */
+  export type GameRatingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRating
+     */
+    select?: GameRatingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GameRating
+     */
+    omit?: GameRatingOmit<ExtArgs> | null
+    /**
+     * The data used to create many GameRatings.
+     */
+    data: GameRatingCreateManyInput | GameRatingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GameRating update
+   */
+  export type GameRatingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRating
+     */
+    select?: GameRatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GameRating
+     */
+    omit?: GameRatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameRatingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a GameRating.
+     */
+    data: XOR<GameRatingUpdateInput, GameRatingUncheckedUpdateInput>
+    /**
+     * Choose, which GameRating to update.
+     */
+    where: GameRatingWhereUniqueInput
+  }
+
+  /**
+   * GameRating updateMany
+   */
+  export type GameRatingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GameRatings.
+     */
+    data: XOR<GameRatingUpdateManyMutationInput, GameRatingUncheckedUpdateManyInput>
+    /**
+     * Filter which GameRatings to update
+     */
+    where?: GameRatingWhereInput
+    /**
+     * Limit how many GameRatings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GameRating updateManyAndReturn
+   */
+  export type GameRatingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRating
+     */
+    select?: GameRatingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GameRating
+     */
+    omit?: GameRatingOmit<ExtArgs> | null
+    /**
+     * The data used to update GameRatings.
+     */
+    data: XOR<GameRatingUpdateManyMutationInput, GameRatingUncheckedUpdateManyInput>
+    /**
+     * Filter which GameRatings to update
+     */
+    where?: GameRatingWhereInput
+    /**
+     * Limit how many GameRatings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GameRating upsert
+   */
+  export type GameRatingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRating
+     */
+    select?: GameRatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GameRating
+     */
+    omit?: GameRatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameRatingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the GameRating to update in case it exists.
+     */
+    where: GameRatingWhereUniqueInput
+    /**
+     * In case the GameRating found by the `where` argument doesn't exist, create a new GameRating with this data.
+     */
+    create: XOR<GameRatingCreateInput, GameRatingUncheckedCreateInput>
+    /**
+     * In case the GameRating was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GameRatingUpdateInput, GameRatingUncheckedUpdateInput>
+  }
+
+  /**
+   * GameRating delete
+   */
+  export type GameRatingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRating
+     */
+    select?: GameRatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GameRating
+     */
+    omit?: GameRatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameRatingInclude<ExtArgs> | null
+    /**
+     * Filter which GameRating to delete.
+     */
+    where: GameRatingWhereUniqueInput
+  }
+
+  /**
+   * GameRating deleteMany
+   */
+  export type GameRatingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GameRatings to delete
+     */
+    where?: GameRatingWhereInput
+    /**
+     * Limit how many GameRatings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * GameRating.games
+   */
+  export type GameRating$gamesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Game
+     */
+    select?: GameSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Game
+     */
+    omit?: GameOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameInclude<ExtArgs> | null
+    where?: GameWhereInput
+    orderBy?: GameOrderByWithRelationInput | GameOrderByWithRelationInput[]
+    cursor?: GameWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GameScalarFieldEnum | GameScalarFieldEnum[]
+  }
+
+  /**
+   * GameRating without action
+   */
+  export type GameRatingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameRating
+     */
+    select?: GameRatingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GameRating
+     */
+    omit?: GameRatingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameRatingInclude<ExtArgs> | null
   }
 
 
@@ -9443,10 +10697,20 @@ export namespace Prisma {
     aggregatedRating: 'aggregatedRating',
     totalRating: 'totalRating',
     totalRatingCount: 'totalRatingCount',
+    ageRatingId: 'ageRatingId',
     url: 'url'
   };
 
   export type GameScalarFieldEnum = (typeof GameScalarFieldEnum)[keyof typeof GameScalarFieldEnum]
+
+
+  export const GameRatingScalarFieldEnum: {
+    id: 'id',
+    rating: 'rating',
+    description: 'description'
+  };
+
+  export type GameRatingScalarFieldEnum = (typeof GameRatingScalarFieldEnum)[keyof typeof GameRatingScalarFieldEnum]
 
 
   export const PlatformScalarFieldEnum: {
@@ -9721,11 +10985,13 @@ export namespace Prisma {
     aggregatedRating?: FloatNullableFilter<"Game"> | number | null
     totalRating?: FloatNullableFilter<"Game"> | number | null
     totalRatingCount?: IntNullableFilter<"Game"> | number | null
+    ageRatingId?: IntNullableFilter<"Game"> | number | null
     url?: StringNullableFilter<"Game"> | string | null
     genres?: GenreListRelationFilter
     platforms?: PlatformListRelationFilter
     covers?: CoverListRelationFilter
     screenshots?: ScreenshotListRelationFilter
+    ageRating?: XOR<GameRatingNullableScalarRelationFilter, GameRatingWhereInput> | null
   }
 
   export type GameOrderByWithRelationInput = {
@@ -9742,11 +11008,13 @@ export namespace Prisma {
     aggregatedRating?: SortOrderInput | SortOrder
     totalRating?: SortOrderInput | SortOrder
     totalRatingCount?: SortOrderInput | SortOrder
+    ageRatingId?: SortOrderInput | SortOrder
     url?: SortOrderInput | SortOrder
     genres?: GenreOrderByRelationAggregateInput
     platforms?: PlatformOrderByRelationAggregateInput
     covers?: CoverOrderByRelationAggregateInput
     screenshots?: ScreenshotOrderByRelationAggregateInput
+    ageRating?: GameRatingOrderByWithRelationInput
   }
 
   export type GameWhereUniqueInput = Prisma.AtLeast<{
@@ -9766,11 +11034,13 @@ export namespace Prisma {
     aggregatedRating?: FloatNullableFilter<"Game"> | number | null
     totalRating?: FloatNullableFilter<"Game"> | number | null
     totalRatingCount?: IntNullableFilter<"Game"> | number | null
+    ageRatingId?: IntNullableFilter<"Game"> | number | null
     url?: StringNullableFilter<"Game"> | string | null
     genres?: GenreListRelationFilter
     platforms?: PlatformListRelationFilter
     covers?: CoverListRelationFilter
     screenshots?: ScreenshotListRelationFilter
+    ageRating?: XOR<GameRatingNullableScalarRelationFilter, GameRatingWhereInput> | null
   }, "id" | "igdbId" | "slug">
 
   export type GameOrderByWithAggregationInput = {
@@ -9787,6 +11057,7 @@ export namespace Prisma {
     aggregatedRating?: SortOrderInput | SortOrder
     totalRating?: SortOrderInput | SortOrder
     totalRatingCount?: SortOrderInput | SortOrder
+    ageRatingId?: SortOrderInput | SortOrder
     url?: SortOrderInput | SortOrder
     _count?: GameCountOrderByAggregateInput
     _avg?: GameAvgOrderByAggregateInput
@@ -9812,7 +11083,55 @@ export namespace Prisma {
     aggregatedRating?: FloatNullableWithAggregatesFilter<"Game"> | number | null
     totalRating?: FloatNullableWithAggregatesFilter<"Game"> | number | null
     totalRatingCount?: IntNullableWithAggregatesFilter<"Game"> | number | null
+    ageRatingId?: IntNullableWithAggregatesFilter<"Game"> | number | null
     url?: StringNullableWithAggregatesFilter<"Game"> | string | null
+  }
+
+  export type GameRatingWhereInput = {
+    AND?: GameRatingWhereInput | GameRatingWhereInput[]
+    OR?: GameRatingWhereInput[]
+    NOT?: GameRatingWhereInput | GameRatingWhereInput[]
+    id?: IntFilter<"GameRating"> | number
+    rating?: StringFilter<"GameRating"> | string
+    description?: StringNullableFilter<"GameRating"> | string | null
+    games?: GameListRelationFilter
+  }
+
+  export type GameRatingOrderByWithRelationInput = {
+    id?: SortOrder
+    rating?: SortOrder
+    description?: SortOrderInput | SortOrder
+    games?: GameOrderByRelationAggregateInput
+  }
+
+  export type GameRatingWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: GameRatingWhereInput | GameRatingWhereInput[]
+    OR?: GameRatingWhereInput[]
+    NOT?: GameRatingWhereInput | GameRatingWhereInput[]
+    rating?: StringFilter<"GameRating"> | string
+    description?: StringNullableFilter<"GameRating"> | string | null
+    games?: GameListRelationFilter
+  }, "id">
+
+  export type GameRatingOrderByWithAggregationInput = {
+    id?: SortOrder
+    rating?: SortOrder
+    description?: SortOrderInput | SortOrder
+    _count?: GameRatingCountOrderByAggregateInput
+    _avg?: GameRatingAvgOrderByAggregateInput
+    _max?: GameRatingMaxOrderByAggregateInput
+    _min?: GameRatingMinOrderByAggregateInput
+    _sum?: GameRatingSumOrderByAggregateInput
+  }
+
+  export type GameRatingScalarWhereWithAggregatesInput = {
+    AND?: GameRatingScalarWhereWithAggregatesInput | GameRatingScalarWhereWithAggregatesInput[]
+    OR?: GameRatingScalarWhereWithAggregatesInput[]
+    NOT?: GameRatingScalarWhereWithAggregatesInput | GameRatingScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"GameRating"> | number
+    rating?: StringWithAggregatesFilter<"GameRating"> | string
+    description?: StringNullableWithAggregatesFilter<"GameRating"> | string | null
   }
 
   export type PlatformWhereInput = {
@@ -10202,6 +11521,7 @@ export namespace Prisma {
     platforms?: PlatformCreateNestedManyWithoutGamesInput
     covers?: CoverCreateNestedManyWithoutGameInput
     screenshots?: ScreenshotCreateNestedManyWithoutGameInput
+    ageRating?: GameRatingCreateNestedOneWithoutGamesInput
   }
 
   export type GameUncheckedCreateInput = {
@@ -10218,6 +11538,7 @@ export namespace Prisma {
     aggregatedRating?: number | null
     totalRating?: number | null
     totalRatingCount?: number | null
+    ageRatingId?: number | null
     url?: string | null
     genres?: GenreUncheckedCreateNestedManyWithoutGamesInput
     platforms?: PlatformUncheckedCreateNestedManyWithoutGamesInput
@@ -10243,6 +11564,7 @@ export namespace Prisma {
     platforms?: PlatformUpdateManyWithoutGamesNestedInput
     covers?: CoverUpdateManyWithoutGameNestedInput
     screenshots?: ScreenshotUpdateManyWithoutGameNestedInput
+    ageRating?: GameRatingUpdateOneWithoutGamesNestedInput
   }
 
   export type GameUncheckedUpdateInput = {
@@ -10259,6 +11581,7 @@ export namespace Prisma {
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     genres?: GenreUncheckedUpdateManyWithoutGamesNestedInput
     platforms?: PlatformUncheckedUpdateManyWithoutGamesNestedInput
@@ -10280,6 +11603,7 @@ export namespace Prisma {
     aggregatedRating?: number | null
     totalRating?: number | null
     totalRatingCount?: number | null
+    ageRatingId?: number | null
     url?: string | null
   }
 
@@ -10313,7 +11637,54 @@ export namespace Prisma {
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type GameRatingCreateInput = {
+    id: number
+    rating: string
+    description?: string | null
+    games?: GameCreateNestedManyWithoutAgeRatingInput
+  }
+
+  export type GameRatingUncheckedCreateInput = {
+    id: number
+    rating: string
+    description?: string | null
+    games?: GameUncheckedCreateNestedManyWithoutAgeRatingInput
+  }
+
+  export type GameRatingUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rating?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    games?: GameUpdateManyWithoutAgeRatingNestedInput
+  }
+
+  export type GameRatingUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rating?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    games?: GameUncheckedUpdateManyWithoutAgeRatingNestedInput
+  }
+
+  export type GameRatingCreateManyInput = {
+    id: number
+    rating: string
+    description?: string | null
+  }
+
+  export type GameRatingUpdateManyMutationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rating?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type GameRatingUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rating?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PlatformCreateInput = {
@@ -10801,6 +12172,11 @@ export namespace Prisma {
     none?: ScreenshotWhereInput
   }
 
+  export type GameRatingNullableScalarRelationFilter = {
+    is?: GameRatingWhereInput | null
+    isNot?: GameRatingWhereInput | null
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -10836,6 +12212,7 @@ export namespace Prisma {
     aggregatedRating?: SortOrder
     totalRating?: SortOrder
     totalRatingCount?: SortOrder
+    ageRatingId?: SortOrder
     url?: SortOrder
   }
 
@@ -10846,6 +12223,7 @@ export namespace Prisma {
     aggregatedRating?: SortOrder
     totalRating?: SortOrder
     totalRatingCount?: SortOrder
+    ageRatingId?: SortOrder
   }
 
   export type GameMaxOrderByAggregateInput = {
@@ -10862,6 +12240,7 @@ export namespace Prisma {
     aggregatedRating?: SortOrder
     totalRating?: SortOrder
     totalRatingCount?: SortOrder
+    ageRatingId?: SortOrder
     url?: SortOrder
   }
 
@@ -10879,6 +12258,7 @@ export namespace Prisma {
     aggregatedRating?: SortOrder
     totalRating?: SortOrder
     totalRatingCount?: SortOrder
+    ageRatingId?: SortOrder
     url?: SortOrder
   }
 
@@ -10889,6 +12269,7 @@ export namespace Prisma {
     aggregatedRating?: SortOrder
     totalRating?: SortOrder
     totalRatingCount?: SortOrder
+    ageRatingId?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -10963,6 +12344,32 @@ export namespace Prisma {
 
   export type GameOrderByRelationAggregateInput = {
     _count?: SortOrder
+  }
+
+  export type GameRatingCountOrderByAggregateInput = {
+    id?: SortOrder
+    rating?: SortOrder
+    description?: SortOrder
+  }
+
+  export type GameRatingAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type GameRatingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    rating?: SortOrder
+    description?: SortOrder
+  }
+
+  export type GameRatingMinOrderByAggregateInput = {
+    id?: SortOrder
+    rating?: SortOrder
+    description?: SortOrder
+  }
+
+  export type GameRatingSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type PlatformCountOrderByAggregateInput = {
@@ -11183,6 +12590,12 @@ export namespace Prisma {
     connect?: ScreenshotWhereUniqueInput | ScreenshotWhereUniqueInput[]
   }
 
+  export type GameRatingCreateNestedOneWithoutGamesInput = {
+    create?: XOR<GameRatingCreateWithoutGamesInput, GameRatingUncheckedCreateWithoutGamesInput>
+    connectOrCreate?: GameRatingCreateOrConnectWithoutGamesInput
+    connect?: GameRatingWhereUniqueInput
+  }
+
   export type GenreUncheckedCreateNestedManyWithoutGamesInput = {
     create?: XOR<GenreCreateWithoutGamesInput, GenreUncheckedCreateWithoutGamesInput> | GenreCreateWithoutGamesInput[] | GenreUncheckedCreateWithoutGamesInput[]
     connectOrCreate?: GenreCreateOrConnectWithoutGamesInput | GenreCreateOrConnectWithoutGamesInput[]
@@ -11287,6 +12700,16 @@ export namespace Prisma {
     deleteMany?: ScreenshotScalarWhereInput | ScreenshotScalarWhereInput[]
   }
 
+  export type GameRatingUpdateOneWithoutGamesNestedInput = {
+    create?: XOR<GameRatingCreateWithoutGamesInput, GameRatingUncheckedCreateWithoutGamesInput>
+    connectOrCreate?: GameRatingCreateOrConnectWithoutGamesInput
+    upsert?: GameRatingUpsertWithoutGamesInput
+    disconnect?: GameRatingWhereInput | boolean
+    delete?: GameRatingWhereInput | boolean
+    connect?: GameRatingWhereUniqueInput
+    update?: XOR<XOR<GameRatingUpdateToOneWithWhereWithoutGamesInput, GameRatingUpdateWithoutGamesInput>, GameRatingUncheckedUpdateWithoutGamesInput>
+  }
+
   export type GenreUncheckedUpdateManyWithoutGamesNestedInput = {
     create?: XOR<GenreCreateWithoutGamesInput, GenreUncheckedCreateWithoutGamesInput> | GenreCreateWithoutGamesInput[] | GenreUncheckedCreateWithoutGamesInput[]
     connectOrCreate?: GenreCreateOrConnectWithoutGamesInput | GenreCreateOrConnectWithoutGamesInput[]
@@ -11339,6 +12762,48 @@ export namespace Prisma {
     update?: ScreenshotUpdateWithWhereUniqueWithoutGameInput | ScreenshotUpdateWithWhereUniqueWithoutGameInput[]
     updateMany?: ScreenshotUpdateManyWithWhereWithoutGameInput | ScreenshotUpdateManyWithWhereWithoutGameInput[]
     deleteMany?: ScreenshotScalarWhereInput | ScreenshotScalarWhereInput[]
+  }
+
+  export type GameCreateNestedManyWithoutAgeRatingInput = {
+    create?: XOR<GameCreateWithoutAgeRatingInput, GameUncheckedCreateWithoutAgeRatingInput> | GameCreateWithoutAgeRatingInput[] | GameUncheckedCreateWithoutAgeRatingInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutAgeRatingInput | GameCreateOrConnectWithoutAgeRatingInput[]
+    createMany?: GameCreateManyAgeRatingInputEnvelope
+    connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+  }
+
+  export type GameUncheckedCreateNestedManyWithoutAgeRatingInput = {
+    create?: XOR<GameCreateWithoutAgeRatingInput, GameUncheckedCreateWithoutAgeRatingInput> | GameCreateWithoutAgeRatingInput[] | GameUncheckedCreateWithoutAgeRatingInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutAgeRatingInput | GameCreateOrConnectWithoutAgeRatingInput[]
+    createMany?: GameCreateManyAgeRatingInputEnvelope
+    connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+  }
+
+  export type GameUpdateManyWithoutAgeRatingNestedInput = {
+    create?: XOR<GameCreateWithoutAgeRatingInput, GameUncheckedCreateWithoutAgeRatingInput> | GameCreateWithoutAgeRatingInput[] | GameUncheckedCreateWithoutAgeRatingInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutAgeRatingInput | GameCreateOrConnectWithoutAgeRatingInput[]
+    upsert?: GameUpsertWithWhereUniqueWithoutAgeRatingInput | GameUpsertWithWhereUniqueWithoutAgeRatingInput[]
+    createMany?: GameCreateManyAgeRatingInputEnvelope
+    set?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    disconnect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    delete?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    update?: GameUpdateWithWhereUniqueWithoutAgeRatingInput | GameUpdateWithWhereUniqueWithoutAgeRatingInput[]
+    updateMany?: GameUpdateManyWithWhereWithoutAgeRatingInput | GameUpdateManyWithWhereWithoutAgeRatingInput[]
+    deleteMany?: GameScalarWhereInput | GameScalarWhereInput[]
+  }
+
+  export type GameUncheckedUpdateManyWithoutAgeRatingNestedInput = {
+    create?: XOR<GameCreateWithoutAgeRatingInput, GameUncheckedCreateWithoutAgeRatingInput> | GameCreateWithoutAgeRatingInput[] | GameUncheckedCreateWithoutAgeRatingInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutAgeRatingInput | GameCreateOrConnectWithoutAgeRatingInput[]
+    upsert?: GameUpsertWithWhereUniqueWithoutAgeRatingInput | GameUpsertWithWhereUniqueWithoutAgeRatingInput[]
+    createMany?: GameCreateManyAgeRatingInputEnvelope
+    set?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    disconnect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    delete?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    update?: GameUpdateWithWhereUniqueWithoutAgeRatingInput | GameUpdateWithWhereUniqueWithoutAgeRatingInput[]
+    updateMany?: GameUpdateManyWithWhereWithoutAgeRatingInput | GameUpdateManyWithWhereWithoutAgeRatingInput[]
+    deleteMany?: GameScalarWhereInput | GameScalarWhereInput[]
   }
 
   export type GameCreateNestedManyWithoutPlatformsInput = {
@@ -11759,6 +13224,23 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type GameRatingCreateWithoutGamesInput = {
+    id: number
+    rating: string
+    description?: string | null
+  }
+
+  export type GameRatingUncheckedCreateWithoutGamesInput = {
+    id: number
+    rating: string
+    description?: string | null
+  }
+
+  export type GameRatingCreateOrConnectWithoutGamesInput = {
+    where: GameRatingWhereUniqueInput
+    create: XOR<GameRatingCreateWithoutGamesInput, GameRatingUncheckedCreateWithoutGamesInput>
+  }
+
   export type GenreUpsertWithWhereUniqueWithoutGamesInput = {
     where: GenreWhereUniqueInput
     update: XOR<GenreUpdateWithoutGamesInput, GenreUncheckedUpdateWithoutGamesInput>
@@ -11872,6 +13354,117 @@ export namespace Prisma {
     gameId?: IntFilter<"Screenshot"> | number
   }
 
+  export type GameRatingUpsertWithoutGamesInput = {
+    update: XOR<GameRatingUpdateWithoutGamesInput, GameRatingUncheckedUpdateWithoutGamesInput>
+    create: XOR<GameRatingCreateWithoutGamesInput, GameRatingUncheckedCreateWithoutGamesInput>
+    where?: GameRatingWhereInput
+  }
+
+  export type GameRatingUpdateToOneWithWhereWithoutGamesInput = {
+    where?: GameRatingWhereInput
+    data: XOR<GameRatingUpdateWithoutGamesInput, GameRatingUncheckedUpdateWithoutGamesInput>
+  }
+
+  export type GameRatingUpdateWithoutGamesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rating?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type GameRatingUncheckedUpdateWithoutGamesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    rating?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type GameCreateWithoutAgeRatingInput = {
+    igdbId: number
+    name: string
+    slug: string
+    summary?: string | null
+    storyline?: string | null
+    firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
+    coverUrl?: string | null
+    rating?: number | null
+    aggregatedRating?: number | null
+    totalRating?: number | null
+    totalRatingCount?: number | null
+    url?: string | null
+    genres?: GenreCreateNestedManyWithoutGamesInput
+    platforms?: PlatformCreateNestedManyWithoutGamesInput
+    covers?: CoverCreateNestedManyWithoutGameInput
+    screenshots?: ScreenshotCreateNestedManyWithoutGameInput
+  }
+
+  export type GameUncheckedCreateWithoutAgeRatingInput = {
+    id?: number
+    igdbId: number
+    name: string
+    slug: string
+    summary?: string | null
+    storyline?: string | null
+    firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
+    coverUrl?: string | null
+    rating?: number | null
+    aggregatedRating?: number | null
+    totalRating?: number | null
+    totalRatingCount?: number | null
+    url?: string | null
+    genres?: GenreUncheckedCreateNestedManyWithoutGamesInput
+    platforms?: PlatformUncheckedCreateNestedManyWithoutGamesInput
+    covers?: CoverUncheckedCreateNestedManyWithoutGameInput
+    screenshots?: ScreenshotUncheckedCreateNestedManyWithoutGameInput
+  }
+
+  export type GameCreateOrConnectWithoutAgeRatingInput = {
+    where: GameWhereUniqueInput
+    create: XOR<GameCreateWithoutAgeRatingInput, GameUncheckedCreateWithoutAgeRatingInput>
+  }
+
+  export type GameCreateManyAgeRatingInputEnvelope = {
+    data: GameCreateManyAgeRatingInput | GameCreateManyAgeRatingInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GameUpsertWithWhereUniqueWithoutAgeRatingInput = {
+    where: GameWhereUniqueInput
+    update: XOR<GameUpdateWithoutAgeRatingInput, GameUncheckedUpdateWithoutAgeRatingInput>
+    create: XOR<GameCreateWithoutAgeRatingInput, GameUncheckedCreateWithoutAgeRatingInput>
+  }
+
+  export type GameUpdateWithWhereUniqueWithoutAgeRatingInput = {
+    where: GameWhereUniqueInput
+    data: XOR<GameUpdateWithoutAgeRatingInput, GameUncheckedUpdateWithoutAgeRatingInput>
+  }
+
+  export type GameUpdateManyWithWhereWithoutAgeRatingInput = {
+    where: GameScalarWhereInput
+    data: XOR<GameUpdateManyMutationInput, GameUncheckedUpdateManyWithoutAgeRatingInput>
+  }
+
+  export type GameScalarWhereInput = {
+    AND?: GameScalarWhereInput | GameScalarWhereInput[]
+    OR?: GameScalarWhereInput[]
+    NOT?: GameScalarWhereInput | GameScalarWhereInput[]
+    id?: IntFilter<"Game"> | number
+    igdbId?: IntFilter<"Game"> | number
+    name?: StringFilter<"Game"> | string
+    slug?: StringFilter<"Game"> | string
+    summary?: StringNullableFilter<"Game"> | string | null
+    storyline?: StringNullableFilter<"Game"> | string | null
+    firstReleaseDate?: DateTimeNullableFilter<"Game"> | Date | string | null
+    originalPlatform?: StringNullableFilter<"Game"> | string | null
+    coverUrl?: StringNullableFilter<"Game"> | string | null
+    rating?: FloatNullableFilter<"Game"> | number | null
+    aggregatedRating?: FloatNullableFilter<"Game"> | number | null
+    totalRating?: FloatNullableFilter<"Game"> | number | null
+    totalRatingCount?: IntNullableFilter<"Game"> | number | null
+    ageRatingId?: IntNullableFilter<"Game"> | number | null
+    url?: StringNullableFilter<"Game"> | string | null
+  }
+
   export type GameCreateWithoutPlatformsInput = {
     igdbId: number
     name: string
@@ -11889,6 +13482,7 @@ export namespace Prisma {
     genres?: GenreCreateNestedManyWithoutGamesInput
     covers?: CoverCreateNestedManyWithoutGameInput
     screenshots?: ScreenshotCreateNestedManyWithoutGameInput
+    ageRating?: GameRatingCreateNestedOneWithoutGamesInput
   }
 
   export type GameUncheckedCreateWithoutPlatformsInput = {
@@ -11905,6 +13499,7 @@ export namespace Prisma {
     aggregatedRating?: number | null
     totalRating?: number | null
     totalRatingCount?: number | null
+    ageRatingId?: number | null
     url?: string | null
     genres?: GenreUncheckedCreateNestedManyWithoutGamesInput
     covers?: CoverUncheckedCreateNestedManyWithoutGameInput
@@ -11932,26 +13527,6 @@ export namespace Prisma {
     data: XOR<GameUpdateManyMutationInput, GameUncheckedUpdateManyWithoutPlatformsInput>
   }
 
-  export type GameScalarWhereInput = {
-    AND?: GameScalarWhereInput | GameScalarWhereInput[]
-    OR?: GameScalarWhereInput[]
-    NOT?: GameScalarWhereInput | GameScalarWhereInput[]
-    id?: IntFilter<"Game"> | number
-    igdbId?: IntFilter<"Game"> | number
-    name?: StringFilter<"Game"> | string
-    slug?: StringFilter<"Game"> | string
-    summary?: StringNullableFilter<"Game"> | string | null
-    storyline?: StringNullableFilter<"Game"> | string | null
-    firstReleaseDate?: DateTimeNullableFilter<"Game"> | Date | string | null
-    originalPlatform?: StringNullableFilter<"Game"> | string | null
-    coverUrl?: StringNullableFilter<"Game"> | string | null
-    rating?: FloatNullableFilter<"Game"> | number | null
-    aggregatedRating?: FloatNullableFilter<"Game"> | number | null
-    totalRating?: FloatNullableFilter<"Game"> | number | null
-    totalRatingCount?: IntNullableFilter<"Game"> | number | null
-    url?: StringNullableFilter<"Game"> | string | null
-  }
-
   export type GameCreateWithoutGenresInput = {
     igdbId: number
     name: string
@@ -11969,6 +13544,7 @@ export namespace Prisma {
     platforms?: PlatformCreateNestedManyWithoutGamesInput
     covers?: CoverCreateNestedManyWithoutGameInput
     screenshots?: ScreenshotCreateNestedManyWithoutGameInput
+    ageRating?: GameRatingCreateNestedOneWithoutGamesInput
   }
 
   export type GameUncheckedCreateWithoutGenresInput = {
@@ -11985,6 +13561,7 @@ export namespace Prisma {
     aggregatedRating?: number | null
     totalRating?: number | null
     totalRatingCount?: number | null
+    ageRatingId?: number | null
     url?: string | null
     platforms?: PlatformUncheckedCreateNestedManyWithoutGamesInput
     covers?: CoverUncheckedCreateNestedManyWithoutGameInput
@@ -12029,6 +13606,7 @@ export namespace Prisma {
     genres?: GenreCreateNestedManyWithoutGamesInput
     platforms?: PlatformCreateNestedManyWithoutGamesInput
     screenshots?: ScreenshotCreateNestedManyWithoutGameInput
+    ageRating?: GameRatingCreateNestedOneWithoutGamesInput
   }
 
   export type GameUncheckedCreateWithoutCoversInput = {
@@ -12045,6 +13623,7 @@ export namespace Prisma {
     aggregatedRating?: number | null
     totalRating?: number | null
     totalRatingCount?: number | null
+    ageRatingId?: number | null
     url?: string | null
     genres?: GenreUncheckedCreateNestedManyWithoutGamesInput
     platforms?: PlatformUncheckedCreateNestedManyWithoutGamesInput
@@ -12084,6 +13663,7 @@ export namespace Prisma {
     genres?: GenreUpdateManyWithoutGamesNestedInput
     platforms?: PlatformUpdateManyWithoutGamesNestedInput
     screenshots?: ScreenshotUpdateManyWithoutGameNestedInput
+    ageRating?: GameRatingUpdateOneWithoutGamesNestedInput
   }
 
   export type GameUncheckedUpdateWithoutCoversInput = {
@@ -12100,6 +13680,7 @@ export namespace Prisma {
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     genres?: GenreUncheckedUpdateManyWithoutGamesNestedInput
     platforms?: PlatformUncheckedUpdateManyWithoutGamesNestedInput
@@ -12123,6 +13704,7 @@ export namespace Prisma {
     genres?: GenreCreateNestedManyWithoutGamesInput
     platforms?: PlatformCreateNestedManyWithoutGamesInput
     covers?: CoverCreateNestedManyWithoutGameInput
+    ageRating?: GameRatingCreateNestedOneWithoutGamesInput
   }
 
   export type GameUncheckedCreateWithoutScreenshotsInput = {
@@ -12139,6 +13721,7 @@ export namespace Prisma {
     aggregatedRating?: number | null
     totalRating?: number | null
     totalRatingCount?: number | null
+    ageRatingId?: number | null
     url?: string | null
     genres?: GenreUncheckedCreateNestedManyWithoutGamesInput
     platforms?: PlatformUncheckedCreateNestedManyWithoutGamesInput
@@ -12178,6 +13761,7 @@ export namespace Prisma {
     genres?: GenreUpdateManyWithoutGamesNestedInput
     platforms?: PlatformUpdateManyWithoutGamesNestedInput
     covers?: CoverUpdateManyWithoutGameNestedInput
+    ageRating?: GameRatingUpdateOneWithoutGamesNestedInput
   }
 
   export type GameUncheckedUpdateWithoutScreenshotsInput = {
@@ -12194,6 +13778,7 @@ export namespace Prisma {
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     genres?: GenreUncheckedUpdateManyWithoutGamesNestedInput
     platforms?: PlatformUncheckedUpdateManyWithoutGamesNestedInput
@@ -12320,6 +13905,81 @@ export namespace Prisma {
     width?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
+  export type GameCreateManyAgeRatingInput = {
+    id?: number
+    igdbId: number
+    name: string
+    slug: string
+    summary?: string | null
+    storyline?: string | null
+    firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
+    coverUrl?: string | null
+    rating?: number | null
+    aggregatedRating?: number | null
+    totalRating?: number | null
+    totalRatingCount?: number | null
+    url?: string | null
+  }
+
+  export type GameUpdateWithoutAgeRatingInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    storyline?: NullableStringFieldUpdateOperationsInput | string | null
+    firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    genres?: GenreUpdateManyWithoutGamesNestedInput
+    platforms?: PlatformUpdateManyWithoutGamesNestedInput
+    covers?: CoverUpdateManyWithoutGameNestedInput
+    screenshots?: ScreenshotUpdateManyWithoutGameNestedInput
+  }
+
+  export type GameUncheckedUpdateWithoutAgeRatingInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    storyline?: NullableStringFieldUpdateOperationsInput | string | null
+    firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    genres?: GenreUncheckedUpdateManyWithoutGamesNestedInput
+    platforms?: PlatformUncheckedUpdateManyWithoutGamesNestedInput
+    covers?: CoverUncheckedUpdateManyWithoutGameNestedInput
+    screenshots?: ScreenshotUncheckedUpdateManyWithoutGameNestedInput
+  }
+
+  export type GameUncheckedUpdateManyWithoutAgeRatingInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    storyline?: NullableStringFieldUpdateOperationsInput | string | null
+    firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type GameUpdateWithoutPlatformsInput = {
     igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
@@ -12337,6 +13997,7 @@ export namespace Prisma {
     genres?: GenreUpdateManyWithoutGamesNestedInput
     covers?: CoverUpdateManyWithoutGameNestedInput
     screenshots?: ScreenshotUpdateManyWithoutGameNestedInput
+    ageRating?: GameRatingUpdateOneWithoutGamesNestedInput
   }
 
   export type GameUncheckedUpdateWithoutPlatformsInput = {
@@ -12353,6 +14014,7 @@ export namespace Prisma {
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     genres?: GenreUncheckedUpdateManyWithoutGamesNestedInput
     covers?: CoverUncheckedUpdateManyWithoutGameNestedInput
@@ -12373,6 +14035,7 @@ export namespace Prisma {
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -12393,6 +14056,7 @@ export namespace Prisma {
     platforms?: PlatformUpdateManyWithoutGamesNestedInput
     covers?: CoverUpdateManyWithoutGameNestedInput
     screenshots?: ScreenshotUpdateManyWithoutGameNestedInput
+    ageRating?: GameRatingUpdateOneWithoutGamesNestedInput
   }
 
   export type GameUncheckedUpdateWithoutGenresInput = {
@@ -12409,6 +14073,7 @@ export namespace Prisma {
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     platforms?: PlatformUncheckedUpdateManyWithoutGamesNestedInput
     covers?: CoverUncheckedUpdateManyWithoutGameNestedInput
@@ -12429,6 +14094,7 @@ export namespace Prisma {
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 

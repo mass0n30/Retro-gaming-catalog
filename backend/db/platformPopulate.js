@@ -19,6 +19,15 @@ const platforms = [
   { id: 5, name: "Wii", releaseOrder:15, abbreviation: "Wii", generation: 7, slug: "wii", platformLogo: 326 }
 ];
 
+const ratings = [
+  { id: 2, rating: 'C', description: 'Early Childhood' },
+  { id: 3, rating: 'E', description: 'Everyone – Suitable for all ages.' },
+  { id: 4, rating: 'E10+', description: 'Everyone 10+' },
+  { id: 5, rating: 'T', description: 'Teen – Suitable for ages 13 and older.' },
+  { id: 6, rating: 'M', description: 'Mature 17+ – Suitable for ages 17 and older.' },
+  { id: 7, rating: 'AO', description: 'Adults Only 18+ – Suitable only for adults 18 and older.' }
+];
+
 async function seed() {
   for (const platform of platforms) {
     await prisma.platform.upsert({
@@ -27,11 +36,19 @@ async function seed() {
       create: platform
     });
   }
-  console.log("All platforms seeded");
+
+  for (const rating of ratings) {
+    await prisma.gameRating.upsert({
+      where: { id: rating.id },
+      update: {},
+      create: rating
+    });
+  }
+  console.log("All platforms and ratings seeded");
 }
 
 seed()
   .catch(e => console.error(e))
   .finally(async () => await prisma.$disconnect());
 
-  module.exports = {allPlatFormsData:platforms};
+  module.exports = {allPlatFormsData:platforms, allRatingsData:ratings};
