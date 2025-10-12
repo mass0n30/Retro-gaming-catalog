@@ -46,6 +46,7 @@ model Game {
   totalRating      Float?
   totalRatingCount Int?
   ageRatingId      Int?
+  developerId      Int?
   url              String?
 
   // Relations
@@ -54,6 +55,7 @@ model Game {
   covers      Cover[]
   screenshots Screenshot[]
 
+  developer Developers? @relation("GameDevelopers", fields: [developerId], references: [id])
   ageRating GameRating? @relation("GameRatingRelation", fields: [ageRatingId], references: [id])
 }
 
@@ -75,6 +77,15 @@ model Platform {
   platformLogo Int?
 
   games Game[] @relation("GamePlatforms")
+}
+
+model Developers {
+  id      Int     @id
+  name    String?
+  logoUrl String?
+  country String?
+
+  games Game[] @relation("GameDevelopers")
 }
 
 model Genre {

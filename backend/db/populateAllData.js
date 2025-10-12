@@ -28,6 +28,34 @@ const ratings = [
   { id: 7, rating: 'AO', description: 'Adults Only 18+ – Suitable only for adults 18 and older.' }
 ];
 
+const developers = [
+  { id: 70, name: "Nintendo", country: "Japan", logoUrl: 'https://images.igdb.com/igdb/image/upload/t_logo_med/cl8bi.jpg'},
+  { id: 37, name: "Capcom", country: "Japan" ,logoUrl:'https://images.igdb.com/igdb/image/upload/t_logo_med/cl317.jpg'},
+  { id: 112, name: "Sega", country: "Japan" ,logoUrl:'https://images.igdb.com/igdb/image/upload/t_logo_med/hbil3xrhnp8fdust2juk.jpg'},
+  { id: 24170, name: "Squaresoft", country: "Japan" ,logoUrl: null},
+  { id: 129, name: "Konami", country: "Japan", logoUrl:'https://images.igdb.com/igdb/image/upload/t_logo_med/cl4vr.jpg'},
+  { id: 771, name: "Rare", country: "UK" ,logoUrl:'https://images.igdb.com/igdb/image/upload/t_logo_med/feggrbspqjrkyggtagei.jpg'},
+  { id: 818, name: "Atlus", country: "Japan" ,logoUrl:'https://images.igdb.com/igdb/image/upload/t_logo_med/ckfhnwwfvnp7xmait71m.jpg'},
+  { id: 401, name: "Naughty Dog", country: "USA" ,logoUrl:'https://images.igdb.com/igdb/image/upload/t_logo_med/cl52c.jpg'},
+  { id: 620, name: "Bungie", country: "USA" ,logoUrl: 'https://images.igdb.com/igdb/image/upload/t_logo_med/cl4lm.jpg'},
+]
+
+
+function mapRating(ageRatingId) {
+  let rating = null;
+
+  if (!ageRatingId) return null;
+
+  if ([2].includes(ageRatingId)) rating = 2; // C
+  else if ([3, 8, 9, 18, 19, 23, 24, 28].includes(ageRatingId)) rating = 3; // E
+  else if ([4, 10, 20, 30, 31].includes(ageRatingId)) rating = 4; // E10+
+  else if ([5, 11, 21, 32].includes(ageRatingId)) rating = 5; // T
+  else if ([6, 12, 16, 17, 22, 33, 38].includes(ageRatingId)) rating = 6; // M
+  else if ([7, 26, 39].includes(ageRatingId)) rating = 7; // AO
+
+  return rating; 
+}
+
 async function seed() {
   for (const platform of platforms) {
     await prisma.platform.upsert({
@@ -44,11 +72,19 @@ async function seed() {
       create: rating
     });
   }
-  console.log("All platforms and ratings seeded");
+
+  for (const developer of developers) {
+    await prisma.developers.upsert({
+      where: {id: developer.id},
+      update: {},
+      create: developer
+    });
+  }
+  console.log("All platforms, developers and ratings seeded");
 }
 
 seed()
   .catch(e => console.error(e))
   .finally(async () => await prisma.$disconnect());
 
-  module.exports = {allPlatFormsData:platforms, allRatingsData:ratings};
+  module.exports = {allPlatFormsData:platforms, allRatingsData:ratings, mapRating, allDevelopersData:developers};

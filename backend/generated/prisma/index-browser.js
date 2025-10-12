@@ -152,6 +152,7 @@ exports.Prisma.GameScalarFieldEnum = {
   totalRating: 'totalRating',
   totalRatingCount: 'totalRatingCount',
   ageRatingId: 'ageRatingId',
+  developerId: 'developerId',
   url: 'url'
 };
 
@@ -169,6 +170,13 @@ exports.Prisma.PlatformScalarFieldEnum = {
   generation: 'generation',
   slug: 'slug',
   platformLogo: 'platformLogo'
+};
+
+exports.Prisma.DevelopersScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  logoUrl: 'logoUrl',
+  country: 'country'
 };
 
 exports.Prisma.GenreScalarFieldEnum = {
@@ -220,6 +228,7 @@ exports.Prisma.ModelName = {
   Game: 'Game',
   GameRating: 'GameRating',
   Platform: 'Platform',
+  Developers: 'Developers',
   Genre: 'Genre',
   Cover: 'Cover',
   Screenshot: 'Screenshot'

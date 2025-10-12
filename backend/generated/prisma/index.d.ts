@@ -39,6 +39,11 @@ export type GameRating = $Result.DefaultSelection<Prisma.$GameRatingPayload>
  */
 export type Platform = $Result.DefaultSelection<Prisma.$PlatformPayload>
 /**
+ * Model Developers
+ * 
+ */
+export type Developers = $Result.DefaultSelection<Prisma.$DevelopersPayload>
+/**
  * Model Genre
  * 
  */
@@ -221,6 +226,16 @@ export class PrismaClient<
     * ```
     */
   get platform(): Prisma.PlatformDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.developers`: Exposes CRUD operations for the **Developers** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Developers
+    * const developers = await prisma.developers.findMany()
+    * ```
+    */
+  get developers(): Prisma.DevelopersDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.genre`: Exposes CRUD operations for the **Genre** model.
@@ -696,6 +711,7 @@ export namespace Prisma {
     Game: 'Game',
     GameRating: 'GameRating',
     Platform: 'Platform',
+    Developers: 'Developers',
     Genre: 'Genre',
     Cover: 'Cover',
     Screenshot: 'Screenshot'
@@ -717,7 +733,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "session" | "user" | "game" | "gameRating" | "platform" | "genre" | "cover" | "screenshot"
+      modelProps: "session" | "user" | "game" | "gameRating" | "platform" | "developers" | "genre" | "cover" | "screenshot"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1091,6 +1107,80 @@ export namespace Prisma {
           }
         }
       }
+      Developers: {
+        payload: Prisma.$DevelopersPayload<ExtArgs>
+        fields: Prisma.DevelopersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DevelopersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevelopersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DevelopersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevelopersPayload>
+          }
+          findFirst: {
+            args: Prisma.DevelopersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevelopersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DevelopersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevelopersPayload>
+          }
+          findMany: {
+            args: Prisma.DevelopersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevelopersPayload>[]
+          }
+          create: {
+            args: Prisma.DevelopersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevelopersPayload>
+          }
+          createMany: {
+            args: Prisma.DevelopersCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DevelopersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevelopersPayload>[]
+          }
+          delete: {
+            args: Prisma.DevelopersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevelopersPayload>
+          }
+          update: {
+            args: Prisma.DevelopersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevelopersPayload>
+          }
+          deleteMany: {
+            args: Prisma.DevelopersDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DevelopersUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DevelopersUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevelopersPayload>[]
+          }
+          upsert: {
+            args: Prisma.DevelopersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DevelopersPayload>
+          }
+          aggregate: {
+            args: Prisma.DevelopersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDevelopers>
+          }
+          groupBy: {
+            args: Prisma.DevelopersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DevelopersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DevelopersCountArgs<ExtArgs>
+            result: $Utils.Optional<DevelopersCountAggregateOutputType> | number
+          }
+        }
+      }
       Genre: {
         payload: Prisma.$GenrePayload<ExtArgs>
         fields: Prisma.GenreFieldRefs
@@ -1414,6 +1504,7 @@ export namespace Prisma {
     game?: GameOmit
     gameRating?: GameRatingOmit
     platform?: PlatformOmit
+    developers?: DevelopersOmit
     genre?: GenreOmit
     cover?: CoverOmit
     screenshot?: ScreenshotOmit
@@ -1608,6 +1699,37 @@ export namespace Prisma {
    * PlatformCountOutputType without action
    */
   export type PlatformCountOutputTypeCountGamesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GameWhereInput
+  }
+
+
+  /**
+   * Count Type DevelopersCountOutputType
+   */
+
+  export type DevelopersCountOutputType = {
+    games: number
+  }
+
+  export type DevelopersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    games?: boolean | DevelopersCountOutputTypeCountGamesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DevelopersCountOutputType without action
+   */
+  export type DevelopersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DevelopersCountOutputType
+     */
+    select?: DevelopersCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DevelopersCountOutputType without action
+   */
+  export type DevelopersCountOutputTypeCountGamesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GameWhereInput
   }
 
@@ -3704,6 +3826,7 @@ export namespace Prisma {
     totalRating: number | null
     totalRatingCount: number | null
     ageRatingId: number | null
+    developerId: number | null
   }
 
   export type GameSumAggregateOutputType = {
@@ -3714,6 +3837,7 @@ export namespace Prisma {
     totalRating: number | null
     totalRatingCount: number | null
     ageRatingId: number | null
+    developerId: number | null
   }
 
   export type GameMinAggregateOutputType = {
@@ -3731,6 +3855,7 @@ export namespace Prisma {
     totalRating: number | null
     totalRatingCount: number | null
     ageRatingId: number | null
+    developerId: number | null
     url: string | null
   }
 
@@ -3749,6 +3874,7 @@ export namespace Prisma {
     totalRating: number | null
     totalRatingCount: number | null
     ageRatingId: number | null
+    developerId: number | null
     url: string | null
   }
 
@@ -3767,6 +3893,7 @@ export namespace Prisma {
     totalRating: number
     totalRatingCount: number
     ageRatingId: number
+    developerId: number
     url: number
     _all: number
   }
@@ -3780,6 +3907,7 @@ export namespace Prisma {
     totalRating?: true
     totalRatingCount?: true
     ageRatingId?: true
+    developerId?: true
   }
 
   export type GameSumAggregateInputType = {
@@ -3790,6 +3918,7 @@ export namespace Prisma {
     totalRating?: true
     totalRatingCount?: true
     ageRatingId?: true
+    developerId?: true
   }
 
   export type GameMinAggregateInputType = {
@@ -3807,6 +3936,7 @@ export namespace Prisma {
     totalRating?: true
     totalRatingCount?: true
     ageRatingId?: true
+    developerId?: true
     url?: true
   }
 
@@ -3825,6 +3955,7 @@ export namespace Prisma {
     totalRating?: true
     totalRatingCount?: true
     ageRatingId?: true
+    developerId?: true
     url?: true
   }
 
@@ -3843,6 +3974,7 @@ export namespace Prisma {
     totalRating?: true
     totalRatingCount?: true
     ageRatingId?: true
+    developerId?: true
     url?: true
     _all?: true
   }
@@ -3948,6 +4080,7 @@ export namespace Prisma {
     totalRating: number | null
     totalRatingCount: number | null
     ageRatingId: number | null
+    developerId: number | null
     url: string | null
     _count: GameCountAggregateOutputType | null
     _avg: GameAvgAggregateOutputType | null
@@ -3985,11 +4118,13 @@ export namespace Prisma {
     totalRating?: boolean
     totalRatingCount?: boolean
     ageRatingId?: boolean
+    developerId?: boolean
     url?: boolean
     genres?: boolean | Game$genresArgs<ExtArgs>
     platforms?: boolean | Game$platformsArgs<ExtArgs>
     covers?: boolean | Game$coversArgs<ExtArgs>
     screenshots?: boolean | Game$screenshotsArgs<ExtArgs>
+    developer?: boolean | Game$developerArgs<ExtArgs>
     ageRating?: boolean | Game$ageRatingArgs<ExtArgs>
     _count?: boolean | GameCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["game"]>
@@ -4009,7 +4144,9 @@ export namespace Prisma {
     totalRating?: boolean
     totalRatingCount?: boolean
     ageRatingId?: boolean
+    developerId?: boolean
     url?: boolean
+    developer?: boolean | Game$developerArgs<ExtArgs>
     ageRating?: boolean | Game$ageRatingArgs<ExtArgs>
   }, ExtArgs["result"]["game"]>
 
@@ -4028,7 +4165,9 @@ export namespace Prisma {
     totalRating?: boolean
     totalRatingCount?: boolean
     ageRatingId?: boolean
+    developerId?: boolean
     url?: boolean
+    developer?: boolean | Game$developerArgs<ExtArgs>
     ageRating?: boolean | Game$ageRatingArgs<ExtArgs>
   }, ExtArgs["result"]["game"]>
 
@@ -4047,22 +4186,26 @@ export namespace Prisma {
     totalRating?: boolean
     totalRatingCount?: boolean
     ageRatingId?: boolean
+    developerId?: boolean
     url?: boolean
   }
 
-  export type GameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "igdbId" | "name" | "slug" | "summary" | "storyline" | "firstReleaseDate" | "originalPlatform" | "coverUrl" | "rating" | "aggregatedRating" | "totalRating" | "totalRatingCount" | "ageRatingId" | "url", ExtArgs["result"]["game"]>
+  export type GameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "igdbId" | "name" | "slug" | "summary" | "storyline" | "firstReleaseDate" | "originalPlatform" | "coverUrl" | "rating" | "aggregatedRating" | "totalRating" | "totalRatingCount" | "ageRatingId" | "developerId" | "url", ExtArgs["result"]["game"]>
   export type GameInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     genres?: boolean | Game$genresArgs<ExtArgs>
     platforms?: boolean | Game$platformsArgs<ExtArgs>
     covers?: boolean | Game$coversArgs<ExtArgs>
     screenshots?: boolean | Game$screenshotsArgs<ExtArgs>
+    developer?: boolean | Game$developerArgs<ExtArgs>
     ageRating?: boolean | Game$ageRatingArgs<ExtArgs>
     _count?: boolean | GameCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type GameIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    developer?: boolean | Game$developerArgs<ExtArgs>
     ageRating?: boolean | Game$ageRatingArgs<ExtArgs>
   }
   export type GameIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    developer?: boolean | Game$developerArgs<ExtArgs>
     ageRating?: boolean | Game$ageRatingArgs<ExtArgs>
   }
 
@@ -4073,6 +4216,7 @@ export namespace Prisma {
       platforms: Prisma.$PlatformPayload<ExtArgs>[]
       covers: Prisma.$CoverPayload<ExtArgs>[]
       screenshots: Prisma.$ScreenshotPayload<ExtArgs>[]
+      developer: Prisma.$DevelopersPayload<ExtArgs> | null
       ageRating: Prisma.$GameRatingPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -4090,6 +4234,7 @@ export namespace Prisma {
       totalRating: number | null
       totalRatingCount: number | null
       ageRatingId: number | null
+      developerId: number | null
       url: string | null
     }, ExtArgs["result"]["game"]>
     composites: {}
@@ -4489,6 +4634,7 @@ export namespace Prisma {
     platforms<T extends Game$platformsArgs<ExtArgs> = {}>(args?: Subset<T, Game$platformsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlatformPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     covers<T extends Game$coversArgs<ExtArgs> = {}>(args?: Subset<T, Game$coversArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     screenshots<T extends Game$screenshotsArgs<ExtArgs> = {}>(args?: Subset<T, Game$screenshotsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScreenshotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    developer<T extends Game$developerArgs<ExtArgs> = {}>(args?: Subset<T, Game$developerArgs<ExtArgs>>): Prisma__DevelopersClient<$Result.GetResult<Prisma.$DevelopersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     ageRating<T extends Game$ageRatingArgs<ExtArgs> = {}>(args?: Subset<T, Game$ageRatingArgs<ExtArgs>>): Prisma__GameRatingClient<$Result.GetResult<Prisma.$GameRatingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4533,6 +4679,7 @@ export namespace Prisma {
     readonly totalRating: FieldRef<"Game", 'Float'>
     readonly totalRatingCount: FieldRef<"Game", 'Int'>
     readonly ageRatingId: FieldRef<"Game", 'Int'>
+    readonly developerId: FieldRef<"Game", 'Int'>
     readonly url: FieldRef<"Game", 'String'>
   }
     
@@ -5023,6 +5170,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ScreenshotScalarFieldEnum | ScreenshotScalarFieldEnum[]
+  }
+
+  /**
+   * Game.developer
+   */
+  export type Game$developerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Developers
+     */
+    select?: DevelopersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Developers
+     */
+    omit?: DevelopersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevelopersInclude<ExtArgs> | null
+    where?: DevelopersWhereInput
   }
 
   /**
@@ -7280,6 +7446,1097 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: PlatformInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Developers
+   */
+
+  export type AggregateDevelopers = {
+    _count: DevelopersCountAggregateOutputType | null
+    _avg: DevelopersAvgAggregateOutputType | null
+    _sum: DevelopersSumAggregateOutputType | null
+    _min: DevelopersMinAggregateOutputType | null
+    _max: DevelopersMaxAggregateOutputType | null
+  }
+
+  export type DevelopersAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type DevelopersSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type DevelopersMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    logoUrl: string | null
+    country: string | null
+  }
+
+  export type DevelopersMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    logoUrl: string | null
+    country: string | null
+  }
+
+  export type DevelopersCountAggregateOutputType = {
+    id: number
+    name: number
+    logoUrl: number
+    country: number
+    _all: number
+  }
+
+
+  export type DevelopersAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type DevelopersSumAggregateInputType = {
+    id?: true
+  }
+
+  export type DevelopersMinAggregateInputType = {
+    id?: true
+    name?: true
+    logoUrl?: true
+    country?: true
+  }
+
+  export type DevelopersMaxAggregateInputType = {
+    id?: true
+    name?: true
+    logoUrl?: true
+    country?: true
+  }
+
+  export type DevelopersCountAggregateInputType = {
+    id?: true
+    name?: true
+    logoUrl?: true
+    country?: true
+    _all?: true
+  }
+
+  export type DevelopersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Developers to aggregate.
+     */
+    where?: DevelopersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Developers to fetch.
+     */
+    orderBy?: DevelopersOrderByWithRelationInput | DevelopersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DevelopersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Developers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Developers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Developers
+    **/
+    _count?: true | DevelopersCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DevelopersAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DevelopersSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DevelopersMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DevelopersMaxAggregateInputType
+  }
+
+  export type GetDevelopersAggregateType<T extends DevelopersAggregateArgs> = {
+        [P in keyof T & keyof AggregateDevelopers]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDevelopers[P]>
+      : GetScalarType<T[P], AggregateDevelopers[P]>
+  }
+
+
+
+
+  export type DevelopersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DevelopersWhereInput
+    orderBy?: DevelopersOrderByWithAggregationInput | DevelopersOrderByWithAggregationInput[]
+    by: DevelopersScalarFieldEnum[] | DevelopersScalarFieldEnum
+    having?: DevelopersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DevelopersCountAggregateInputType | true
+    _avg?: DevelopersAvgAggregateInputType
+    _sum?: DevelopersSumAggregateInputType
+    _min?: DevelopersMinAggregateInputType
+    _max?: DevelopersMaxAggregateInputType
+  }
+
+  export type DevelopersGroupByOutputType = {
+    id: number
+    name: string | null
+    logoUrl: string | null
+    country: string | null
+    _count: DevelopersCountAggregateOutputType | null
+    _avg: DevelopersAvgAggregateOutputType | null
+    _sum: DevelopersSumAggregateOutputType | null
+    _min: DevelopersMinAggregateOutputType | null
+    _max: DevelopersMaxAggregateOutputType | null
+  }
+
+  type GetDevelopersGroupByPayload<T extends DevelopersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DevelopersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DevelopersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DevelopersGroupByOutputType[P]>
+            : GetScalarType<T[P], DevelopersGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DevelopersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    logoUrl?: boolean
+    country?: boolean
+    games?: boolean | Developers$gamesArgs<ExtArgs>
+    _count?: boolean | DevelopersCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["developers"]>
+
+  export type DevelopersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    logoUrl?: boolean
+    country?: boolean
+  }, ExtArgs["result"]["developers"]>
+
+  export type DevelopersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    logoUrl?: boolean
+    country?: boolean
+  }, ExtArgs["result"]["developers"]>
+
+  export type DevelopersSelectScalar = {
+    id?: boolean
+    name?: boolean
+    logoUrl?: boolean
+    country?: boolean
+  }
+
+  export type DevelopersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "logoUrl" | "country", ExtArgs["result"]["developers"]>
+  export type DevelopersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    games?: boolean | Developers$gamesArgs<ExtArgs>
+    _count?: boolean | DevelopersCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type DevelopersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type DevelopersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $DevelopersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Developers"
+    objects: {
+      games: Prisma.$GamePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string | null
+      logoUrl: string | null
+      country: string | null
+    }, ExtArgs["result"]["developers"]>
+    composites: {}
+  }
+
+  type DevelopersGetPayload<S extends boolean | null | undefined | DevelopersDefaultArgs> = $Result.GetResult<Prisma.$DevelopersPayload, S>
+
+  type DevelopersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DevelopersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DevelopersCountAggregateInputType | true
+    }
+
+  export interface DevelopersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Developers'], meta: { name: 'Developers' } }
+    /**
+     * Find zero or one Developers that matches the filter.
+     * @param {DevelopersFindUniqueArgs} args - Arguments to find a Developers
+     * @example
+     * // Get one Developers
+     * const developers = await prisma.developers.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DevelopersFindUniqueArgs>(args: SelectSubset<T, DevelopersFindUniqueArgs<ExtArgs>>): Prisma__DevelopersClient<$Result.GetResult<Prisma.$DevelopersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Developers that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DevelopersFindUniqueOrThrowArgs} args - Arguments to find a Developers
+     * @example
+     * // Get one Developers
+     * const developers = await prisma.developers.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DevelopersFindUniqueOrThrowArgs>(args: SelectSubset<T, DevelopersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DevelopersClient<$Result.GetResult<Prisma.$DevelopersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Developers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevelopersFindFirstArgs} args - Arguments to find a Developers
+     * @example
+     * // Get one Developers
+     * const developers = await prisma.developers.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DevelopersFindFirstArgs>(args?: SelectSubset<T, DevelopersFindFirstArgs<ExtArgs>>): Prisma__DevelopersClient<$Result.GetResult<Prisma.$DevelopersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Developers that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevelopersFindFirstOrThrowArgs} args - Arguments to find a Developers
+     * @example
+     * // Get one Developers
+     * const developers = await prisma.developers.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DevelopersFindFirstOrThrowArgs>(args?: SelectSubset<T, DevelopersFindFirstOrThrowArgs<ExtArgs>>): Prisma__DevelopersClient<$Result.GetResult<Prisma.$DevelopersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Developers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevelopersFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Developers
+     * const developers = await prisma.developers.findMany()
+     * 
+     * // Get first 10 Developers
+     * const developers = await prisma.developers.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const developersWithIdOnly = await prisma.developers.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DevelopersFindManyArgs>(args?: SelectSubset<T, DevelopersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevelopersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Developers.
+     * @param {DevelopersCreateArgs} args - Arguments to create a Developers.
+     * @example
+     * // Create one Developers
+     * const Developers = await prisma.developers.create({
+     *   data: {
+     *     // ... data to create a Developers
+     *   }
+     * })
+     * 
+     */
+    create<T extends DevelopersCreateArgs>(args: SelectSubset<T, DevelopersCreateArgs<ExtArgs>>): Prisma__DevelopersClient<$Result.GetResult<Prisma.$DevelopersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Developers.
+     * @param {DevelopersCreateManyArgs} args - Arguments to create many Developers.
+     * @example
+     * // Create many Developers
+     * const developers = await prisma.developers.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DevelopersCreateManyArgs>(args?: SelectSubset<T, DevelopersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Developers and returns the data saved in the database.
+     * @param {DevelopersCreateManyAndReturnArgs} args - Arguments to create many Developers.
+     * @example
+     * // Create many Developers
+     * const developers = await prisma.developers.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Developers and only return the `id`
+     * const developersWithIdOnly = await prisma.developers.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DevelopersCreateManyAndReturnArgs>(args?: SelectSubset<T, DevelopersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevelopersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Developers.
+     * @param {DevelopersDeleteArgs} args - Arguments to delete one Developers.
+     * @example
+     * // Delete one Developers
+     * const Developers = await prisma.developers.delete({
+     *   where: {
+     *     // ... filter to delete one Developers
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DevelopersDeleteArgs>(args: SelectSubset<T, DevelopersDeleteArgs<ExtArgs>>): Prisma__DevelopersClient<$Result.GetResult<Prisma.$DevelopersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Developers.
+     * @param {DevelopersUpdateArgs} args - Arguments to update one Developers.
+     * @example
+     * // Update one Developers
+     * const developers = await prisma.developers.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DevelopersUpdateArgs>(args: SelectSubset<T, DevelopersUpdateArgs<ExtArgs>>): Prisma__DevelopersClient<$Result.GetResult<Prisma.$DevelopersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Developers.
+     * @param {DevelopersDeleteManyArgs} args - Arguments to filter Developers to delete.
+     * @example
+     * // Delete a few Developers
+     * const { count } = await prisma.developers.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DevelopersDeleteManyArgs>(args?: SelectSubset<T, DevelopersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Developers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevelopersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Developers
+     * const developers = await prisma.developers.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DevelopersUpdateManyArgs>(args: SelectSubset<T, DevelopersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Developers and returns the data updated in the database.
+     * @param {DevelopersUpdateManyAndReturnArgs} args - Arguments to update many Developers.
+     * @example
+     * // Update many Developers
+     * const developers = await prisma.developers.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Developers and only return the `id`
+     * const developersWithIdOnly = await prisma.developers.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DevelopersUpdateManyAndReturnArgs>(args: SelectSubset<T, DevelopersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DevelopersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Developers.
+     * @param {DevelopersUpsertArgs} args - Arguments to update or create a Developers.
+     * @example
+     * // Update or create a Developers
+     * const developers = await prisma.developers.upsert({
+     *   create: {
+     *     // ... data to create a Developers
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Developers we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DevelopersUpsertArgs>(args: SelectSubset<T, DevelopersUpsertArgs<ExtArgs>>): Prisma__DevelopersClient<$Result.GetResult<Prisma.$DevelopersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Developers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevelopersCountArgs} args - Arguments to filter Developers to count.
+     * @example
+     * // Count the number of Developers
+     * const count = await prisma.developers.count({
+     *   where: {
+     *     // ... the filter for the Developers we want to count
+     *   }
+     * })
+    **/
+    count<T extends DevelopersCountArgs>(
+      args?: Subset<T, DevelopersCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DevelopersCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Developers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevelopersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DevelopersAggregateArgs>(args: Subset<T, DevelopersAggregateArgs>): Prisma.PrismaPromise<GetDevelopersAggregateType<T>>
+
+    /**
+     * Group by Developers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevelopersGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DevelopersGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DevelopersGroupByArgs['orderBy'] }
+        : { orderBy?: DevelopersGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DevelopersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDevelopersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Developers model
+   */
+  readonly fields: DevelopersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Developers.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DevelopersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    games<T extends Developers$gamesArgs<ExtArgs> = {}>(args?: Subset<T, Developers$gamesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GamePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Developers model
+   */
+  interface DevelopersFieldRefs {
+    readonly id: FieldRef<"Developers", 'Int'>
+    readonly name: FieldRef<"Developers", 'String'>
+    readonly logoUrl: FieldRef<"Developers", 'String'>
+    readonly country: FieldRef<"Developers", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Developers findUnique
+   */
+  export type DevelopersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Developers
+     */
+    select?: DevelopersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Developers
+     */
+    omit?: DevelopersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevelopersInclude<ExtArgs> | null
+    /**
+     * Filter, which Developers to fetch.
+     */
+    where: DevelopersWhereUniqueInput
+  }
+
+  /**
+   * Developers findUniqueOrThrow
+   */
+  export type DevelopersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Developers
+     */
+    select?: DevelopersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Developers
+     */
+    omit?: DevelopersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevelopersInclude<ExtArgs> | null
+    /**
+     * Filter, which Developers to fetch.
+     */
+    where: DevelopersWhereUniqueInput
+  }
+
+  /**
+   * Developers findFirst
+   */
+  export type DevelopersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Developers
+     */
+    select?: DevelopersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Developers
+     */
+    omit?: DevelopersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevelopersInclude<ExtArgs> | null
+    /**
+     * Filter, which Developers to fetch.
+     */
+    where?: DevelopersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Developers to fetch.
+     */
+    orderBy?: DevelopersOrderByWithRelationInput | DevelopersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Developers.
+     */
+    cursor?: DevelopersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Developers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Developers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Developers.
+     */
+    distinct?: DevelopersScalarFieldEnum | DevelopersScalarFieldEnum[]
+  }
+
+  /**
+   * Developers findFirstOrThrow
+   */
+  export type DevelopersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Developers
+     */
+    select?: DevelopersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Developers
+     */
+    omit?: DevelopersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevelopersInclude<ExtArgs> | null
+    /**
+     * Filter, which Developers to fetch.
+     */
+    where?: DevelopersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Developers to fetch.
+     */
+    orderBy?: DevelopersOrderByWithRelationInput | DevelopersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Developers.
+     */
+    cursor?: DevelopersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Developers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Developers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Developers.
+     */
+    distinct?: DevelopersScalarFieldEnum | DevelopersScalarFieldEnum[]
+  }
+
+  /**
+   * Developers findMany
+   */
+  export type DevelopersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Developers
+     */
+    select?: DevelopersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Developers
+     */
+    omit?: DevelopersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevelopersInclude<ExtArgs> | null
+    /**
+     * Filter, which Developers to fetch.
+     */
+    where?: DevelopersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Developers to fetch.
+     */
+    orderBy?: DevelopersOrderByWithRelationInput | DevelopersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Developers.
+     */
+    cursor?: DevelopersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Developers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Developers.
+     */
+    skip?: number
+    distinct?: DevelopersScalarFieldEnum | DevelopersScalarFieldEnum[]
+  }
+
+  /**
+   * Developers create
+   */
+  export type DevelopersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Developers
+     */
+    select?: DevelopersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Developers
+     */
+    omit?: DevelopersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevelopersInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Developers.
+     */
+    data: XOR<DevelopersCreateInput, DevelopersUncheckedCreateInput>
+  }
+
+  /**
+   * Developers createMany
+   */
+  export type DevelopersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Developers.
+     */
+    data: DevelopersCreateManyInput | DevelopersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Developers createManyAndReturn
+   */
+  export type DevelopersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Developers
+     */
+    select?: DevelopersSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Developers
+     */
+    omit?: DevelopersOmit<ExtArgs> | null
+    /**
+     * The data used to create many Developers.
+     */
+    data: DevelopersCreateManyInput | DevelopersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Developers update
+   */
+  export type DevelopersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Developers
+     */
+    select?: DevelopersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Developers
+     */
+    omit?: DevelopersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevelopersInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Developers.
+     */
+    data: XOR<DevelopersUpdateInput, DevelopersUncheckedUpdateInput>
+    /**
+     * Choose, which Developers to update.
+     */
+    where: DevelopersWhereUniqueInput
+  }
+
+  /**
+   * Developers updateMany
+   */
+  export type DevelopersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Developers.
+     */
+    data: XOR<DevelopersUpdateManyMutationInput, DevelopersUncheckedUpdateManyInput>
+    /**
+     * Filter which Developers to update
+     */
+    where?: DevelopersWhereInput
+    /**
+     * Limit how many Developers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Developers updateManyAndReturn
+   */
+  export type DevelopersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Developers
+     */
+    select?: DevelopersSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Developers
+     */
+    omit?: DevelopersOmit<ExtArgs> | null
+    /**
+     * The data used to update Developers.
+     */
+    data: XOR<DevelopersUpdateManyMutationInput, DevelopersUncheckedUpdateManyInput>
+    /**
+     * Filter which Developers to update
+     */
+    where?: DevelopersWhereInput
+    /**
+     * Limit how many Developers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Developers upsert
+   */
+  export type DevelopersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Developers
+     */
+    select?: DevelopersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Developers
+     */
+    omit?: DevelopersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevelopersInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Developers to update in case it exists.
+     */
+    where: DevelopersWhereUniqueInput
+    /**
+     * In case the Developers found by the `where` argument doesn't exist, create a new Developers with this data.
+     */
+    create: XOR<DevelopersCreateInput, DevelopersUncheckedCreateInput>
+    /**
+     * In case the Developers was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DevelopersUpdateInput, DevelopersUncheckedUpdateInput>
+  }
+
+  /**
+   * Developers delete
+   */
+  export type DevelopersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Developers
+     */
+    select?: DevelopersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Developers
+     */
+    omit?: DevelopersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevelopersInclude<ExtArgs> | null
+    /**
+     * Filter which Developers to delete.
+     */
+    where: DevelopersWhereUniqueInput
+  }
+
+  /**
+   * Developers deleteMany
+   */
+  export type DevelopersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Developers to delete
+     */
+    where?: DevelopersWhereInput
+    /**
+     * Limit how many Developers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Developers.games
+   */
+  export type Developers$gamesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Game
+     */
+    select?: GameSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Game
+     */
+    omit?: GameOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GameInclude<ExtArgs> | null
+    where?: GameWhereInput
+    orderBy?: GameOrderByWithRelationInput | GameOrderByWithRelationInput[]
+    cursor?: GameWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GameScalarFieldEnum | GameScalarFieldEnum[]
+  }
+
+  /**
+   * Developers without action
+   */
+  export type DevelopersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Developers
+     */
+    select?: DevelopersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Developers
+     */
+    omit?: DevelopersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DevelopersInclude<ExtArgs> | null
   }
 
 
@@ -10698,6 +11955,7 @@ export namespace Prisma {
     totalRating: 'totalRating',
     totalRatingCount: 'totalRatingCount',
     ageRatingId: 'ageRatingId',
+    developerId: 'developerId',
     url: 'url'
   };
 
@@ -10724,6 +11982,16 @@ export namespace Prisma {
   };
 
   export type PlatformScalarFieldEnum = (typeof PlatformScalarFieldEnum)[keyof typeof PlatformScalarFieldEnum]
+
+
+  export const DevelopersScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    logoUrl: 'logoUrl',
+    country: 'country'
+  };
+
+  export type DevelopersScalarFieldEnum = (typeof DevelopersScalarFieldEnum)[keyof typeof DevelopersScalarFieldEnum]
 
 
   export const GenreScalarFieldEnum: {
@@ -10986,11 +12254,13 @@ export namespace Prisma {
     totalRating?: FloatNullableFilter<"Game"> | number | null
     totalRatingCount?: IntNullableFilter<"Game"> | number | null
     ageRatingId?: IntNullableFilter<"Game"> | number | null
+    developerId?: IntNullableFilter<"Game"> | number | null
     url?: StringNullableFilter<"Game"> | string | null
     genres?: GenreListRelationFilter
     platforms?: PlatformListRelationFilter
     covers?: CoverListRelationFilter
     screenshots?: ScreenshotListRelationFilter
+    developer?: XOR<DevelopersNullableScalarRelationFilter, DevelopersWhereInput> | null
     ageRating?: XOR<GameRatingNullableScalarRelationFilter, GameRatingWhereInput> | null
   }
 
@@ -11009,11 +12279,13 @@ export namespace Prisma {
     totalRating?: SortOrderInput | SortOrder
     totalRatingCount?: SortOrderInput | SortOrder
     ageRatingId?: SortOrderInput | SortOrder
+    developerId?: SortOrderInput | SortOrder
     url?: SortOrderInput | SortOrder
     genres?: GenreOrderByRelationAggregateInput
     platforms?: PlatformOrderByRelationAggregateInput
     covers?: CoverOrderByRelationAggregateInput
     screenshots?: ScreenshotOrderByRelationAggregateInput
+    developer?: DevelopersOrderByWithRelationInput
     ageRating?: GameRatingOrderByWithRelationInput
   }
 
@@ -11035,11 +12307,13 @@ export namespace Prisma {
     totalRating?: FloatNullableFilter<"Game"> | number | null
     totalRatingCount?: IntNullableFilter<"Game"> | number | null
     ageRatingId?: IntNullableFilter<"Game"> | number | null
+    developerId?: IntNullableFilter<"Game"> | number | null
     url?: StringNullableFilter<"Game"> | string | null
     genres?: GenreListRelationFilter
     platforms?: PlatformListRelationFilter
     covers?: CoverListRelationFilter
     screenshots?: ScreenshotListRelationFilter
+    developer?: XOR<DevelopersNullableScalarRelationFilter, DevelopersWhereInput> | null
     ageRating?: XOR<GameRatingNullableScalarRelationFilter, GameRatingWhereInput> | null
   }, "id" | "igdbId" | "slug">
 
@@ -11058,6 +12332,7 @@ export namespace Prisma {
     totalRating?: SortOrderInput | SortOrder
     totalRatingCount?: SortOrderInput | SortOrder
     ageRatingId?: SortOrderInput | SortOrder
+    developerId?: SortOrderInput | SortOrder
     url?: SortOrderInput | SortOrder
     _count?: GameCountOrderByAggregateInput
     _avg?: GameAvgOrderByAggregateInput
@@ -11084,6 +12359,7 @@ export namespace Prisma {
     totalRating?: FloatNullableWithAggregatesFilter<"Game"> | number | null
     totalRatingCount?: IntNullableWithAggregatesFilter<"Game"> | number | null
     ageRatingId?: IntNullableWithAggregatesFilter<"Game"> | number | null
+    developerId?: IntNullableWithAggregatesFilter<"Game"> | number | null
     url?: StringNullableWithAggregatesFilter<"Game"> | string | null
   }
 
@@ -11199,6 +12475,58 @@ export namespace Prisma {
     generation?: IntNullableWithAggregatesFilter<"Platform"> | number | null
     slug?: StringWithAggregatesFilter<"Platform"> | string
     platformLogo?: IntNullableWithAggregatesFilter<"Platform"> | number | null
+  }
+
+  export type DevelopersWhereInput = {
+    AND?: DevelopersWhereInput | DevelopersWhereInput[]
+    OR?: DevelopersWhereInput[]
+    NOT?: DevelopersWhereInput | DevelopersWhereInput[]
+    id?: IntFilter<"Developers"> | number
+    name?: StringNullableFilter<"Developers"> | string | null
+    logoUrl?: StringNullableFilter<"Developers"> | string | null
+    country?: StringNullableFilter<"Developers"> | string | null
+    games?: GameListRelationFilter
+  }
+
+  export type DevelopersOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrderInput | SortOrder
+    logoUrl?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    games?: GameOrderByRelationAggregateInput
+  }
+
+  export type DevelopersWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: DevelopersWhereInput | DevelopersWhereInput[]
+    OR?: DevelopersWhereInput[]
+    NOT?: DevelopersWhereInput | DevelopersWhereInput[]
+    name?: StringNullableFilter<"Developers"> | string | null
+    logoUrl?: StringNullableFilter<"Developers"> | string | null
+    country?: StringNullableFilter<"Developers"> | string | null
+    games?: GameListRelationFilter
+  }, "id">
+
+  export type DevelopersOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrderInput | SortOrder
+    logoUrl?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    _count?: DevelopersCountOrderByAggregateInput
+    _avg?: DevelopersAvgOrderByAggregateInput
+    _max?: DevelopersMaxOrderByAggregateInput
+    _min?: DevelopersMinOrderByAggregateInput
+    _sum?: DevelopersSumOrderByAggregateInput
+  }
+
+  export type DevelopersScalarWhereWithAggregatesInput = {
+    AND?: DevelopersScalarWhereWithAggregatesInput | DevelopersScalarWhereWithAggregatesInput[]
+    OR?: DevelopersScalarWhereWithAggregatesInput[]
+    NOT?: DevelopersScalarWhereWithAggregatesInput | DevelopersScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Developers"> | number
+    name?: StringNullableWithAggregatesFilter<"Developers"> | string | null
+    logoUrl?: StringNullableWithAggregatesFilter<"Developers"> | string | null
+    country?: StringNullableWithAggregatesFilter<"Developers"> | string | null
   }
 
   export type GenreWhereInput = {
@@ -11521,6 +12849,7 @@ export namespace Prisma {
     platforms?: PlatformCreateNestedManyWithoutGamesInput
     covers?: CoverCreateNestedManyWithoutGameInput
     screenshots?: ScreenshotCreateNestedManyWithoutGameInput
+    developer?: DevelopersCreateNestedOneWithoutGamesInput
     ageRating?: GameRatingCreateNestedOneWithoutGamesInput
   }
 
@@ -11539,6 +12868,7 @@ export namespace Prisma {
     totalRating?: number | null
     totalRatingCount?: number | null
     ageRatingId?: number | null
+    developerId?: number | null
     url?: string | null
     genres?: GenreUncheckedCreateNestedManyWithoutGamesInput
     platforms?: PlatformUncheckedCreateNestedManyWithoutGamesInput
@@ -11564,6 +12894,7 @@ export namespace Prisma {
     platforms?: PlatformUpdateManyWithoutGamesNestedInput
     covers?: CoverUpdateManyWithoutGameNestedInput
     screenshots?: ScreenshotUpdateManyWithoutGameNestedInput
+    developer?: DevelopersUpdateOneWithoutGamesNestedInput
     ageRating?: GameRatingUpdateOneWithoutGamesNestedInput
   }
 
@@ -11582,6 +12913,7 @@ export namespace Prisma {
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
     ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
+    developerId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     genres?: GenreUncheckedUpdateManyWithoutGamesNestedInput
     platforms?: PlatformUncheckedUpdateManyWithoutGamesNestedInput
@@ -11604,6 +12936,7 @@ export namespace Prisma {
     totalRating?: number | null
     totalRatingCount?: number | null
     ageRatingId?: number | null
+    developerId?: number | null
     url?: string | null
   }
 
@@ -11638,6 +12971,7 @@ export namespace Prisma {
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
     ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
+    developerId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -11759,6 +13093,59 @@ export namespace Prisma {
     generation?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
     platformLogo?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type DevelopersCreateInput = {
+    id: number
+    name?: string | null
+    logoUrl?: string | null
+    country?: string | null
+    games?: GameCreateNestedManyWithoutDeveloperInput
+  }
+
+  export type DevelopersUncheckedCreateInput = {
+    id: number
+    name?: string | null
+    logoUrl?: string | null
+    country?: string | null
+    games?: GameUncheckedCreateNestedManyWithoutDeveloperInput
+  }
+
+  export type DevelopersUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    games?: GameUpdateManyWithoutDeveloperNestedInput
+  }
+
+  export type DevelopersUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    games?: GameUncheckedUpdateManyWithoutDeveloperNestedInput
+  }
+
+  export type DevelopersCreateManyInput = {
+    id: number
+    name?: string | null
+    logoUrl?: string | null
+    country?: string | null
+  }
+
+  export type DevelopersUpdateManyMutationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DevelopersUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type GenreCreateInput = {
@@ -12172,6 +13559,11 @@ export namespace Prisma {
     none?: ScreenshotWhereInput
   }
 
+  export type DevelopersNullableScalarRelationFilter = {
+    is?: DevelopersWhereInput | null
+    isNot?: DevelopersWhereInput | null
+  }
+
   export type GameRatingNullableScalarRelationFilter = {
     is?: GameRatingWhereInput | null
     isNot?: GameRatingWhereInput | null
@@ -12213,6 +13605,7 @@ export namespace Prisma {
     totalRating?: SortOrder
     totalRatingCount?: SortOrder
     ageRatingId?: SortOrder
+    developerId?: SortOrder
     url?: SortOrder
   }
 
@@ -12224,6 +13617,7 @@ export namespace Prisma {
     totalRating?: SortOrder
     totalRatingCount?: SortOrder
     ageRatingId?: SortOrder
+    developerId?: SortOrder
   }
 
   export type GameMaxOrderByAggregateInput = {
@@ -12241,6 +13635,7 @@ export namespace Prisma {
     totalRating?: SortOrder
     totalRatingCount?: SortOrder
     ageRatingId?: SortOrder
+    developerId?: SortOrder
     url?: SortOrder
   }
 
@@ -12259,6 +13654,7 @@ export namespace Prisma {
     totalRating?: SortOrder
     totalRatingCount?: SortOrder
     ageRatingId?: SortOrder
+    developerId?: SortOrder
     url?: SortOrder
   }
 
@@ -12270,6 +13666,7 @@ export namespace Prisma {
     totalRating?: SortOrder
     totalRatingCount?: SortOrder
     ageRatingId?: SortOrder
+    developerId?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -12414,6 +13811,35 @@ export namespace Prisma {
     releaseOrder?: SortOrder
     generation?: SortOrder
     platformLogo?: SortOrder
+  }
+
+  export type DevelopersCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    logoUrl?: SortOrder
+    country?: SortOrder
+  }
+
+  export type DevelopersAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type DevelopersMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    logoUrl?: SortOrder
+    country?: SortOrder
+  }
+
+  export type DevelopersMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    logoUrl?: SortOrder
+    country?: SortOrder
+  }
+
+  export type DevelopersSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type GenreCountOrderByAggregateInput = {
@@ -12590,6 +14016,12 @@ export namespace Prisma {
     connect?: ScreenshotWhereUniqueInput | ScreenshotWhereUniqueInput[]
   }
 
+  export type DevelopersCreateNestedOneWithoutGamesInput = {
+    create?: XOR<DevelopersCreateWithoutGamesInput, DevelopersUncheckedCreateWithoutGamesInput>
+    connectOrCreate?: DevelopersCreateOrConnectWithoutGamesInput
+    connect?: DevelopersWhereUniqueInput
+  }
+
   export type GameRatingCreateNestedOneWithoutGamesInput = {
     create?: XOR<GameRatingCreateWithoutGamesInput, GameRatingUncheckedCreateWithoutGamesInput>
     connectOrCreate?: GameRatingCreateOrConnectWithoutGamesInput
@@ -12698,6 +14130,16 @@ export namespace Prisma {
     update?: ScreenshotUpdateWithWhereUniqueWithoutGameInput | ScreenshotUpdateWithWhereUniqueWithoutGameInput[]
     updateMany?: ScreenshotUpdateManyWithWhereWithoutGameInput | ScreenshotUpdateManyWithWhereWithoutGameInput[]
     deleteMany?: ScreenshotScalarWhereInput | ScreenshotScalarWhereInput[]
+  }
+
+  export type DevelopersUpdateOneWithoutGamesNestedInput = {
+    create?: XOR<DevelopersCreateWithoutGamesInput, DevelopersUncheckedCreateWithoutGamesInput>
+    connectOrCreate?: DevelopersCreateOrConnectWithoutGamesInput
+    upsert?: DevelopersUpsertWithoutGamesInput
+    disconnect?: DevelopersWhereInput | boolean
+    delete?: DevelopersWhereInput | boolean
+    connect?: DevelopersWhereUniqueInput
+    update?: XOR<XOR<DevelopersUpdateToOneWithWhereWithoutGamesInput, DevelopersUpdateWithoutGamesInput>, DevelopersUncheckedUpdateWithoutGamesInput>
   }
 
   export type GameRatingUpdateOneWithoutGamesNestedInput = {
@@ -12841,6 +14283,48 @@ export namespace Prisma {
     connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
     update?: GameUpdateWithWhereUniqueWithoutPlatformsInput | GameUpdateWithWhereUniqueWithoutPlatformsInput[]
     updateMany?: GameUpdateManyWithWhereWithoutPlatformsInput | GameUpdateManyWithWhereWithoutPlatformsInput[]
+    deleteMany?: GameScalarWhereInput | GameScalarWhereInput[]
+  }
+
+  export type GameCreateNestedManyWithoutDeveloperInput = {
+    create?: XOR<GameCreateWithoutDeveloperInput, GameUncheckedCreateWithoutDeveloperInput> | GameCreateWithoutDeveloperInput[] | GameUncheckedCreateWithoutDeveloperInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutDeveloperInput | GameCreateOrConnectWithoutDeveloperInput[]
+    createMany?: GameCreateManyDeveloperInputEnvelope
+    connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+  }
+
+  export type GameUncheckedCreateNestedManyWithoutDeveloperInput = {
+    create?: XOR<GameCreateWithoutDeveloperInput, GameUncheckedCreateWithoutDeveloperInput> | GameCreateWithoutDeveloperInput[] | GameUncheckedCreateWithoutDeveloperInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutDeveloperInput | GameCreateOrConnectWithoutDeveloperInput[]
+    createMany?: GameCreateManyDeveloperInputEnvelope
+    connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+  }
+
+  export type GameUpdateManyWithoutDeveloperNestedInput = {
+    create?: XOR<GameCreateWithoutDeveloperInput, GameUncheckedCreateWithoutDeveloperInput> | GameCreateWithoutDeveloperInput[] | GameUncheckedCreateWithoutDeveloperInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutDeveloperInput | GameCreateOrConnectWithoutDeveloperInput[]
+    upsert?: GameUpsertWithWhereUniqueWithoutDeveloperInput | GameUpsertWithWhereUniqueWithoutDeveloperInput[]
+    createMany?: GameCreateManyDeveloperInputEnvelope
+    set?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    disconnect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    delete?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    update?: GameUpdateWithWhereUniqueWithoutDeveloperInput | GameUpdateWithWhereUniqueWithoutDeveloperInput[]
+    updateMany?: GameUpdateManyWithWhereWithoutDeveloperInput | GameUpdateManyWithWhereWithoutDeveloperInput[]
+    deleteMany?: GameScalarWhereInput | GameScalarWhereInput[]
+  }
+
+  export type GameUncheckedUpdateManyWithoutDeveloperNestedInput = {
+    create?: XOR<GameCreateWithoutDeveloperInput, GameUncheckedCreateWithoutDeveloperInput> | GameCreateWithoutDeveloperInput[] | GameUncheckedCreateWithoutDeveloperInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutDeveloperInput | GameCreateOrConnectWithoutDeveloperInput[]
+    upsert?: GameUpsertWithWhereUniqueWithoutDeveloperInput | GameUpsertWithWhereUniqueWithoutDeveloperInput[]
+    createMany?: GameCreateManyDeveloperInputEnvelope
+    set?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    disconnect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    delete?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+    update?: GameUpdateWithWhereUniqueWithoutDeveloperInput | GameUpdateWithWhereUniqueWithoutDeveloperInput[]
+    updateMany?: GameUpdateManyWithWhereWithoutDeveloperInput | GameUpdateManyWithWhereWithoutDeveloperInput[]
     deleteMany?: GameScalarWhereInput | GameScalarWhereInput[]
   }
 
@@ -13224,6 +14708,25 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type DevelopersCreateWithoutGamesInput = {
+    id: number
+    name?: string | null
+    logoUrl?: string | null
+    country?: string | null
+  }
+
+  export type DevelopersUncheckedCreateWithoutGamesInput = {
+    id: number
+    name?: string | null
+    logoUrl?: string | null
+    country?: string | null
+  }
+
+  export type DevelopersCreateOrConnectWithoutGamesInput = {
+    where: DevelopersWhereUniqueInput
+    create: XOR<DevelopersCreateWithoutGamesInput, DevelopersUncheckedCreateWithoutGamesInput>
+  }
+
   export type GameRatingCreateWithoutGamesInput = {
     id: number
     rating: string
@@ -13354,6 +14857,31 @@ export namespace Prisma {
     gameId?: IntFilter<"Screenshot"> | number
   }
 
+  export type DevelopersUpsertWithoutGamesInput = {
+    update: XOR<DevelopersUpdateWithoutGamesInput, DevelopersUncheckedUpdateWithoutGamesInput>
+    create: XOR<DevelopersCreateWithoutGamesInput, DevelopersUncheckedCreateWithoutGamesInput>
+    where?: DevelopersWhereInput
+  }
+
+  export type DevelopersUpdateToOneWithWhereWithoutGamesInput = {
+    where?: DevelopersWhereInput
+    data: XOR<DevelopersUpdateWithoutGamesInput, DevelopersUncheckedUpdateWithoutGamesInput>
+  }
+
+  export type DevelopersUpdateWithoutGamesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DevelopersUncheckedUpdateWithoutGamesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type GameRatingUpsertWithoutGamesInput = {
     update: XOR<GameRatingUpdateWithoutGamesInput, GameRatingUncheckedUpdateWithoutGamesInput>
     create: XOR<GameRatingCreateWithoutGamesInput, GameRatingUncheckedCreateWithoutGamesInput>
@@ -13395,6 +14923,7 @@ export namespace Prisma {
     platforms?: PlatformCreateNestedManyWithoutGamesInput
     covers?: CoverCreateNestedManyWithoutGameInput
     screenshots?: ScreenshotCreateNestedManyWithoutGameInput
+    developer?: DevelopersCreateNestedOneWithoutGamesInput
   }
 
   export type GameUncheckedCreateWithoutAgeRatingInput = {
@@ -13411,6 +14940,7 @@ export namespace Prisma {
     aggregatedRating?: number | null
     totalRating?: number | null
     totalRatingCount?: number | null
+    developerId?: number | null
     url?: string | null
     genres?: GenreUncheckedCreateNestedManyWithoutGamesInput
     platforms?: PlatformUncheckedCreateNestedManyWithoutGamesInput
@@ -13462,6 +14992,7 @@ export namespace Prisma {
     totalRating?: FloatNullableFilter<"Game"> | number | null
     totalRatingCount?: IntNullableFilter<"Game"> | number | null
     ageRatingId?: IntNullableFilter<"Game"> | number | null
+    developerId?: IntNullableFilter<"Game"> | number | null
     url?: StringNullableFilter<"Game"> | string | null
   }
 
@@ -13482,6 +15013,7 @@ export namespace Prisma {
     genres?: GenreCreateNestedManyWithoutGamesInput
     covers?: CoverCreateNestedManyWithoutGameInput
     screenshots?: ScreenshotCreateNestedManyWithoutGameInput
+    developer?: DevelopersCreateNestedOneWithoutGamesInput
     ageRating?: GameRatingCreateNestedOneWithoutGamesInput
   }
 
@@ -13500,6 +15032,7 @@ export namespace Prisma {
     totalRating?: number | null
     totalRatingCount?: number | null
     ageRatingId?: number | null
+    developerId?: number | null
     url?: string | null
     genres?: GenreUncheckedCreateNestedManyWithoutGamesInput
     covers?: CoverUncheckedCreateNestedManyWithoutGameInput
@@ -13527,6 +15060,75 @@ export namespace Prisma {
     data: XOR<GameUpdateManyMutationInput, GameUncheckedUpdateManyWithoutPlatformsInput>
   }
 
+  export type GameCreateWithoutDeveloperInput = {
+    igdbId: number
+    name: string
+    slug: string
+    summary?: string | null
+    storyline?: string | null
+    firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
+    coverUrl?: string | null
+    rating?: number | null
+    aggregatedRating?: number | null
+    totalRating?: number | null
+    totalRatingCount?: number | null
+    url?: string | null
+    genres?: GenreCreateNestedManyWithoutGamesInput
+    platforms?: PlatformCreateNestedManyWithoutGamesInput
+    covers?: CoverCreateNestedManyWithoutGameInput
+    screenshots?: ScreenshotCreateNestedManyWithoutGameInput
+    ageRating?: GameRatingCreateNestedOneWithoutGamesInput
+  }
+
+  export type GameUncheckedCreateWithoutDeveloperInput = {
+    id?: number
+    igdbId: number
+    name: string
+    slug: string
+    summary?: string | null
+    storyline?: string | null
+    firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
+    coverUrl?: string | null
+    rating?: number | null
+    aggregatedRating?: number | null
+    totalRating?: number | null
+    totalRatingCount?: number | null
+    ageRatingId?: number | null
+    url?: string | null
+    genres?: GenreUncheckedCreateNestedManyWithoutGamesInput
+    platforms?: PlatformUncheckedCreateNestedManyWithoutGamesInput
+    covers?: CoverUncheckedCreateNestedManyWithoutGameInput
+    screenshots?: ScreenshotUncheckedCreateNestedManyWithoutGameInput
+  }
+
+  export type GameCreateOrConnectWithoutDeveloperInput = {
+    where: GameWhereUniqueInput
+    create: XOR<GameCreateWithoutDeveloperInput, GameUncheckedCreateWithoutDeveloperInput>
+  }
+
+  export type GameCreateManyDeveloperInputEnvelope = {
+    data: GameCreateManyDeveloperInput | GameCreateManyDeveloperInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GameUpsertWithWhereUniqueWithoutDeveloperInput = {
+    where: GameWhereUniqueInput
+    update: XOR<GameUpdateWithoutDeveloperInput, GameUncheckedUpdateWithoutDeveloperInput>
+    create: XOR<GameCreateWithoutDeveloperInput, GameUncheckedCreateWithoutDeveloperInput>
+  }
+
+  export type GameUpdateWithWhereUniqueWithoutDeveloperInput = {
+    where: GameWhereUniqueInput
+    data: XOR<GameUpdateWithoutDeveloperInput, GameUncheckedUpdateWithoutDeveloperInput>
+  }
+
+  export type GameUpdateManyWithWhereWithoutDeveloperInput = {
+    where: GameScalarWhereInput
+    data: XOR<GameUpdateManyMutationInput, GameUncheckedUpdateManyWithoutDeveloperInput>
+  }
+
   export type GameCreateWithoutGenresInput = {
     igdbId: number
     name: string
@@ -13544,6 +15146,7 @@ export namespace Prisma {
     platforms?: PlatformCreateNestedManyWithoutGamesInput
     covers?: CoverCreateNestedManyWithoutGameInput
     screenshots?: ScreenshotCreateNestedManyWithoutGameInput
+    developer?: DevelopersCreateNestedOneWithoutGamesInput
     ageRating?: GameRatingCreateNestedOneWithoutGamesInput
   }
 
@@ -13562,6 +15165,7 @@ export namespace Prisma {
     totalRating?: number | null
     totalRatingCount?: number | null
     ageRatingId?: number | null
+    developerId?: number | null
     url?: string | null
     platforms?: PlatformUncheckedCreateNestedManyWithoutGamesInput
     covers?: CoverUncheckedCreateNestedManyWithoutGameInput
@@ -13606,6 +15210,7 @@ export namespace Prisma {
     genres?: GenreCreateNestedManyWithoutGamesInput
     platforms?: PlatformCreateNestedManyWithoutGamesInput
     screenshots?: ScreenshotCreateNestedManyWithoutGameInput
+    developer?: DevelopersCreateNestedOneWithoutGamesInput
     ageRating?: GameRatingCreateNestedOneWithoutGamesInput
   }
 
@@ -13624,6 +15229,7 @@ export namespace Prisma {
     totalRating?: number | null
     totalRatingCount?: number | null
     ageRatingId?: number | null
+    developerId?: number | null
     url?: string | null
     genres?: GenreUncheckedCreateNestedManyWithoutGamesInput
     platforms?: PlatformUncheckedCreateNestedManyWithoutGamesInput
@@ -13663,6 +15269,7 @@ export namespace Prisma {
     genres?: GenreUpdateManyWithoutGamesNestedInput
     platforms?: PlatformUpdateManyWithoutGamesNestedInput
     screenshots?: ScreenshotUpdateManyWithoutGameNestedInput
+    developer?: DevelopersUpdateOneWithoutGamesNestedInput
     ageRating?: GameRatingUpdateOneWithoutGamesNestedInput
   }
 
@@ -13681,6 +15288,7 @@ export namespace Prisma {
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
     ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
+    developerId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     genres?: GenreUncheckedUpdateManyWithoutGamesNestedInput
     platforms?: PlatformUncheckedUpdateManyWithoutGamesNestedInput
@@ -13704,6 +15312,7 @@ export namespace Prisma {
     genres?: GenreCreateNestedManyWithoutGamesInput
     platforms?: PlatformCreateNestedManyWithoutGamesInput
     covers?: CoverCreateNestedManyWithoutGameInput
+    developer?: DevelopersCreateNestedOneWithoutGamesInput
     ageRating?: GameRatingCreateNestedOneWithoutGamesInput
   }
 
@@ -13722,6 +15331,7 @@ export namespace Prisma {
     totalRating?: number | null
     totalRatingCount?: number | null
     ageRatingId?: number | null
+    developerId?: number | null
     url?: string | null
     genres?: GenreUncheckedCreateNestedManyWithoutGamesInput
     platforms?: PlatformUncheckedCreateNestedManyWithoutGamesInput
@@ -13761,6 +15371,7 @@ export namespace Prisma {
     genres?: GenreUpdateManyWithoutGamesNestedInput
     platforms?: PlatformUpdateManyWithoutGamesNestedInput
     covers?: CoverUpdateManyWithoutGameNestedInput
+    developer?: DevelopersUpdateOneWithoutGamesNestedInput
     ageRating?: GameRatingUpdateOneWithoutGamesNestedInput
   }
 
@@ -13779,6 +15390,7 @@ export namespace Prisma {
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
     ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
+    developerId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     genres?: GenreUncheckedUpdateManyWithoutGamesNestedInput
     platforms?: PlatformUncheckedUpdateManyWithoutGamesNestedInput
@@ -13919,6 +15531,7 @@ export namespace Prisma {
     aggregatedRating?: number | null
     totalRating?: number | null
     totalRatingCount?: number | null
+    developerId?: number | null
     url?: string | null
   }
 
@@ -13940,6 +15553,7 @@ export namespace Prisma {
     platforms?: PlatformUpdateManyWithoutGamesNestedInput
     covers?: CoverUpdateManyWithoutGameNestedInput
     screenshots?: ScreenshotUpdateManyWithoutGameNestedInput
+    developer?: DevelopersUpdateOneWithoutGamesNestedInput
   }
 
   export type GameUncheckedUpdateWithoutAgeRatingInput = {
@@ -13956,6 +15570,7 @@ export namespace Prisma {
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    developerId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     genres?: GenreUncheckedUpdateManyWithoutGamesNestedInput
     platforms?: PlatformUncheckedUpdateManyWithoutGamesNestedInput
@@ -13977,6 +15592,7 @@ export namespace Prisma {
     aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    developerId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -13997,6 +15613,7 @@ export namespace Prisma {
     genres?: GenreUpdateManyWithoutGamesNestedInput
     covers?: CoverUpdateManyWithoutGameNestedInput
     screenshots?: ScreenshotUpdateManyWithoutGameNestedInput
+    developer?: DevelopersUpdateOneWithoutGamesNestedInput
     ageRating?: GameRatingUpdateOneWithoutGamesNestedInput
   }
 
@@ -14015,6 +15632,7 @@ export namespace Prisma {
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
     ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
+    developerId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     genres?: GenreUncheckedUpdateManyWithoutGamesNestedInput
     covers?: CoverUncheckedUpdateManyWithoutGameNestedInput
@@ -14022,6 +15640,86 @@ export namespace Prisma {
   }
 
   export type GameUncheckedUpdateManyWithoutPlatformsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    storyline?: NullableStringFieldUpdateOperationsInput | string | null
+    firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
+    developerId?: NullableIntFieldUpdateOperationsInput | number | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type GameCreateManyDeveloperInput = {
+    id?: number
+    igdbId: number
+    name: string
+    slug: string
+    summary?: string | null
+    storyline?: string | null
+    firstReleaseDate?: Date | string | null
+    originalPlatform?: string | null
+    coverUrl?: string | null
+    rating?: number | null
+    aggregatedRating?: number | null
+    totalRating?: number | null
+    totalRatingCount?: number | null
+    ageRatingId?: number | null
+    url?: string | null
+  }
+
+  export type GameUpdateWithoutDeveloperInput = {
+    igdbId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    storyline?: NullableStringFieldUpdateOperationsInput | string | null
+    firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    genres?: GenreUpdateManyWithoutGamesNestedInput
+    platforms?: PlatformUpdateManyWithoutGamesNestedInput
+    covers?: CoverUpdateManyWithoutGameNestedInput
+    screenshots?: ScreenshotUpdateManyWithoutGameNestedInput
+    ageRating?: GameRatingUpdateOneWithoutGamesNestedInput
+  }
+
+  export type GameUncheckedUpdateWithoutDeveloperInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    igdbId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    storyline?: NullableStringFieldUpdateOperationsInput | string | null
+    firstReleaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    originalPlatform?: NullableStringFieldUpdateOperationsInput | string | null
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    aggregatedRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
+    ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    genres?: GenreUncheckedUpdateManyWithoutGamesNestedInput
+    platforms?: PlatformUncheckedUpdateManyWithoutGamesNestedInput
+    covers?: CoverUncheckedUpdateManyWithoutGameNestedInput
+    screenshots?: ScreenshotUncheckedUpdateManyWithoutGameNestedInput
+  }
+
+  export type GameUncheckedUpdateManyWithoutDeveloperInput = {
     id?: IntFieldUpdateOperationsInput | number
     igdbId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
@@ -14056,6 +15754,7 @@ export namespace Prisma {
     platforms?: PlatformUpdateManyWithoutGamesNestedInput
     covers?: CoverUpdateManyWithoutGameNestedInput
     screenshots?: ScreenshotUpdateManyWithoutGameNestedInput
+    developer?: DevelopersUpdateOneWithoutGamesNestedInput
     ageRating?: GameRatingUpdateOneWithoutGamesNestedInput
   }
 
@@ -14074,6 +15773,7 @@ export namespace Prisma {
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
     ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
+    developerId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
     platforms?: PlatformUncheckedUpdateManyWithoutGamesNestedInput
     covers?: CoverUncheckedUpdateManyWithoutGameNestedInput
@@ -14095,6 +15795,7 @@ export namespace Prisma {
     totalRating?: NullableFloatFieldUpdateOperationsInput | number | null
     totalRatingCount?: NullableIntFieldUpdateOperationsInput | number | null
     ageRatingId?: NullableIntFieldUpdateOperationsInput | number | null
+    developerId?: NullableIntFieldUpdateOperationsInput | number | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 

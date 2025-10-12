@@ -34,23 +34,30 @@ async function getOriginalPlatform(releaseOrderIds) {
     return originalPlatform;
 };
 
-const {allRatingsData} = require('../../db/platformPopulate.js');
+const {mapRating} = require('../../db/populateAllData.js');
 
 async function handleUpdateGameAgeRating(ageRatingId, game) {
 
-  for (i = 0; i < allRatingsData.length; i++) {
-    if (ageRatingId == allRatingsData[i].id) {
-      ageRatingId = allRatingsData[i].id
-    }
-  };
+  const rating = mapRating(ageRatingId);
 
-  if (ageRatingId !== null) {
+  if (rating !== null) {
     const updatedGame = await prisma.game.update({
       where: { id: game.id },
-      data: {ageRatingId: ageRatingId},
+      data: {ageRatingId: rating},
     });
     return updatedGame;
   }
 };
 
-module.exports = { handleUpdateGamePlatforms, handleUpdateGameAgeRating};
+async function handleUpdateGameDeveloper(gameDeveloperId, game) {
+
+  if (gameDeveloperId) {
+    const updatedGame = await prisma.game.update({
+      where: {id: game.id},
+      data:{developerId: gameDeveloperId}
+    });
+    return updatedGame;
+  }
+};
+
+module.exports = { handleUpdateGamePlatforms, handleUpdateGameAgeRating, handleUpdateGameDeveloper};

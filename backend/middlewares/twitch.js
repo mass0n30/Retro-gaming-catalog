@@ -21,14 +21,13 @@ async function getTwitchToken() {
 
   const data = await response.json();
   authenticationToken = data.access_token;
-  console.log(authenticationToken);
   return data.access_token;
   }
 };
 
 async function requestOptions() {
   const token = await getTwitchToken();
-  console.log(token);
+ // console.log(token);
   return {
     queryMethod: 'body', 
     method: 'post',
@@ -77,7 +76,7 @@ async function getGamesByYear(req, res, next) {
     `)  // & total_rating > 70 & total_rating_count > 20;` (further filtering if needed)
     .where(`first_release_date >= ${new Date(year, 0).getTime() / 1000} & first_release_date < ${new Date(year + 1, 0).getTime() / 1000}`)
     .sort('total_rating desc')
-    .limit(5)
+    .limit(500)
     .offset(0)
 
     .request('/games'); 
@@ -132,7 +131,7 @@ async function getGamesByPlatform(req, res, next) {
   }
 };   
 
-const {allPlatFormsData} = require('../db/platformPopulate.js');
+const {allPlatFormsData, allDevelopersData  } = require('../db/populateAllData.js');
 
 
 async function saveGame(gameData) {
@@ -265,18 +264,46 @@ async function getAgeRating(game, id, options) {
   if (ratingResponse) {
   return ratingResponse[0].id;
   } 
+};
+
+async function getDeveloper(game, options) {
+  if (game.involved_companies) {
+    for (let i = 0; i < game.involved_companies.length; i++) {
+     for (let j = 0; j < allDevelopersData.length; j++) {
+        const developerId = await getCompanyId(game.involved_companies[i], options);
+        if (developerId == allDevelopersData[j].id) {
+          return developerId;
+        }
+      }
+    }
+  }
+};
+
+async function getCompanyId(id, options) {
+  if (id) {
+    const response = await apicalypse(options)
+    .fields('company')
+    .where(`id = ${id}`)
+    .request('/involved_companies')
+
+    const companiesResponse = await response.data;
+
+    if (companiesResponse) {
+      return companiesResponse[0].company;
+    } else {
+      return null;
+    }
+  };
 }
 
 
-
 const { handleCreateCover, handleCreateScreenshots, handleCreateGenre} = require('../controllers/dataController/createController');
-const { handleUpdateGamePlatforms, handleUpdateGameAgeRating } = require('../controllers/dataController/updateController.js');
+const { handleUpdateGamePlatforms, handleUpdateGameAgeRating, handleUpdateGameDeveloper } = require('../controllers/dataController/updateController.js');
 
 async function mapGameData(game, platformData) {
 
   const options = await requestOptions();
 
-  // fetching for table relations to Game table in DB
   const gameCover = await getCover(game, options);
 
   if (gameCover && gameCover.image_id !== undefined) {
@@ -285,10 +312,12 @@ async function mapGameData(game, platformData) {
     gameCoverUrl = null; // or can put a placeholder image
   }
 
+  // get data from POST requests using game data
   const gameScreenshots = await getScreenshots(game, options);
   const gameGenre = await getGenre(game, options);
   const gameAgeRating = await getAgeRatingCategory(game, options);
-
+  const gameDeveloper = await getDeveloper(game, options);
+  
  // mapping game obj
   const gameData = {
     igdbId: game.id,
@@ -311,10 +340,12 @@ async function mapGameData(game, platformData) {
   if (gameCover && gameCover.image_id) {
     await handleCreateCover(gameCover, savedGame);
   }
+  // updating saved game from requested data
   await handleCreateScreenshots(gameScreenshots, savedGame);
   await handleCreateGenre(gameGenre, savedGame);
-  const updatedGame = await handleUpdateGamePlatforms(savedGame, platformData);
+  await handleUpdateGamePlatforms(savedGame, platformData);
   await handleUpdateGameAgeRating(gameAgeRating, savedGame);
+  await handleUpdateGameDeveloper(gameDeveloper, savedGame);
 };
 
 
