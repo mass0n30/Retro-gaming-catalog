@@ -82,7 +82,7 @@ async function handleCreateUser(req, res, next) {
 
   async function handleCreateGenre(gameGenres, game) {
 
-    if (gameGenres.length == 0) {
+    if (gameGenres == null) {
       return
     }
     await Promise.all(

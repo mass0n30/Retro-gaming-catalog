@@ -21,13 +21,15 @@ async function getTwitchToken() {
 
   const data = await response.json();
   authenticationToken = data.access_token;
+  process.env.TOKEN_EXP = data.expires_in;
+  process.env.ACCESS_TOKEN = data.access_token;
   return data.access_token;
   }
 };
 
 async function requestOptions() {
   const token = await getTwitchToken();
- // console.log(token);
+// console.log(token);
   return {
     queryMethod: 'body', 
     method: 'post',
@@ -45,10 +47,10 @@ async function requestOptions() {
 async function getGamesByYear(req, res, next) { 
   try {   
     const options = await requestOptions();
-    const year = 2000; 
+    const year = 1988; 
 
     // setting pagination variables
-    const page =  1 //  parseInt(req.query.page) || 1;
+    const page =  1//  parseInt(req.query.page) || 1;
 
     // items per page
     const pageSize = 500;
@@ -77,11 +79,13 @@ async function getGamesByYear(req, res, next) {
     .where(`first_release_date >= ${new Date(year, 0).getTime() / 1000} & first_release_date < ${new Date(year + 1, 0).getTime() / 1000}`)
     .sort('total_rating desc')
     .limit(500)
-    .offset(0)
+    .offset(offset)
 
     .request('/games'); 
 
+
     const games = results.data;
+    console.log(games.length);
     await saveGames(games);  
 
   } catch (error) {
@@ -176,13 +180,20 @@ async function saveGames(games) {
       await mapGameData(game, platformData);
     }
   }
+  console.log('Done!');
 };
+
+async function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 // POST REQUESTS 
 
 async function getCover(game, options) {
 
     if (game.cover) {
+      await delay(300);
       const response = await apicalypse(options)
       .fields('url, game, image_id, width, height')  // image_id is used to coonstruct image URL 'fast responses'
       .where(`game = ${game.id};`)
@@ -202,6 +213,7 @@ async function getCover(game, options) {
 async function getScreenshots(game, options) {
 
   if (game.screenshots) {
+    await delay(300);
     const response = await apicalypse(options)
     .fields('url, game, image_id, height, width')
     .where(`game = ${game.id}`)
@@ -221,12 +233,13 @@ async function getScreenshots(game, options) {
 async function getGenre(game, options) {
 
   if (game.genres) {
+    await delay(300);
     const response = await apicalypse(options)
     .fields('name, slug')
     .where(`id = ${game.genres[0]}`)
     .request('/genres')
 
-    const genresResponse = response.data;
+    const genresResponse = await response.data;
 
     if (genresResponse) {
       return genresResponse;
@@ -281,6 +294,8 @@ async function getDeveloper(game, options) {
 
 async function getCompanyId(id, options) {
   if (id) {
+    
+    await delay(300);
     const response = await apicalypse(options)
     .fields('company')
     .where(`id = ${id}`)
