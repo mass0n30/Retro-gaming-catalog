@@ -1,16 +1,26 @@
 Project Details
 
+Built using twitch IGDB API: https://www.igdb.com/api 
+
+Maybe add price chart data after developing (API price options like PriceCharting.com, costs $)
+
+FRONTEND:
+
 Feature I want to build is having a random screenshot generation on a page with 
 endless scrolling. Clicking on a random given screenshot will take you to the game details page, this gives a nostalgic yet modern discovery feeling to it. Could maybe do this for all sections for the app, or pagination. Perhaps I should look at the library
 first.
 Can possibly use Framer Motion React library for this seamless transition scroll.
 screenshots stored to IGDBs CDN amazon cloud server enables this, as load times latency issues shouldn't be an issue.
+This could be helpful as far as lining up screenshots in grid: https://www.theodinproject.com/lessons/node-path-advanced-html-and-css-responsive-images
 
-Built using twitch IGDB API: https://www.igdb.com/api 
+Design:
 
-Maybe add price chart data after developing (API price options like PriceCharting.com, costs $)
+For this project I believe desktop first will be fine, I want to establish how I should modularize my css moving forward, along with other things.
+Will implement BEM practice (Block, Element and Modifier)
 
-BACKEND directory:
+
+
+BACKEND:
 
 Image size docs: https://api-docs.igdb.com/#reference
 
@@ -18,9 +28,6 @@ Cache Image responses (screenshots): https://api-docs.igdb.com/#images
 
 I plan to cache a catalog of games storing lots of the more popular,
 upon user search if game not in db hit IGDB API for request. Cover images and screenshots 
-
-
-while results isn't null
 
 
 pseudo:

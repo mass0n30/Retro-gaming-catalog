@@ -1,7 +1,8 @@
 
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import styles from '../styles/form.module.css';
+import styles from '../styles/components/form.module.css';
+
 
 // eslint-disable-next-line react-refresh/only-export-components
 
@@ -64,7 +65,7 @@ function Login() {
           id="loginFormInput" 
           autoComplete="off"
         >
-          <div className={styles.loginInput}>
+          <div className={styles.form_row}>
             <input 
              className={styles.formInput}
              onChange={(e) => setUsername(e.target.value)}
@@ -75,7 +76,7 @@ function Login() {
              type="text" 
             />
           </div>
-          <div className={styles.loginInput}>
+          <div className={styles.form_row}>
             <input 
             className={styles.formInput}
             onChange={(e) => setPassword(e.target.value)} 
@@ -87,11 +88,11 @@ function Login() {
             />
           </div>
           <div className="formBtns">
-            <button type="submit" id="loginBtn">Log In</button>
+            <button type="submit" className={styles.form_button}>Log In</button>
           </div>
         </form>
           <div className="formBtns" id="signUp">
-            <div className={styles.formLink} >
+            <div className={styles.form_link} >
               Not a member? 
             </div>
             <Link to="/sign-up">
