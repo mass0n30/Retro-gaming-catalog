@@ -43,18 +43,37 @@ async function requestOptions() {
   };
 };
 
+async function populateAllGames(req, res, next) {
+  
+  let year = 1989;
+  let page = 1;
 
-async function getGamesByYear(req, res, next) { 
+  while (year < 2007) {
+    const results = await getGamesByYear(req, res, next, year, page);
+
+    if (results) {
+      page += 1;
+    } else {
+      year += 1;
+      page = 1;
+    }
+  }
+};
+
+
+async function getGamesByYear(req, res, next, year, page) { 
   try {   
     const options = await requestOptions();
-    const year = 1988; 
+    const currentYear = year; 
 
     // setting pagination variables
-    const page =  1//  parseInt(req.query.page) || 1;
+    const currentPage =  page//  parseInt(req.query.page) || 1;
+
+    console.log(`Getting games for: ${currentYear} Page ${currentPage}`)
 
     // items per page
     const pageSize = 500;
-    const offset = (page - 1) * pageSize;
+    const offset = (currentPage - 1) * pageSize;
 
     const results = await apicalypse(options)
     .fields(`
@@ -76,7 +95,7 @@ async function getGamesByYear(req, res, next) {
       player_perspectives,
       url
     `)  // & total_rating > 70 & total_rating_count > 20;` (further filtering if needed)
-    .where(`first_release_date >= ${new Date(year, 0).getTime() / 1000} & first_release_date < ${new Date(year + 1, 0).getTime() / 1000}`)
+    .where(`first_release_date >= ${new Date(currentYear, 0).getTime() / 1000} & first_release_date < ${new Date(currentYear + 1, 0).getTime() / 1000}`)
     .sort('total_rating desc')
     .limit(500)
     .offset(offset)
@@ -86,11 +105,16 @@ async function getGamesByYear(req, res, next) {
 
     const games = results.data;
     console.log(games.length);
-    await saveGames(games);  
+
+    if (games.length > 0) {
+      await saveGames(games);  
+      return true;
+    }
 
   } catch (error) {
      next(error);
   }
+  return false;
 };
 
 async function getGamesByPlatform(req, res, next) { 
@@ -193,7 +217,6 @@ async function delay(ms) {
 async function getCover(game, options) {
 
     if (game.cover) {
-      await delay(300);
       const response = await apicalypse(options)
       .fields('url, game, image_id, width, height')  // image_id is used to coonstruct image URL 'fast responses'
       .where(`game = ${game.id};`)
@@ -233,7 +256,6 @@ async function getScreenshots(game, options) {
 async function getGenre(game, options) {
 
   if (game.genres) {
-    await delay(300);
     const response = await apicalypse(options)
     .fields('name, slug')
     .where(`id = ${game.genres[0]}`)
@@ -295,7 +317,7 @@ async function getDeveloper(game, options) {
 async function getCompanyId(id, options) {
   if (id) {
     
-    await delay(300);
+    await delay(150);
     const response = await apicalypse(options)
     .fields('company')
     .where(`id = ${id}`)
@@ -365,4 +387,4 @@ async function mapGameData(game, platformData) {
 
 
 
-module.exports = { getGamesByYear, getGamesByPlatform };
+module.exports = { getGamesByYear, getGamesByPlatform, populateAllGames };
