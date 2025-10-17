@@ -3,15 +3,17 @@ import { useParams, Outlet } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import SideBar from "../components/SideBar";
 
 function Home() {
 
+  // state data
   const [user, SetUser] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedYear, setSelectedYear] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [games, setGames] = useState(null);
 
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const toggleSideBar = function() {
     sidebarOpen ? setSidebarOpen(false) : setSidebarOpen(true);
   };
@@ -80,7 +82,7 @@ function Home() {
   return (
     <>
     <Navbar/>
-      <Outlet context={{user, data, loading, success, SetLoading, SetSuccess, SetNewFetch, }} />
+      <Outlet context={{loadingData:loading, success, SetLoading, SetSuccess, SetNewFetch, appData: user, games, setGames }} />
     <Footer/>
     </>
 

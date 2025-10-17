@@ -2,14 +2,17 @@
 import { useEffect, useState } from 'react';
 import { useOutletContext } from "react-router-dom";
 import GameCard from '../components/GameCard';
-{/*maybe import local styles */}
+import styles from '../styles/components/home.module.css';
 
 function HomePage() {
-  const { user, data, success, SetSuccess, SetLoading, SetNewFetch } = useOutletContext();
+  const { loadingData, appData } = useOutletContext();
+
+  console.log(appData);
+
 
   return (
     <>
-      <div>Welcome home, <i>{user.alias}</i> </div>
+      <div>Welcome home, <i>{appData.alias}</i> </div>
     </>
   )
 }

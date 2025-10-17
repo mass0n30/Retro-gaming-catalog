@@ -28,8 +28,12 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
 }
 
+* {border: solid red 1px;}
+
+/* Globl file set flex and grid */
 /* 💻 Default (Desktop-first) */
 body {
   margin: 0;
@@ -37,18 +41,25 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  cursor: default;
 }
 
-@media (min-width: 31.25em) and (max-width: 62.5em) {
-  body {
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
     /* Tablet styles */
+@media (min-width: 360px) and (max-width: 1000px) {
+  body {
   }
 }
 
 /* 📱 Mobile: below 500px */
-@media (max-width: 31.25em) {
+@media (max-width: 360px) {
   body {
-    /* Mobile styles */
+
   }
 }
 
