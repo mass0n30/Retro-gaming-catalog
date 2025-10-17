@@ -4,6 +4,12 @@ Built using twitch IGDB API: https://www.igdb.com/api
 
 Maybe add price chart data after developing (API price options like PriceCharting.com, costs $)
 
+ToDo:
+  - replace the t_thumb in screenshot URLS for larger size
+  - look into normalizing the screenshot dimensions 
+  - perhaps change the original consoles to right platforms (like the wii snes games before 2006)
+  - start query routes for my populated game database
+
 FRONTEND:
 
 Feature I want to build is having a random screenshot generation on a page with 

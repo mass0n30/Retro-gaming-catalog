@@ -1,11 +1,11 @@
 
 import { useEffect, useState } from 'react';
 import { useOutletContext } from "react-router-dom";
+import GameCard from '../components/GameCard';
 {/*maybe import local styles */}
 
 function HomePage() {
   const { user, data, success, SetSuccess, SetLoading, SetNewFetch } = useOutletContext();
-
 
   return (
     <>

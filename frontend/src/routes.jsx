@@ -4,6 +4,7 @@ import ErrorPage from "./components/ErrorPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import HomePage from "./pages/HomePage";
+import GameDetails from "./pages/GameDetails";
 
 const routes = [
   {
@@ -31,10 +32,11 @@ const routes = [
             index: true,
             element: <HomePage/> 
           },
-        //  {
-         //   path: "post/:postId",
-        //    element: <PostDetails/>
-        //  }
+
+          {
+            path: "details/:gameId",
+            element: <GameDetails/>
+          }
         ]
       },
     ]

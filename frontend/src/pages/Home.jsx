@@ -7,14 +7,21 @@ import Footer from "../components/Footer";
 function Home() {
 
   const [user, SetUser] = useState(null);
-  const [data, SetData] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedYear, setSelectedYear] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [games, setGames] = useState(null);
+
+  const toggleSideBar = function() {
+    sidebarOpen ? setSidebarOpen(false) : setSidebarOpen(true);
+  };
+
   // loading state settings
   const [fetched, SetNewFetch] = useState(false);
   const [loading, SetLoading] = useState(true);
   const [success, SetSuccess] = useState(false);
   const [error, setError] = useState(null);
   const token = localStorage.getItem('usertoken');
-  console.log(token, "tested");
 
   //spinner upon mount with delay, post creation message with delay
   useEffect(() => {
