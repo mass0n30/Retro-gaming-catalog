@@ -13,16 +13,15 @@ function Home() {
   const [selectedYear, setSelectedYear] = useState(null);
   const [games, setGames] = useState(null);
 
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const toggleSideBar = function() {
-    sidebarOpen ? setSidebarOpen(false) : setSidebarOpen(true);
-  };
 
   // loading state settings
   const [fetched, SetNewFetch] = useState(false);
   const [loading, SetLoading] = useState(true);
   const [success, SetSuccess] = useState(false);
   const [error, setError] = useState(null);
+
+  const [toggle, setToggle] = useState(false);
+
   const token = localStorage.getItem('usertoken');
 
   //spinner upon mount with delay, post creation message with delay
@@ -70,7 +69,7 @@ function Home() {
   if (loading  || !user) {
     return (
       <>
-      <Navbar/>
+      <Navbar toggle={toggle} setToggle={setToggle}/>
         <div style={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
           <div className="spinner"></div>
         </div>
@@ -81,10 +80,16 @@ function Home() {
 
   return (
     <>
-    <Navbar/>
+    <Navbar toggle={toggle} setToggle={setToggle}/>
     <main>
-      <aside>
-       <SideBar/>
+    <aside
+      style={{
+        transform: toggle ? 'translateX(0)' : 'translateX(-100%)',
+        width: toggle ? '30rem' : '0rem',
+        transition: 'all 0.3s ease',
+        overflow: 'hidden',
+        }}>
+        <SideBar />
       </aside>
       <section>
         <Outlet context={{loadingData:loading, success, SetLoading, SetSuccess, SetNewFetch, appData: user, games, setGames }} />

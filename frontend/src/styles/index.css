@@ -22,6 +22,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* container selectors for flex and grid*/
+* {border: solid red 1px;}
+
+
 body {
   margin: 0;
   display: flex;
@@ -31,17 +35,12 @@ body {
 }
 
 
-/* React root container using id root */
 #root {
   flex: 1;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
-
-* {border: solid red 1px;}
-
-/* Globl file set flex and grid */
 
 nav {
   position: sticky;
@@ -61,32 +60,36 @@ main {
 aside {
   position: sticky;
   top: 5rem;
-  width: 4rem;
   height:  calc(100vh - 5rem);
   background-color: aquamarine;
   opacity: 50%;
 }
 
+
 section {
   flex: 1;
+  min-width: 20rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
   justify-content: center;
   min-height: 100vh;
 }
 
- /* Tablet */
-@media (min-width: 360px) and (max-width: 1000px) {
-  body {
+/* Tablet */
+@media (min-width: 361px) and (max-width: 1000px) {
+
+  section {
+    min-width: 3rem;
+    justify-content: center;
   }
 }
 
-/* Mobile*/
+/* Mobile */
 @media (max-width: 360px) {
-  body {
 
+  section {
+    gap: 0.5rem;
+    justify-content: center;
   }
 }
-
 
