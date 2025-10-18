@@ -82,8 +82,14 @@ function Home() {
   return (
     <>
     <Navbar/>
-      <Outlet context={{loadingData:loading, success, SetLoading, SetSuccess, SetNewFetch, appData: user, games, setGames }} />
-    <Footer/>
+    <main>
+      <aside>
+       <SideBar/>
+      </aside>
+      <section>
+        <Outlet context={{loadingData:loading, success, SetLoading, SetSuccess, SetNewFetch, appData: user, games, setGames }} />
+      </section>
+    </main>
     </>
 
 

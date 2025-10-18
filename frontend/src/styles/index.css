@@ -22,41 +22,67 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* React root container using id root */
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  display: flex;
-}
-
-* {border: solid red 1px;}
-
-/* Globl file set flex and grid */
-/* 💻 Default (Desktop-first) */
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
   cursor: default;
 }
 
-main {
+
+/* React root container using id root */
+#root {
   flex: 1;
+  text-align: center;
   display: flex;
   flex-direction: column;
 }
 
-    /* Tablet styles */
+* {border: solid red 1px;}
+
+/* Globl file set flex and grid */
+
+nav {
+  position: sticky;
+  top: 0;
+  height: 5rem;
+  z-index: 100;
+  background-color: aqua;
+  opacity: 50%;
+}
+
+
+main {
+  width: 100%;
+  display: flex;
+}
+
+aside {
+  position: sticky;
+  top: 5rem;
+  width: 4rem;
+  height:  calc(100vh - 5rem);
+  background-color: aquamarine;
+  opacity: 50%;
+}
+
+section {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+ /* Tablet */
 @media (min-width: 360px) and (max-width: 1000px) {
   body {
   }
 }
 
-/* 📱 Mobile: below 500px */
+/* Mobile*/
 @media (max-width: 360px) {
   body {
 
