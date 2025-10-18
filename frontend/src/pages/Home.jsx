@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SideBar from "../components/SideBar";
 
+
 function Home() {
 
   // state data
@@ -12,6 +13,8 @@ function Home() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedYear, setSelectedYear] = useState(null);
   const [games, setGames] = useState(null);
+  const [gameDetails, setGameDetails] = useState(null);
+  const [search, setSearch] = useState("");
 
 
   // loading state settings
@@ -80,15 +83,15 @@ function Home() {
 
   return (
     <>
-    <Navbar toggle={toggle} setToggle={setToggle}/>
+    <Navbar toggle={toggle} setToggle={setToggle} search={search} setSearch={setSearch}/>
     <main>
     <aside
       style={{
         transform: toggle ? 'translateX(0)' : 'translateX(-100%)',
-        width: toggle ? '30rem' : '0rem',
+        width: toggle ? 'var(--sidebar-width)' : '0',
         transition: 'all 0.3s ease',
         overflow: 'hidden',
-        }}>
+        }} >
         <SideBar />
       </aside>
       <section>
@@ -96,8 +99,6 @@ function Home() {
       </section>
     </main>
     </>
-
-
   )
 }
 
