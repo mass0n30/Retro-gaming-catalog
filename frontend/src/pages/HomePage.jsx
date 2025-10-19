@@ -17,9 +17,9 @@ function HomePage() {
     const [hasMore, setHasMore] = useState(true);
     const [index, setIndex] = useState(1);
 
-    const [platform, setPlatform] = (null);
-    const [genre, setGenre] = (null);
-    const [developer, setDeveloper] = (null);
+    const [platform, setPlatform] = ('');
+    const [genre, setGenre] = ('');
+    const [developer, setDeveloper] = ('');
 
 
 

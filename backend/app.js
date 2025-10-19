@@ -49,9 +49,6 @@ app.use('/sign-up', signupRouter);
 
 app.use('/home', homeRouter);
 
-app.use('/year', yearRouter);
-app.use('/platform', platformRouter);
-
 app.post("/log-out", (req, res, next) => {
   req.logout((err) => {
     if (err) {
@@ -60,6 +57,18 @@ app.post("/log-out", (req, res, next) => {
     res.status(200).json({ message: "Logged out successfully" });
   });
 });
+
+// app level error handler for client side from next(errors) in any route
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+
+  const statusCode = err.statusCode || 500;
+
+  res.status(statusCode).json({
+    message: err.message || 'Something went wrong!',
+  });
+});
+
 
 
 app.listen(5000, () => console.log('Server started on port 5000'));

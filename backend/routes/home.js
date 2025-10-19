@@ -5,8 +5,9 @@ const jwtDecode = require("jwt-decode");
 const passport = require('passport');
 const { getData } = require('../controllers/viewController');
 require('../config/passport');
+const {gamesRouter} = require('./games');
+const {gameDetailsRouter} = require('./gameDetails');
 
-const {handleGetGames} = require('../controllers/viewController');
 
 homeRouter.get('/', passport.authenticate('jwt', { session: false }), async (req, res, next ) => {
 
@@ -24,16 +25,9 @@ homeRouter.get('/', passport.authenticate('jwt', { session: false }), async (req
   });
 });
 
-homeRouter.get('/games', async (req, res, next) => {
+homeRouter.use('/games', gamesRouter);
 
-  const initialGames = await handleGetGames(req, res, next);
-
-  res.json({
-    games: initialGames
-  })
-
-
-})
+homeRouter.use('/details', gameDetailsRouter);
 
 
 
