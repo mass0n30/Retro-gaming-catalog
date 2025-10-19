@@ -94,7 +94,7 @@ function Home() {
         }} >
         <SideBar />
       </aside>
-      <Outlet context={{loading, success, SetLoading, SetSuccess, SetNewFetch, user, games, setGames }} />
+      <Outlet context={{loading, success, SetLoading, SetSuccess, SetNewFetch, user, games, setGames, search, setSearch }} />
     </main>
     </>
   )

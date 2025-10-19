@@ -10,7 +10,7 @@ import axios from "axios";
 
 
 function HomePage() {
-    const { loading, success, SetLoading, SetSuccess, SetNewFetch, games, setGames } = useOutletContext();
+    const { loading, success, SetLoading, SetSuccess, SetNewFetch, games, setGames, search, setSearch} = useOutletContext();
     const token = localStorage.getItem('usertoken');
 
     // InfiniteScroll state var
@@ -20,49 +20,32 @@ function HomePage() {
     const [platform, setPlatform] = ('');
     const [genre, setGenre] = ('');
     const [developer, setDeveloper] = ('');
+    const [year, setYear] = ('');
+
+    // temporary
+    const offset = 0;
+    const limit = 100;
+
+    // making search params obj
+    const query = new URLSearchParams({
+      genre: genre,
+      platform: platform,
+      developer: developer,
+      year: year,
+      search: search,
+      offset: offset,
+      limit: limit
+    }).toString();
 
 
-
-    // initial mount for inital games (maybe save state scroll location?)
+  // initial mount for inital games (maybe save state scroll location?)
   useEffect(() => {
     axios
-      .get("http://localhost:5000/home/games?offset=0&limit=100",{
+      .get(`http://localhost:5000/home/games?${query}`,{
       })
       .then((res) => setGames(res.data.games))
       .catch((err) => console.log(err));
-  }, [token, setGames]);
-
-
-  // Genre 
-  useEffect(() => {
-    if (!genre) return;
-    axios
-      .get(`http://localhost:5000/home/games/genre/${genre}`)
-      .then((res) => setGames(res.data.games))
-      .catch((err) => console.log(err));
-
-  }, [genre, setGames]);
-
-  // Platform 
-  useEffect(() => {
-    if (!platform) return;
-    axios
-      .get(`http://localhost:5000/home/games/platform/${platform}`)
-      .then((res) => setGames(res.data.games))
-      .catch((err) => console.log(err));
-
-  }, [platform, setGames]);
-
-  // Developer 
-  useEffect(() => {
-    if (!developer) return;
-    axios
-      .get(`http://localhost:5000/home/games/developer/${developer}`)
-      .then((res) => setGames(res.data.games))
-      .catch((err) => console.log(err));
-
-  }, [developer, setGames]);
-
+  }, [token, setGames, query]);
 
     const fetchMoreData = () => {
     axios
