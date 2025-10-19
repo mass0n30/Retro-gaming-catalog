@@ -69,7 +69,7 @@ function Home() {
     return <div>Error: {error.message}</div>;
   }
   
-  if (loading  || !user) {
+  if (loading  || !user ) {
     return (
       <>
       <Navbar toggle={toggle} setToggle={setToggle}/>
@@ -94,9 +94,7 @@ function Home() {
         }} >
         <SideBar />
       </aside>
-      <section>
-        <Outlet context={{loadingData:loading, success, SetLoading, SetSuccess, SetNewFetch, appData: user, games, setGames }} />
-      </section>
+      <Outlet context={{loading, success, SetLoading, SetSuccess, SetNewFetch, user, games, setGames }} />
     </main>
     </>
   )

@@ -31,7 +31,7 @@ function Navbar({ toggle, setToggle, setSearch, search }) {
       <input 
         type="text" 
         placeholder="Search games..." 
-        value={search} 
+      //  value={search} 
         onChange={(e) => setSearch(e.target.value)} 
         className={styles.searchInput}
         />

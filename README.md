@@ -10,6 +10,11 @@ ToDo:
   - perhaps change the original consoles to right platforms (like the wii snes games before 2006)
   - start query routes for my populated game database
 
+
+Pseudo useFetch logic
+  - Home.jsx upon mount fetch initial games
+  - 
+
 FRONTEND:
 
 Feature I want to build is having a random screenshot generation on a page with 
@@ -18,6 +23,14 @@ first.
 Can possibly use Framer Motion React library for this seamless transition scroll.
 screenshots stored to IGDBs CDN amazon cloud server enables this, as load times latency issues shouldn't be an issue.
 This could be helpful as far as lining up screenshots in grid: https://www.theodinproject.com/lessons/node-path-advanced-html-and-css-responsive-images
+
+10/18 UPDATE: Framer Motion React doesn't seem to have what I am looking for - although useful to know about.
+Here is an article on using the library Reacts Infinite Scroll:
+https://builtin.com/articles/react-infinite-scroll 
+
+I am looking for endless scrolling where data fetches upon scrolling to 'next page'. One problem that should be addressed is 'saving state' upon user navigating off of where they scrolled. 
+This article addresses this, along with other problems caused by infinite scrolling: https://addyosmani.com/blog/infinite-scroll-without-layout-shifts/
+
 
 Design:
 

@@ -1,2 +1,2 @@
 // delete controller 
-const prisma = require("../db/prismaClient.js");
+const {prisma} = require("../db/prismaClient.js");
