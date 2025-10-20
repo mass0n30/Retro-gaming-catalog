@@ -17,10 +17,10 @@ function HomePage() {
     const [hasMore, setHasMore] = useState(true);
     const [index, setIndex] = useState(1);
 
-    const [platform, setPlatform] = ('');
-    const [genre, setGenre] = ('');
-    const [developer, setDeveloper] = ('');
-    const [year, setYear] = ('');
+    const [platform, setPlatform] = useState();
+    const [genre, setGenre] = useState();
+    const [developer, setDeveloper] = useState();
+    const [year, setYear] = useState();
 
     // temporary
     const offset = 0;
@@ -33,8 +33,8 @@ function HomePage() {
       developer: developer,
       year: year,
       search: search,
-      offset: offset,
-      limit: limit
+      offset: String(offset),
+      limit: String(limit)
     }).toString();
 
 
@@ -51,9 +51,10 @@ function HomePage() {
     axios
       .get(`http://localhost:5000/home/games?offset=${index}0&limit=100`)
       .then((res) => {
-        setGames((prevItems) => [...prevItems, ...res.data]);
+        console.log(res, 'response');
+        setGames((prevItems) => [...prevItems, ...res.data.games]);
 
-        res.data.length > 0 ? setHasMore(true) : setHasMore(false);
+        res.data.games.length > 0 ? setHasMore(true) : setHasMore(false);
       })
       .catch((err) => console.log(err));
 
@@ -72,10 +73,9 @@ function HomePage() {
 
 
   return (
-    <>
     <InfiniteScroll
       dataLength={games.length}
-      next={fetchMoreData}
+    //  next={fetchMoreData}
       hasMore={hasMore}
      // loader={<Loader />}
       >
@@ -85,7 +85,6 @@ function HomePage() {
       ))}
       </section>
     </InfiniteScroll>
-    </>
   )
 }
 

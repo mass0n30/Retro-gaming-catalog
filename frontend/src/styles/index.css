@@ -68,6 +68,21 @@ aside {
   opacity: 50%;
 }
 
+.infinite-scroll-component__outerdiv {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.infinite-scroll-component {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  padding: 1rem;
+}
+
 
 section {
   flex: 1;

@@ -2,6 +2,10 @@
 /* following BEM */
 
 .card {
+  flex: 1;
+}
+
+.card_cover_container {
 
 }
 

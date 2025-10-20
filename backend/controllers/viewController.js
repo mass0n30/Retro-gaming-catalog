@@ -4,20 +4,22 @@ const {prisma} = require("../db/prismaClient.js");
 
 async function handleGetGames(req, res, next) {
 
+  console.log(req.query, 'query');
+
   try {
-    const { genre, platform, developer, year, search, offset, limit } = req.params;
+    const { genre, platform, developer, year, search, offset, limit } = req.query;
 
     const games = await prisma.game.findMany({
       where: {
-        genreId: genre|| undefined,
-        platformId: platform || undefined,
-        developerId: developer || undefined,
-        year: year || undefined,
+        genres: genre != "undefined" ? { some: genre } : undefined,
+        platforms: platform != "undefined" ? { some: platform } : undefined,
+        developerId: developer != "undefined" ? developer : undefined,
+        year: year != "undefined" ? year : undefined,
       },
-      take: limit,
-      skip: offset,
+      take: parseInt(limit),
+      skip: parseInt(offset),
     });
-    return games;
+    return res.json({games});
     
   } catch (error) {
     next(error)
