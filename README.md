@@ -5,6 +5,8 @@ Built using twitch IGDB API: https://www.igdb.com/api
 Maybe add price chart data after developing (API price options like PriceCharting.com, costs $)
 
 ToDo:
+  - query for all genres, platforms, developers, years upon mount
+  - map out all elements for all categories using id keys 
   - replace the t_thumb in screenshot URLS for larger size
   - look into normalizing the screenshot dimensions 
   - perhaps change the original consoles to right platforms (like the wii snes games before 2006)
@@ -30,6 +32,9 @@ https://builtin.com/articles/react-infinite-scroll
 
 I am looking for endless scrolling where data fetches upon scrolling to 'next page'. One problem that should be addressed is 'saving state' upon user navigating off of where they scrolled. 
 This article addresses this, along with other problems caused by infinite scrolling: https://addyosmani.com/blog/infinite-scroll-without-layout-shifts/
+
+Possibly use these loader animations:
+https://www.reddit.com/r/react/comments/1gm3wxc/react_spinner_toolkit_new_npm_package/
 
 
 Design:

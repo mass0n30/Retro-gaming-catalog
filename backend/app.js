@@ -12,8 +12,6 @@ const cors = require('cors');
 const {indexRouter} = require('./routes/index');
 const {signupRouter} = require('./routes/signup');
 const {homeRouter} = require('./routes/home');
-const {yearRouter} = require('./routes/year');  
-const {platformRouter} = require('./routes/platform'); 
 
 const app = express();
 

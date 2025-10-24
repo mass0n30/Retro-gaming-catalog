@@ -1,10 +1,10 @@
 const { Router } = require("express");
 const gamesRouter = Router();
 const { getGamesByYear, populateAllGames } = require("../middlewares/twitch");
-const {handleGetGames} = require('../controllers/viewController');
+const {handleGetAllData} = require('../controllers/viewController');
 
 
-gamesRouter.get('/', handleGetGames);
+gamesRouter.get('/', handleGetAllData);
 
 
 

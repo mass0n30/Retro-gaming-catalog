@@ -23,7 +23,7 @@ function HomePage() {
     const [year, setYear] = useState();
 
     // temporary
-    const offset = 0;
+    const offset = 1000;
     const limit = 100;
 
     // making search params obj
@@ -37,6 +37,11 @@ function HomePage() {
       limit: String(limit)
     }).toString();
 
+  useEffect(() => {
+    axios.
+      
+  })
+
 
   // initial mount for inital games (maybe save state scroll location?)
   useEffect(() => {
@@ -45,7 +50,7 @@ function HomePage() {
       })
       .then((res) => setGames(res.data.games))
       .catch((err) => console.log(err));
-  }, [token, setGames, query]);
+  }, [token, setGames, query, genre, developer, year]);
 
     const fetchMoreData = () => {
     axios
@@ -75,7 +80,7 @@ function HomePage() {
   return (
     <InfiniteScroll
       dataLength={games.length}
-    //  next={fetchMoreData}
+      next={fetchMoreData}
       hasMore={hasMore}
      // loader={<Loader />}
       >

@@ -1,6 +1,42 @@
 // viewController
 const {prisma} = require("../db/prismaClient.js");
 
+async function handleGetAllData(req, res, next) {
+
+  try {
+
+    const categoryData = await getAllCategoryData(req, res, next);
+    const gamesData = await handleGetGames(req, res, data);
+
+    res.json({categoryData, gamesData});
+    
+  } catch (error) {
+    next(error);
+  }
+  
+}
+
+async function getAllCategoryData(req, res, next) {
+
+  try {
+    const platforms = await prisma.platform.findMany();
+    const years = [
+      1985, 1986, 1987, 1988, 1989,
+      1990, 1991, 1992, 1993, 1994,
+      1995, 1996, 1997, 1998, 1999,
+      2000, 2001, 2002, 2003, 2004,
+      2005, 2006
+    ];
+    const genres = await prisma.genre.findMany();
+    const developers = await prisma.developers.findMany();
+
+    return res.json({platforms, years, genres, developers})
+  } catch (error) {
+    next(error);
+  }
+
+};
+
 
 async function handleGetGames(req, res, next) {
 
@@ -45,4 +81,4 @@ async function handleGetGameDetails(req, res, next) {
 };
 
 
-module.exports = {handleGetGames, handleGetGameDetails};
+module.exports = {handleGetGames, handleGetGameDetails, getAllCategoryData, handleGetAllData};

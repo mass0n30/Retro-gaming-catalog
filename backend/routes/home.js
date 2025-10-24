@@ -3,7 +3,6 @@ const homeRouter = Router();
 var jwt = require('jsonwebtoken');
 const jwtDecode = require("jwt-decode");
 const passport = require('passport');
-const { getData } = require('../controllers/viewController');
 require('../config/passport');
 const {gamesRouter} = require('./games');
 const {gameDetailsRouter} = require('./gameDetails');
