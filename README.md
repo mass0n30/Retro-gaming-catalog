@@ -21,11 +21,19 @@ Additional tasks
   - adding custom loader
   - adding price data (costs $)
     - with price data, users can keep track of collection value, price fluctuations. 
+  - maybe add tag group components in main body, for better user exp?
+  - maybe replace my custom Form with more cohesive Form Component Library
+  
+Production tasks
+  - adding user accessibility (keyboard shortucts)
 
 
 
 FRONTEND:
 
+Pseudo for Sidebar category:
+  - query dependency re mounts for data
+  - 
 Feature I want to build is having a random screenshot generation on a page with 
 endless scrolling. Clicking on a random given screenshot will take you to the game details page, this gives a nostalgic yet modern discovery feeling to it. Could maybe do this for all sections for the app, or pagination. Perhaps I should look at the library
 first.

@@ -1,6 +1,6 @@
 {/* import { useState, useEffect } from 'react' */}
 import { useParams, Outlet } from "react-router-dom";
-import { useEffect, useState } from 'react';
+import { useEffect, useState,  } from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SideBar from "../components/SideBar";
@@ -11,7 +11,7 @@ function Home() {
   // state data
   const [user, SetUser] = useState(null);
 
-  const [categoryData, setCategoryData] = useState("test");
+  const [categoryData, setCategoryData] = useState();
   const [platform, setPlatform] = useState();
   const [genre, setGenre] = useState();
   const [developer, setDeveloper] = useState();
@@ -86,7 +86,7 @@ function Home() {
     );
   }
 
-  return (
+    return (
     <>
     <Navbar toggle={toggle} setToggle={setToggle} search={search} setSearch={setSearch}/>
     <main>
@@ -97,7 +97,20 @@ function Home() {
         transition: 'all 0.3s ease',
         overflow: 'hidden',
         }} >
-        <SideBar />
+        <SideBar
+          platform={platform}
+          genre={genre}
+          developer={developer}
+          year={year}
+          setPlatform={setPlatform}
+          setGenre={setGenre}
+          setDeveloper={setDeveloper}
+          setYear={setYear}
+          platformData={categoryData.platforms}
+          genreData={categoryData.genres}
+          developerData={categoryData.developers}
+          yearData={categoryData.years}
+        />
       </aside>
       <Outlet context={{loading, success, SetLoading, SetSuccess, SetNewFetch, 
         user, games, setCategoryData, setGames, search, setSearch, genre, platform, developer, year }} />
