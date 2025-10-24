@@ -5,22 +5,20 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import GameCard from '../components/GameCard';
 import styles from '../styles/components/home.module.css';
 import axios from "axios";
+import handleSetData from "../helpers";
+
 
 //import Loader from "./Loader";
 
 
 function HomePage() {
-    const { loading, success, SetLoading, SetSuccess, SetNewFetch, games, setGames, search, setSearch} = useOutletContext();
+    const { loading, success, SetLoading, SetSuccess, SetNewFetch, games, 
+    setGames, setCategoryData, search, setSearch, genre, platform, developer, year} = useOutletContext();
     const token = localStorage.getItem('usertoken');
 
     // InfiniteScroll state var
     const [hasMore, setHasMore] = useState(true);
     const [index, setIndex] = useState(1);
-
-    const [platform, setPlatform] = useState();
-    const [genre, setGenre] = useState();
-    const [developer, setDeveloper] = useState();
-    const [year, setYear] = useState();
 
     // temporary
     const offset = 1000;
@@ -37,20 +35,15 @@ function HomePage() {
       limit: String(limit)
     }).toString();
 
-  useEffect(() => {
-    axios.
-      
-  })
-
 
   // initial mount for inital games (maybe save state scroll location?)
   useEffect(() => {
     axios
       .get(`http://localhost:5000/home/games?${query}`,{
       })
-      .then((res) => setGames(res.data.games))
+      .then((res) => handleSetData(res, setGames, setCategoryData)) 
       .catch((err) => console.log(err));
-  }, [token, setGames, query, genre, developer, year]);
+  }, [token, setCategoryData, setGames, query]);
 
     const fetchMoreData = () => {
     axios
@@ -75,7 +68,6 @@ function HomePage() {
       </>
     );
   }
-
 
   return (
     <InfiniteScroll

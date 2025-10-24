@@ -6,16 +6,23 @@ Maybe add price chart data after developing (API price options like PriceChartin
 
 ToDo:
   - query for all genres, platforms, developers, years upon mount
+  - pass value category props to HomePage component
+  - pass setState category props to SideBar component
   - map out all elements for all categories using id keys 
   - replace the t_thumb in screenshot URLS for larger size
   - look into normalizing the screenshot dimensions 
   - perhaps change the original consoles to right platforms (like the wii snes games before 2006)
-  - start query routes for my populated game database
+  - setSearch debounce logic
+  - adding additional filter logic for order by
+  - discover games selection route (filter logic still applying?)
+Additional tasks
+  - adding MVP features, user features 
+  - adding additional user features(completed games list, watch list)?
+  - adding custom loader
+  - adding price data (costs $)
+    - with price data, users can keep track of collection value, price fluctuations. 
 
 
-Pseudo useFetch logic
-  - Home.jsx upon mount fetch initial games
-  - 
 
 FRONTEND:
 

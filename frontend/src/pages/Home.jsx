@@ -10,8 +10,13 @@ function Home() {
 
   // state data
   const [user, SetUser] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selectedYear, setSelectedYear] = useState(null);
+
+  const [categoryData, setCategoryData] = useState("test");
+  const [platform, setPlatform] = useState();
+  const [genre, setGenre] = useState();
+  const [developer, setDeveloper] = useState();
+  const [year, setYear] = useState();
+
   const [games, setGames] = useState(null);
   const [gameDetails, setGameDetails] = useState(null);
   const [search, setSearch] = useState("");
@@ -94,7 +99,8 @@ function Home() {
         }} >
         <SideBar />
       </aside>
-      <Outlet context={{loading, success, SetLoading, SetSuccess, SetNewFetch, user, games, setGames, search, setSearch }} />
+      <Outlet context={{loading, success, SetLoading, SetSuccess, SetNewFetch, 
+        user, games, setCategoryData, setGames, search, setSearch, genre, platform, developer, year }} />
     </main>
     </>
   )

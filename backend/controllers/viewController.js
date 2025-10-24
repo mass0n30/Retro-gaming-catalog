@@ -6,9 +6,9 @@ async function handleGetAllData(req, res, next) {
   try {
 
     const categoryData = await getAllCategoryData(req, res, next);
-    const gamesData = await handleGetGames(req, res, data);
+    const gamesData = await handleGetGames(req, res, next);
 
-    res.json({categoryData, gamesData});
+    return res.json({categoryData, gamesData});
     
   } catch (error) {
     next(error);
@@ -30,7 +30,7 @@ async function getAllCategoryData(req, res, next) {
     const genres = await prisma.genre.findMany();
     const developers = await prisma.developers.findMany();
 
-    return res.json({platforms, years, genres, developers})
+    return ({platforms, years, genres, developers})
   } catch (error) {
     next(error);
   }
@@ -55,7 +55,7 @@ async function handleGetGames(req, res, next) {
       take: parseInt(limit),
       skip: parseInt(offset),
     });
-    return res.json({games});
+    return (games);
     
   } catch (error) {
     next(error)
