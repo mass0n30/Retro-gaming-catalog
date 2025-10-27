@@ -1,60 +1,34 @@
 import { useEffect, useState } from 'react';
-import ListBoxSelection from './ListBox';
+import TreeItemCategory from './ListBox';
 import styles from '../styles/components/sidebar.module.css';
+import {ListBox, ListBoxItem, ListBoxSection, Collection, Header} from 'react-aria-components';
 
 
-function SideBar(platform, genre, console, developer, year, setPlatform, setGenre, setConsole, setDeveloper, setYear, 
-  platformData, genreData, developerData, yearData
-) {
+
+// eslint-disable-next-line react/prop-types
+function SideBar({platform, genre, developer, year, setPlatform, setGenre, setConsole, setDeveloper, setYear, categoryData}) {
+
+let [selectedKeys, setSelectedKeys] = useState(new Set());
+
 
   return (
     <>
-      <div>
-        <ListBoxSelection
-          datatype="Platform"
-          data={platformData}
-          keys={platform}
-          setKeys={setPlatform}
-        />
-      </div>
-
-      <div>
-        <ListBoxSelection
-          datatype="Genre"
-          data={genreData}
-          keys={genre}
-          setKeys={setGenre}
-        />
-      </div>
-
-      <div>
-        <ListBoxSelection
-          datatype="Console"
-          data={console}
-          keys={console}
-          setKeys={setConsole}
-        />
-      </div>
-
-      <div>
-        <ListBoxSelection
-          datatype="Developer"
-          data={developerData}
-          keys={developer}
-          setKeys={setDeveloper}
-        />
-      </div>
-
-      <div>
-        <ListBoxSelection
-          datatype="Year"
-          data={yearData}
-          keys={year}
-          setKeys={setYear}
-        />
-      </div>
-    </>
-  )
+    <ListBox 
+     items={categoryData} aria-label='Categories' className={styles.sidebarlistbox}
+      selectionMode='multiple' 
+      selectedKeys={selectedKeys}
+      onSelectionChange={setSelectedKeys}>
+      {section =>
+        <ListBoxSection
+         id={section.category} className={styles.categorysection}>
+          <Header className={styles.categoryheader}>{section.category}</Header>
+          <Collection items={section.array} selectedKeys={selectedKeys} onSelectionChange={setSelectedKeys}>
+            {item => <ListBoxItem className={styles.categoryitem} key={item.name} id={item.name} textValue={item.name}>{item.name}</ListBoxItem>}
+          </Collection>
+        </ListBoxSection>
+      }
+    </ListBox>
+    </> )
 };
 
 export default SideBar;

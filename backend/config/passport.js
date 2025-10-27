@@ -65,7 +65,8 @@ passport.use(
 const { validationResult } = require("express-validator");
 var jwt = require('jsonwebtoken');
 
-const authenticateUser = (req, res, next) => {
+const authenticateUser = async (req, res, next) => {
+
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {

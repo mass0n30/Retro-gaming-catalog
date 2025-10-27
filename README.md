@@ -23,11 +23,15 @@ Additional tasks
     - with price data, users can keep track of collection value, price fluctuations. 
   - maybe add tag group components in main body, for better user exp?
   - maybe replace my custom Form with more cohesive Form Component Library
+  (!Games Are loading in duplicate!)
   
 Production tasks
   - adding user accessibility (keyboard shortucts)
 
 
+tree: datatype(genre)
+  item: 
+    item:
 
 FRONTEND:
 

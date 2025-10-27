@@ -4,7 +4,6 @@ import styles from '../styles/components/card.module.css';
 
 function GameCard(game) {
 
-   console.log(game);
    return (
     <>
       <div className={styles.card}>

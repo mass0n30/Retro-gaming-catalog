@@ -5,8 +5,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import GameCard from '../components/GameCard';
 import styles from '../styles/components/home.module.css';
 import axios from "axios";
-import handleSetData from "../helpers";
-
 
 //import Loader from "./Loader";
 
@@ -21,7 +19,7 @@ function HomePage() {
     const [index, setIndex] = useState(1);
 
     // temporary
-    const offset = 1000;
+    const offset = 1500;
     const limit = 100;
 
     // making search params obj
@@ -41,9 +39,9 @@ function HomePage() {
     axios
       .get(`http://localhost:5000/home/games?${query}`,{
       })
-      .then((res) => handleSetData(res, setGames, setCategoryData)) 
+      .then((res) => setGames(res.data.games)) 
       .catch((err) => console.log(err));
-  }, [token, setCategoryData, setGames, query]);
+  }, [token, setGames, query]);
 
     const fetchMoreData = () => {
     axios

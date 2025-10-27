@@ -6,11 +6,13 @@ const passport = require('passport');
 require('../config/passport');
 const {gamesRouter} = require('./games');
 const {gameDetailsRouter} = require('./gameDetails');
+const { getAllCategoryData } = require("../controllers/viewController.js");
+
 
 
 homeRouter.get('/', passport.authenticate('jwt', { session: false }), async (req, res, next ) => {
 
-//  const data = await getAllUserData(req, res, next);
+  const categoryData = await getAllCategoryData(req, res, next);
 
   // req.user from passport callback authentication
   res.json({
@@ -20,7 +22,7 @@ homeRouter.get('/', passport.authenticate('jwt', { session: false }), async (req
       last: req.user.lname,
       admin: req.user.is_admin
     },
-   // data: orderedData
+   categoryData: categoryData
   });
 });
 

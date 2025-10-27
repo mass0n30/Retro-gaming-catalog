@@ -1,22 +1,30 @@
+import { Tree, TreeItem , TreeItemContent } from "react-aria-components";
 
-
-import {ListBox, ListBoxItem, Select, ListBoxSection, SelectionIndicator, Text} from 'react-aria-components';
-
-function ListBoxSelection(datatype, data, keys, setKeys) {
-
+// eslint-disable-next-line react/prop-types
+function TreeItemCategory({ datatype, data, keys, setKeys }) {
 
   return (
-    <ListBox aria-label={datatype} selectionMode="multiple" selectedKeys={keys} onSelectionChange={setKeys}>
-      {data.map(item => (
-        <>
-          <ListBoxItem key={item.id} />
-          <Text slot="label" />
-          <Text slot="description" />
-          <SelectionIndicator />
-        </>
-      ))};
-      </ListBox>
-    )
+    <Tree
+      selectionMode="multiple"
+      selectedKeys={keys}
+      onSelectionChange={setKeys}
+      defaultExpandedKeys={[datatype]} 
+    >
+      <TreeItem key={datatype} textValue={datatype}>
+        <TreeItemContent>
+        
+          <span className="font-semibold">{datatype}</span>
+        </TreeItemContent>
+
+        {data.map((item) => (
+          <TreeItem key={item.id} textValue={item.name}>
+            <TreeItemContent>{item.name}</TreeItemContent>
+          </TreeItem>
+        ))}
+      </TreeItem>
+    </Tree>
+  );
 }
 
-export default ListBoxSelection;
+export default TreeItemCategory;
+

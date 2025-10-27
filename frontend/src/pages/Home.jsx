@@ -57,10 +57,11 @@ function Home() {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+
         const result = await response.json();
         
         SetUser(result.user); // (only non sensitive user data from backend)
-        // SetData(result.posts);
+        setCategoryData(result.categoryData);
         // reset boolean fetch after updated posts fetch
         SetNewFetch(false);
       } catch (error) {
@@ -74,7 +75,7 @@ function Home() {
     return <div>Error: {error.message}</div>;
   }
   
-  if (loading  || !user ) {
+  if (loading  || !user || !categoryData) {
     return (
       <>
       <Navbar toggle={toggle} setToggle={setToggle}/>
@@ -106,10 +107,7 @@ function Home() {
           setGenre={setGenre}
           setDeveloper={setDeveloper}
           setYear={setYear}
-          platformData={categoryData.platforms}
-          genreData={categoryData.genres}
-          developerData={categoryData.developers}
-          yearData={categoryData.years}
+          categoryData={categoryData.allData}
         />
       </aside>
       <Outlet context={{loading, success, SetLoading, SetSuccess, SetNewFetch, 
