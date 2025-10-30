@@ -75,12 +75,7 @@ async function handleGetGames(req, res, next) {
         developerId: developer != "undefined" ? developer : undefined,
         name: name != "undefined" ? name : undefined,
       },
-      include: {
-        screenshots: true,
-        developer: true,
-        platforms: true,
-        ageRating: true,
-      },
+
       take: parseInt(limit),
       skip: parseInt(offset),
     });
@@ -100,7 +95,13 @@ async function handleGetGameDetails(req, res, next) {
     const gameDetails = await prisma.game.findUnique({
       where: {
         id: gameId
-      }
+      },
+      include: {
+        screenshots: true,
+        developer: true,
+        platforms: true,
+        ageRating: true,
+      },
     });
     return gameDetails;
     

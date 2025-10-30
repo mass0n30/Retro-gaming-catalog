@@ -11,7 +11,7 @@ import axios from "axios";
 
 function HomePage() {
   const { loading, success, SetLoading, SetSuccess, SetNewFetch, gameId, setGameId, games, 
-  setGames, gameDetails, setGameDetails, setCategoryData, search, setSearch, genre, platform, developer, year} = useOutletContext();
+  setGames, setGameDetails, setCategoryData, search, setSearch, genre, platform, developer, year} = useOutletContext();
   const token = localStorage.getItem('usertoken');
 
   // InfiniteScroll state var
@@ -19,7 +19,7 @@ function HomePage() {
   const [index, setIndex] = useState(1);
 
   // temporary
-  const offset = 1500;
+  const offset = 0;
   const limit = 100;
 
   // making search params obj
@@ -66,7 +66,7 @@ function HomePage() {
       .get(`http://localhost:5000/home/details/${gameId}`)
       .then((res) => setGameDetails(res.data.game));
 
-      navigate(`/home/details/${gameId}`)
+      navigate(`/home/details/${gameId}` );
     }
 
     // cleanup clearing gamedetails upon nav back
