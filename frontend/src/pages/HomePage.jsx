@@ -10,28 +10,28 @@ import axios from "axios";
 
 
 function HomePage() {
-    const { loading, success, SetLoading, SetSuccess, SetNewFetch, games, 
-    setGames, gameDetails, setGameDetails, setCategoryData, search, setSearch, genre, platform, developer, year} = useOutletContext();
-    const token = localStorage.getItem('usertoken');
+  const { loading, success, SetLoading, SetSuccess, SetNewFetch, gameId, setGameId, games, 
+  setGames, gameDetails, setGameDetails, setCategoryData, search, setSearch, genre, platform, developer, year} = useOutletContext();
+  const token = localStorage.getItem('usertoken');
 
-    // InfiniteScroll state var
-    const [hasMore, setHasMore] = useState(true);
-    const [index, setIndex] = useState(1);
+  // InfiniteScroll state var
+  const [hasMore, setHasMore] = useState(true);
+  const [index, setIndex] = useState(1);
 
-    // temporary
-    const offset = 1500;
-    const limit = 100;
+  // temporary
+  const offset = 1500;
+  const limit = 100;
 
-    // making search params obj
-    const query = new URLSearchParams({
-      genre: genre,
-      platform: platform,
-      developer: developer,
-      year: year,
-      search: search,
-      offset: String(offset),
-      limit: String(limit)
-    }).toString();
+  // making search params obj
+  const query = new URLSearchParams({
+    genre: genre,
+    platform: platform,
+    developer: developer,
+    year: year,
+    search: search,
+    offset: String(offset),
+    limit: String(limit)
+  }).toString();
 
 
   // initial mount for inital games (maybe save state scroll location?)
@@ -58,6 +58,25 @@ function HomePage() {
     setIndex((prevIndex) => prevIndex + 1);
   };
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (gameId != undefined) {
+    axios
+      .get(`http://localhost:5000/home/details/${gameId}`)
+      .then((res) => setGameDetails(res.data.game));
+
+      navigate(`/home/details/${gameId}`)
+    }
+
+    // cleanup clearing gamedetails upon nav back
+    return () => {
+      setGameId(null);
+    };
+
+  }, [gameId, setGameId, setGameDetails, navigate]);
+
+
     if (loading  || !games ) {
     return (
       <>
@@ -77,7 +96,7 @@ function HomePage() {
       >
       <section>
       {games.map(game => (
-        <GameCard key={game.id} game={game} />
+        <GameCard key={game.id} gameId={game.id} setGameId={setGameId} coverUrl={game.coverUrl}/>
       ))}
       </section>
     </InfiniteScroll>

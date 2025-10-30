@@ -93,7 +93,7 @@ async function handleGetGames(req, res, next) {
 
 async function handleGetGameDetails(req, res, next) {
 
-  const gameId = req.params.gameid;
+  const gameId = parseInt(req.params.gameid);
 
   try {
 

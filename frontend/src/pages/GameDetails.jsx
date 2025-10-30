@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styles from '../styles/components/details.module.css';
 import axios from "axios";
 
 
 function GameDetails() {
 
-   useEffect(() => {
-      axios
-         .get(`http://localhost:5000/home/details/`)
-   })
+   const {gameId} = useParams();
 
-   console.log("game");
+   console.log(gameId);
    return (
     <>
 

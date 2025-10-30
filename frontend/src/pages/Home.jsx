@@ -18,6 +18,7 @@ function Home() {
   const [year, setYear] = useState();
 
   const [games, setGames] = useState(null);
+  const [gameId, setGameId] = useState(null);
   const [gameDetails, setGameDetails] = useState(null);
   const [search, setSearch] = useState("");
 
@@ -111,7 +112,7 @@ function Home() {
         />
       </aside>
       <Outlet context={{loading, success, SetLoading, SetSuccess, SetNewFetch, 
-        user, games, gameDetails, setGameDetails, setCategoryData, setGames, search, setSearch, genre, platform, developer, year }} />
+        user, gameId, setGameId, games, gameDetails, setGameDetails, setCategoryData, setGames, search, setSearch, genre, platform, developer, year }} />
     </main>
     </>
   )
