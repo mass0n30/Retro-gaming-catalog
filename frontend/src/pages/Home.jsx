@@ -111,7 +111,7 @@ function Home() {
         />
       </aside>
       <Outlet context={{loading, success, SetLoading, SetSuccess, SetNewFetch, 
-        user, games, setCategoryData, setGames, search, setSearch, genre, platform, developer, year }} />
+        user, games, gameDetails, setGameDetails, setCategoryData, setGames, search, setSearch, genre, platform, developer, year }} />
     </main>
     </>
   )

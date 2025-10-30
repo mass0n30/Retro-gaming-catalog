@@ -75,6 +75,12 @@ async function handleGetGames(req, res, next) {
         developerId: developer != "undefined" ? developer : undefined,
         name: name != "undefined" ? name : undefined,
       },
+      include: {
+        screenshots: true,
+        developer: true,
+        platforms: true,
+        ageRating: true,
+      },
       take: parseInt(limit),
       skip: parseInt(offset),
     });

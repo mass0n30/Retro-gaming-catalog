@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import GameCard from '../components/GameCard';
 import styles from '../styles/components/home.module.css';
@@ -11,7 +11,7 @@ import axios from "axios";
 
 function HomePage() {
     const { loading, success, SetLoading, SetSuccess, SetNewFetch, games, 
-    setGames, setCategoryData, search, setSearch, genre, platform, developer, year} = useOutletContext();
+    setGames, gameDetails, setGameDetails, setCategoryData, search, setSearch, genre, platform, developer, year} = useOutletContext();
     const token = localStorage.getItem('usertoken');
 
     // InfiniteScroll state var
@@ -43,7 +43,8 @@ function HomePage() {
       .catch((err) => console.log(err));
   }, [token, setGames, query]);
 
-    const fetchMoreData = () => {
+  // fetch more logic for Infinite Scroll
+  const fetchMoreData = () => {
     axios
       .get(`http://localhost:5000/home/games?offset=${index}0&limit=100`)
       .then((res) => {

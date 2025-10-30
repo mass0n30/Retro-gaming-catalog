@@ -1,34 +1,32 @@
-import { useEffect, useState } from 'react';
-import TreeItemCategory from './ListBox';
+import { useState } from 'react';
+import { Tree, TreeItem, TreeItemContent, Button } from 'react-aria-components';
 import styles from '../styles/components/sidebar.module.css';
-import {ListBox, ListBoxItem, ListBoxSection, Collection, Header} from 'react-aria-components';
 
+export default function SideBar({ categoryData }) {
+  const [selectedKeys, setSelectedKeys] = useState(new Set());
 
-
-// eslint-disable-next-line react/prop-types
-function SideBar({platform, genre, developer, year, setPlatform, setGenre, setConsole, setDeveloper, setYear, categoryData}) {
-
-let [selectedKeys, setSelectedKeys] = useState(new Set());
+    const toggleItem = (id) => {
+      const newSet = new Set(selectedKeys);
+      if (newSet.has(id)) newSet.delete(id);
+      else newSet.add(id);
+      setSelectedKeys(newSet);
+  };
 
 
   return (
-    <>
-    <ListBox 
-     items={categoryData} aria-label='Categories' className={styles.sidebarlistbox}
-      selectionMode='multiple' 
-      selectedKeys={selectedKeys}
-      onSelectionChange={setSelectedKeys}>
-      {section =>
-        <ListBoxSection
-         id={section.category} className={styles.categorysection}>
-          <Header className={styles.categoryheader}>{section.category}</Header>
-          <Collection items={section.array} selectedKeys={selectedKeys} onSelectionChange={setSelectedKeys}>
-            {item => <ListBoxItem className={styles.categoryitem} key={item.name} id={item.name} textValue={item.name}>{item.name}</ListBoxItem>}
-          </Collection>
-        </ListBoxSection>
-      }
-    </ListBox>
-    </> )
-};
+    <Tree aria-label="Categories"
+      >
+      {categoryData.map((section) => (
+        <TreeItem key={section.category} id={section.category} textValue={section.category}>
+          <TreeItemContent>{section.category}</TreeItemContent>
 
-export default SideBar;
+          {section.array.map((item) => (
+            <TreeItem onPress={() => toggleItem()} key={item.name} id={item.name} textValue={item.name} selected={false}>
+              <TreeItemContent>{item.name}</TreeItemContent>
+            </TreeItem>
+          ))}
+        </TreeItem>
+      ))}
+    </Tree>
+  );
+}
