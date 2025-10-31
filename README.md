@@ -4,15 +4,20 @@ Built using twitch IGDB API: https://www.igdb.com/api
 
 Maybe add price chart data after developing (API price options like PriceCharting.com, costs $)
 
-ToDo:
+DONE:
   - query for all genres, platforms, developers, years upon mount
   - pass value category props to HomePage component
   - pass setState category props to SideBar component
   - map out all elements for all categories using id keys 
   - replace the t_thumb in screenshot URLS for larger size
   - look into normalizing the screenshot dimensions 
-  - perhaps change the original consoles to right platforms (like the wii snes games before 2006)
+
+TODO:
   - setSearch debounce logic
+  - perhaps change the original consoles to right platforms (like the wii snes games before 2006)
+  - Either mesh duplicate gamedata or delete duplicates (platform or regional releases 
+  causing duplicates??)
+  - Add no cover holder for no cover art so cells aren't offset
   - adding additional filter logic for order by
   - discover games selection route (filter logic still applying?)
 Additional tasks

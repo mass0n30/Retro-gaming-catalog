@@ -38,4 +38,26 @@ function normalizeScreenshots(screenshots) {
   }));
 };
 
+import { useEffect, useState } from 'react';
+
+export function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    // Set a timer to update the debounced value after the specified delay
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    // Cleanup function: clear the timeout if the value or delay changes before the timer fires
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]); // Re-run effect if value or delay changes
+
+  return debouncedValue;
+}
+
+
+
 export default normalizeGameData;

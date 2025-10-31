@@ -105,6 +105,7 @@ function HomePage() {
         <GameCard key={game.id} gameId={game.id} setGameId={setGameId} coverUrl={game.coverUrl} loading={loading}/>
       ))}
       </section>
+      {!hasMore && <p>No More Results</p>}
     </InfiniteScroll>
   )
 }

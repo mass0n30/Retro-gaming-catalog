@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/components/nav.module.css';
+import { useDebounce } from '../helpers';
 
 
 
 // eslint-disable-next-line react/prop-types
-function Navbar({ toggle, setToggle, setSearch, search }) {
+export default function Navbar({ toggle, setToggle, setSearch, search }) {
 
   const handleToggle = () => {
     toggle ? setToggle(false) : setToggle(true);
   }
+
+
   return (
     <nav className={styles.nav}>
       <div className={styles.navLeftContainer}>
@@ -31,7 +34,7 @@ function Navbar({ toggle, setToggle, setSearch, search }) {
       <input 
         type="text" 
         placeholder="Search games..." 
-      //  value={search} 
+        value={search} 
         onChange={(e) => setSearch(e.target.value)} 
         className={styles.searchInput}
         />
@@ -45,4 +48,3 @@ function Navbar({ toggle, setToggle, setSearch, search }) {
 }
 
 
-export default Navbar;

@@ -73,7 +73,8 @@ async function handleGetGames(req, res, next) {
         genres: genre != "undefined" ? { some: genre } : undefined,
         platforms: platform != "undefined" ? { some: platform } : undefined,
         developerId: developer != "undefined" ? developer : undefined,
-        name: name != "undefined" ? name : undefined,
+        slug: search && search !== "" // if there is a input search else search with name from category search
+        ? { contains: search, mode: "insensitive" } : name && name !== "undefined" ? name : undefined,
       },
 
       take: parseInt(limit),
