@@ -5,6 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import GameCard from '../components/GameCard';
 import styles from '../styles/components/home.module.css';
 import axios from "axios";
+import CustomSpinnerBottom from '../components/Spinner';
 
 //import Loader from "./Loader";
 
@@ -17,6 +18,7 @@ function HomePage() {
   // InfiniteScroll state var
   const [hasMore, setHasMore] = useState(true);
   const [index, setIndex] = useState(1);
+  const [gameLoad, setGameLoad] = useState(false);
 
   // temporary
   const offset = 0;
@@ -45,11 +47,10 @@ function HomePage() {
   }, [token, setGames, query, ]);
 
   // fetch more logic for Infinite Scroll
+  // Loader logic or Load more ?????
   const fetchMoreData = () => {
-    if (loading) return;
-    SetLoading(true);
-
-    axios
+    setTimeout(() => {
+      axios
       .get(`http://localhost:5000/home/games?offset=${index}0&limit=100`)
       .then((res) => {
         console.log(res, 'response');
@@ -60,13 +61,15 @@ function HomePage() {
       .catch((err) => console.log(err));
 
     setIndex((prevIndex) => prevIndex + 1);
-    SetLoading(false);
+
+    }, 2000)
   };
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (gameId != undefined) {
+    SetLoading(true);
     axios
       .get(`http://localhost:5000/home/details/${gameId}`)
       .then((res) => setGameDetails(res.data.game));
@@ -85,9 +88,7 @@ function HomePage() {
     if (loading  || !games ) {
     return (
       <>
-        <div style={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
-          <div className="spinner"></div>
-        </div>
+
       </>
     );
   }
@@ -97,11 +98,11 @@ function HomePage() {
       dataLength={games.length}
       next={fetchMoreData}
       hasMore={hasMore}
-      loader={<p>Loading more games...</p>}
+      loader={<CustomSpinnerBottom/>}
       >
       <section>
       {games.map(game => (
-        <GameCard key={game.id} gameId={game.id} setGameId={setGameId} coverUrl={game.coverUrl}/>
+        <GameCard key={game.id} gameId={game.id} setGameId={setGameId} coverUrl={game.coverUrl} loading={loading}/>
       ))}
       </section>
     </InfiniteScroll>

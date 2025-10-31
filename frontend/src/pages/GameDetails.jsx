@@ -3,21 +3,20 @@ import { useParams, useOutletContext } from 'react-router-dom';
 import styles from '../styles/components/details.module.css';
 import axios from "axios";
 import normalizeGameData from '../helpers';
+import CustomSpinner from '../components/Spinner';
 
 
 function GameDetails() {
 
-
-   const {gameDetails} = useOutletContext();
+   const {gameDetails, loading} = useOutletContext();
 
    const game = normalizeGameData(gameDetails);
 
    console.log(game);
 
-  if (game == undefined) {
+  if (loading) {
    return (
-      <>
-      </>
+      <CustomSpinner/>
    )
   }
 

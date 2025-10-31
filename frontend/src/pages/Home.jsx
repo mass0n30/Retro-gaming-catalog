@@ -4,6 +4,7 @@ import { useEffect, useState,  } from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SideBar from "../components/SideBar";
+import CustomSpinner from "../components/Spinner";
 
 
 function Home() {
@@ -76,12 +77,12 @@ function Home() {
     return <div>Error: {error.message}</div>;
   }
   
-  if (loading  || !user || !categoryData) {
+  if (loading  || !user || !categoryData ) {
     return (
       <>
       <Navbar toggle={toggle} setToggle={setToggle}/>
-        <div style={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
-          <div className="spinner"></div>
+        <div style={{ display: "flex", flex: 1, alignItems: "center", justifyContent: "center", marginTop: "2rem" }}>
+          <CustomSpinner/>
         </div>
       <Footer/>
       </>

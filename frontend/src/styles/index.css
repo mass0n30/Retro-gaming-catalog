@@ -71,17 +71,19 @@ aside {
 .infinite-scroll-component__outerdiv {
   display: flex;
   flex: 1;
-  flex-direction: column;
 }
 
 .infinite-scroll-component {
   flex: 1;
   overflow-y: auto;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap; 
   justify-content: center; 
+  align-items: center;
   padding: 1rem;
 }
+
 
 .spinner {
   border: 4px solid #f3f3f3; 
