@@ -63,10 +63,10 @@ async function getAllCategoryData(req, res, next) {
 
 async function handleGetGames(req, res, next) {
 
-  console.log(req.query, 'query');
-
   try {
     const { genre, platform, developer, name, search, offset, limit } = req.query;
+
+    const offsetCal = offset * limit;
 
     const games = await prisma.game.findMany({
       where: {
@@ -77,7 +77,7 @@ async function handleGetGames(req, res, next) {
       },
 
       take: parseInt(limit),
-      skip: parseInt(offset),
+      skip: parseInt(offsetCal),
     });
     res.json({games});
     

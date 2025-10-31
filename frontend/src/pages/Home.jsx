@@ -33,7 +33,7 @@ function Home() {
 
   const token = localStorage.getItem('usertoken');
 
-  //spinner upon mount with delay, post creation message with delay
+  //spinner upon mount with delay
   useEffect(() => {
     const timer = setTimeout(() => {
       SetLoading(false);

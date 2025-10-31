@@ -7,6 +7,7 @@ import normalizeGameData from '../helpers';
 
 function GameDetails() {
 
+
    const {gameDetails} = useOutletContext();
 
    const game = normalizeGameData(gameDetails);
@@ -23,11 +24,15 @@ function GameDetails() {
   return (
     <div className="game-details">
       <div>{game.name}</div>
-      <div>Developer:</div> {game.developer}
+      <div>Developer:</div> {game.developer.name ? (
+            game.developer.name
+      ) : (
+         <p>Unknown Developer</p>
+      )}
 
         <div className="cover-container">
-         {game.coverUrl ? (
-            <img src={game.coverUrl} className="cover" />
+         {game.cover ? (
+            <img src={game.cover} className="cover" />
          ) : (
             <p>No Cover Art</p>
          )}

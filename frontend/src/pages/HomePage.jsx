@@ -36,15 +36,19 @@ function HomePage() {
 
   // initial mount for inital games (maybe save state scroll location?)
   useEffect(() => {
+
     axios
       .get(`http://localhost:5000/home/games?${query}`,{
       })
       .then((res) => setGames(res.data.games)) 
       .catch((err) => console.log(err));
-  }, [token, setGames, query]);
+  }, [token, setGames, query, ]);
 
   // fetch more logic for Infinite Scroll
   const fetchMoreData = () => {
+    if (loading) return;
+    SetLoading(true);
+
     axios
       .get(`http://localhost:5000/home/games?offset=${index}0&limit=100`)
       .then((res) => {
@@ -56,6 +60,7 @@ function HomePage() {
       .catch((err) => console.log(err));
 
     setIndex((prevIndex) => prevIndex + 1);
+    SetLoading(false);
   };
 
   const navigate = useNavigate();
@@ -92,7 +97,7 @@ function HomePage() {
       dataLength={games.length}
       next={fetchMoreData}
       hasMore={hasMore}
-     // loader={<Loader />}
+      loader={<p>Loading more games...</p>}
       >
       <section>
       {games.map(game => (

@@ -13,7 +13,7 @@ function normalizeGameData(rawGame) {
     releaseDate: rawGame.firstReleaseDate ?? "Unknown",
     developer: rawGame.developer ?? "Unknown Developer",
     ageRating: rawGame.ageRating ?? "Unavailable",
-    ageDescription: rawGame.ageRating.description ?? "",
+    ageDescription: rawGame.ageRating?.description ?? "",
     rating: rawGame.rating ? Math.round(rawGame.rating) : null,
     cover: rawGame.coverUrl ?? "",
     platforms: rawGame.platforms,
@@ -28,7 +28,7 @@ function normalizeScreenshots(screenshots) {
   if (!Array.isArray(screenshots)) {
       return [];
   }
-  
+
   return screenshots.map(ss => ({
     id: ss.id,
     gameId: ss.gameId,
