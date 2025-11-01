@@ -20,7 +20,6 @@ function Home() {
 
   const [games, setGames] = useState(null);
   const [gameId, setGameId] = useState(null);
-  const [gameDetails, setGameDetails] = useState(null);
   const [search, setSearch] = useState("");
 
 
@@ -81,9 +80,7 @@ function Home() {
     return (
       <>
       <Navbar toggle={toggle} setToggle={setToggle} setSearch={setSearch}/>
-        <div style={{ display: "flex", flex: 1, alignItems: "center", justifyContent: "center", marginTop: "2rem" }}>
-          <CustomSpinner/>
-        </div>
+
       <Footer/>
       </>
     );
@@ -113,7 +110,7 @@ function Home() {
         />
       </aside>
       <Outlet context={{loading, success, SetLoading, SetSuccess, SetNewFetch, 
-        user, gameId, setGameId, games, gameDetails, setGameDetails, setCategoryData, setGames, search, setSearch, genre, platform, developer, year }} />
+        user, gameId, setGameId, games, setCategoryData, setGames, search, setSearch, genre, platform, developer, year }} />
     </main>
     </>
   )

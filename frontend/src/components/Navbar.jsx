@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/components/nav.module.css';
 import { useDebounce } from '../helpers';
+import { Link } from 'react-router-dom';
 
 
 
@@ -23,10 +24,12 @@ export default function Navbar({ toggle, setToggle, setSearch, search }) {
               />
             </button>
           </div>
-
+        <Link to={'/home'}>
           <div className={styles.logoContainer}>
             Retro Games Placeholder
           </div>
+        </Link>
+
       </div>
  
 

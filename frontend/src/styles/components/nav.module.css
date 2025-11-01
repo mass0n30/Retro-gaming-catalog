@@ -36,15 +36,16 @@ nav {
 
 .searchBarContainer:focus-within {
   border-color: rgba(255, 255, 255, 0.4);
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.938);
 }
 
 .searchBarContainer input {
   flex: 1;
   background: transparent;
   border: none;
-  color: rgb(0, 0, 0);
-  font-size: 1rem;
+  color: rgb(96, 97, 182);
+  font-size: 1.1rem;
+  font-weight: 500;
   outline: none;
   padding: 0.4rem 0.6rem;
 }

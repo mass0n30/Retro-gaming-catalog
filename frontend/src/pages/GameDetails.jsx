@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams, useOutletContext } from 'react-router-dom';
 import styles from '../styles/components/details.module.css';
 import axios from "axios";
@@ -8,19 +8,44 @@ import CustomSpinner from '../components/Spinner';
 
 function GameDetails() {
 
-   const {gameDetails, loading} = useOutletContext();
+const {gameId} = useParams(); 
+const [loading, setLoading] = useState(true);
+const [gameDetails, setGameDetails] = useState(null);
 
-   const game = normalizeGameData(gameDetails);
+  //spinner upon mount with delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
 
-   console.log(game);
 
-  if (loading) {
-   return (
-      <CustomSpinner/>
-   )
+    return () => clearTimeout(timer,); 
+  } ,[loading, setLoading]);
+
+
+useEffect(() => {
+  async function fetchDetails() {
+    try {
+      const res = await axios.get(`http://localhost:5000/home/details/${gameId}`);
+      setGameDetails(res.data.game);
+    } catch (err) {
+      console.error(err);
+    } 
   }
+  fetchDetails();
+}, [gameId]);
 
+if (loading) {
   return (
+    <div style={{ display: "flex", flex: 1, alignItems: "center", justifyContent: "center", marginTop: "2rem" }}>
+      <CustomSpinner/>
+    </div>
+  )
+}
+  if (gameDetails) {
+  const game = normalizeGameData(gameDetails);
+  return (
+   <>
     <div className="game-details">
       <div>{game.name}</div>
       <div>Developer:</div> {game.developer.name ? (
@@ -28,6 +53,22 @@ function GameDetails() {
       ) : (
          <p>Unknown Developer</p>
       )}
+
+      <div> 
+         {game.storyline ? (
+            game.storyline
+         ) : (
+            <> --- </>
+         )}
+
+      </div>
+      <div>
+         {game.summary ? (
+            game.summary
+         ) : (
+            <> *** </>
+         )}
+      </div>
 
         <div className="cover-container">
          {game.cover ? (
@@ -52,7 +93,10 @@ function GameDetails() {
         )}
       </div>
     </div>
+    </>
    );
+  }
+
 }
 
 export default GameDetails;

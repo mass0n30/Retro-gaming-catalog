@@ -6,12 +6,13 @@ import styles from '../styles/components/card.module.css';
 function GameCard(props) {
 
    // eslint-disable-next-line react/prop-types
-   const {gameId, setGameId, coverUrl} = props;
+   const {gameId, coverUrl} = props;
 
    // maybe replace <button> with React Button for more custom options?
+   const navigate = useNavigate();
 
    const handleNavigate = () => {
-      setGameId(gameId);
+      navigate(`/home/details/${gameId}` );
    }
 
    return (

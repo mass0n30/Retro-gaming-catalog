@@ -12,7 +12,7 @@ import CustomSpinnerBottom from '../components/Spinner';
 
 function HomePage() {
   const { loading, success, SetLoading, SetSuccess, SetNewFetch, gameId, setGameId, games, 
-  setGames, setGameDetails, setCategoryData, search, setSearch, genre, platform, developer, year} = useOutletContext();
+  setGames, setCategoryData, search, setSearch, genre, platform, developer, year} = useOutletContext();
   const token = localStorage.getItem('usertoken');
 
   // InfiniteScroll state var
@@ -62,27 +62,8 @@ function HomePage() {
 
     setIndex((prevIndex) => prevIndex + 1);
 
-    }, 2000)
+    }, 3000)
   };
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (gameId != undefined) {
-    SetLoading(true);
-    axios
-      .get(`http://localhost:5000/home/details/${gameId}`)
-      .then((res) => setGameDetails(res.data.game));
-
-      navigate(`/home/details/${gameId}` );
-    }
-
-    // cleanup clearing gamedetails upon nav back
-    return () => {
-      setGameId(null);
-    };
-
-  }, [gameId, setGameId, setGameDetails, navigate]);
 
 
     if (loading  || !games ) {

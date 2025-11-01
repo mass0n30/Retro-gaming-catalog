@@ -13,6 +13,9 @@ DONE:
   - look into normalizing the screenshot dimensions 
 
 TODO:
+  - fix error when refreshing details page
+  - fix sliding down page upon details load in
+  - normalize dashes other symbols for search
   - setSearch debounce logic
   - perhaps change the original consoles to right platforms (like the wii snes games before 2006)
   - Either mesh duplicate gamedata or delete duplicates (platform or regional releases 
