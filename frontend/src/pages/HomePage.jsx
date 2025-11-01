@@ -24,17 +24,20 @@ function HomePage() {
   const offset = 0;
   const limit = 100;
 
-  // making search params obj
-  const query = new URLSearchParams({
-    genre: genre,
-    platform: platform,
-    developer: developer,
-    year: year,
-    search: search,
-    offset: String(offset),
-    limit: String(limit)
-  }).toString();
+  // making URL for any games query
+  const params = new URLSearchParams();
 
+  
+  if (genre) genre.forEach(g => params.append("genre", g));
+  if (platform) platform.forEach(p => params.append("platform", p));
+  if (developer) developer.forEach(d => params.append("developer", d));
+  if (year) year.forEach(y => params.append("year", y));
+
+  if (search) params.append("search", search);
+  params.append("offset", String(offset));
+  params.append("limit", String(limit));
+
+  const query = params.toString();
 
   // initial mount for inital games (maybe save state scroll location?)
   useEffect(() => {
@@ -44,7 +47,7 @@ function HomePage() {
       })
       .then((res) => setGames(res.data.games)) 
       .catch((err) => console.log(err));
-  }, [token, setGames, query, ]);
+  }, [token, setGames, query, genre, platform, year, developer ]);
 
   // fetch more logic for Infinite Scroll
   // Loader logic or Load more ?????
