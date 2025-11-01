@@ -80,7 +80,9 @@ function Home() {
     return (
       <>
       <Navbar toggle={toggle} setToggle={setToggle} setSearch={setSearch}/>
-
+        <div style={{ display: "flex", flex: 1, alignItems: "center", justifyContent: "center", marginTop: "2rem" }}>
+          <CustomSpinner/>
+        </div>
       <Footer/>
       </>
     );

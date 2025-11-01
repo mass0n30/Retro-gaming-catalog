@@ -16,6 +16,7 @@ function normalizeGameData(rawGame) {
     ageDescription: rawGame.ageRating?.description ?? "",
     rating: rawGame.rating ? Math.round(rawGame.rating) : null,
     cover: rawGame.coverUrl ?? "",
+    originalPlatform: rawGame.originalPlatform,
     platforms: rawGame.platforms,
     screenshots: normalizeScreenshots(rawGame.screenshots),
     summary: rawGame.summary ?? "",

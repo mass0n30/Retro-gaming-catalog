@@ -68,13 +68,18 @@ async function handleGetGames(req, res, next) {
 
     const offsetCal = offset * limit;
 
+    const searchTerm = search
+      ?.toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-"); 
+
     const games = await prisma.game.findMany({
       where: {
         genres: genre != "undefined" ? { some: genre } : undefined,
         platforms: platform != "undefined" ? { some: platform } : undefined,
         developerId: developer != "undefined" ? developer : undefined,
-        slug: search && search !== "" // if there is a input search else search with name from category search
-        ? { contains: search, mode: "insensitive" } : name && name !== "undefined" ? name : undefined,
+        slug: searchTerm && searchTerm !== "" // if there is a input search else search with name from category search
+        ? { contains: searchTerm, mode: "insensitive" } : name && name !== "undefined" ? name : undefined,
       },
 
       take: parseInt(limit),

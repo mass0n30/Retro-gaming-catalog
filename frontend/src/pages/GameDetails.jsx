@@ -12,12 +12,15 @@ const {gameId} = useParams();
 const [loading, setLoading] = useState(true);
 const [gameDetails, setGameDetails] = useState(null);
 
+useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   //spinner upon mount with delay
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2000);
-
 
     return () => clearTimeout(timer,); 
   } ,[loading, setLoading]);
@@ -43,6 +46,7 @@ if (loading) {
   )
 }
   if (gameDetails) {
+  console.log(gameDetails);
   const game = normalizeGameData(gameDetails);
   return (
    <>
@@ -53,6 +57,13 @@ if (loading) {
       ) : (
          <p>Unknown Developer</p>
       )}
+
+      <div>Main Platform:</div> {game.originalPlatform ? (
+            game.originalPlatform
+      ) : (
+         <p>Unknown</p>
+      )}
+
 
       <div> 
          {game.storyline ? (

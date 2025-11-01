@@ -11,12 +11,12 @@ DONE:
   - map out all elements for all categories using id keys 
   - replace the t_thumb in screenshot URLS for larger size
   - look into normalizing the screenshot dimensions 
-
-TODO:
   - fix error when refreshing details page
   - fix sliding down page upon details load in
   - normalize dashes other symbols for search
-  - setSearch debounce logic
+
+
+TODO:
   - perhaps change the original consoles to right platforms (like the wii snes games before 2006)
   - Either mesh duplicate gamedata or delete duplicates (platform or regional releases 
   causing duplicates??)
@@ -24,6 +24,7 @@ TODO:
   - adding additional filter logic for order by
   - discover games selection route (filter logic still applying?)
 Additional tasks
+  - search debounce?
   - adding MVP features, user features 
   - adding additional user features(completed games list, watch list)?
   - adding custom loader

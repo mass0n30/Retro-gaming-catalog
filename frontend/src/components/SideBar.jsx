@@ -21,8 +21,10 @@ export default function SideBar({ categoryData }) {
           <TreeItemContent>{section.category}</TreeItemContent>
 
           {section.array.map((item) => (
-            <TreeItem onPress={() => toggleItem()} key={item.name} id={item.name} textValue={item.name} selected={false}>
-              <TreeItemContent>{item.name}</TreeItemContent>
+            <TreeItem key={item.name} id={item.name} textValue={item.name} selected={false}>
+              <TreeItemContent>
+              <Button onPress={() => toggleItem(item.id)} >{item.name}</Button>
+              </TreeItemContent>
             </TreeItem>
           ))}
         </TreeItem>
