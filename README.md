@@ -159,17 +159,16 @@ TODO:
   - icons sidebar
   - add In Progress column for games
   - add Ebay affiliate tracking? (for first release iteration) 
-  - add toggle timer for category side bar (resetting to default after selections)
-  - possible artwork section from fetch for next to video section to fill a bit of space?
 
   - additional styling touchup, fade-ins, skeleton loader improvements,
   gameDetails header changes, color gradients in containers like nav and sidebar, padded containers around videos (or CRT graphic??) ect. 
 
   Mobile: 
-    - outside of design responsiveness for mobile viewports, android chrome, ect. browsers have stricter security, adding credentials to session headers needed. 
-    Fetch more doesn't seem to work in mobile
+  - hide nav top / bottom on scroll (https://www.w3schools.com/howto/howto_js_navbar_hide_scroll.asp)
+  - Polish mobile design (tablet view seems to be for android and iphone is mobile true)
+    * Enlarge text and image art on mobile (scrolling is seamless and effortless take more space)
+    * Perhaps add a toggle for listings and twitch run categorys?
 
-  - Improve search query with fetching for games taking space out of query if no results, ect
   - Make a component for alert messages (like for saved games if no saved games, or no game results upon search, ect.)
   - Add animation and sound? to heart selection
 

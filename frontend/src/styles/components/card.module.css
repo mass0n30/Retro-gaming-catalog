@@ -71,7 +71,7 @@
   }
 }
 
-@media (max-width: 830px) {
+@media (max-width: 860px) {
   .card_loader_container {
     max-width: clamp(300px, 80vw, 360px);
     max-height: clamp(420px, 80vh, 480px);
@@ -90,6 +90,7 @@
 
 /* mobile */
 @media (max-width: 600px) {
+
 
  
 

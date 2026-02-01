@@ -176,6 +176,9 @@ form {
 }
 
 .form_link {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   color: var(--color);
   font-weight: 500;
   text-decoration: none;

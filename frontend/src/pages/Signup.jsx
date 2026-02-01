@@ -46,7 +46,7 @@ const handleSubmit = async (event) => {
     }
 
     if (response.ok || response.status === 201) {
-      navigate("/")
+      navigate("/home")
     }
   } catch (err) {
     console.error(err);

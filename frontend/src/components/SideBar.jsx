@@ -195,11 +195,15 @@ export default function SideBar({ categoryData, orderData, orderDirection, setOr
             </div>
           </Button>
         </div>
-        <div className={styles.clearfilterscontainer}>
-          <Button onClick={() => resetFilters(setPlatform, setDeveloper, setGenre, setYear, setOrder, setSearch, undefined, setMount, setOpen, setDiscover)} className={styles.sidebarbtntxt}>Clear Filters</Button>
-        </div>
-      </div>
 
+      </div>
+        <div className={styles.clearfilterscontainer}>
+          <div className={styles.clearfilter}>
+            <Button onClick={() => resetFilters(setPlatform, setDeveloper, setGenre, setYear, setOrder, setSearch, undefined, setMount, setOpen, setDiscover)}>
+              <div className={styles.sidebarbtntxt}>Clear Filters</div>
+            </Button>
+          </div>
+        </div>
     </div>
   );
 }

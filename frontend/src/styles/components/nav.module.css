@@ -10,7 +10,7 @@ nav {
   top: 0;
   height: 11vh;
   z-index: 100;
-
+  width: 100%;
   backdrop-filter: blur(50px);
   background-color: var(--color-surface-translucent);
   overflow: hidden;
@@ -371,7 +371,20 @@ nav::before {
     display: none;
   }
 
+  .navMiddleContainer {
+    padding: 8px;
+  }
 
+  .bottomNavBar {
+    height: 12vh;
+  }
+
+  .btn {
+    padding: 0.8rem;
+    height: 4.5rem;
+    width: 4.5rem;
+    font-size: 0.9rem;
+  }
 
   .logoPng {
     max-height: 60px;
@@ -379,10 +392,12 @@ nav::before {
   }
 
   nav {
+    display: flex;
     flex-direction: column;
-     padding: 16px;
-      backdrop-filter: blur(10px);
+    padding: 16px;
+    backdrop-filter: blur(10px);
     height: 10vh;
+    padding: 8px;
     overflow: visible;   
     height: auto;       
     flex-direction: column;

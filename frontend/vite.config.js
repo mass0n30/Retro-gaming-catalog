@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from "vite-plugin-pwa";
 
+// PWA Vite Config for Mobile and other device responsive design views
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -10,8 +11,8 @@ export default defineConfig({
       registerType: "autoUpdate",
       devOptions: { enabled: false }, // disable PWA in dev mode
       manifest: {
-        name: "RetroGamingAtlas - Discover Retro Video Games",
-        short_name: "RetroGamingAtlas",
+        name: "RetroGameAtlas - Discover Retro Video Games",
+        short_name: "RetroGameAtlas",
         description: "Discover over 25k retro video games, with rich details, speedrun and ebay data, with tracking features and related content.",
         start_url: "/",
         scope: "/",
