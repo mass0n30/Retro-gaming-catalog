@@ -5,7 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import GameCard from '../components/GameCard';
 import GameCardSS from '../components/GameCardSS';
 import axios from "axios";
-import CustomSpinnerBottom, { CustomSpinnerDotsBottom } from '../components/Spinner';
+import { CustomSpinnerDotsBottom } from '../components/Spinner';
 import CustomSpinner from '../components/Spinner';
 import { CustomSpinnerDots } from '../components/Spinner';
 import { SearchX, Info } from 'lucide-react';

@@ -29,6 +29,16 @@
   border-radius: 10px;
 }
 
+.cardss_image {
+  width: 400px;
+  height: 267px;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 400 / 267;
+  border-radius: 10px;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
 .card_image {
   width: 264px;
   height: 374px;
@@ -58,43 +68,140 @@
   display: flex;
 }
 
-@media (max-width: 600px) {
-  .card_loader_container {
-    max-width: clamp(340px, 92vw, 420px);
-    max-height: clamp(480px, 94vh, 600px);
+@media (max-width: 910px) {
+
+  .cardss_loader_container,
+  .ss_card,
+  .ss_card_image {
+      max-width: clamp(340px, 65vw, 400px);
+      max-height: clamp(225px, 65vw, 270px);
   }
 
-  .card_button, .card, .card_image {
+
+  .cardss_button, .ss_card, .ss_card_image {
     flex: 1;
     display: flex;
     height: 100%;
   }
+
+
+
+  .ss_card_image {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
 }
 
+
 @media (max-width: 860px) {
-  .card_loader_container {
-    max-width: clamp(300px, 80vw, 360px);
-    max-height: clamp(420px, 80vh, 480px);
+
+  .cardss_loader_container,
+  .ss_card,
+  .ss_card_image {
+    max-width: clamp(320px, 58vw, 380px);
+    max-height: clamp(214px, 58vw, 254px);
   }
 
-  .card_button, .card, .card_image {
+  .card_loader_container, .card_loader, .card_image  {
+    max-width: clamp(300px, 80vw, 360px);
+    max-height: clamp(420px, 80vh, 480px);
+    display: flex;
+  }
+
+
+  .card_button, .card, .card_image, .card_loader {
     flex: 1;
     display: flex;
     height: 100%;
   } 
+}
+
+@media (max-width: 800px) {
+
+  .cardss_loader_container,
+  .ss_card,
+  .ss_card_image {
+    max-width: clamp(272px, 49vw, 323px);
+    max-height: clamp(182px, 49vw, 216px);
+  }
+
+  .card_loader_container,
+  .card_loader,
+  .card_image {
+    max-width: clamp(280px, 75vw, 340px);
+    max-height: clamp(400px, 75vh, 460px);
+  }
+
 
 }
 
+@media (max-width: 700px) {
+
+  .cardss_loader_container,
+  .ss_card,
+  .ss_card_image {
+    max-width: clamp(230px, 42vw, 275px);
+    max-height: clamp(155px, 42vw, 184px);
+  }
+
+  .card_loader_container,
+  .card_loader,
+  .card_image {
+    max-width: clamp(260px, 65vw, 320px);
+    max-height: clamp(380px, 65vh, 440px);
+  }
+}
+
+@media (max-width: 660px) {
 
 
 
-/* mobile */
+  .card_loader_container,
+  .card_loader,
+  .card_image {
+    max-width: clamp(220px, 65vw, 280px);
+    max-height: clamp(340px, 65vh, 400px);
+  }
+}
+
 @media (max-width: 600px) {
 
 
- 
-
+  .card_loader_container,
+  .card_loader,
+  .card_image {
+    max-width: clamp(180px, 60vw, 240px);
+    max-height: clamp(300px, 60vh, 360px);
+  }
 }
+
+@media (max-width: 550px) {
+  .cardss_loader_container,
+  .ss_card,
+  .ss_card_image {
+    max-width: clamp(235px, 43vw, 280px);
+    max-height: clamp(156px, 43vw, 187px);
+  }
+}
+
+@media (max-width: 500px) {
+
+    .cardss_loader_container,
+  .ss_card,
+  .ss_card_image {
+    max-width: clamp(200px, 40vw, 240px);
+    max-height: clamp(133px, 40vw, 160px);
+  }
+
+  .card_loader_container,
+  .card_loader,
+  .card_image {
+    max-width: clamp(180px, 40vw, 240px);
+    max-height: clamp(300px, 40vh, 360px);
+  }
+}
+
 
 .card_loader_container::before {
   width: auto;
@@ -120,13 +227,15 @@
 }
 
 .ss_card_image {
-  width: 440px;
-  height: 294px;
+  width: 460px;
+  height: 300px;
   display: block;
   object-fit: cover;
-  aspect-ratio: 400/ 267;
+  aspect-ratio: 460 / 300;
+  border-radius: 10px;
   animation: fadeInUp 0.6s ease-out forwards;
 }
+  
 
 .card_loader {
   width: 100%;
@@ -142,7 +251,6 @@
   aspect-ratio: 400 / 267;
   max-width: 440px;
   max-height: 294px;
-  width: 100%;
   height: auto;
   box-sizing: border-box;
   overflow: hidden;
@@ -151,8 +259,8 @@
   margin: 0.1rem;
   background-color: var(--color-surface-translucent);
   border-radius: 10px;
-  transform: translateY(20px);
   animation: fadeInUp 0.6s ease-out forwards;
+  display: flex;  
 }
 
 .cardss_loader_container::before {
@@ -203,15 +311,12 @@
 
 .ss_card {
   aspect-ratio: 400/ 267;
-  flex: 1;
-  height: auto;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   opacity: 0;
   margin: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s ease-out forwards;
-  width: 100%;
 }
 
 

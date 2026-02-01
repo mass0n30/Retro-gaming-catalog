@@ -195,8 +195,9 @@ li {
 }
 
 .loadingContainer {
-  width: 100%;
-  height: 100%;
+ min-height: 100%; 
+  width: 100vw;
+  height: 100vh;  
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -222,6 +223,7 @@ li {
   flex: 1;
   justify-content: stretch;
   align-items: stretch;
+  min-height: 0;
 }
 
 .infinite-scroll-component {
@@ -231,6 +233,7 @@ li {
   align-items: center;
   position: relative;
   flex: 1;
+  min-height: 0;
   overflow: visible;
   padding: 1rem;
   background-color: var(--color-background-overlay);
@@ -360,9 +363,7 @@ section {
 
   :root { font-size: 1.2rem; }
 
-    .infinite-scroll-component {
-    padding: 0.5rem;
-  }
+
 
 
 }
@@ -380,6 +381,10 @@ text-align: center;
     width: 100vw;
     opacity: 1;
     transform: translateX(0);
+  }
+
+  .infinite-scroll-component {
+    padding: 0rem;
   }
 
   .closeContainer {
@@ -403,6 +408,20 @@ text-align: center;
   .mainIcons {
     width: var(--icon-size-mobile)
   }
+
+    .infinite-scroll-component__outerdiv {
+    margin-bottom: 3rem;
+  }
+
+  .infinite-scroll-component {
+    margin-bottom: 3rem;
+  }
+
+  #custom-spinner-dots-bottom {
+
+    margin: 1rem;
+  }
+
 
 
 

@@ -43,7 +43,7 @@ function Home() {
   // used for scroll resoration, navigation
   const [mount, setMount] = useState(true);
 
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   const token = localStorage.getItem('usertoken');
   const navigate = useNavigate();

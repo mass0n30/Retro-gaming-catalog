@@ -46,8 +46,8 @@ export function CardSkeleton() {
         <div className={styles.card_loader} >
             <Skeleton 
               variant="rounded" 
-              width={264} 
-              height={374} 
+              width={'100%'} 
+              height={'100%'} 
               animation="wave"
               sx={{ bgcolor: skeletonBgTransparent }}
             />
@@ -62,8 +62,8 @@ export function SSCardSkeleton() {
         <div className={styles.cardss_loader}>
             <Skeleton 
               variant="rounded" 
-              width={500} 
-              height={294} 
+              width={'100%'} 
+              height={'100%'} 
               animation="wave"
               sx={{ bgcolor: skeletonBgTransparent }}
             />

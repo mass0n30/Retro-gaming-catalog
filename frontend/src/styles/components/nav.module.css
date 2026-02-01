@@ -403,6 +403,23 @@ nav::before {
     flex-direction: column;
   }
 
+  nav::before {
+    inset: 0% -30%;
+    background:
+
+    radial-gradient(
+      ellipse at 20% 30%,
+      var(--blue-light-ambient) 0%,
+      transparent 70%
+    ),
+
+    radial-gradient(
+      ellipse at 80% 60%,
+      var(--purple-ambient) 0%,
+      transparent 75%
+    );
+  }
+
 
   .searchBarContainer {
     margin: 0%;
@@ -424,10 +441,5 @@ nav::before {
     flex: 1;
   }
 
-
-  section {
-    gap: 0.5rem;
-    justify-content: center;
-  }
 
 }

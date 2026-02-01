@@ -37,8 +37,6 @@ function GameCardSS(props) {
           <div className={styles.ss_card}>
             <img
             className={styles.ss_card_image}
-              width="500"
-              height="267"
               src={randomScreenshot}
               alt=""
             />
