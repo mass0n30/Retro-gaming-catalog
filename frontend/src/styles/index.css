@@ -325,6 +325,7 @@ li {
 
 section {
   flex: 1;
+  width: 100%;
   min-width: 20rem;
   display: flex;
   flex-wrap: wrap;

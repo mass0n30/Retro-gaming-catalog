@@ -162,7 +162,7 @@ aside::before {
   transition: background-color 0.25s, color 0.25s;
   background-color: var(--color-background);
   color: var(--color-text);
-  border: 2px solid var(--color-border);
+  box-shadow: 0px 0px 2px 2px var(--color-surface) inset;
 } 
 
 .orderbydata button:hover, .orderbyrating button:hover, .orderbypopularity button:hover, 
@@ -301,11 +301,12 @@ aside::before {
 
 @media (max-width: 1000px) {
   .categoriescontainer {
-    flex: 3;
+    flex: 6;
   }
 
   .discovermodecontainer {
     padding: 4px;
+    flex: 1;
   }
 
   .sidebarcontainer {
@@ -341,13 +342,67 @@ aside::before {
   }
 
   .react-aria-Button {
+    flex: 1;
     width: auto;
     font-size: 1.5rem;
     font-weight: 900;
-    padding: 1rem;
+    height: 100%;
   }
 
-  @media (max-width: 700px) {
+    .yearsfiltercontainer {
+    gap: 1.25rem;
+  }
+
+  .yearsfiltercontainer {
+    flex: 1;
+    height: 100%;
+  }
+
+  .yearsfiltercontainer select {
+    width: 100%;
+    height: 100%;
+    font-size: 1.4rem;
+    padding: 2rem 1.5rem;
+
+  }
+
+    .treeItem,
+  .react-aria-treeItem {
+    font-size: 1.5rem;          
+    padding: 1rem 0.5rem;       
+  }
+
+  .treeItem[data-expanded] {
+    padding-left: 12%;         
+  }
+
+  .categoryheadertxt, .sidebarbtntxt, .discovermodetxt {
+    font-size: 2rem;
+    width: 90%;
+  }
+
+  #categorybtn {
+    font-size: 2rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .orderbydata button,
+  .orderbyrating button,
+  .orderbypopularity button,
+  .clearfilterscontainer button,
+  .discovermodebtn button,
+  .discovergamesbtn button,
+  .clearfilterscontainer button
+  {
+    font-size: 2rem;
+    padding: 2rem;
+  }
+
+
+
+}
+
+  @media (max-width: 1000px) {
 
     aside {
       width: 100%;
@@ -369,13 +424,13 @@ aside::before {
     padding-left: 12%;         
   }
 
-  .categoryheadertxt {
-    font-size: 1.4rem;
+  .categoryheadertxt, .sidebarbtntxt, .discovermodetxt {
+    font-size: 2rem;
     width: 90%;
   }
 
   #categorybtn {
-    font-size: 1.2rem;
+    font-size: 2rem;
     padding: 1rem 1.25rem;
   }
 
@@ -387,8 +442,8 @@ aside::before {
   .discovergamesbtn button,
   .clearfilterscontainer button
   {
-    font-size: 1.2rem;
-    padding: 1rem;
+    font-size: 2rem;
+    padding: 2rem;
   }
 
   .orderbydata button,
@@ -415,9 +470,17 @@ aside::before {
     gap: 1.25rem;
   }
 
+  .yearsfiltercontainer {
+    flex: 1;
+    height: 100%;
+  }
+
   .yearsfiltercontainer select {
-    font-size: 1.2rem;
-    padding: 1.25rem 1.5rem;
+    width: 100%;
+    height: 100%;
+    font-size: 1.4rem;
+    padding: 2rem 1.5rem;
+
   }
 
   .ordertxt {
@@ -428,4 +491,4 @@ aside::before {
 
 }
 
-}
+

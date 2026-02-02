@@ -173,7 +173,7 @@ export default function SideBar({ categoryData, orderData, orderDirection, setOr
             <div className={styles.ordertxt}>
               {orderData === "Rating" ? <span className='mainIcons'><Star size={'auto'} color="#ffee03ff" fill='#ffee03ff'/></span>  : <span className='mainIcons'><Star size={'auto'} color="#E8F1F2" /></span> }
               <div className={styles.sidebarbtntxt}>Rating</div>
-              {orderData === "Rating" ? (orderDirection === true ?<ArrowDownWideNarrow size={24} color="#E8F1F2" /> : <ArrowUpWideNarrow size={24} color="#E8F1F2" />) : ""}
+              {orderData === "Rating" ? (orderDirection === true ?<span className='mainIcons'><ArrowDownWideNarrow size={'auto'} color="#E8F1F2" /></span> : <span className='mainIcons'><ArrowUpWideNarrow size={'auto'} color="#E8F1F2" /></span>) : ""}
             </div>
           </Button>
         </div> 
@@ -182,7 +182,7 @@ export default function SideBar({ categoryData, orderData, orderDirection, setOr
            <div className={styles.ordertxt}>
               {orderData === "Popularity" ? <span className='mainIcons'><Flame size={'auto'} color="#F03A47" fill='#F03A47'/> </span> : <span className='mainIcons'><Flame size={'auto'} color="#E8F1F2" /></span>}
               <div className={styles.sidebarbtntxt}>Popularity</div>
-              {orderData === "Popularity" ? (orderDirection === true ? <ArrowDownWideNarrow size={24} color="#E8F1F2" /> : <ArrowUpWideNarrow size={24} color="#E8F1F2" />) : ""}
+              {orderData === "Popularity" ? (orderDirection === true ?<span className='mainIcons'><ArrowDownWideNarrow size={'auto'} color="#E8F1F2" /></span> : <span className='mainIcons'><ArrowUpWideNarrow size={'auto'}  color="#E8F1F2" /></span>) : ""}
             </div> 
           </Button>
         </div>
@@ -191,7 +191,7 @@ export default function SideBar({ categoryData, orderData, orderDirection, setOr
             <div className={styles.ordertxt}>
               {orderData === "Release Date" ? <span className='mainIcons'><CalendarDays size={'auto'} color="#03A9F4" fill='#03a8f4b4'/></span>  : <span className='mainIcons'><CalendarDays size={'auto'} color="#E8F1F2" /></span> }
               <div className={styles.sidebarbtntxt}>Release Date</div>
-              {orderData === "Release Date" ? (orderDirection === true ? <ArrowDownWideNarrow size={24} color="#E8F1F2" /> : <ArrowUpWideNarrow size={24} color="#E8F1F2" />) : ""}
+              {orderData === "Release Date" ? (orderDirection === true ? <span className='mainIcons'><ArrowDownWideNarrow size={'auto'} color="#E8F1F2" /></span> : <span className='mainIcons'><ArrowUpWideNarrow size={'auto'} color="#E8F1F2" /></span>) : ""}
             </div>
           </Button>
         </div>
