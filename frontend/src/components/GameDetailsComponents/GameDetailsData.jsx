@@ -59,7 +59,8 @@ const { id: gameId, igdbId: gameigdbId, name: gameName, originalPlatform, platfo
 
   if (loading) {
     return( 
-      <div className={styles.recordsloadercontainer}>
+      <div className={styles.recordsloadercontainer}
+      style={{ display: "flex", flex: 1, alignItems: "center", justifyContent: "center", backdropFilter: "blur(3px)"}} >
         <span className={styles.loadingtxt}>Loading</span>
         <CustomSpinnerDots/>
       </div>
@@ -84,7 +85,7 @@ const { id: gameId, igdbId: gameigdbId, name: gameName, originalPlatform, platfo
       {gameVideos && gameVideos.length > 0 && (
         <div className={styles.recorditem}>
             <div className={styles.videoname}>
-              <Tv className={styles.icons} fill="#21405567"/>
+             <span><Tv style={{'width': '2rem', 'height': '1.3rem'}} fill="#21405567"/></span>
               <h3 className={styles.relatedMediaHeader}>{gameVideos[videosIndex].name}</h3>
             </div>
             <div key={gameVideos[videosIndex].id} className={styles.recordvideocontainer}>
@@ -206,20 +207,6 @@ function ebayListingSection({post, setActiveImage, index}) {
   return (
     <div key={index} className={styles.ebaylistingsection}>
       <div className={styles.ebayinnercontainer} key={post.itemId}>
-        <div className={styles.ebaylink}>
-          <div>
-            <a
-              href={post?.itemWebUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button>
-                <ShoppingCart className={styles.icons}/>
-              </button>
-            </a>
-          </div>                    
-
-        </div>
         <div className={styles.ebayinfocontainer}>
           <div className={styles.ebaytitlecontainer}>
             <h2 className={styles.ebaytitle}>{post.title}</h2>  
@@ -227,14 +214,12 @@ function ebayListingSection({post, setActiveImage, index}) {
           <div className={styles.ebayinfoinnercontainer}>
             
             <div className={styles.ebaypricecontainer}>
-              <div className={styles.sellertitle}>Price Information</div>
                 
               <div className={styles.pricecontainer}>
                 <div className={styles.dollar}><DollarSign className={styles.iconsDollar}/></div>  
                 <div className={styles.value}>{post.price.value}</div> 
                 <div className={styles.currency}>{post.price.currency}</div>
               </div>
-              <div className={styles.ebaycondition}>{post.condition}</div>
             </div>
             <div className={styles.sellerinfocontainer}>
               <div className={styles.sellertitle}>Seller Information</div>
@@ -243,9 +228,26 @@ function ebayListingSection({post, setActiveImage, index}) {
             </div>
           </div>
         </div>
+        <div className={styles.ebayimgcartcontainer}>
         <div className={styles.ebayimgtitlecontainer} >
-          <div className={styles.ebayimgcontainer} >
-            <img src={post.image?.imageUrl} className={styles.ebayimg} onClick={() => setActiveImage(post.image?.imageUrl)}/>
+            <div className={styles.ebayimgcontainer} >
+              <img src={post.image?.imageUrl} className={styles.ebayimg} onClick={() => setActiveImage(post.image?.imageUrl)}/>
+              <div className={styles.ebaycondition}>{post.condition}</div>
+            </div>
+          </div>
+          <div className={styles.ebaylink}>
+            <div>
+              <a
+                href={post?.itemWebUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className={styles.btn}>
+                 <span width={'80%'} size={'auto'} className={'mainIcons'}><ShoppingCart width={'80%'}/></span>
+                </button>
+              </a>
+            </div>                    
+
           </div>
         </div>
     </div>

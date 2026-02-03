@@ -152,12 +152,21 @@
 }
 
 .ebaycontainer {
+  font-size: smaller;
   flex: 1;
   background-color: var(--color-background);
 }
 
+.ebayimgcartcontainer {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
 .ebaylink {
-  padding-left: 1rem;
+  margin: 0.5rem;
   display: flex;
   flex: 1;
   align-items: center;
@@ -168,6 +177,7 @@
 .ebaylink button {
   display: flex;
   align-items: center;
+  padding: 2rem 3rem;
   justify-content: center;
   color: var(--color-text);
   background-color: var(--color-border);
@@ -194,12 +204,12 @@
 
 .ebayimgtitlecontainer {
   display: flex;
-  flex: 2;
   flex-direction: column-reverse;
   align-items: flex-start;
   justify-content: space-evenly;
   font-size: 1.2rem;
 }
+
 
 .ebaypricecontainer, .sellerinfocontainer {
   display: flex;
@@ -207,6 +217,10 @@
   justify-content: center;
   padding: 2rem;
 }
+
+.ebaypricecontainer {
+  gap: 1rem;
+}                                                       
 
 
 
@@ -231,6 +245,7 @@
 
 .ebayimgcontainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   flex: 1;
   flex: 0 0 auto;
@@ -255,6 +270,10 @@
   justify-content: flex-start;
   align-items: center;
   gap: 0.2rem;
+}
+
+.ebaycondition {
+  align-items: flex-start;
 }
 
 .sellertitle, .sellername span, .sellerrating span, .ebaycondition span {
@@ -473,6 +492,25 @@
   background-color: transparent;
 }
 
+.btn {
+  color: var(--color-border);
+  display: flex;
+  align-items: center;
+  background-color: var(--color-background);
+  border-color: var(--color-background-light);
+  border: 3px solid var(--color-background-light);
+  height: 44px;
+  color: var(--color-text);
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  outline: 0;
+  margin: 0;
+}
+
 
 .screenshotscontainer {
   position: relative;
@@ -674,7 +712,7 @@
 }
 
 .artwork {
-  max-height: 10rem;
+  max-height: 15rem;
   border-radius: 8px;
   object-fit: contain;
   transition: opacity 5s ease;
@@ -1056,7 +1094,7 @@ h3, h2 {
   gap: 0.5rem;
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1200px){
   .iconsHeart, .iconsCheck, .iconsShare {
     width: var(--icon-size-mobile);
     height: var(--icon-size-mobile);
@@ -1073,6 +1111,32 @@ h3, h2 {
       width: 3rem;
       height: auto;
     }
+
+.ebayinfocontainer {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+}
+
+.ebayimgcartcontainer {
+  flex-direction: column;
+}
+
+.relatedgamescontainer {
+  padding-bottom: 10rem;
+  backdrop-filter: blur(2px);
+}
+
+.relatedMediaHeader {
+  font-weight: 600;
+  color: var(--color-text);
+  padding: 0.25rem 0rem 0.25rem 0rem;
+}
+
+.recordsloadercontainer {
+  margin-bottom: 10rem;
+  backdrop-filter: blur(3px);
+}
 
 }
 

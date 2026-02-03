@@ -88,7 +88,7 @@ export default function SideBar({ categoryData, orderData, orderDirection, setOr
             {discover ?
               <div className={styles.discovergamestxt}> 
               <div className={styles.sidebarbtntxt}>Discovering Games</div>
-              <Sparkles style={{ marginLeft: '0.5rem' }} />
+               <span className='mainIcons'><Sparkles width={'80%'} size={'auto'} style={{ marginLeft: '0.5rem' }} /></span>
               </div> : 
               <div className={styles.discovergamestxt}>
               <div className={styles.sidebarbtntxt}>Discover Games</div>
@@ -172,7 +172,9 @@ export default function SideBar({ categoryData, orderData, orderDirection, setOr
           <Button onClick={() => handleToggleOrder("Rating")}>
             <div className={styles.ordertxt}>
               {orderData === "Rating" ? <span className='mainIcons'><Star size={'auto'} color="#ffee03ff" fill='#ffee03ff'/></span>  : <span className='mainIcons'><Star size={'auto'} color="#E8F1F2" /></span> }
-              <div className={styles.sidebarbtntxt}>Rating</div>
+              <div className={styles.sidebarbtntxt}>
+                <span>Rating</span>
+              </div>
               {orderData === "Rating" ? (orderDirection === true ?<span className='mainIcons'><ArrowDownWideNarrow size={'auto'} color="#E8F1F2" /></span> : <span className='mainIcons'><ArrowUpWideNarrow size={'auto'} color="#E8F1F2" /></span>) : ""}
             </div>
           </Button>
@@ -181,7 +183,9 @@ export default function SideBar({ categoryData, orderData, orderDirection, setOr
           <Button onClick={() => handleToggleOrder("Popularity")}>
            <div className={styles.ordertxt}>
               {orderData === "Popularity" ? <span className='mainIcons'><Flame size={'auto'} color="#F03A47" fill='#F03A47'/> </span> : <span className='mainIcons'><Flame size={'auto'} color="#E8F1F2" /></span>}
-              <div className={styles.sidebarbtntxt}>Popularity</div>
+              <div className={styles.sidebarbtntxt}>
+                <span>Popularity</span>
+              </div>
               {orderData === "Popularity" ? (orderDirection === true ?<span className='mainIcons'><ArrowDownWideNarrow size={'auto'} color="#E8F1F2" /></span> : <span className='mainIcons'><ArrowUpWideNarrow size={'auto'}  color="#E8F1F2" /></span>) : ""}
             </div> 
           </Button>
@@ -190,7 +194,9 @@ export default function SideBar({ categoryData, orderData, orderDirection, setOr
           <Button onClick={() => handleToggleOrder("Release Date")}>
             <div className={styles.ordertxt}>
               {orderData === "Release Date" ? <span className='mainIcons'><CalendarDays size={'auto'} color="#03A9F4" fill='#03a8f4b4'/></span>  : <span className='mainIcons'><CalendarDays size={'auto'} color="#E8F1F2" /></span> }
-              <div className={styles.sidebarbtntxt}>Release Date</div>
+              <div className={styles.sidebarbtntxt}>
+                <span>Release Date</span>
+              </div>
               {orderData === "Release Date" ? (orderDirection === true ? <span className='mainIcons'><ArrowDownWideNarrow size={'auto'} color="#E8F1F2" /></span> : <span className='mainIcons'><ArrowUpWideNarrow size={'auto'} color="#E8F1F2" /></span>) : ""}
             </div>
           </Button>

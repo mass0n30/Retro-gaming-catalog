@@ -491,4 +491,27 @@ aside::before {
 
 }
 
+@media (max-width: 750px) {
+  .orderfiltercontainer {
+    flex-direction: column;
+  }
+
+  .ordertxt {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebarbtntxt span {
+    flex: 1;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+
+}
+
 

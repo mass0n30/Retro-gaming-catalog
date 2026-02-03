@@ -43,6 +43,7 @@
   --font-family: 'Satoshi', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --icon-size-desktop: 34px;
   --icon-size-tablet: 44px;
+  --icon-size-large-mobile: 60px;
   --icon-size-mobile: 10vw;
   --text-xs: 0.75rem;      /* 12px */
   --text-sm: 0.875rem;     /* 14px */
