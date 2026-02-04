@@ -49,8 +49,8 @@ aside::before {
 .categoriescontainer {
   width: auto;
   height: 100%;
-  flex: 3;
   display: flex;
+  flex: 2;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
@@ -153,7 +153,8 @@ aside::before {
   justify-content: space-between;
 }
 
-.orderbydata button, .orderbyrating button, .orderbypopularity button, .clearfilterscontainer button , .discovermodebtn button, .discovergamesbtn button {
+.orderbydata button, .orderbyrating button, .orderbypopularity button, .clearfilterscontainer button , .discovermodebtn button, .discovergamesbtn button
+, select{
   width: 100%;
   font-size: 1rem;
   font-weight: 700;
@@ -247,7 +248,6 @@ aside::before {
 .yearsfiltercontainer select {
   color: var(--color-text);
   background-color: var(--color-background);
-  border: 2px solid var(--color-border);
   border-radius: 6px;
   padding: 1rem 1.5rem;
   font-size: 1rem;
@@ -260,7 +260,6 @@ aside::before {
 }
 
 .yearsfiltercontainer:focus {
-  border-color: var(--color-primary);
   background-color: #191b28;
 }
 
@@ -301,7 +300,7 @@ aside::before {
 
 @media (max-width: 1000px) {
   .categoriescontainer {
-    flex: 6;
+    flex: 2;
   }
 
   .discovermodecontainer {
@@ -309,17 +308,14 @@ aside::before {
     flex: 1;
   }
 
-  .sidebarcontainer {
-    font-size: 1.8rem;
-  }
 
   .orderfiltercontainer {
-    flex-direction: row;
     padding: 0;
   }
 
   .yearsfiltercontainer {
     gap: 0.5rem;
+    margin: 0.5rem;
     padding: 0;
   }
 
@@ -334,24 +330,32 @@ aside::before {
     top: 0;
     z-index: 3000;
     background-color: var(--color-surface-translucent);
+    font-size: var(--text-base);
   }
 
+  .categoryheadertxt {
+  font-size: var(--text-base);
+  font-weight: 500;
+  text-align: left;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
   .sidebarbtntxt {
-    font-size: 1.2rem;
+    font-size: var(--text-base);
     font-weight: 700;
   }
 
   .react-aria-Button {
     flex: 1;
     width: auto;
-    font-size: 1.5rem;
     font-weight: 900;
     height: 100%;
   }
 
-    .yearsfiltercontainer {
-    gap: 1.25rem;
-  }
 
   .yearsfiltercontainer {
     flex: 1;
@@ -359,32 +363,17 @@ aside::before {
   }
 
   .yearsfiltercontainer select {
+  padding: 1rem 1.4rem;
     width: 100%;
-    height: 100%;
-    font-size: 1.4rem;
-    padding: 2rem 1.5rem;
-
+    font-size: var(--text-base);
   }
 
-    .treeItem,
-  .react-aria-treeItem {
-    font-size: 1.5rem;          
-    padding: 1rem 0.5rem;       
-  }
+
 
   .treeItem[data-expanded] {
     padding-left: 12%;         
   }
 
-  .categoryheadertxt, .sidebarbtntxt, .discovermodetxt {
-    font-size: 2rem;
-    width: 90%;
-  }
-
-  #categorybtn {
-    font-size: 2rem;
-    padding: 1rem 1.25rem;
-  }
 
   .orderbydata button,
   .orderbyrating button,
@@ -394,8 +383,6 @@ aside::before {
   .discovergamesbtn button,
   .clearfilterscontainer button
   {
-    font-size: 2rem;
-    padding: 2rem;
   }
 
 
@@ -410,9 +397,6 @@ aside::before {
       max-height: 100vh;
     }
 
-    .categoriescontainer {
-      flex: 3;
-    }
 
   .treeItem,
   .react-aria-treeItem {
@@ -424,67 +408,21 @@ aside::before {
     padding-left: 12%;         
   }
 
-  .categoryheadertxt, .sidebarbtntxt, .discovermodetxt {
-    font-size: 2rem;
-    width: 90%;
-  }
 
-  #categorybtn {
-    font-size: 2rem;
-    padding: 1rem 1.25rem;
-  }
-
-  .orderbydata button,
-  .orderbyrating button,
-  .orderbypopularity button,
-  .clearfilterscontainer button,
-  .discovermodebtn button,
-  .discovergamesbtn button,
-  .clearfilterscontainer button
-  {
-    font-size: 2rem;
-    padding: 2rem;
-  }
 
   .orderbydata button,
 .orderbyrating button,
 .orderbypopularity button {
-  flex: 1;                
-  width: 100%;
-  height: 100%;          
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
 }
 
-    .orderbydata ,
-  .orderbyrating ,
-  .orderbypopularity ,
-  .react-aria-Button{
-    flex: 1;
-    display: flex;
-  }
-
-
-  .yearsfiltercontainer {
-    gap: 1.25rem;
-  }
-
   .yearsfiltercontainer {
     flex: 1;
     height: 100%;
   }
 
-  .yearsfiltercontainer select {
-    width: 100%;
-    height: 100%;
-    font-size: 1.4rem;
-    padding: 2rem 1.5rem;
-
-  }
 
   .ordertxt {
-    flex-direction: column;
     align-items: center;
     font-size: 1rem;
   }
@@ -493,7 +431,6 @@ aside::before {
 
 @media (max-width: 750px) {
   .orderfiltercontainer {
-    flex-direction: column;
   }
 
   .ordertxt {
@@ -511,6 +448,17 @@ aside::before {
   }
 
 
+
+}
+
+@media (max-height: 800px) {
+  aside, .sidebar.open, .sidebar, .sidebarcontainer, .categoriescontainer
+  , .react-aria-Tree, .tree, .treeItem, .react-aria-treeItem, .orderfiltercontainer
+  , .discovermodecontainer, .yearsfiltercontainer, .orderbydata button,
+  .orderbyrating button, .orderbypopularity button , .clearfilterscontainer button ,
+  .discovermodebtn button, .discovergamesbtn button {
+    font-size: 24px;
+  }
 
 }
 
