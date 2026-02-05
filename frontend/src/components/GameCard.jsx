@@ -31,21 +31,17 @@ function GameCard(props) {
 
 
     <>
-     { coverUrl ? ( 
       <div className={styles.card_loader_container} style={mount ? { animationDelay: `${index * 0.12}s` }: {}} disabled>
       { loading ? (
          <CardSkeleton/>
       ) : (
          <button onClick={(() => handleNavigate())} className={styles.card_button} style={mount ? { animationDelay: `${index * 0.24}s` }: {}}>
             <div className={styles.card}  >
-               <img className={styles.card_image} src={coverUrl}></img>
+               <img className={styles.card_image} src={coverUrl?.replace('t_cover_big', 't_cover_big_2x')}></img>
             </div>
          </button>
       )}
       </div>
-    ) : (
-      <></>
-    )}
    </>
    );
 }

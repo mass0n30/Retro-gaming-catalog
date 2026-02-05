@@ -196,7 +196,7 @@ if (loading) {
           <div className={styles.uppercovercontainer}>
             <div className={styles.imgcontainer}>
               {game.cover ? (
-                <img src={game.cover} className={styles.cover}
+                <img src={game.cover.replace('t_cover_big', 't_cover_big_2x')} className={styles.cover}
                 onClick={() => setActiveImage(game.cover)}/>) : ( <></> )}
             </div>
             <div className={styles.ratingcontainer}>
@@ -263,7 +263,7 @@ if (loading) {
 
                 <div className={styles.screenshotcarouselcontainer}> 
                   <img
-                    src={`https:${screenshots[currentIndex]?.url}`}
+                    src={`https:${screenshots[currentIndex]?.url.replace('t_screenshot_huge', 't_1080p')}`}
                     alt={`${game.name} screenshot`}
                     className={styles.screenshot}
                     onClick={() => setActiveImage(`https:${screenshots[currentIndex]?.url}`)}
