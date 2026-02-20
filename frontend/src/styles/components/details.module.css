@@ -667,7 +667,9 @@
   width: 100%;
   transform: translateX(-currentIndex * 100%);
   transition: transform 300ms ease-out;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -704,13 +706,12 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  overflow: hidden;
 }
 
 .screenshot {
   max-width: 100%;
   border-radius: 8px;
-  object-fit: contain;
+  object-fit: cover;
   image-rendering: auto;
   transition: opacity 5s ease;
   animation: fadeIn 1.5s ease-in forwards;

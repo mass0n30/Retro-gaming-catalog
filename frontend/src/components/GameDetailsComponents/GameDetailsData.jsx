@@ -19,7 +19,9 @@ const { id: gameId, igdbId: gameigdbId, name: gameName, originalPlatform, platfo
   const [gameVideos, setGameVideos] = useState(null);
   const [gameArtwork, setGameArtwork] = useState(null);
   const [videosIndex, setVideosIndex] = useState(0);
-  const [artIndex, setArtIndex] = useState(0);
+  
+  const [speedrunToggle, setSpeedrunToggle] = useState(false);
+  const [ebayToggle, setEbayToggle] = useState(false);
 
   const stableId = useId();
 
@@ -124,28 +126,52 @@ const { id: gameId, igdbId: gameigdbId, name: gameName, originalPlatform, platfo
         )}
         {recordData && (
           <>
-          <div className={styles.videoname}>
-            <h2 className={styles.relatedMediaHeader}>Speedrun Data</h2>
-          </div>
-            <div className={styles.recordsectionscontainer}>
-              <GameDetailsRunSection recordData={recordData} gameName={gameName} />
-            </div>
+            {speedrunToggle ? (
+              <>
+                <div className={styles.videoname}>
+                  <h2 className={styles.relatedMediaHeader}>Speedrun Data</h2>
+                  <button className={styles.recordtogglebtn} onClick={() => setSpeedrunToggle(false)}>
+                    Hide Speedrun Data
+                  </button>
+                </div>
+                  <div className={styles.recordsectionscontainer}>
+                    <GameDetailsRunSection recordData={recordData} gameName={gameName} />
+                  </div>
+              </>
+            ) : (
+              <div className={styles.recordtogglecontainer}>
+                <button className={styles.recordtogglebtn} onClick={() => setSpeedrunToggle(true)}>
+                  Show Speedrun Data
+                </button>
+              </div>  
+            )}
           </>
         )}
       </div>
 
-      {gameEbayData ? (
+      {gameEbayData && (
+        <>
+        {ebayToggle ? (
 
         <div className={styles.ebaycontainer}>
           <div className={styles.videoname}>
             <h2 className={styles.relatedMediaHeader}>Related Listings</h2>
+            <button className={styles.recordtogglebtn} onClick={() => setEbayToggle(false)}>
+              Hide Related Ebay Listings
+            </button>
           </div>
           {gameEbayData.map((post, index) => (
             ebayListingSection({post, setActiveImage, index})
           ))}
         </div>
-      ) : (
-        <></>
+         ) : (
+          <div className={styles.recordtogglecontainer}>
+            <button className={styles.recordtogglebtn} onClick={() => setEbayToggle(true)}>
+              Show Related Ebay Listings
+            </button>
+          </div>  
+         )}
+          </>
       )}
 
       {franchiseGames && franchiseGames.length > 0 && (

@@ -127,8 +127,8 @@
   }
 
   .card_loader_container, .card_loader, .card_image  {
-    max-width: clamp(300px, 80vw, 360px);
-    max-height: clamp(420px, 80vh, 480px);
+    max-width: clamp(300px, 80dvw, 360px);
+    max-height: clamp(420px, 80dvh, 480px);
     display: flex;
   }
 
@@ -145,15 +145,15 @@
   .cardss_loader_container,
   .ss_card
  {
-    max-width: clamp(272px, 49vw, 323px);
-    max-height: clamp(182px, 49vw, 216px);
+    max-width: clamp(272px, 49dvw, 323px);
+    max-height: clamp(182px, 49dvh, 216px);
   }
 
   .card_loader_container,
   .card_loader
  {
-    max-width: clamp(280px, 75vw, 340px);
-    max-height: clamp(400px, 75vh, 460px);
+    max-width: clamp(280px, 75dvw, 340px);
+    max-height: clamp(400px, 75dvh, 460px);
   }
 
     .card_button, .card, .card_image, .card_loader {
@@ -168,14 +168,14 @@
 
   .cardss_loader_container,
   .ss_card {
-    max-width: clamp(230px, 42vw, 275px);
-    max-height: clamp(155px, 42vw, 184px);
+    max-width: clamp(230px, 42dvw, 275px);
+    max-height: clamp(155px, 42dvh, 184px);
   }
 
   .card_loader_container,
   .card_loader{
-    max-width: clamp(260px, 65vw, 320px);
-    max-height: clamp(380px, 65vh, 440px);
+    max-width: clamp(260px, 65dvw, 320px);
+    max-height: clamp(380px, 65dvh, 440px);
   }
 
   .card_button, .card, .card_image, .card_loader {
@@ -190,8 +190,8 @@
 
   .card_loader_container,
   .card_loader{
-    max-width: clamp(220px, 63vw, 280px);
-    max-height: clamp(340px, 63vh, 400px);
+    max-width: clamp(220px, 63dvw, 280px);
+    max-height: clamp(340px, 63dvh, 400px);
   }
 
 .card_button:hover, .cardss_button:hover {
@@ -217,8 +217,8 @@
 
   .card_loader_container,
   .card_loader{
-    max-width: clamp(200px, 62vw, 240px);
-    max-height: clamp(300px, 62vh, 360px);
+    max-width: clamp(200px, 62dvw, 240px);
+    max-height: clamp(300px, 62dvh, 360px);
   }
 
     .card_button, .card, .card_image, .card_loader {
@@ -233,8 +233,8 @@
 @media (max-width: 550px) {
   .cardss_loader_container,
   .ss_card{
-    max-width: clamp(235px, 43vw, 280px);
-    max-height: clamp(156px, 43vw, 187px);
+    max-width: clamp(235px, 43dvw, 280px);
+    max-height: clamp(156px, 43dvh, 187px);
   }
 
     .card_button, .card, .card_image, .card_loader {
@@ -248,14 +248,14 @@
 
     .cardss_loader_container,
   .ss_card{
-    max-width: clamp(200px, 40vw, 240px);
-    max-height: clamp(133px, 40vw, 160px);
+    max-width: clamp(200px, 40dvw, 240px);
+    max-height: clamp(133px, 40dvh, 160px);
   }
 
   .card_loader_container,
   .card_loader{
-    max-width: clamp(180px, 40vw, 240px);
-    max-height: clamp(300px, 40vh, 360px);
+    max-width: clamp(180px, 40dvw, 240px);
+    max-height: clamp(300px, 40dvh, 360px);
   }
 
     .card_button, .card, .card_image, .card_loader {
