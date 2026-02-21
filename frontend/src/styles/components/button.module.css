@@ -1,5 +1,4 @@
-
-@import '../base/variables.css';
+@import "../base/variables.css";
 
 button {
   border-radius: 8px;
@@ -12,6 +11,3 @@ button {
   transition: border-color 0.25s;
   background-color: var(--color-white-alt);
 }
-
-
-

@@ -162,7 +162,7 @@ export default function SideBar({ categoryData, orderData, orderDirection, setOr
           ))}
         </Tree>
       </div>
-      
+    <div className={styles.filterscontainer}>
       <div className={styles.yearsfiltercontainer}>
         <YearDropdown className={styles.yearSelect} selectedYear={minyear} compYear={maxyear} setSelectedYear={setYear} arg={"min"}/>
         <YearDropdown className={styles.yearSelect} selectedYear={maxyear} compYear={minyear} setSelectedYear={setYear} arg={"max"}/>
@@ -210,6 +210,8 @@ export default function SideBar({ categoryData, orderData, orderDirection, setOr
             </Button>
           </div>
         </div>
+      </div>
+
     </div>
   );
 }

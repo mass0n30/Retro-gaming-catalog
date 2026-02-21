@@ -1,9 +1,11 @@
-
 /* following BEM */
 
-@import '../base/variables.css';
+@import "../base/variables.css";
 
-.loginContainer, .signupContainer, .logoContainer, .logoContainerAlt {
+.loginContainer,
+.signupContainer,
+.logoContainer,
+.logoContainerAlt {
   display: flex;
   flex: 1;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.623));
@@ -34,7 +36,6 @@
   animation: fadeIn 1s ease-in-out;
   padding: 0;
   margin: 0;
-
 }
 
 form {
@@ -89,7 +90,7 @@ form {
   flex-direction: column;
   margin: 0;
   padding: 0;
-  
+
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   background-color: var(--color-background);
@@ -129,22 +130,21 @@ form {
   background-color: var(--color-background);
 }
 
-.loginForm, .signupForm {
+.loginForm,
+.signupForm {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
   width: 100%;
-  max-width: 400px; 
+  max-width: 400px;
   box-sizing: border-box;
   border-radius: var(--radius-md);
   background: rgba(20, 20, 30, 0.4);
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-  padding: 40px 32px; 
+  padding: 40px 32px;
 }
-
-
 
 .guestContainer {
   font-size: 0.9rem;
@@ -193,7 +193,9 @@ form {
   font-weight: 800;
   color: var(--color-text);
   background-color: var(--color-background);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   border-radius: 12px;
   padding: 12px 16px;
   color: white;
@@ -211,7 +213,7 @@ form {
   font-weight: 900;
   cursor: pointer;
   border: none;
-  border-radius: 50px; 
+  border-radius: 50px;
   padding: 14px;
   color: white;
   background-color: var(--purple-accent-dark);
@@ -240,8 +242,7 @@ form {
 }
 
 @media (min-width: 600px) and (max-width: 1000px) {
-
-    /* signup */
+  /* signup */
   .formContainerAlt {
     display: flex;
     align-items: center;
@@ -249,7 +250,7 @@ form {
     flex-direction: column;
 
     min-height: 100dvh;
-    padding: 16px;            
+    padding: 16px;
     box-sizing: border-box;
   }
 
@@ -260,27 +261,20 @@ form {
     max-width: 100%;
     display: block;
   }
-
-
-
 }
 
-
 @media (max-width: 600px) {
-
-
   .formContainerAlt {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
-  
     min-height: 100vh;
     min-height: 100dvh;
 
     gap: var(--space-md);
-    padding: 16px;            
+    padding: 16px;
     box-sizing: border-box;
   }
 
@@ -291,7 +285,4 @@ form {
     max-width: 100%;
     display: block;
   }
-
-
-
 }

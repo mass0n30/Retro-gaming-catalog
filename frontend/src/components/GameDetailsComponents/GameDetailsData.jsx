@@ -124,30 +124,31 @@ const { id: gameId, igdbId: gameigdbId, name: gameName, originalPlatform, platfo
             </div>
           </div>
         )}
-        {recordData && (
-          <>
-            {speedrunToggle ? (
-              <>
-                <div className={styles.videoname}>
-                  <h2 className={styles.relatedMediaHeader}>Speedrun Data</h2>
-                  <button className={styles.recordtogglebtn} onClick={() => setSpeedrunToggle(false)}>
-                    Hide Speedrun Data
-                  </button>
-                </div>
-                  <div className={styles.recordsectionscontainer}>
-                    <GameDetailsRunSection recordData={recordData} gameName={gameName} />
-                  </div>
-              </>
-            ) : (
-              <div className={styles.recordtogglecontainer}>
-                <button className={styles.recordtogglebtn} onClick={() => setSpeedrunToggle(true)}>
-                  Show Speedrun Data
-                </button>
-              </div>  
-            )}
-          </>
-        )}
       </div>
+
+      {recordData && (
+        <>
+          {speedrunToggle ? (
+            <>
+              <div className={styles.videoname}>
+                <h2 className={styles.relatedMediaHeader}>Speedrun Data</h2>
+                <button className={styles.recordtogglebtnAlt} onClick={() => setSpeedrunToggle(false)}>
+                  X
+                </button>
+              </div>
+                <div className={styles.recordsectionscontainer}>
+                  <GameDetailsRunSection recordData={recordData} gameName={gameName} />
+                </div>
+            </>
+          ) : (
+            <div className={styles.recordtogglecontainer}>
+              <button className={styles.recordtogglebtn} onClick={() => setSpeedrunToggle(true)}>
+               <div>Show Speedrun Data</div>
+              </button>
+            </div>  
+          )}
+        </>
+      )}
 
       {gameEbayData && (
         <>
@@ -156,8 +157,8 @@ const { id: gameId, igdbId: gameigdbId, name: gameName, originalPlatform, platfo
         <div className={styles.ebaycontainer}>
           <div className={styles.videoname}>
             <h2 className={styles.relatedMediaHeader}>Related Listings</h2>
-            <button className={styles.recordtogglebtn} onClick={() => setEbayToggle(false)}>
-              Hide Related Ebay Listings
+            <button className={styles.recordtogglebtnAlt} onClick={() => setEbayToggle(false)}>
+             X
             </button>
           </div>
           {gameEbayData.map((post, index) => (
@@ -167,7 +168,7 @@ const { id: gameId, igdbId: gameigdbId, name: gameName, originalPlatform, platfo
          ) : (
           <div className={styles.recordtogglecontainer}>
             <button className={styles.recordtogglebtn} onClick={() => setEbayToggle(true)}>
-              Show Related Ebay Listings
+              <div>Show Related Ebay Listings</div>
             </button>
           </div>  
          )}

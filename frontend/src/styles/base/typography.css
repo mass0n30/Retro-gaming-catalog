@@ -1,12 +1,12 @@
 /* Global text rules (headings, paragraphs) */
 
-@import './variables.css';
+@import "./variables.css";
 
 /* base default font */
 body {
   font-family: var(--font-family);
-  font-size: var(--text-base);          /* Base font size */
-  line-height: var(--line-height-md);    
+  font-size: var(--text-base); /* Base font size */
+  line-height: var(--line-height-md);
   color: var(--color-text);
 }
 
@@ -14,7 +14,7 @@ p {
   margin: 0;
   padding: 5px;
   font-size: 1rem;
-line-height: 1.5;
+  line-height: 1.5;
   text-align: left;
 }
 
@@ -35,13 +35,14 @@ a:hover {
   }
 }
 
-
 /* Mobile styles */
-@media (max-width: 31.25em) { /* ~500px */
+@media (max-width: 31.25em) {
+  /* ~500px */
   body {
     font-size: var(--text-sm);
   }
 
-  h2 { font-size: 1.75rem; }
+  h2 {
+    font-size: 1.75rem;
+  }
 }
-

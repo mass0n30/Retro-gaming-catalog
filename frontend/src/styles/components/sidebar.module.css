@@ -1,9 +1,9 @@
-@import '../base/variables.css';
+@import "../base/variables.css";
 
 aside {
   position: sticky;
   top: 5rem;
-  height:  calc(100dvh - 11dvh);
+  height: calc(100dvh - 11dvh);
   animation: fadeIn 0.3s ease-out forwards;
   backdrop-filter: blur(10px);
   isolation: isolate; /* create a new stacking context, preventing z-index issues across browsers */
@@ -15,21 +15,19 @@ aside {
   }
   100% {
     opacity: 1;
-  } 
+  }
 }
 
 aside::before {
   content: "";
   position: absolute;
   inset: -10% -20%;
-  background: 
-
-  radial-gradient(
-      ellipse at 10% 50%, /* x y */
-      var(--blue-light-ambient) 0%,
+  background:
+    radial-gradient(
+      ellipse at 10% 50%,
+      /* x y */ var(--blue-light-ambient) 0%,
       transparent 50%
     ),
-
     radial-gradient(
       ellipse at 80% 70%,
       var(--purple-ambient) 0%,
@@ -56,12 +54,18 @@ aside::before {
   overflow-x: hidden;
 }
 
+.filterscontainer {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+
 .tree {
   flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
-  border-top:  4px solid var(--color-background);
+  border-top: 4px solid var(--color-background);
 }
 
 .treeItem {
@@ -72,7 +76,8 @@ aside::before {
   font-weight: 600;
   font-size: 1.2rem;
   border-bottom: 4px solid var(--color-background);
-  transition:padding-left 0.25s ease,
+  transition:
+    padding-left 0.25s ease,
     background-color 0.25s ease;
 }
 
@@ -81,11 +86,9 @@ aside::before {
   padding-left: 21%;
 }
 
-
-
 .clearfilterscontainer button {
   background-color: var(--color-background);
-  color: var(--color-text); 
+  color: var(--color-text);
   opacity: 80%;
 }
 
@@ -94,10 +97,9 @@ aside::before {
   background-color: var(--color-secondary);
 }
 
-
 .orderfiltercontainer {
   gap: 0.5rem;
-  flex: 1;
+  flex: 2;
   padding-bottom: 0.5rem;
   display: flex;
   justify-content: center;
@@ -109,27 +111,25 @@ aside::before {
   margin-bottom: 0.5rem;
 }
 
-.orderbydata, .orderbyrating, .orderbypopularity,
-.discovermodebtn, .discovergamesbtn {
-  flex: 1;
-  display: flex;
-  align-items: flex-start;
-}
 
-.orderbydata, .orderbyrating, .orderbypopularity, .clearfilter {
+.orderbydata,
+.orderbyrating,
+.orderbypopularity,
+.clearfilter {
+  flex: 1;
   width: 80%;
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .clearfilterscontainer {
-
   margin-top: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 
 .ordertxt {
   flex: 1;
@@ -145,7 +145,8 @@ aside::before {
   align-items: center;
 }
 
-.discovermodetxt, .discovergamestxt {
+.discovermodetxt,
+.discovergamestxt {
   width: 80%;
   display: flex;
   flex: 1;
@@ -153,33 +154,51 @@ aside::before {
   justify-content: space-between;
 }
 
-.orderbydata button, .orderbyrating button, .orderbypopularity button, .clearfilterscontainer button , .discovermodebtn button, .discovergamesbtn button
-, select{
+.orderbydata button,
+.orderbyrating button,
+.orderbypopularity button,
+.clearfilterscontainer button,
+.discovermodebtn button,
+.discovergamesbtn button,
+.yearsfiltercontainer select {
   width: 100%;
   font-size: 1rem;
   font-weight: 700;
+  padding: 1rem 1.5rem;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.25s, color 0.25s;
+  transition:
+    background-color 0.25s,
+    color 0.25s;
   background-color: var(--color-background);
   color: var(--color-text);
   box-shadow: 0px 0px 2px 2px var(--color-surface) inset;
-} 
+}
 
-.orderbydata button:hover, .orderbyrating button:hover, .orderbypopularity button:hover, 
-.discovermodebtn button:hover, .discovergamesbtn button:hover, .yearsfiltercontainer select:hover  {
+.yearsfiltercontainer select {
+  padding: 2rem 1.5rem;
+}
+
+.orderbydata button:hover,
+.orderbyrating button:hover,
+.orderbypopularity button:hover,
+.discovermodebtn button:hover,
+.discovergamesbtn button:hover,
+.yearsfiltercontainer select:hover {
   background-color: var(--color-background-light);
 }
+
+
 
 .react-aria-Tree {
   flex: 1;
   width: 100%;
   display: flex;
-
 }
 
 .react-aria-Button {
   width: 100%;
+  padding: 1rem 0.5rem;
 }
 
 .react-aria-treeItem {
@@ -189,7 +208,6 @@ aside::before {
   align-items: center;
   font-weight: 500;
   font-size: 1.2rem;
-
 }
 
 .treeItem:hover {
@@ -213,7 +231,6 @@ aside::before {
   gap: 0.5rem;
 }
 
-
 #categorybtn {
   width: 100%;
   height: 100%;
@@ -224,7 +241,9 @@ aside::before {
   border-radius: 6px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.25s, color 0.25s;
+  transition:
+    background-color 0.25s,
+    color 0.25s;
   background-color: var(--color-background);
   color: var(--color-text);
 }
@@ -233,30 +252,30 @@ aside::before {
   background-color: var(--color-background-light);
 }
 
-
 .yearsfiltercontainer {
-  max-height: fit-content;
+  flex: 1;
   display: flex;
   justify-content: center;
   gap: 1rem;
   padding: 0.5rem;
   padding-top: 1rem;
   align-items: center;
-  font-family:sans-serif;
+  font-family: sans-serif;
 }
 
 .yearsfiltercontainer select {
+  max-height: 5rem;
   color: var(--color-text);
   background-color: var(--color-background);
   border-radius: 6px;
   padding: 1rem 1.5rem;
-  font-size: 1rem;
   font-weight: 800;
   cursor: pointer;
-  transition: border-color 0.2s, background-color 0.2s;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   appearance: none;
-
 }
 
 .yearsfiltercontainer:focus {
@@ -270,6 +289,7 @@ aside::before {
 }
 
 .discovermodecontainer {
+  flex: 1;
   padding-top: 1rem;
   padding-bottom: 1rem;
   display: flex;
@@ -279,35 +299,35 @@ aside::before {
   position: relative;
 }
 
-.discovermodebtn, .discovergamesbtn {
+.discovermodebtn,
+.discovergamesbtn {
+  flex: 1;
+  max-height: 5rem;
   width: 80%;
   margin: 0.2rem;
-  font-size: 1rem;
+  font-size: var(--text-lg);
   font-weight: 700;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.25s, color 0.25s;
+  transition:
+    background-color 0.25s,
+    color 0.25s;
   color: var(--color-text);
 }
 
-.discovergamesbtn button, .discovermodebtn button, .clearfilterscontainer button {
+.discovergamesbtn button,
+.discovermodebtn button,
+.clearfilterscontainer button {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-} 
-
+}
 
 @media (max-width: 1000px) {
-  .categoriescontainer {
-    flex: 2;
-  }
-
   .discovermodecontainer {
     padding: 4px;
-    flex: 1;
   }
-
 
   .orderfiltercontainer {
     padding: 0;
@@ -318,10 +338,7 @@ aside::before {
     margin: 0.5rem;
     padding: 0;
   }
-
 }
-
-
 
 @media (max-width: 1200px) {
   aside {
@@ -330,30 +347,20 @@ aside::before {
     top: 0;
     z-index: 3000;
     background-color: var(--color-surface-translucent);
-    font-size: var(--text-base);
+  }
+
+  .filterscontainer, .categoriescontainer, .discovermodecontainer {
+    display: flex;
   }
 
   .categoryheadertxt {
-  font-size: var(--text-base);
-  font-weight: 500;
-  text-align: left;
-  width: 80%;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-
-  .sidebarbtntxt {
-    font-size: var(--text-base);
-    font-weight: 700;
-  }
-
-  .react-aria-Button {
-    flex: 1;
-    width: auto;
-    font-weight: 900;
-    height: 100%;
+    font-size: var(--text-lg);
+    font-weight: 500;
+    text-align: left;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
 
@@ -363,70 +370,63 @@ aside::before {
   }
 
   .yearsfiltercontainer select {
-  padding: 1rem 1.4rem;
     width: 100%;
-    font-size: var(--text-base);
   }
-
-
 
   .treeItem[data-expanded] {
-    padding-left: 12%;         
+    padding-left: 12%;
   }
 
-
-.orderbydata button, .orderbyrating button, .orderbypopularity button, .clearfilterscontainer button , .discovermodebtn button, .discovergamesbtn button
-, select{
-  width: 100%;
-  height: 100%;
-  font-weight: 700;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.25s, color 0.25s;
-  background-color: var(--color-background);
-  color: var(--color-text);
-  box-shadow: 0px 0px 2px 2px var(--color-surface) inset;
-} 
-
-
+  .orderbydata button,
+  .orderbyrating button,
+  .orderbypopularity button,
+  .clearfilterscontainer button,
+  .discovermodebtn button,
+  .discovergamesbtn button,
+  .yearsfiltercontainer select,
+  .clearfilter button {
+    box-sizing: border-box;
+    font-size: var(--text-lg);
+    width: 100%;
+    height: 100%;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 10px 1rem;
+    cursor: pointer;
+    transition:
+      background-color 0.25s,
+      color 0.25s;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    box-shadow: 0px 0px 2px 2px var(--color-surface) inset;
+  }
 }
 
-  @media (max-width: 1000px) {
+.clearfilter button {
+  width: 100%;
+  height: 100%;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  padding: 1rem;
+}
 
-    aside {
-      width: 100%;
-      height: 88dvh;
-      max-height: 100dvh;
-    }
-
-
-  .treeItem,
-  .react-aria-treeItem {
-    font-size: 1.5rem;          
-    padding: 1rem 0.5rem;       
+@media (max-width: 1000px) {
+  aside {
+    width: 100%;
+    height: 88dvh;
+    max-height: 100dvh;
   }
-
   .treeItem[data-expanded] {
-    padding-left: 12%;         
+    padding-left: 12%;
   }
-
-
 
   .yearsfiltercontainer {
     flex: 1;
     height: 100%;
   }
-
-
-  .ordertxt {
-    align-items: center;
-    font-size: 1rem;
-  }
-
 }
 
 @media (max-width: 750px) {
-
   .ordertxt {
     display: flex;
     flex: 1;
@@ -438,10 +438,4 @@ aside::before {
     align-items: flex-start;
     justify-content: center;
   }
-
-
-
 }
-
-
-

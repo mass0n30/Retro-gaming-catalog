@@ -1,11 +1,11 @@
-@import '../base/variables.css';
-@import '../base/typography.css';
+@import "../base/variables.css";
+@import "../base/typography.css";
 
 .loaders {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
 }
 
 .icons {
@@ -14,7 +14,9 @@
   display: flex;
 }
 
-.iconsHeart, .iconsCheck, .iconsShare {
+.iconsHeart,
+.iconsCheck,
+.iconsShare {
   width: 2rem;
   height: 2rem;
   color: aliceblue;
@@ -24,18 +26,17 @@
   opacity: 1;
 }
 
-
 .sharebtn {
-  background-color: transparent !important; 
-  min-width: 0 !important;                  
-  padding: 0 !important;                    
+  background-color: transparent !important;
+  min-width: 0 !important;
+  padding: 0 !important;
 }
 
 .sharebtn:hover,
 .sharebtn:focus,
 .sharebtn:active {
-  background-color: transparent !important; 
-  box-shadow: none !important;             
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 
 .iconsDollar {
@@ -73,7 +74,8 @@
   animation: fadeIn 0.6s ease-out forwards;
 }
 
-.outercontainer, .outercontaineralt {
+.outercontainer,
+.outercontaineralt {
   box-shadow: 0px 6px 10px 0px var(--purple-ambient);
   min-width: 0;
   max-width: 100%;
@@ -99,7 +101,7 @@
 }
 
 /* mobile styles */
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
   .detailscontainer {
     flex-direction: column;
     align-items: center;
@@ -107,7 +109,6 @@
     padding: 1rem;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    
   }
 
   .covercontainer,
@@ -121,24 +122,24 @@
   }
 
   .originalreleasetxt {
-  font-size: 1rem;
-  flex: 1;
-}
+    font-size: 1rem;
+    flex: 1;
+  }
 
-.platname {
-  font-size: 0.9rem;
-}
+  .platname {
+    font-size: 0.9rem;
+  }
 
   .summarycontainer {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
   }
 
-.storylinecontainer {
-  font-weight: 500;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  padding: 4%;
+  .storylinecontainer {
+    font-weight: 500;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    padding: 4%;
   }
 }
 
@@ -213,16 +214,14 @@
   font-size: 1.2rem;
 }
 
-
-.ebaypricecontainer, .sellerinfocontainer {
+.ebaypricecontainer,
+.sellerinfocontainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 2rem;
   height: 100px;
-}                                                  
-
-
+}
 
 .ebayinfoinnercontainer {
   flex: 3;
@@ -263,8 +262,9 @@
   border-radius: 8px;
 }
 
-
-.sellername, .sellerrating, .ebaycondition {
+.sellername,
+.sellerrating,
+.ebaycondition {
   font-size: 1rem;
   font-weight: 600;
   display: flex;
@@ -277,7 +277,10 @@
   align-items: flex-start;
 }
 
-.sellertitle, .sellername span, .sellerrating span, .ebaycondition span {
+.sellertitle,
+.sellername span,
+.sellerrating span,
+.ebaycondition span {
   font-style: italic;
   color: var(--color-text-muted);
   font-size: 0.9rem;
@@ -307,12 +310,11 @@
 
 .value {
   font-weight: 700;
-  
 }
 
 .currency {
   display: flex;
-  font-size:0.9rem;
+  font-size: 0.9rem;
   justify-content: flex-end;
   align-items: center;
   color: var(--color-text-muted);
@@ -385,7 +387,7 @@
   flex: 1;
   right: 8px;
   bottom: 8px;
-  width: 40px;      
+  width: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -403,10 +405,10 @@
   display: flex;
   position: relative;
   width: 100%;
-  justify-content: center; 
-  align-items: flex-start; 
+  justify-content: center;
+  align-items: flex-start;
   padding: 2%;
-  background-color: var(--color-background-light);    
+  background-color: var(--color-background-light);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   border-left: solid 2px var(--color-border);
@@ -428,10 +430,8 @@
   border-right: solid 2px var(--color-border);
 }
 
-
-
 .name {
-  font-weight: 700;          
+  font-weight: 700;
   line-height: 1.2;
   color: var(--color-text);
   margin: 0.5rem 0;
@@ -442,10 +442,11 @@
   -webkit-box-orient: vertical;
 }
 
-.name { font-size: clamp(1.1rem, 4vw, 1.6rem); }
+.name {
+  font-size: clamp(1.1rem, 4vw, 1.6rem);
+}
 
-
-.developername{
+.developername {
   flex: 1;
 }
 
@@ -457,20 +458,19 @@
   background-color: var(--color-border);
 }
 
-.developerlogo img{
+.developerlogo img {
   width: 100%;
   max-width: 350px;
   max-height: 80px;
   height: auto;
   height: 80%;
-  object-fit: contain;  
+  object-fit: contain;
   display: block;
 }
 
-
 .imgcontainer {
   flex: 1;
-  width: 100%;         
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -485,12 +485,11 @@
 
 .socialsContainer {
   display: flex;
-  flex-direction: column; 
-  gap: 0.75rem; 
-  padding-left: 0.2rem;          
-  align-items: center; 
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-left: 0.2rem;
+  align-items: center;
 }
-
 
 .socialsharesbtn {
   background-color: transparent;
@@ -515,7 +514,6 @@
   margin: 0;
 }
 
-
 .screenshotscontainer {
   position: relative;
   flex: 1;
@@ -529,7 +527,6 @@
   border-top: solid 2px var(--color-border);
   border-right: solid 2px var(--color-border);
 }
-
 
 .summarycontainer {
   flex: 2;
@@ -558,7 +555,8 @@
   align-items: flex-end;
 }
 
-.genrescontainer, .pricecontainer {
+.genrescontainer,
+.pricecontainer {
   display: flex;
   flex: 1;
   gap: 0.5rem;
@@ -587,10 +585,11 @@
   font-weight: 800;
 }
 
-.summarytxt, .storytxt {
+.summarytxt,
+.storytxt {
   overflow: hidden;
-  transition: all 0.4s ease-in-out; 
-  margin-top: 0.75rem; 
+  transition: all 0.4s ease-in-out;
+  margin-top: 0.75rem;
   border: solid 2px var(--color-border);
   background-color: var(--color-background-light);
   padding: 2%;
@@ -617,16 +616,20 @@
   border-top: solid 2px var(--color-border);
 }
 
-.storylinetitle { font-size: clamp(1.1rem, 3.5vw, 1.4rem); line-height: 1.2; }
+.storylinetitle {
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  line-height: 1.2;
+}
 
-.relatedMediaHeader, .recordsectionheader, h2, h3 {
+.relatedMediaHeader,
+.recordsectionheader,
+h2,
+h3 {
   font-size: clamp(1rem, 3.5vw, 1.3rem);
 }
 
-
-
 .storylinetitle {
-  color: #fff; 
+  color: #fff;
   font-family: var(--font-family);
   margin: 0;
   line-height: 3.2rem;
@@ -634,11 +637,8 @@
   font-weight: 700;
 }
 
-
-
 .summarycontainer p {
   color: var(--color-text-paragraph);
-
 }
 
 .relatedMediaHeader {
@@ -656,7 +656,7 @@
   border-radius: 8px;
 }
 
-.screenshotscontainerskeleton{
+.screenshotscontainerskeleton {
   flex: 1;
   border-radius: 8px;
   padding-bottom: 0%;
@@ -672,9 +672,8 @@
   justify-content: center;
 }
 
-
 .gamedetailsBtnContainer {
-  position:absolute;
+  position: absolute;
   z-index: 1;
   transition: opacity 0.3s ease;
   display: flex;
@@ -685,7 +684,9 @@
   gap: 0.5rem;
 }
 
-.likeBtn, .completedBtn, .iconsShare {
+.likeBtn,
+.completedBtn,
+.iconsShare {
   padding: 0%;
   opacity: 80%;
   background-color: transparent;
@@ -693,10 +694,12 @@
   border: none;
 }
 
-.likeBtn:focus, .likeBtn:hover,
-.completedBtn:focus, .completedBtn:hover,
-.iconsShare:focus, .iconsShare:hover
-{
+.likeBtn:focus,
+.likeBtn:hover,
+.completedBtn:focus,
+.completedBtn:hover,
+.iconsShare:focus,
+.iconsShare:hover {
   border: none;
   opacity: 100%;
 }
@@ -708,11 +711,48 @@
   width: 100%;
 }
 
+.recordtogglecontainer {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  transition:
+    background-color 0.25s,
+    color 0.25s;
+}
+
+.recordtogglebtn {
+  width: 50%;
+  background-color: var(--color-background-light);
+  border: solid 2px var(--color-border);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+
+
+.recordtogglebtnAlt {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  
+}
+
 .screenshot {
+  max-height: 600px;
   max-width: 100%;
   border-radius: 8px;
   object-fit: cover;
-  image-rendering: auto;
+  image-rendering: smooth;
   transition: opacity 5s ease;
   animation: fadeIn 1.5s ease-in forwards;
 }
@@ -725,8 +765,8 @@
   animation: fadeIn 1.5s ease-in forwards;
 }
 
-
-.arrowL, .arrowR {
+.arrowL,
+.arrowR {
   background: var(--color-surface-translucent);
   border: none;
   font-size: 2rem;
@@ -737,29 +777,45 @@
   opacity: 80%;
   transition: opacity 0.2s ease;
   position: absolute;
-  
 }
 
-.arrowLAlt, .arrowRAlt {
+.arrowLAlt,
+.arrowRAlt {
   background: var(--color-surface-translucent);
   border: none;
   font-size: 2rem;
   cursor: pointer;
   padding: 2px;
-  z-index: 2; 
+  z-index: 2;
   opacity: 80%;
   transition: opacity 0.2s ease;
   position: absolute;
 }
 
-.arrowL { left: 0.25rem; right: auto; height: 95%; }
-.arrowR { right: 0.25rem; left: auto; height: 95%; }
+.arrowL {
+  left: 0.25rem;
+  right: auto;
+  height: 95%;
+}
+.arrowR {
+  right: 0.25rem;
+  left: auto;
+  height: 95%;
+}
 
-.arrowLAlt { left: 0.5rem; right: auto; height: 95%; }
-.arrowRAlt { right: 0.5rem; left: auto; height: 95%; }
+.arrowLAlt {
+  left: 0.5rem;
+  right: auto;
+  height: 95%;
+}
+.arrowRAlt {
+  right: 0.5rem;
+  left: auto;
+  height: 95%;
+}
 
-
-.arrowL:hover, .arrowR:hover {
+.arrowL:hover,
+.arrowR:hover {
   opacity: 100%;
 }
 
@@ -784,7 +840,6 @@
 
 .recordsectionwrapper {
   display: flex;
-
 }
 
 .recordsvideocontainer {
@@ -825,7 +880,6 @@
   backdrop-filter: blur(4px);
 }
 
-
 .recordsectionbtn:hover {
   cursor: pointer;
   filter: brightness(1.2);
@@ -850,7 +904,6 @@
   justify-content: space-evenly;
   align-items: center;
 }
-
 
 .recorditem {
   display: flex;
@@ -879,20 +932,20 @@
 }
 
 .awardbadgepillcontainer {
-  display: inline-block; 
-  padding: .8em .8em;   
-  font-size: 65%;      
-  font-weight: 600;    
-  line-height: 1;      
-  text-align: center;   
-  white-space: nowrap;  
-  vertical-align: baseline; 
+  display: inline-block;
+  padding: 0.8em 0.8em;
+  font-size: 65%;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
   margin-right: 10px;
-  border-radius: 10rem; 
+  border-radius: 10rem;
 
   background-color: var(--purple-ambient);
   border: solid 2px var(--color-background-light);
-  color: #fff;            
+  color: #fff;
 }
 
 .awardbadgetext {
@@ -912,7 +965,8 @@
   color: var(--color-text-muted);
 }
 
-h3, h2 {
+h3,
+h2 {
   font-weight: 800;
   margin: 0;
   padding: 0;
@@ -932,7 +986,7 @@ h3, h2 {
   justify-content: center;
   padding: 2%;
   width: 100%;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .artcontainer {
@@ -940,10 +994,10 @@ h3, h2 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  flex-wrap: nowrap;           
-  overflow-x: auto;  
+  flex-wrap: nowrap;
+  overflow-x: auto;
   overflow-y: hidden;
-  box-sizing: border-box;       
+  box-sizing: border-box;
 }
 
 .artcell {
@@ -970,7 +1024,6 @@ h3, h2 {
   border-radius: 8px;
 }
 
-
 .loadingtxt {
   color: var(--color-primary-glow);
   font-weight: 700;
@@ -981,7 +1034,7 @@ h3, h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 2rem;
   background-color: var(--color-background-light);
   border-top: solid 2px var(--color-border);
   border-bottom: solid 2px var(--color-border);
@@ -997,7 +1050,7 @@ h3, h2 {
   background-color: var(--color-background-light);
   border-bottom: solid 2px var(--color-border);
   padding: 0.5rem;
-    border-radius: 8px;
+  border-radius: 8px;
 }
 
 .videoplaceinfo {
@@ -1010,7 +1063,9 @@ h3, h2 {
   border-radius: 8px;
 }
 
-.recordvideocontainer, .recordvideocontainertwitch, .recordvideocontaineryoutube {
+.recordvideocontainer,
+.recordvideocontainertwitch,
+.recordvideocontaineryoutube {
   position: relative;
   margin-top: 2%;
   gap: 2%;
@@ -1047,7 +1102,7 @@ h3, h2 {
 }
 
 .relatedgamelink {
-  display: block;          
+  display: block;
   width: 100%;
   height: 100%;
 }
@@ -1057,7 +1112,7 @@ h3, h2 {
   font-weight: 600;
   color: var(--color-text);
   margin-top: 0.5rem;
-  text-align: center; 
+  text-align: center;
 }
 
 .coverBtn {
@@ -1065,15 +1120,15 @@ h3, h2 {
   background: none;
   padding: 0;
   margin: 0;
-  display: block;           
+  display: block;
   width: 100%;
   height: 100%;
   cursor: pointer;
 }
 
 .cover {
-  border-radius: 8px;  
-  animation: fadeIn 0.6s ease-in forwards; 
+  border-radius: 8px;
+  animation: fadeIn 0.6s ease-in forwards;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1083,7 +1138,7 @@ h3, h2 {
 }
 
 .relatedgamescontainer {
-  margin-top: 1rem;
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1100,49 +1155,55 @@ h3, h2 {
   gap: 0.5rem;
 }
 
-@media (max-width: 1200px){
-  .iconsHeart, .iconsCheck, .iconsShare {
+@media (max-width: 1200px) {
+  .iconsHeart,
+  .iconsCheck,
+  .iconsShare {
     width: var(--icon-size-mobile);
     height: var(--icon-size-mobile);
   }
 
-    .summarytxt, .storytxt { font-size: 1.1rem; }
+  .summarytxt,
+  .storytxt {
+    font-size: 1.1rem;
+  }
 
-    .arrowL, .arrowR, .arrowLAlt, .arrowRAlt {
-      font-size: 3rem;
-      padding: 12px;
-    }
-    
-    .icons {
-      width: 3rem;
-      height: auto;
-    }
+  .arrowL,
+  .arrowR,
+  .arrowLAlt,
+  .arrowRAlt {
+    font-size: 3rem;
+    padding: 12px;
+  }
 
-.ebayinfocontainer {
-  display: flex;
-  flex: 3;
-  flex-direction: column;
+  .icons {
+    width: 3rem;
+    height: auto;
+  }
+
+  .ebayinfocontainer {
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+  }
+
+  .ebayimgcartcontainer {
+    flex-direction: column;
+  }
+
+  .relatedgamescontainer {
+    padding-bottom: 10rem;
+    backdrop-filter: blur(2px);
+  }
+
+  .relatedMediaHeader {
+    font-weight: 600;
+    color: var(--color-text);
+    padding: 0.25rem 0rem 0.25rem 0rem;
+  }
+
+  .recordsloadercontainer {
+    margin-bottom: 10rem;
+    backdrop-filter: blur(3px);
+  }
 }
-
-.ebayimgcartcontainer {
-  flex-direction: column;
-}
-
-.relatedgamescontainer {
-  padding-bottom: 10rem;
-  backdrop-filter: blur(2px);
-}
-
-.relatedMediaHeader {
-  font-weight: 600;
-  color: var(--color-text);
-  padding: 0.25rem 0rem 0.25rem 0rem;
-}
-
-.recordsloadercontainer {
-  margin-bottom: 10rem;
-  backdrop-filter: blur(3px);
-}
-
-}
-
